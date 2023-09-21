@@ -503,37 +503,34 @@ const handleClassifiedOrder = (classifiedId)=>{
                  <DialogContent>
                      <div className="classified_order_form">
                         <Grid container spacing={2}>
-                            <Grid item xs={6}>
+                            <Grid item xs={12} md={12} lg={6}>
                                <Box><TextField label="Name" variant="filled" fullWidth  focused onChange={(e)=> setOrderName(e.target.value)} value={orderName} /></Box>
                             </Grid>
-                            <Grid item xs={6}>
+                            <Grid item xs={12} md={12} lg={6}>
                                <Box><TextField label="Email" variant="filled" fullWidth  focused onChange={(e)=> setOrderEmail(e.target.value)} value={orderEmail} /></Box>
                             </Grid>
-                            <Grid item xs={6}>
+                            <Grid item xs={12} md={12} lg={6}>
                                <Box><TextField label="Phone" variant="filled" fullWidth  focused onChange={(e)=> setOrderPhone(e.target.value)}/></Box>
                             </Grid>
-                            <Grid item xs={6}>
+                            <Grid item xs={12} md={12} lg={6}>
                                <Box><TextField label="Payable Amount" multiline
                                 variant="filled" value={payableAmount} fullWidth  focused disabled={true} /></Box>
                             </Grid>
                             {/* <Grid item xs={6}>
                                <Box><TextField type="number"  InputProps={{ inputProps: { min: 0, max: 10 } }} label="Quantity" variant="filled" fullWidth  focused onChange={(e)=>setOrderQuantity(e.target.value)}/></Box>
                             </Grid> */}
-                            <Grid item xs={12}>
+                            <Grid item xs={12} md={12} lg={12}>
                                <Box><TextField label="Shipping Address" multiline
                               rows={3} variant="filled" fullWidth  focused onChange={(e)=>setOrderAddress(e.target.value)} /></Box>
                             </Grid>
-                            <Grid item xs={12}>
+                            <Grid item xs={12} md={12} lg={12}>
                                <Box><TextField label="Special Note" multiline
                                 variant="filled" fullWidth  focused onChange={(e)=>setOrderNote(e.target.value)}/></Box>
                             </Grid>
-                            
                         </Grid>
                         {(orderName !==null && orderEmail !==null && orderPhone !==null)? <Button sx={{ mt:2 }} variant="contained" color="success" fullWidth onClick={(e)=>handleClassifiedOrder(details.id)} >Order Now</Button>
                         : <Button sx={{ mt:2 }} variant="contained" color="success" fullWidth disabled >Order Now</Button>
                         }
-                       
-                       
                      </div>
                  </DialogContent>
                </Dialog>

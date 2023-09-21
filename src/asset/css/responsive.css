@@ -2,6 +2,25 @@
     .mob_padding_75 {
         margin-top: 75px;
     }
+    .community_list_item {
+        padding-top: 140px;
+    }
+    .uploader_dial {
+        bottom: 140px !important;
+    }
+    .video-react {
+        height: 370px !important;
+    }
+    .resource_item .resource_footer {
+        position: relative;
+        padding: 15px 0 0 0;
+    }
+    .video-react .video-react-video {
+        max-height: 370px !important;
+    }
+    .longue_item .uploaded_img_container .single_img img {
+        max-height: 420px;
+    }
     .classified_order_form {
         width: 100%;
     }
@@ -36,6 +55,7 @@
     .section_headear .btns_row {
         justify-content: space-between;
         flex-wrap: wrap;
+        margin-top: 15px;
     }
     .mamber_hedingSIde .mamber_hedingSide_right {
         flex-wrap: wrap;
@@ -59,7 +79,7 @@
      justify-content: flex-end;
     }
     .chat_box_icon {
-        bottom: 100px;
+        bottom: 80px;
         height: 50px;
         width: 110px;
     }

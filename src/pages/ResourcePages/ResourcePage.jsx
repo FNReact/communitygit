@@ -69,7 +69,7 @@ const ResourcePage = () => {
                     <Grid container spacing={2}>
                       {(resource !==null && resource.length>0 )&& resource.map((data,key)=>{
                         return(
-                           <Grid item lg={4} md={6} sm={6} xs={6}>
+                           <Grid item lg={4} md={6} sm={12} xs={12}>
                              <ResourceItem data={data} key={key} getAllResouces={getAllResouces} admin={false}/>
                            </Grid>
                         )
@@ -78,11 +78,11 @@ const ResourcePage = () => {
                     </Grid>
                     {resource ===null && <>
                       <Grid container spacing={2}>
-                         <Grid item lg={4} md={6} sm={6} xs={6}>{BoxLoadEffect()}</Grid>
-                         <Grid item lg={4} md={6} sm={6} xs={6}>{BoxLoadEffect()}</Grid>
-                         <Grid item lg={4} md={6} sm={6} xs={6}>{BoxLoadEffect()}</Grid>
+                         <Grid item lg={4} md={6} sm={12} xs={12}>{BoxLoadEffect()}</Grid>
+                         <Grid item lg={4} md={6} sm={12} xs={12}>{BoxLoadEffect()}</Grid>
+                         <Grid item lg={4} md={6} sm={12} xs={12}>{BoxLoadEffect()}</Grid>
                       </Grid>
-                    </> }
+                    </>}
                  </div>
               </div>
            </Grid>
