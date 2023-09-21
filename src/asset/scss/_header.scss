@@ -260,6 +260,7 @@
         border-radius: 10px;
         display: flex;
         align-items: center;
+        margin-bottom: 12px;
         .profile_img{
             img{
                 height: 45px;
@@ -274,44 +275,50 @@
             color: #333;
             padding-left: 5px;
             @include text-ellips;
-            padding-left: 5px;
         }
     }
 
     .my_commuinity{
         display: flex;
         align-items: center;
-        margin-top: 15px;
+        padding: 7px 5px;
+        &:hover{
+            background-color: #f3f3f3;
+            border-radius: 7px;
+        }
 
         i{
             .MuiSvgIcon-root{
-                font-size: 26px;
+                font-size: 23px;
                 color: #636262;
             }
         }
         span{
             padding-left: 6px;
-            font-size: 16px;
+            font-size: 15px;
             color: #636262;
         }
     }
 
     .sidebar_list{
-        padding-top: 20px;
-        padding-left: 10px;
+        padding-top: 10px;
         .sidebar_list_item{
             display: flex;
             align-items: center;
-            margin-bottom: 24px;
+            padding: 9px 10px;
+            &:hover{
+                background-color: #f3f3f3;
+                border-radius: 7px;
+            }
             .list_icon{
                 img{
-                    height: 26px;
-                    width: 26px;
+                    height: 22px;
+                    width: 22px;
                     object-fit: contain;
                 }
             }
             .list_name{
-                font-size: 16px;
+                font-size: 15px;
                 font-weight: 400;
                 color: #636262;
                 padding-left: 10px;
@@ -319,10 +326,7 @@
         }
     }
     .logout_btn{
-        position: absolute;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
+        margin: 30px  0;
         width: 280px;
         height: 48px;
         border: 1px solid $border-2;

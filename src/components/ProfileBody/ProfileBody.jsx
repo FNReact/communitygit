@@ -238,7 +238,7 @@ useEffect(()=>{
                     </div>
 
                     {userDetails &&  <div className="profile-name">
-                      {name !==undefined&& <div  className="userDesignation">{name}
+                      {name !==undefined&& <div  className="user_name">{name}
                        <i onClick={(e)=> navigate('/community-profile/update',{state:{type:'name'}})}><EditIcon className="cursorPointer"/></i></div>}
 
                       {userInfo && userInfo?.apartment_number && <div  className="userDesignation">Apartment/Holding: {userInfo?.apartment_number} 
