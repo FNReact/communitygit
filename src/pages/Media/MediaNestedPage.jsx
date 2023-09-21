@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material";
+import { Box, Button, Grid } from "@mui/material";
 import React, { Fragment, useEffect, useState } from "react";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
@@ -48,8 +48,8 @@ const MediaNestedPage = (props) => {
     .then((response) => {
       if(response.data.files.length>0){
         setMedia(response.data.files)
-        setLoaderVisible(false)
       }
+      setLoaderVisible(false)
     })
     .catch((error) => {
       setLoaderVisible(false)
@@ -336,6 +336,7 @@ useEffect(() => {
                                 adminId={adminId}
                                 data={data}
                                 date={data.created_at}
+                                getAllMedia={getAllMedia}
                                 handleUpdateFolder={handleUpdateFolder}
                                 onClick={(e) => {
                                   handleFolderData(data, position+1, secondFolder,preFolderName);
@@ -372,6 +373,7 @@ useEffect(() => {
          </Grid>
       </Grid>
       {loaderVisible ===true &&  <MainLoader/>}
+      {media && media.length===0 && loaderVisible ===false &&<><Box display='flex' justifyContent='center' justifyItems='center' ><Button disabled sx={{ml:25}}>No media found...</Button></Box></>}
       {(userDetails.id === msDetails.user_id || loggedInUser.user_type==="admin")  &&  <DynamicUploader totalSize={total_size} getAllMedia={getAllMedia} position={position} />}
       
        <ToastContainer />

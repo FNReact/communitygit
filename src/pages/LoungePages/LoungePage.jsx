@@ -58,7 +58,7 @@ const LoungePage = () => {
                         </div>
                         <div className="com_top_left">
                             <div className="com_name"> {msDetails?.name}</div>
-                            <div className="tagline">{msDetails?.tagline?parse(msDetails?.tagline):''} </div>
+                            <div className="tagline">{ msDetails?.tagline?parse(msDetails?.tagline):''} </div>
                         </div>
                         </div>
                          <div className="com_botttom">

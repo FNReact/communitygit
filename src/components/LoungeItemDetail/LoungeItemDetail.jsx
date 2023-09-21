@@ -64,6 +64,7 @@ import {
   import { useLocation } from "react-router-dom";
   import CloseIcon from '@mui/icons-material/Close';
 import UploadLoader from "../PageLoadEffects/UploadLoader";
+import LoungeUploadProgress from "../LoungeUploadProgress/LoungeUploadProgress";
   
   
   const LoungeItemDetail = () => {
@@ -134,6 +135,9 @@ import UploadLoader from "../PageLoadEffects/UploadLoader";
     const [loadCount, setLoadCount] = useState(2);
     const token = sessionStorage.getItem("token");
     const [loaderVisible, setLoaderVisible] =useState(false)
+
+    const [progressValue,setProgressValue] = useState(0)
+    const [progressTotalLenght,setProgressTotalLength] = useState(0)
 
     //
     const [storeUuid, setStoreUuid] = useState(null);
@@ -294,14 +298,20 @@ import UploadLoader from "../PageLoadEffects/UploadLoader";
       feedUrl = createFeedsUrl
     }
 
-
+    var percentComplete;
     let config = {
       method: 'post',
       url: feedUrl,
       headers: { 
         'Authorization': `Bearer ${token}`,
       },
-      data : formData
+      data : formData,
+      onUploadProgress: progressEvent => {
+        percentComplete = progressEvent.loaded / progressEvent.total
+        percentComplete = parseInt(percentComplete * 100);
+        setProgressValue(percentComplete)
+        setProgressTotalLength(files.length)
+      }
     };
 
     setTotalMedia(null);
@@ -311,6 +321,9 @@ import UploadLoader from "../PageLoadEffects/UploadLoader";
     
     axios.request(config)
     .then((response) => {
+      setProgressValue(0)
+      setProgressTotalLength(0)
+      setContent('')
       getAllFeeds();
       setTotalMedia(null);
       setFileList([]);
@@ -670,7 +683,7 @@ import UploadLoader from "../PageLoadEffects/UploadLoader";
      </div>
        }
     </Dialog>
-
+    {(progressValue>0) && <LoungeUploadProgress value = {progressValue} progressTotalLenght={progressTotalLenght} />}
         {/* <ToastContainer /> */}
       </Fragment>
     );

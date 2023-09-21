@@ -234,7 +234,7 @@ const handleLounge = ()=>{
                           <Alert severity="info">Your request has been sent to admin for aproval. Your joining request is pending...</Alert>
                          }
                         {token&& loggedMemberStatus===2 &&
-                          <Alert severity="info">Your ware invited to join this community.</Alert>
+                          <Alert severity="info">You have invited to join this community.</Alert>
                          }
                         {token&& loggedMemberStatus===3 &&
                           <Alert severity="error">You are blocked on this community !</Alert>

@@ -56,6 +56,7 @@ import {
   import UploadLoader from "../PageLoadEffects/UploadLoader";
   import LoungeCommentTwo from "../LoungeItemContent/LoungeCommentTwo";
   import { useNavigate } from "react-router-dom";
+import LoungeUploadProgress from "../LoungeUploadProgress/LoungeUploadProgress";
   
   
   const UserPost = () => {
@@ -110,6 +111,9 @@ import {
   
     const [storeUuid, setStoreUuid] = useState(null);
     const [postFound, setPostFound] = useState(false)
+
+    const [progressValue,setProgressValue] = useState(0)
+    const [progressTotalLenght,setProgressTotalLength] = useState(0)
   
     //get all members
     const membersUrl = `${allMembersUrl}/${msDetails.id}?current_page=1`;
@@ -301,14 +305,20 @@ import {
         feedUrl = createFeedsUrl
       }
   
-  
+      var percentComplete;
       let config = {
         method: 'post',
         url: feedUrl,
         headers: { 
           'Authorization': `Bearer ${token}`,
         },
-        data : formData
+        data : formData,
+        onUploadProgress: progressEvent => {
+          percentComplete = progressEvent.loaded / progressEvent.total
+          percentComplete = parseInt(percentComplete * 100);
+          setProgressValue(percentComplete)
+          setProgressTotalLength(files.length)
+        }
       };
 
       setTotalMedia(null);
@@ -317,6 +327,8 @@ import {
       
       axios.request(config)
       .then((response) => {
+        setProgressValue(0)
+        setProgressTotalLength(0)
         setContent('');
         getAllFeeds();
         setTotalMedia(null);
@@ -681,7 +693,7 @@ import {
                                         </div>
                                       </Grid>
                                       <Grid item xs={12}>
-                                        <div className="image_container">
+                                        <div className="image_container" onClick={(e)=>navigate('/loungeitemDetail', {state:{data:data}})}>
                                               <img
                                                 src={data.media[0].url}
                                                 alt={data.media[0].name}
@@ -735,7 +747,7 @@ import {
                                         </div>
                                       </Grid>
                                       <Grid item xs={6}>
-                                        <div className="image_container">
+                                        <div className="image_container" onClick={(e)=>navigate('/loungeitemDetail', {state:{data:data}})}>
                                              <img
                                                 src={data.media[0].url}
                                                 alt={data.media[0].name}
@@ -743,7 +755,7 @@ import {
                                           </div>
                                       </Grid>
                                       <Grid item xs={6}>
-                                         <div className="image_container">
+                                         <div className="image_container" onClick={(e)=>navigate('/loungeitemDetail', {state:{data:data}})}>
                                              <img
                                                 src={data.media[1].url}
                                                 alt={data.media[1].name}
@@ -760,6 +772,79 @@ import {
                           </>
                         );
                       }
+                      /* single video and 2+ image */
+                    if (
+                      data.status === 1 &&
+                      data.video !== null &&
+                      data.media.length >2
+                    ) {
+                      return (
+                        <>
+                          <div className="longue_item" key={data.uuid}>
+                          <LoungeProfileBio
+                               getAllFeeds={getAllFeeds}
+                               data={data}
+                               modalOpen={handleClickOpen}
+                               modalClose={handleClose2}
+                               createPost={createPost}
+                               setContent={setContent}
+                               setStoreUuid={setStoreUuid}
+                              />
+                                <div className="uploadede_item">
+                                  <Grid container spacing={1}>
+                                    <Grid item xs={12}>
+                                      <div className="uploaded_Video_container">
+                                      <Player src={`${baseUrl}/${data.video}`}  >
+                                          <BigPlayButton position="center" />
+                                          <ControlBar
+                                            autoHide={false}
+                                            className="my-class"
+                                          >
+                                            <ForwardControl
+                                              seconds={10}
+                                              order={3.2}
+                                            />
+                                          </ControlBar>
+                                        </Player>
+                                      </div>
+                                    </Grid>
+                                    <Grid item xs={6}>
+                                      <div className="image_container" onClick={(e)=>navigate('/loungeitemDetail', {state:{data:data}})}>
+                                           <img
+                                              src={data.media[0].url}
+                                              alt={data.media[0].name}
+                                            />
+                                        </div>
+                                    </Grid>
+                                    <Grid item xs={6}>
+                                       <div className="image_container extra_img_relative" onClick={(e)=>navigate('/loungeitemDetail', {state:{data:data}})}>
+                                           <img
+                                              src={data.media[2].url}
+                                              alt={data.media[2].name}
+                                            />
+                                          <div
+                                            className="extra_img_overly2"
+                                            onClick={(e) => {
+                                              setModalData(data.media);
+                                              setModalShowExtraImage(true);
+                                            }}
+                                          >
+                                            <span>
+                                              {data.media.length - 2}+
+                                            </span>
+                                          </div>
+                                        </div>
+                                    </Grid>
+                                  </Grid>
+                                </div>
+                                <div className="uploadede_content cursorPointer" >
+                                  {data && <LoungeItemContent data={data} itemModalClick={(e)=>navigate('/loungeitemDetail', {state:{data:data}})} getAllFeeds={getAllFeeds} />}
+                                </div>
+                                {data && <LoungeCommentTwo data={data} itemModalClick={(e)=>navigate('/loungeitemDetail', {state:{data:data}})}  />}
+                          </div>
+                        </>
+                      );
+                    }
                       
                       if (
                         data.user.id === userDetails.id &&
@@ -975,6 +1060,7 @@ import {
          </Dialog>
         {/* Uploader Modal End */}
         <ToastContainer />
+        {(progressValue>0) && <LoungeUploadProgress value = {progressValue} progressTotalLenght={progressTotalLenght} />}
       </Fragment>
     );
   };

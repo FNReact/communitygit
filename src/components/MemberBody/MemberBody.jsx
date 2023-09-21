@@ -316,7 +316,7 @@ const MemberBody = () => {
                                 
                                   {(owner ===false && data?.status ===0) && 
                                   <span>
-                                    {(info?.user_type ==='admin')? <div className="memberApproved_btn"> <Button fullWidth variant="contained" onClick={(e)=>handleMemberActive(data?.user_id,data?.uuid,1,'member')} >Approve Now </Button> 
+                                    {(info?.user_type ==='admin' || userDetails?.id===msDetails.user_id)? <div className="memberApproved_btn"> <Button fullWidth variant="contained" onClick={(e)=>handleMemberActive(data?.user_id,data?.uuid,1,'member')} >Approve Now </Button> 
                                     </div> :
                                       <Tooltip title="Only admin can approved">
                                         <div className="memberApproved_btn">

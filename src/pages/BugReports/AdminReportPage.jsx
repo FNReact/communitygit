@@ -17,7 +17,7 @@ const AdminReportPage = () => {
          <Grid item xs={12} sm={12} md={8} lg={9}>
             <div className="content_body">
               <Tooltip title="Back">
-                 <div className="backArrow" onClick={(e)=>{navigate(-1)}}>
+                 <div className="backArrow" onClick={(e)=>navigate(-1)}>
                     <ArrowBackIcon/>
                  </div> 
              </Tooltip>
