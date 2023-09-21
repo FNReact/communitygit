@@ -1,0 +1,1 @@
+.str-chat__send-button{margin-left:var(--xs-m);border:0;background:0;outline:0}.str-chat__send-button:focus{outline:5px auto -webkit-focus-ring-color}@media screen and (min-width: 768px){.str-chat__send-button{display:none}}.str-chat__send-button .str-chat__send-button-angular svg path{fill:var(--primary-color)}

@@ -1,0 +1,51 @@
+.PhotoAdding_Body{
+    width: 100%;
+    border: 1px solid $border-2;
+    background-color: $bacground-shade;
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+    padding: 10px;
+    .AddPLaceHolder{
+        text-align: center;
+          .AddPlace_icon{
+            height: 80px;
+            width: 80px;
+            background-color: $primaryBackground;
+            border-radius: 50%;
+            text-align: center;
+            margin:  0 auto;
+
+            i{
+                font-size:  30px;
+                color: $text;
+                line-height: 80px;
+            }
+          }
+          h4{
+            font-size: 16px;
+            font-weight: 400;
+            color: $black;
+            padding-top: 6px;
+        }
+        h6{
+            font-size: 14px;
+            font-weight: 400;
+            color: #5e5e5eb9;
+            line-height: 10px;
+            
+        }
+    }
+}
+
+.AddingLIst{
+    .AddingList_item{
+        height: 50px;
+        width: 50px;
+        background-color: $primaryBackground;
+        border-radius: 5px;
+    }
+}
+.modal-footer {
+	justify-content: flex-start;
+}

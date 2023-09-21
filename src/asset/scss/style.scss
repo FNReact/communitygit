@@ -1,0 +1,78 @@
+/*<><><><><><><<><><><><><<><><><><>
+
+Template Name: Commuinity Ui
+Template URL : 
+Description  :
+Author       : Fahim Ahmed
+Author URL   :
+Version      : 1.1.1
+
+<><><><><><><<><><><><><<><><><><>*/
+
+/*----------------------------------
+       HTML  INDEX LIST
+01. 
+02. 
+03. 
+-------------------------------------*/
+
+
+
+/*-----------------------------------
+       CSS INDEX LIST
+01. 
+02.  
+03. 
+------------------------------------*/
+
+ 
+/*     Google Font Connections
+-------------------------------------*/
+
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
+
+
+/*      SCSS Pages Connections 
+------------------------------------*/
+
+
+@import "../scss/common_css/common"; 
+@import "../scss/mixin_scss/mixin";
+@import "../scss/variable_scss/variable";
+
+
+/*     SCSS Sections Connections 
+------------------------------------*/
+@import "../scss/header"; 
+@import "../scss/sideMenu"; 
+@import "../scss/notice"; 
+@import "../scss/mamber"; 
+@import "../scss/launge";  
+@import "../scss/event";  
+@import "../scss/classified";  
+@import "../scss/job";  
+@import "../scss/resources";  
+@import "../scss/business";  
+@import "../scss/representetive";  
+@import "../scss/notification";   
+@import "../scss/searchBarCommuinity"; 
+@import "../scss/moreCommuinity"; 
+@import "../scss/myProfile"; 
+@import "../scss/connectWith"; 
+@import "../scss/allModal"; 
+@import "../scss/media"; 
+@import "../scss/login"; 
+@import "../scss/profile"; 
+@import "../scss/naeem.scss"; 
+@import "../scss/uploader"; 
+@import "../scss/chat";
+@import "../scss/commuinityProfile";
+@import "../scss/report";
+
+
+/*  Sub Pages Sections Connections 
+--------------------------------------*/
+@import "../scss/AllComponentSCSS/allComponent"; 
+
+

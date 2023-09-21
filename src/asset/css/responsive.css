@@ -1,0 +1,568 @@
+@media (min-width: 280px) and (max-width: 899.98px) { 
+    .backArrow_head {
+        position: relative;
+        left: 15px;
+        top: 20px;
+        margin-bottom: 20px;
+    }
+    .communityInfo_wrapper .community_top_info {
+        display: list-item;
+        list-style: none;
+    }
+    .mamber_hedingSIde {
+        display: list-item;
+        list-style: none;
+    }
+    .lounge .upload_box_container .upload_box_bottom {
+        padding-top: 10px;
+    }
+    .event_item {
+        margin-top: 8px;
+        height: auto;
+    }
+    .business_item {
+        height: auto;
+        margin-top: 8px;
+    }
+    .section_headear .btns_row .Btn_one {
+        margin-left: 0px;
+    }
+    .section_headear .btns_row {
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .mamber_hedingSIde .mamber_hedingSide_right {
+        flex-wrap: wrap;
+        margin-top: 12px;
+    }
+    .user_profile .user_profile_content .user_join_date {
+        margin-top: 15px;
+    }
+    .mamber_hedingSIde .mamber_hedingSide_right .MuiButtonBase-root{
+        margin-bottom: 10px;
+    }
+    .com_top_left .tagline{
+        padding-top: 5px;
+    }
+    .com_top_left .tagline p{
+        font-size: 14px;
+        line-height: 18px;
+    }
+    .communityInfo_wrapper .community_top_info .com_botttom{
+     display: flex;
+     justify-content: flex-end;
+    }
+    .chat_box_icon {
+        bottom: 45px;
+        height: 50px;
+        width: 110px;
+    }
+    .communityInfo_wrapper .community_top_info .edit_button {
+        position: relative;
+        top: 0;
+        right: 0;
+        font-size: 13px;
+        border-radius: 35px;
+        width: 80px;
+        display: inline-block;
+        padding: 1px 20px;
+        margin: 0 0 0 auto;
+    }
+    .communityInfo_wrapper .community_top_info .edit_button .MuiSvgIcon-root{
+      font-size: 14px;
+    }
+    .mob_none{
+        display: none !important;
+    }
+    .community_list_item .commuinity_item {
+        height: 320px;
+        width: 280px;
+        margin: 0 auto;
+    }
+    .community_list_item .commuinity_item {
+        width: 280px;
+        margin: 0 auto;
+    }
+    .communityInfo_wrapper .commuinity_banner {
+        height: 140px;
+        width: 100%;
+    }
+    .communityInfo_wrapper .community_top_info .com_logo img {
+        height: 92px;
+        width: 92px;
+    }
+    .header .header_content .header_item_wrapper .header_item_list .MuiSvgIcon-root {
+        font-size: 22px;
+    }
+    .communityInfo_wrapper .community_top_info .com_top_left .com_name {
+        font-size: 18px;
+        line-height: 21px;
+    }
+    .communityInfo_wrapper .community_top_info .com_top_left .tagline {
+        font-size: 15px;
+    }
+
+.entryWrapper .entry_wrap .home_title {
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 37px;
+    text-align: center;
+    padding-bottom: 35px;
+}
+.order_list_wrapper .order_list_wrap .list_top {
+    display: list-item;
+    list-style: none;
+}
+.order_list_wrapper .order_list_wrap .list_top .list_top_left .oredr_id {
+    font-size: 18px;
+}
+.order_list_wrapper .order_list_wrap .list_top .list_top_right {
+    font-size: 24px;
+    padding-top: 5px;
+}
+.order_list_wrapper .order_list_wrap .update_item_info .item_update_right {
+    justify-content: end;
+    display: flex;
+    padding-top: 7px;
+}
+.order_list_wrapper .order_list_wrap .order_content {
+    display: flex;
+    align-items: center;
+    padding-left: 0px;
+    padding-top: 10px;
+}
+.order_list_wrapper .order_list_wrap .update_item_info {
+    display: list-item;
+    list-style: none;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 8px;
+    padding-left: 0px;
+}
+.login_d_left{
+    display: none;
+}
+.homeMainContent .login_D_form .login_d_right {
+    height: auto;
+    min-height: 420px;
+    max-width: 320px;
+    padding: 30px 20px 15px 20px;
+}
+.homeMainContent .login_D_form {
+    height: auto;
+    min-height: 420px;
+}
+.homeMainContent .login_D_form .login_d_right .login_bday form h3 {
+    padding-top: 60px;
+}
+.homeMainContent .backArrow {
+    left: 0;
+    top: 20px;
+}
+.creatCommuinity_form_body .backArrow {
+    left: 0;
+    top: 20px;
+}
+.creatCommuinity_form_body .creatCommuinity_wrapper .creatCommuinity_wrap {
+    width: 100%;
+    padding-top: 12px;
+}
+.creatCommuinity_wrapper{
+    margin: 110px 0 40px 0;
+    padding: 60px 30px;
+}
+
+/* Inside Commuinity */
+.side-menu {
+    display: none;
+}
+.header .header_content .header_item .commuinity_name {
+    margin-left: 5px;
+    font-weight: 400;
+    font-size: 16px;
+}
+.lounge_right_fixed{
+    display: none;
+}
+.header .header_content .header_item_wrapper .header_item_list {
+    margin: 0 5px;
+    height: 37px;
+    width: 37px;
+}
+.css-1oqqzyl-MuiContainer-root {
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+}
+.longue_item {
+    margin-bottom: 7px;
+}
+.content_body {
+    padding-top: 55px;
+    margin-bottom: 10px;
+}
+.header .header_content .header_item_wrapper2 .profile_dashed {
+   display: none;
+}
+.header .header_content .header_item_wrapper2 .mobile_hamburger_icon {
+  display: flex;
+  height: 40px;
+  width: 40px;
+}
+.profile_bio {
+    padding: 8px 8px;
+}
+.header .header_content .header_item{
+    padding-top: 6px;
+}
+.header .header_content .header_item .logo {
+    height: 38px;
+}
+.MuiDialog-paper {
+    border-radius: 0px !important;
+    overflow: visible !important;
+}
+.upload_input_area .Upload_textarea {
+    width: 100%;
+    border: none !important;
+}
+.dialog_footer .upload_attached ul li .small-text {
+    display: none;
+}
+.dialog_footer .upload_attached ul li {
+    cursor: pointer;
+    font-size: 20px;
+    padding: 0px 0px;
+    border-radius: 10px;
+    margin-right: 12px;
+    display: flex;
+    align-items: center;
+    height: 45px;
+    width: 45px;
+    justify-content: center;
+}
+.dialog_footer .upload_attached ul li .MuiSvgIcon-root {
+    font-size: 22px;
+    margin-right: 0px;
+}
+.dialogContent-2 .mediaAdd_Body .mediaAdder {
+    width: 100%;
+}
+.dialogContent-2 .TagBody {
+    width: 100%;
+}
+.dialog_footer .emoji_picker {
+   top: 60px;
+   z-index: 99;
+   right: 20px;
+}
+.userName {
+    line-height: 18px !important;
+}
+.comment_input_main {
+    padding-right: 9px;
+    padding-top: 20px;
+}
+.comment_input_main .comment_input_container .comment_attachment ul li .comment_emoji_picker {
+    bottom: -275px;
+    right: -270px;
+    height: 260px;
+}
+.emojis_container .emojiTab {
+    padding: 5px 5px;
+    border-radius: 12px;
+    top: 5px;
+    left: 10px;
+    width: 240px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.emojis_container .emojiTab .singleEmoji {
+    font-size: 30px;
+    padding: 18px 10px;
+}
+.postView_container .postView_container_Top .postViewModal_container_Image {
+    min-height: 400px;
+    height: auto;
+    width: 100%;
+}
+.job_filter {
+    display: none;
+}
+.JobItemDetails .history_item .job_info .info_2 {
+    display: none;
+}
+.JobItemDetails .history_item .job_info .info_1 {
+    width: 100%;
+}
+.classified_top_section .classified_top_img .classified_top_imgOverly .overly_conetnt .classified_search {
+    width: 300px;
+}
+.classified_cetegory_list .list_category_item {
+    display: none;
+}
+.classified_item .classified_item_img {
+    height: 140px;
+    width: 100%;
+}
+.classified_item {
+    height: 250px;
+}
+.classified_item_detail .classified_item_Img_container .swiper .swiper-wrapper .swiper-slide {
+    height: 300px;
+}
+.classified_item_detail .classified_item_Img_container .swiper .swiper-wrapper .navigate_img {
+    height: 60px;
+    height: 60px;
+    width: 100%;
+    object-fit: cover;
+}
+.bidding_container .bidding_item {
+    width: 100%;
+}
+.lounge .upload_box_container {
+    margin-bottom: 10px;
+}
+.mamber .mamber_wrapper .memberItem {
+    padding: 14px 8px;
+    height: 260px;
+}
+.mamber_hedingSIde .headingSection {
+    font-size: 18px;
+}
+.MemberSearch_body {
+    width: 100%;
+}
+.MemberSearch_body .memberSearch_wrapper {
+    width: 100%;
+}
+.addMember_card {
+    width: 100%;
+}
+.user_profile .cover-photo {
+    height: 200px;
+}
+.user_profile .user_profile_content .content_top .user_profileImg {
+    height: 110px;
+    width: 110px;
+    margin-top: -60px;
+    margin-left: 0px;
+}
+.user_profile .user_profile_content {
+    padding: 10px 10px;
+}
+#simple-tabpanel-0 .MuiBox-root{
+    padding: 20px 0px;
+}
+.event_details_body .invite_section .invite_top {
+    display: list-item;
+    list-style: none;
+}
+.event_details_body .invite_section .invite_top .invite_top_right .invite_btn {
+    margin-top: 15px;
+}
+.backArrow {
+    margin-bottom: 10px;
+}
+.section_headear {
+    display: list-item;
+    list-style: none;
+    padding-bottom: 20px;
+}
+.resource_item .resource_footer .res_footer_left {
+    display: none;
+}
+.resource_details .details_file_container .file_tab .ant-image {
+    height: 130px;
+    width: 120px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+.resource_details h4 {
+    font-size: 20px;
+    line-height: 30px;
+    padding-bottom: 10px;
+}
+.resource_details {
+    padding: 25px 15px;
+}
+.media_content_body {
+    padding-top: 45px;
+}
+.Media_area {
+    padding-top: 10px;
+}
+.section_headear .btns_row .Btn_one span{
+    display: none;
+}
+.section_headear .btns_row .Btn_two span{
+    display: none;
+}
+.entryWrapper .entry_wrap .commuinity_search_form {
+    width: 90%;
+    margin: 0 auto;
+}
+.home_banner {
+    height: 180px;
+    border-radius: 8px;
+    background: #fff;
+}
+.home_banner img{
+    object-fit: contain;
+}
+.entryWrapper {
+    padding: 30px 0;
+}
+.entry_header .entry_header_wrap .entryHeader_right .createBtn {
+    height: 40px;
+    padding: 0 20px;
+    font-size: 14px;
+}
+.entry_header .entry_header_wrap .entryHeader_logo img {
+    height: 45px;
+}
+.entryWrapper .entry_wrap .community_list_item .commuinity_item {
+    height: 350px;
+    width: 300px;
+    margin: 0 auto;
+}
+.user_profile .user_profile_content .user_icons_list {
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+.user_profile .user_profile_content .user_icons_list a {
+    margin-top: 10px;
+}
+.mamber .mamber_wrapper .memberItem .user_info .user_name {
+    font-size: 17px;
+    padding: 5px 0 0 0;
+}
+.section_headear h4 {
+    font-size: 20px;
+}
+
+}
+
+@media (min-width: 480px) and (max-width: 576.98px) {
+    .css-1oqqzyl-MuiContainer-root {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+}
+@media (min-width: 576px) and (max-width: 899.98px) {
+    .content_body {
+        width: 570px;
+        margin: 0 auto;
+    }
+    .media_content_body {
+        padding-top: 45px;
+        width: 576px;
+        margin: 0 auto;
+    }
+    .entryWrapper .entry_wrap .commuinity_search_form {
+        width: 500px;
+    }
+    .entryWrapper .entry_wrap .community_list_item .commuinity_item {
+        width: 90%;
+    }
+}
+@media (min-width: 900px) and (max-width: 1199.98px) {
+    .home_banner {
+        height: auto;
+    }
+    .entryWrapper .entry_wrap .community_list_item .commuinity_item .commuinity_name {
+        font-size: 16px;
+    }
+    .ConnectWith {
+        display: none;
+    }
+    .postView_container .postView_container_Top .postViewModal_container_Image {
+        height: 450px;
+    }
+    .comment_input_main {
+        padding-left: 9px;
+        padding-right: 9px;
+    }
+    .JobItemDetails .history_item .job_info .info_2 {
+        display: none;
+    }
+    .JobItemDetails .history_item .job_info .info_1 {
+        width: 100%;
+    }
+    .classified_top_section .classified_top_img .classified_top_imgOverly .overly_conetnt .classified_search {
+        width: 400px;
+        margin: 0 auto;
+    }
+    .mamber_hedingSIde .mamber_hedingSide_right .addMamber_btn {
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+    .mamber .mamber_wrapper .memberItem .user_info .user_name {
+        font-size: 16px;
+        padding: 4px 0 0 0;
+    }
+    .mamber .mamber_wrapper .memberItem .user_info .join_date {
+        padding-bottom: 4px;
+    }
+    .mamber .mamber_wrapper .memberItem .active_member {
+        font-size: 11px;
+        height: 32px;
+    }
+    .mamber .mamber_wrapper .memberItem .memberCard_footer .memberCard_footer_right .memeber_dropDown {
+        height: 31px;
+        width: 18px;
+    }
+    .mamber .mamber_wrapper .memberItem {
+        height: 250px;
+    }
+    .user_profile .cover-photo {
+        height: 200px;
+    }
+    .user_profile .user_profile_content .content_top .user_profileImg {
+        height: 120px;
+        width: 120px;
+        margin-top: -85px;
+    }
+    .user_profile .user_profile_content {
+        padding: 8px 20px;
+    }
+    .user_profile .user_profile_content .content_top .profile-name {
+        padding-left: 10px;
+        font-size: 20px;
+    }
+    .user_profile .user_profile_content .content_top .profile-name .userDesignation {
+        font-size: 13px;
+        padding-top: 0px;
+    }
+    .user_profile .user_profile_content .userAbout {
+        padding: 10px;
+        font-size: 14px;
+        line-height: 23px;
+        margin-top: 16px;
+    }
+    .invited_list_container .table_content .table_content_item .table_Item_name .item_name {
+       display: none;
+    }
+    .invited_list_container .table_content .table_content_item .table_Item_email {
+        font-size: 13px;
+    }
+    .resource_item .resource_footer .res_footer_right .resource_date {
+        display: none;
+    }
+    .section_headear .btns_row .Btn_one span {
+       display: none;
+    }
+    .section_headear h4 {
+        display: none;
+    }
+    .section_headear {
+        justify-content: end;
+        padding-bottom: 10px;
+    }
+}
+
+
+@media (min-width: 900px) and (max-width: 1299.98px){
+    .MuiContainer-root{
+        max-width: 1160px !important;
+      }
+}

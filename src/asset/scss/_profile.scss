@@ -1,0 +1,299 @@
+.profileBody{
+    .nav {
+         background-color:$white;
+         --bs-nav-link-padding-y: 1rem;
+         --bs-nav-link-padding-x: 1rem;
+         border-radius: 10px;
+
+         .nav-item{
+              .nav-link {
+                margin-left: 12px;
+
+                &:hover {
+                    isolation: isolate;
+                    border-color: $white; 
+                }
+              }
+              .active{
+                border-bottom: 3px solid #7d6be0 !important;
+              }
+         }
+    }
+
+    .my_friend{
+         height: 600px;
+         width: 100%;
+         box-shadow: $shadow;
+         background-color: $white;
+         border-radius: 13px;
+         padding: 15px;
+         margin-top: 10px;
+
+         .myFriend_top{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+             .heading{
+                font-size: 18px;
+                color: $black;
+                font-weight: 500;
+             }
+            .search_box{
+                max-width: 210px;
+                width: 210px;
+                position: relative;
+                height: 40px;
+                 form{
+                    .form_control {
+                        margin-bottom: 10px;
+                        width: 100%;
+                        height: 40px;
+                        padding: 12px;
+                        color: $black;
+                        background-color: #ffffff;
+                        background-clip: padding-box;
+                        border-radius: 35px;
+                        border: 1px solid #dededf;
+                        transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+                        -webkit-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+                        -moz-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+                        -ms-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+                        -o-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+                        &:focus {
+                            outline: 0;
+                        }
+    
+                        &::placeholder {
+                            font-size: 14px;
+                            color: #aeacac;
+                            font-weight: 400;
+                        }
+    
+                        &:optional {
+                            color: #636262;
+                        }
+                    }
+                    i{
+                        font-size: 16px;
+                        color: $text;
+                        position: absolute;
+                        top: 50%;
+                        right: 12px;
+                        transform: translateY(-50%);
+                        cursor: pointer;
+                    }
+                 }
+             }
+         }
+
+         .friend_item_List{
+            .friend_item{
+                display: flex;
+                align-items: center;
+                height: 90px;
+                background-color: $primaryBackground;
+                border-radius: 10px;
+                border: 1px solid $border-2;
+                padding: 10px;
+                margin-top: 8px;
+                position: relative;
+              .friend_item_left{
+                     height: 55px;
+                     width: 55px;
+                     border-radius: 50%;
+                        img{
+                           height: 100%;
+                           width: 100%;
+                           object-fit: cover;
+                           border-radius: 50%;
+                        }
+              }
+              .friend_item_right{
+               padding-left: 10px;
+                    .friend_name{
+                       font-size: 17px;
+                       font-weight: 500;
+                       color: $black;
+                       line-height: 22px;
+                    }
+                    .connectro_commuinity_name{
+                       font-size: 13px;
+                       font-weight: 400;
+                       color: $text;
+                       line-height: 18px;
+                    }
+              }
+              .frined_droper{
+                position: absolute;
+                top: 10px;
+                right: 10px;
+
+                .dropdown-toggle{
+                    background-color:  $bacground-shade;
+                    color: #333333c5;
+                }
+              }
+           }
+         }
+    }
+}
+
+.user_profile{
+    .cover-photo{
+      height: 300px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      position: relative;
+
+      i{
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        z-index: 3;
+        background: #6d6b6a;
+        padding: 5px;
+        border-radius: 5px;
+        .MuiSvgIcon-root{
+            color: #fff;
+        }
+      }
+    }
+    .user_profile_content{
+        padding: 20px;
+      
+        .content_top{
+            display: flex;
+            .user_profileImg{
+                height: 130px;
+                width: 130px;
+                margin-top: -65px;
+                margin-left: 10px;
+                position: relative;
+                z-index: 2;
+                img{
+                    height: 100%; 
+                    width: 100%;
+                    object-fit: cover;
+                    border-radius: 50%;
+                }
+                i{
+                    position: absolute;
+                    bottom: 20px;
+                    right: 15px;
+                    z-index: 3;
+                    background: #6d6b6a;
+                    padding: 5px;
+                    border-radius: 5px;
+                    .MuiSvgIcon-root{
+                        color: #fff;
+                    }
+                  }
+            }
+            .profile-name{
+                padding-left: 10px;
+                font-size: 24px;
+                font-weight: 600;
+                color: $black;
+                .userDesignation{
+                    font-size: 14px;
+                    color: #333333;
+                    font-weight: 400;
+                    padding-top: 3px;
+                }
+            }
+        }
+        .userAbout{
+            border: 1px solid $border-2;
+            padding: 10px;
+
+            border-radius: 8px;
+            margin-top: 16px;
+            p{
+                font-size: 15px;
+                color: #333333;
+                line-height: 22px;
+            }
+            i{
+                bottom: 20px;
+                right: 15px;
+                z-index: 3;
+                background: #6d6b6a;
+                padding: 5px;
+                border-radius: 5px;
+                .MuiSvgIcon-root{
+                    color: #fff;
+                }
+              }
+        }
+        .user_icons_list{
+            display: flex;
+            justify-content: end;
+            margin-top: 20px;
+            a{
+                margin-left: 12px;
+                i{
+                    height: 40px;
+                    width: 40px;
+                    border-radius: 4px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background: #6d6b6a;
+                    padding: 5px;
+                    .MuiSvgIcon-root{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        font-size: 26px;
+                        color: $white;
+                    }
+                }
+                .linkedin_clr{
+                 background-color: #0072b1;
+                }
+                .github_clr{
+                 background-color: #171515;
+                }
+                .youtube_clr{
+                 background-color: #c4302b ;   
+                }
+                .twitter_clr{
+                 background-color: #00acee ;
+                }
+                .insta_clr{
+                 background-color: #E1306C;
+                }
+                .website_clr{
+                 background-color: #525151;
+                }
+                .whatsapp_clr{
+                 background-color: #45c755;
+                }
+                .skype_clr{
+                 background-color:#00aff0 ;
+                 color: $white;
+                 font-size: 26px;
+                }
+            }
+        }
+        
+    }
+}
+
+.user_dashBoard{
+    background-color: $white;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+.bannerImg{
+    height: 200px;
+    width: 100%;
+    img{
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+}

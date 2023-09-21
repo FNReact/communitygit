@@ -1,0 +1,278 @@
+/*      Theme Default CSS
+-----------------------------------*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family:'Roboto', sans-serif;
+  font-size: 16px;
+  color: #333333;
+  line-height: 24px;
+  scroll-behavior: smooth;
+  font-weight: 400;  
+  // background-color: #e3e6e3f0; 
+  background-color: #f0f0f0 !important; 
+  padding-right: 0px !important;
+  // overflow:hidden;
+}
+html{ 
+  background-color: #f0f0f0 !important; 
+}
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar:horizontal{
+  height: 4px;
+  background: rgba(199, 196, 196, 0.62); 
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: rgba(199, 196, 196, 0.62); 
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+::-webkit-scrollbar-thumb:window-inactive {
+  background: rgba(139, 138, 138, 0.771); 
+
+}
+a {
+  text-decoration: none !important;
+}
+
+.w-img img {
+  width: 100%;
+}
+
+.m-img img {
+  max-width: 100%;
+}
+
+a,
+.btn,
+button,
+span,
+p,
+i,
+input,
+select,
+textarea,
+li,
+img,
+svg path,
+*::after,
+*::before,
+.transition-3,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  -webkit-transition: all 0.3s ease-out 0s;
+  -moz-transition: all 0.3s ease-out 0s;
+  -ms-transition: all 0.3s ease-out 0s;
+  -o-transition: all 0.3s ease-out 0s;
+  transition: all 0.3s ease-out 0s;
+}
+
+a:focus,
+.button:focus {
+  text-decoration: none;
+  outline: none;
+}
+
+a:focus,
+a:hover {
+  // color: inherit;
+  color: #7d6be0;
+  text-decoration: none;
+}
+
+a,
+button {
+  // color: inherit;
+  outline: none;
+  border: none;
+  background: transparent;
+  color: #7d6be0;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+button:focus {
+  outline: 0;
+  border: 0;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #2c3941;
+  line-height: 24px;
+  -webkit-transition: all 0.3s ease-out 0s;
+  -moz-transition: all 0.3s ease-out 0s;
+  -ms-transition: all 0.3s ease-out 0s;
+  -o-transition: all 0.3s ease-out 0s;
+  transition: all 0.3s ease-out 0s; 
+}
+
+h1 {
+  font-size: 40px;
+}
+
+h2 {
+  font-size: 36px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+h4 {
+  font-size: 20px;
+}
+
+h5 {
+  font-size: 16px;
+}
+
+h6 {
+  font-size: 14px;
+}
+
+ul {
+  margin: 0px;
+  padding: 0px;
+}
+
+li {
+  list-style: none;
+}
+
+p{
+  font-size: 16px;
+  line-height: 24px;
+  text-align: justify;
+
+}
+
+
+/*
+    - Input Placeholder
+-----------------------------------------*/
+*::-moz-placeholder {
+  color: #2c3941;
+  font-size: 14px;
+  opacity: 1;
+}
+
+*::placeholder {
+  color: #2c3941;
+  font-size: 14px;
+  opacity: 1;
+}
+
+/*--
+    - Common Classes
+-----------------------------------------*/
+.fix{
+  overflow: hidden;
+}
+
+.clear{
+  clear: both;
+}
+
+.f-left{
+  float: left;
+}
+
+.f-right {
+  float: right;
+}
+
+.z-index-1 {
+  z-index: 1;
+}
+.overflow-y-visible {
+  overflow-x: hidden;
+  overflow-y: visible;
+}
+
+.p-relative {
+  position: relative;
+}
+
+.react-read-more-read-less.react-read-more-read-less-less {
+  color: #333333 !important;
+  font-weight: 500 !important; 
+}
+.react-read-more-read-less.react-read-more-read-less-more {
+  color: #333333 !important;
+  font-weight: 500 !important; 
+}
+
+.content_body{
+  padding-top: 75px;
+  // height: 105vh;
+  margin-bottom: 80px ;
+  position: relative;
+}
+.communityInfo_body{
+  height: 10vh;
+  margin-bottom: 80px ;
+  position: relative;
+}
+
+.media_content_body{
+  padding-top: 60px;
+  // height: 105vh;
+  margin-bottom: 50px ;
+  position: relative;
+}
+.myItem{ 
+  background-image: linear-gradient(to right, #7d6be0, #8367da, #8964d4, #8e60cd, #925dc7);
+  height: 80px;
+  width: 100%;
+  border-radius: 10px;
+  text-align: center;
+  line-height: 80px;
+  font-weight: 500;
+  color: #fff;
+  font-size: 22px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+
+.modal-title {
+  font-size: 20px;
+  color: #333333;
+}
+.MuiContainer-root{
+  max-width: 1280px !important;
+}
+.sun-editor .se-toolbar{
+  z-index: auto !important;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}

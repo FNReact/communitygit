@@ -1,0 +1,291 @@
+.mamber_hedingSIde{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+   .headingSection{
+       font-size: 20px;
+       color: $black;
+       font-weight: 500;
+       span{
+        margin-right: 7px;
+        cursor: pointer;
+       }
+   }
+   .mamber_hedingSide_right{
+    display: flex;
+    align-items: center;
+    .search_box{
+        margin-left: 20px;
+        width: 220px;
+        position: relative;
+        .form_control {
+            width: 100%;
+            height: 45px;
+            padding: 10px;
+            color: $black;
+            background-color: #ffffff;
+            background-clip: padding-box;
+            border-radius: 8px;
+            border: 1px solid #dededf;
+            transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+            -webkit-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+            -moz-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+            -ms-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+            -o-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+            &:focus {
+                outline: 0;
+            }
+
+            &::placeholder {
+                font-size: 14px;
+                color: #aeacac;
+                font-weight: 400;
+            }
+
+            &:optional {
+                color: #636262;
+            }
+        }
+        .MuiSvgIcon-root{
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: $text;
+        }
+    }
+       .addMamber_btn{
+           padding: 6px 16px;
+           background-color: $primaryColor; 
+           border-radius: 6px;
+           color: $white;
+           font-size: 14px
+       }
+   }
+}
+
+ .mamber{
+    .mamber_wrapper{ 
+         .memberItem{
+            padding: 15px;
+            background-color: $white;
+            box-shadow: $shadow;
+            height: 270px;
+            border-radius: 12px;
+             .user_info{
+                .user_img{
+                      height: 82px;
+                      width: 82px;
+                      margin: 0 auto;
+                    img{
+                      height: 80px;
+                      width: 80px;
+                      object-fit: cover;
+                      border-radius: 50%;
+                    }
+                }
+                .user_name{
+                    font-size: 15px;
+                    font-weight: 500;
+                    color: $black;
+                    text-align: center;
+                    padding: 10px 0 0 0;
+                }
+                .join_date{
+                    font-size: 13px;
+                    font-weight: 400;
+                    color: $text;
+                    text-align: center;
+                    padding-bottom: 10px;
+                }
+             }
+             .icon_list{
+                display: flex;
+                justify-content: center;
+                .icon{
+                    height: 37px;
+                    width: 37px;
+                    border: 1px solid $border-2;
+                    border-radius: 50%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin: 0 5px;
+                    cursor: pointer;
+                    .MuiSvgIcon-root{
+                        font-size: 21px;
+                        color: $black; 
+                    }
+                    img{
+                        height: 24px;
+                        width: 24px;
+                        object-fit: contain;
+                    }
+                }
+             }
+             .owner_member{
+                text-align: center;
+                background-color: $primaryColor;
+                color: $white;
+                font-weight: 400;
+                font-size: 12px;
+                width: 100%;
+                height: 35px;
+                border: 1px solid $border-2;
+                border-radius: 6px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-transform: uppercase;
+             }
+             .active_member{
+                text-align: center;
+                color: $text;
+                font-weight: 400;
+                font-size: 12px;
+                width: 100%;
+                height: 35px;
+                border: 1px solid $border-2;
+                border-radius: 6px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-transform: uppercase;
+             }
+             .memberApproved_btn{
+                text-align: center;
+                cursor: pointer;
+                display: inline-block;
+                width: 100%;
+                margin: 0 auto;
+                .MuiButtonBase-root{
+                    font-size: 12px;
+                }
+             }
+            .memberCard_footer{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                margin-top: 15px;
+                .memberCard_footer_left{
+                 width: 85%;
+                } 
+                .memberCard_footer_right{
+                    width: 15%;
+                    display: flex;
+                    justify-content: end;
+                    position: relative;
+                    &:hover .member_dropdown_Plate{
+                     display: block;
+                    }
+                     .memeber_dropDown{
+                          height: 34px;
+                          width: 20px;
+                          display: flex;
+                          justify-content: center;
+                          align-items: center;
+                          border: 1px solid $border-2;
+                          border-radius: 4px;
+                          cursor: pointer;
+                          &:hover{
+                            background-color: #e8e6e6ac;
+                          }
+                         .MuiSvgIcon-root{
+                            font-size: 20px;
+                            color: $text;
+                         }
+                     }
+                    .member_dropdown_Plate{
+                        width: 180px;
+                        height: auto;
+                        background-color: $white;
+                        border-radius: 10px;
+                        position: absolute;
+                        right: -5px;
+                        bottom: 26px;
+                        display: none;
+                        box-shadow: 2px 0px 15px  rgba(1, 6, 20, 0.239);
+                        overflow: hidden;
+                        ul{
+                            li{
+                                padding: 5px 10px;
+                                font-size: 14px;
+                                cursor: pointer;
+                                &:hover{
+                                    background-color: #f3f3f3;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+         }
+       }
+    }
+
+.MemberSearch_body{
+    background-color: $white;
+    padding: 20px;
+    margin: 0 auto;
+    border-radius: 10px;
+    width: 500px;
+    box-shadow: $shadow;
+    .memberSearch_wrapper{
+        position: relative;
+        width: 450px;
+        margin-top: 20px;
+        .form_contorl{
+            height: 48px;
+            width: 100%;
+            background-color: #f3f3f3;
+            border-radius: 35px;
+            border: 1px solid $border-2;
+            outline: 0;
+            padding: 0 15px;
+            font-size: 15px;
+            &::placeholder{
+                color: $text;
+            }
+        }
+        i{
+          position: absolute;
+          right: 15px;
+          top: 50%;
+          transform: translateY(-50%);
+          cursor: pointer;
+          .MuiSvgIcon-root{
+            color: $text;
+          }
+        }
+    }
+}
+
+.addMember_card{
+    width: 540px;
+    background-color: $white;
+    box-shadow: $shadow;
+    padding: 20px;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+.dropdown_menuTab{
+    width: 200px;
+    padding: 0 6px;
+    ul{
+        li{
+            padding: 4px 5px;
+            font-size: 15px;
+            cursor: pointer;
+            .MuiSvgIcon-root{
+                font-size: 20px;
+                margin-right: 2px;
+            }
+          &:hover{
+            background-color: #ddd9d9b1;
+          }
+        }
+    }
+}

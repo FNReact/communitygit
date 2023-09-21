@@ -1,0 +1,1564 @@
+.homeMainContent{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    .backArrow{
+        height: 38px;
+        width: 38px;
+        background-color: $white;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        left: 20px;
+        top: 20px;
+        color: $text;
+        cursor: pointer;
+        &:hover{
+            color: $black;
+        }
+    }
+    .login_D_form{
+        height: 500px;
+        box-shadow: 0px 1px 1px 1px #65656521;
+        background-color: $white;
+        display: flex;
+        justify-content: space-between;
+        border-radius: 10px;
+        overflow: hidden;
+        .login_d_left{
+         height: 100%;
+         width: 450px;
+         padding: 20px 20px 15px 20px;
+         position: relative;
+         .commuinity_name{
+            text-align: center;
+            font-size: 20px;
+            font-weight: 700;
+            color: $black;
+         }
+         .Community_img{
+            height: 140px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 12px 0;
+            img{
+                max-height: 100%;
+                max-width: 100%;
+            }
+         }
+         .community_location{
+            font-size: 14px;
+            color: $text;
+            font-weight: 400;
+            display: flex;
+            align-items: center;
+            .MuiSvgIcon-root{
+                color: $primaryColor;
+                font-size: 20px;
+            }
+         }
+         .tag_line{
+            font-size: 20px;
+            font-weight: 600;
+            color: $black;
+            line-height: 28px;
+            padding: 10px 0 5px 0;
+         }
+         p{
+            font-size: 14px;
+            color: $text;
+            line-height: 22px;
+            text-align: start;
+            font-weight: 400;
+            
+         }
+         .commnity_contactor{
+            font-size: 15px;
+            color: $text;
+            font-weight: 400;
+         }
+         .createCommuinity{   
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            padding: 0 20px;
+            .createCommunityBtn{
+                font-size: 14px;
+                font-weight: 500;
+                height: 40px;
+                border: 1px solid $border-2;
+                border-radius: 6px;
+                text-align: center;
+                color: $text;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                &:hover{
+                    background-color: #f3f3f3; 
+                    color: $black;
+                }
+            }
+         }
+        }
+        .login_d_right{
+         height: 500px;
+         width: 360px;
+         background-color: $primaryColor;
+         padding: 30px 30px 15px 30px; 
+         h6{
+             font-size: 24px;
+             color: $white;
+             font-weight: 500;
+             text-align: center;
+         }
+         .login_bday{
+               padding-top: 22px; 
+             form{
+                .loginInput_filed{
+                    position: relative;
+                 .form_control {
+                    font-size: 16px;
+                     display: block;
+                     width: 100%;
+                     height: 50px; 
+                     padding: 10px;
+                     color: $black;
+                     background-color: #ffffff;
+                     background-clip: padding-box;
+                     border-radius: 5px;
+                     border: 1px solid rgba(173,173,184,0.574);
+                     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+                     -webkit-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+                     -moz-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+                     -ms-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+                     -o-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+                     &:focus {
+                         outline: 0; 
+                     }
+                     &::placeholder {
+                         font-size: 15px;
+                         color: #aeacac;
+                         font-weight: 400;
+                     }
+         
+                     &:optional {
+                         color: #636262;
+                     }
+                 }
+                 .MuiFormControl-root{
+                    background-color: $white;
+                    border-radius: 5px;
+                    border: transparent !important;
+                    .css-nxo287-MuiInputBase-input-MuiOutlinedInput-input {
+                        height: 1.4375em;
+                        padding: 13px 10px !important;
+                        padding-right: 0;
+                    }
+                    
+                    .MuiInputBase-root{
+                        outline: 0;
+                        &:hover{
+                            border-color: transparent !important;
+                        }
+                        &:focus{
+                            outline: 0 !important;
+                        }
+                    }
+                 }
+                }
+                 .login_pass_save{
+                     display: flex;
+                     align-items: center;
+                     justify-content: space-between;
+                     padding-top: 2px;
+                     .pass_left{
+                        display: flex;
+                        align-items: center;
+                         .chequeB{
+                             height: 16px;
+                             width: 16px;
+                             margin-right:2px ;
+                         }
+                         font-size: 15px;
+                         color: $white;
+                     }
+                     .pass_right{
+                         font-size: 14px;
+                         color: $white; 
+                         cursor: pointer;
+                         border-bottom: 1px solid $border-2;
+                         &:hover{
+                             color: $black;
+                         }
+                     }
+                 }
+                 .login_btn{
+                     margin-top: 15px;
+                     background-color: #f86a65;
+                     height: 45px;
+                     width: 100%;
+                     color: $white;
+                     font-size: 16px;
+                     font-weight: 500;
+                     text-align: center;
+                     border-radius: 5px;
+                     line-height: 45px;
+                     cursor: pointer;
+                 }
+                 .loading_cercle{
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                 }
+                 h3{
+                     font-size: 15px;
+                     color: $white;
+                     font-weight: 400;
+                     text-align: center;
+                     cursor: pointer;
+                     &:hover{
+                         color: #e3e2e2;
+                     }
+                 }
+          }
+        }
+        .registerBody{
+            padding-top: 12px;
+            form{
+                .loginInput_filed{
+                    position: relative;
+                 .form_control {
+                     display: block;
+                     width: 100%;
+                     height: 50px; 
+                     padding: 10px;
+                     color: $black;
+                     background-color: #ffffff;
+                     background-clip: padding-box;
+                     border-radius: 5px;
+                     border: 1px solid rgba(173,173,184,0.574);
+                     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+                     -webkit-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+                     -moz-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+                     -ms-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+                     -o-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+                     &:focus {
+                         outline: 0; 
+                     }
+                     &::placeholder {
+                         font-size: 15px;
+                         color: #aeacac;
+                         font-weight: 400;
+                     }
+         
+                     &:optional {
+                         color: #636262;
+                     }
+                 }
+                 .MuiFormControl-root{
+                    background-color: $white;
+                    border-radius: 5px;
+                    border: transparent !important;
+                    .css-nxo287-MuiInputBase-input-MuiOutlinedInput-input {
+                        height: 1.4375em;
+                        padding: 13px 10px !important;
+                        padding-right: 0;
+                    }
+                    
+                    .MuiInputBase-root{
+                        outline: 0;
+                        &:hover{
+                            border-color: transparent !important;
+                        }
+                        &:focus{
+                            outline: 0 !important;
+                        }
+                    }
+                 }
+                }
+                .emailBody{
+                    padding-top: 40px;
+                }
+                 .login_pass_save{
+                     display: flex;
+                     align-items: center;
+                     justify-content: space-between;
+                     padding-top: 2px;
+                     .pass_left{
+                        display: flex;
+                        align-items: center;
+                         .chequeB{
+                             height: 16px;
+                             width: 16px;
+                             margin-right:2px ;
+                         }
+                         font-size: 14px;
+                         color: $white;
+                     }
+                     .pass_right{
+                         font-size: 14px;
+                         color: $white; 
+                         cursor: pointer;
+                         border-bottom: 1px solid $border-2;
+                         &:hover{
+                             color: $black;
+                         }
+                     }
+                 }
+                 .agrrementCheq{
+                    padding-top: 5px;
+                    color: $white;
+                    font-weight: 400;
+                    font-size: 14px;
+                    display: flex;
+                    align-items: center;
+                    .chequeB{
+                        height: 16px;
+                        width: 16px;
+                        margin-right: 2px;
+                    }
+                }
+                 .get_emailBtn{
+                     margin-top: 10px;
+                     background-color: #f86a65;
+                     height: 45px;
+                     width: 100%;
+                     color: $white;
+                     font-size: 16px;
+                     font-weight: 500;
+                     text-align: center;
+                     border-radius: 5px;
+                     line-height: 45px;
+                     cursor: pointer;
+                 }
+                 h3{
+                     font-size: 15px;
+                     color: $white;
+                     font-weight: 400;
+                     text-align: center;
+                     cursor: pointer;
+                     &:hover{
+                         color: #e3e2e2;
+                     }
+                 }
+          }
+          .coverImg{
+            display: flex;
+            justify-content: center;
+            margin: 10px auto;
+            img{
+                height: 90px;
+                width: 90px;
+                object-fit: contain;
+                border-radius: 50%;
+                border: 2px solid $white;
+            }
+          }
+        }
+        
+     }                     
+   }
+
+   .invite_D_form{
+    height: 550px;
+    box-shadow: 0px 1px 1px 1px #65656521;
+    background-color: $white;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 10px;
+    overflow: hidden;
+    .invite_d_left{
+     height: 100%;
+     width: 450px;
+     padding: 20px 20px 15px 20px;
+     position: relative;
+     .commuinity_name{
+        text-align: center;
+        font-size: 20px;
+        font-weight: 700;
+        color: $black;
+     }
+     .Community_img{
+        height: 140px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 12px 0;
+        img{
+            max-height: 100%;
+            max-width: 100%;
+        }
+     }
+     .community_location{
+        font-size: 14px;
+        color: $text;
+        font-weight: 400;
+        display: flex;
+        align-items: center;
+        .MuiSvgIcon-root{
+            color: $primaryColor;
+            font-size: 20px;
+        }
+     }
+     .tag_line{
+        font-size: 20px;
+        font-weight: 600;
+        color: $black;
+        line-height: 28px;
+        padding: 10px 0 5px 0;
+     }
+     p{
+        font-size: 14px;
+        color: $text;
+        line-height: 22px;
+        text-align: start;
+        font-weight: 400;
+        
+     }
+     .commnity_contactor{
+        font-size: 15px;
+        color: $text;
+        font-weight: 400;
+     }
+     .createCommuinity{   
+        position: absolute;
+        bottom: 12px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        padding: 0 20px;
+        .createCommunityBtn{
+            font-size: 14px;
+            font-weight: 500;
+            height: 40px;
+            border: 1px solid $border-2;
+            border-radius: 6px;
+            text-align: center;
+            color: $text;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            &:hover{
+                background-color: #f3f3f3; 
+                color: $black;
+            }
+        }
+     }
+    }
+    .invite_d_right{
+     height: 550px;
+     width: 360px;
+     background-color: $primaryColor;
+     padding: 30px 30px 15px 30px; 
+     h6{
+         font-size: 24px;
+         color: $white;
+         font-weight: 500;
+         text-align: center;
+     }
+     .login_bday{
+           padding-top: 22px; 
+         form{
+            .loginInput_filed{
+                position: relative;
+             .form_control {
+                font-size: 16px;
+                 display: block;
+                 width: 100%;
+                 height: 50px; 
+                 padding: 10px;
+                 color: $black;
+                 background-color: #ffffff;
+                 background-clip: padding-box;
+                 border-radius: 5px;
+                 border: 1px solid rgba(173,173,184,0.574);
+                 transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+                 -webkit-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+                 -moz-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+                 -ms-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+                 -o-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+                 &:focus {
+                     outline: 0; 
+                 }
+                 &::placeholder {
+                     font-size: 15px;
+                     color: #aeacac;
+                     font-weight: 400;
+                 }
+     
+                 &:optional {
+                     color: #636262;
+                 }
+             }
+             .MuiFormControl-root{
+                background-color: $white;
+                border-radius: 5px;
+                border: transparent !important;
+                .css-nxo287-MuiInputBase-input-MuiOutlinedInput-input {
+                    height: 1.4375em;
+                    padding: 13px 10px !important;
+                    padding-right: 0;
+                }
+                
+                .MuiInputBase-root{
+                    outline: 0;
+                    &:hover{
+                        border-color: transparent !important;
+                    }
+                    &:focus{
+                        outline: 0 !important;
+                    }
+                }
+             }
+            }
+             .login_pass_save{
+                 display: flex;
+                 align-items: center;
+                 justify-content: space-between;
+                 padding-top: 2px;
+                 .pass_left{
+                    display: flex;
+                    align-items: center;
+                     .chequeB{
+                         height: 16px;
+                         width: 16px;
+                         margin-right:2px ;
+                     }
+                     font-size: 15px;
+                     color: $white;
+                 }
+                 .pass_right{
+                     font-size: 14px;
+                     color: $white; 
+                     cursor: pointer;
+                     border-bottom: 1px solid $border-2;
+                     &:hover{
+                         color: $black;
+                     }
+                 }
+             }
+             .login_btn{
+                 margin-top: 15px;
+                 background-color: #f86a65;
+                 height: 45px;
+                 width: 100%;
+                 color: $white;
+                 font-size: 16px;
+                 font-weight: 500;
+                 text-align: center;
+                 border-radius: 5px;
+                 line-height: 45px;
+                 cursor: pointer;
+             }
+             .loading_cercle{
+                width: 100%;
+                display: flex;
+                justify-content: center;
+             }
+             h3{
+                 font-size: 15px;
+                 color: $white;
+                 font-weight: 400;
+                 text-align: center;
+                 cursor: pointer;
+                 &:hover{
+                     color: #e3e2e2;
+                 }
+             }
+      }
+    }
+    .registerBody{
+        padding-top: 12px;
+
+        .invite_check{
+            label{
+                span{
+                  font-size: 14px;
+                  color: #fff !important;
+                }
+            }  
+        }
+        form{
+            .loginInput_filed{
+                position: relative;
+                margin-top: -8px ;
+             .form_control {
+                 display: block;
+                 width: 100%;
+                 height: 50px; 
+                 padding: 10px;
+                 color: $black;
+                 background-color: #ffffff;
+                 background-clip: padding-box;
+                 border-radius: 5px;
+                 border: 1px solid rgba(173,173,184,0.574);
+                 transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+                 -webkit-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+                 -moz-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+                 -ms-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+                 -o-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+                 &:focus {
+                     outline: 0; 
+                 }
+                 &::placeholder {
+                     font-size: 15px;
+                     color: #aeacac;
+                     font-weight: 400;
+                 }
+     
+                 &:optional {
+                     color: #636262;
+                 }
+             }
+             .MuiFormControl-root{
+                background-color: $white;
+                border-radius: 5px;
+                border: transparent !important;
+                .css-nxo287-MuiInputBase-input-MuiOutlinedInput-input {
+                    height: 1.4375em;
+                    padding: 13px 10px !important;
+                    padding-right: 0;
+                }
+                
+                .MuiInputBase-root{
+                    outline: 0;
+                    &:hover{
+                        border-color: transparent !important;
+                    }
+                    &:focus{
+                        outline: 0 !important;
+                    }
+                }
+             }
+            }
+            .emailBody{
+                padding-top: 40px;
+            }
+             .login_pass_save{
+                 display: flex;
+                 align-items: center;
+                 justify-content: space-between;
+                 padding-top: 2px;
+                 .pass_left{
+                    display: flex;
+                    align-items: center;
+                     .chequeB{
+                         height: 16px;
+                         width: 16px;
+                         margin-right:2px ;
+                     }
+                     font-size: 14px;
+                     color: $white;
+                 }
+                 .pass_right{
+                     font-size: 14px;
+                     color: $white; 
+                     cursor: pointer;
+                     border-bottom: 1px solid $border-2;
+                     &:hover{
+                         color: $black;
+                     }
+                 }
+             }
+             .agrrementCheq{
+                padding-top: 5px;
+                color: $white;
+                font-weight: 400;
+                font-size: 14px;
+                display: flex;
+                align-items: center;
+                .chequeB{
+                    height: 16px;
+                    width: 16px;
+                    margin-right: 2px;
+                }
+            }
+             .get_emailBtn{
+                 margin-top: 10px;
+                 background-color: #f86a65;
+                 height: 45px;
+                 width: 100%;
+                 color: $white;
+                 font-size: 16px;
+                 font-weight: 500;
+                 text-align: center;
+                 border-radius: 5px;
+                 line-height: 45px;
+                 cursor: pointer;
+             }
+             h3{
+                 font-size: 15px;
+                 color: $white;
+                 font-weight: 400;
+                 text-align: center;
+                 cursor: pointer;
+                 &:hover{
+                     color: #e3e2e2;
+                 }
+             }
+      }
+      .coverImg{
+        display: flex;
+        justify-content: center;
+        margin: 10px auto;
+        img{
+            height: 90px;
+            width: 90px;
+            object-fit: contain;
+            border-radius: 50%;
+            border: 2px solid $white;
+        }
+      }
+    }
+    
+ }                     
+}
+ }
+    // .HomeImg{
+    //   width: 100%;
+    //   text-align: center;
+    //  .homeImgContainer{
+    //      height: 385px;
+    //      width: 385px;
+    //      margin: 0 auto;
+    //     img{
+    //         max-height: 100%;
+    //         max-width: 100%;
+    //         animation: round;
+    //         animation: updown3 4s infinite linear;
+    //     }
+    //  }
+    //  h3{
+    //  font-size: 24px;
+    //  color: $text;
+    //  font-weight: 5000;
+    //  text-transform: uppercase;
+    //  padding: 6px 0;
+    //  }
+    //  p{
+    //      font-size: 14px;
+    //      color: $text;
+    //      font-weight: 400;
+    //      line-height: 20px;
+    //      text-align: center;
+    //  }
+    //  }
+
+// .registerAcc{
+//     .register_form{
+//         width: 100%;
+//         background-color: $white;
+//         padding: 60px; 
+//         box-shadow: $shadow;
+//         border-radius: 12px;
+//         h6{
+//             font-size:26px;
+//             color: $black;
+//             font-weight: 500;
+//             text-align: center;
+//         }
+
+//         .login_bday{
+//               padding-top: 32px; 
+//             form{
+//                 .form_control {
+//                     display: block;
+//                     margin-bottom: 10px;
+//                     width: 100%;
+//                     height: 45px; 
+//                     padding: 10px;
+//                     color: $black;
+//                     background-color: #ebebeb;
+//                     background-clip: padding-box;
+//                     border-radius: 5px;
+//                     border: 1px solid $border-2;
+//                     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+//                     -webkit-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+//                     -moz-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+//                     -ms-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+//                     -o-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+//                     &:focus {
+//                         outline: 0; 
+//                     }
+//                     &::placeholder {
+//                         font-size: 15px;
+//                         color: #aeacac;
+//                         font-weight: 400;
+//                     }
+        
+//                     &:optional {
+//                         color: #636262;
+//                     }
+                   
+//                 }
+
+                
+//                 .login_btn{
+//                     margin-top: 35px;
+//                     background-color: $primaryColor;
+//                     height: 45px;
+//                     width: 100%;
+//                     color: $white;
+//                     font-size: 16px;
+//                     font-weight: 500;
+//                     text-align: center;
+//                     border-radius: 5px;
+//                     line-height: 45px;
+//                     cursor: pointer;
+//                 }
+//                 h3{
+//                     font-size: 15px;
+//                     color: $white;
+//                     font-weight: 400;
+//                     text-align: center;
+//                     font-family: $font-1;
+//                     cursor: pointer;
+//                     margin-top: 12px;
+//                     &:hover{
+//                         color: $black;
+//                     }
+//                 }
+//             }
+//         }
+//        }
+//  }
+
+.loginPowerd{
+    position: absolute;
+    bottom: 20px;
+    right: 50px;
+    font-size: 16px;
+    color: $text;
+    font-weight: 400;
+    font-family: $font-2;
+}
+
+.creatCommuinity_form_body{
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    .backArrow{
+        height: 38px;
+        width: 38px;
+        background-color: $white;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        left: 20px;
+        top: 20px;
+        color: $text;
+        cursor: pointer;
+        &:hover{
+            color: $black;
+        }
+    }
+    .creatCommuinity_wrapper{
+        background-color: $white;
+        padding: 80px 30px; 
+        box-shadow: $shadow;
+        border-radius: 12px;
+        h5{
+            font-size:24px;
+            color: $black;
+            font-weight: 500;
+            text-align: center;
+        }
+        h6{
+            font-size: 15px;
+            font-weight: 400;
+            color: $text;
+            text-align: center;
+        }
+
+        .creatCommuinity_wrap{
+              width: 500px; 
+              padding-top: 12px; 
+            form{
+                .form_control {
+                    display: block;
+                    width: 100%;
+                    height: 50px; 
+                    padding: 10px;
+                    color: $black;
+                    background-color: #ebebeb;
+                    background-clip: padding-box;
+                    border-radius: 5px;
+                    border: 1px solid $border-2;
+                    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+                    -webkit-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+                    -moz-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+                    -ms-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+                    -o-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+                    &:focus {
+                        outline: 0; 
+                    }
+                    &::placeholder {
+                        font-size: 15px;
+                        color: #818181;
+                        font-weight: 400;
+                    }
+        
+                    &:optional {
+                        color: #3a3a3a;
+                    }
+                   
+                }
+                .agrrementCheq{
+                    padding-top: 5px;
+                    .chequeB{
+                        height: 16px;
+                        width: 16px;
+                    }
+                    font-size: 15px;
+                    color: $text;
+                }
+                .login_btn{
+                    background-color: $primaryColor;
+                    height: 50px;
+                    width: 100%;
+                    color: $white;
+                    font-size: 16px;
+                    font-weight: 500;
+                    text-align: center;
+                    border-radius: 5px;
+                    line-height: 50px;
+                    cursor: pointer;
+                    margin-top: 5px;
+                }
+                h3{
+                    font-size: 15px;
+                    color: $white;
+                    font-weight: 400;
+                    text-align: center;
+                    font-family: $font-1;
+                    cursor: pointer;
+                    margin-top: 12px;
+                    &:hover{
+                        color: $black;
+                    }
+                }
+            }
+            textarea{
+                min-height: 100px !important;
+            }
+            .pass_left{
+                display: flex;
+                align-items: center;
+                padding-left: 10px;
+                margin-top: 20px;
+                .chequeB{
+                    height: 16px;
+                    width: 16px;
+                    margin-right: 10px;
+                }
+                font-size: 14px;
+                color: $text;
+            }
+        }
+        .CreateForm_lg{
+            width: 700px;
+        }
+       }
+    
+ }
+
+.genarel_login_bday{
+    padding: 20px;
+    height: 460px;
+    width: 350px;
+    background-color: $white;
+    box-shadow: $shadow;
+    border-radius: 12px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  form{
+     .login_img{
+        height: 45px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin: 10px 0 15px 0;
+        img{
+            height: 45px;
+            width: auto;
+        }
+    }
+    h4{
+        font-size: 22px;
+        font-weight: 500;
+        color: $black;
+        line-height: 27px;
+        text-align: center;
+        padding-bottom: 12px;
+    }
+     .loginInput_filed{
+         position: relative;
+      .form_control {
+          display: block;
+          width: 100%;
+          height: 45px; 
+          padding: 10px;
+          color: $black;
+          background-color: #ffffff;
+          background-clip: padding-box;
+          border-radius: 5px;
+          border: 1px solid rgba(173,173,184,0.574);
+          transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+          -webkit-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+          -moz-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+          -ms-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+          -o-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+          margin-top: 4px;
+          &:focus {
+              outline: 0; 
+          }
+          &::placeholder {
+              font-size: 15px;
+              color: #aeacac;
+              font-weight: 400;
+          }
+
+          &:optional {
+              color: #636262;
+          }
+      }
+     }
+      .login_pass_save{
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-top: 5px;
+          .pass_left{
+            display: flex;
+            align-items: center;
+              .chequeB{
+                  height: 16px;
+                  width: 16px;
+                  margin-right: 3px;
+              }
+              font-size: 14px;
+              color: $text;
+          }
+          .pass_right{
+              font-size: 14px;
+              color: $text; 
+              cursor: pointer;
+              border-bottom: 1px solid $border-2;
+              &:hover{
+                  color: $black;
+              }
+          }
+      }
+      .login_loader{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+      h3{
+          font-size: 15px;
+          color: $text;
+          font-weight: 400;
+          text-align: center;
+          cursor: pointer;
+          margin-top: 26px;
+          &:hover{
+              color: $black;
+          }
+      }
+}
+}
+
+.copy_right{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: $text;
+    width: 100%;
+    background-color: $white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    font-size: 15px;
+}
+.Home_copy_right{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    color: $text;
+    width: 100%;
+    background-color: $white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    font-size: 15px; 
+}
+
+
+.uploadBox {
+    width: 120px;
+    height: 120px;
+    background: rgba(0,0,0,.02); 
+    margin: .5em auto;
+    position: relative;
+    border-radius: 10px;
+    border: 1px dashed #d9d9d9;
+    &:hover{
+        background: $primaryBackground; 
+    }
+  }
+  .uploadBox input {
+    width: 100%;
+    height: 100%;
+    opacity: 0; /* Hide the button */
+    cursor: pointer;
+  }
+  .uploadBox h1{
+    text-align: center; 
+    color: $black;
+    font-size: 14px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 100%;
+    font-weight: 400;
+    
+  }
+
+  .image_place_container{
+      height: 120px;
+      width: 120px;
+      border-radius: 7px;
+      background-color: #f3f3f3;
+      position: relative;
+      margin: 0 auto;
+      img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 7px;
+      }
+    .img_place_overly{
+        height: 100%;
+        width: 100%;
+        background-color: rgba(0,0,0,0.3);
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 7px;
+        .img_cross_btn{
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            background-color: $white;
+            color: $text;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            .MuiSvgIcon-root{
+                font-size: 16px;
+            }
+          }
+    }
+  }
+  
+.userCommuinity_list_wrapper{
+    padding: 10px;
+}
+
+.entry_header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 3;
+    background-color: #f0f0f0;
+  .entry_header_wrap{ 
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 7px 0; 
+      .entryHeader_logo{
+        img{
+            height: 60px;
+            width: auto;
+        }
+      }
+      .entryHeader_right{
+        display: flex;
+        align-items: center;
+          .createBtn{
+            height: 46px;
+            width: auto;
+            padding:0 40px;
+            border: 1px solid #1976d2;
+            border-radius: 7px;
+            color: #1976d2;
+            font-size: 16px;
+            font-weight: 500;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: $white;
+            margin-left: 20px;
+          }
+          .profile_dashed{
+            margin-left: 10px;
+            .MuiButtonBase-root{
+                padding: 0px !important;
+            }
+            .profile_img{
+                height: 50px;
+                width: 50px;
+                border: 5px solid #e1dfdfd2;
+                border-radius: 50%;
+                img{
+                    height: 100%;
+                    width: 100%;
+                    object-fit: cover;
+                    border-radius: 50%;
+                }
+            }
+            .menu_wrapper{
+                width: 300px;
+                box-shadow: $shadow;
+                padding: 15px;
+                border-radius: 4px;
+                .menu_profile{
+                    display: flex;
+                    align-items: center;
+                    padding: 6px 10px;
+                    border: 1px solid $border-2;
+                    border-radius: 8px;
+                    background-color: #cfd6df80;
+                    margin-bottom: 12px;
+                    .userName{
+                        font-size: 18px;
+                        font-weight: 500;
+                        color: $black;
+                        padding-left: 8px;
+                    }
+                } 
+                .menu_wrapper_list{
+                    padding: 6px 6px;
+                    display: flex;
+                    align-items: center;
+                    cursor: pointer;
+                    &:hover{
+                        background-color: #f3f3f3;
+                        border-radius: 5px;
+                    }
+                    i{
+                        height: 38px;
+                        width: 38px;
+                        border-radius: 50%;
+                        background-color: #cfd6df80;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        margin-right: 7px;
+                        .MuiSvgIcon-root{
+                            font-size: 22px;
+                            color: $black;
+                        }
+                    }
+                    span{
+                        font-size: 15px;
+                    }
+                }
+            }
+        }
+      }
+  }
+}
+
+.entryWrapper{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 0 50px 0;
+    position: relative;
+    .entry_wrap{
+        width: 100%;
+        // h1{
+        //     font-size: 38px;
+        //     text-align: center;
+        //     font-weight: 600;
+        //     color: #1976d2;
+        //     line-height: 48px;
+        //     padding-bottom: 35px;
+        // }
+        .home_title{
+            font-size: 36px;
+            font-weight: 600;
+            line-height: 40px;
+            color: $black;
+            text-align: center;
+            padding-bottom: 35px;
+        }
+        .commuinity_search_form{
+            width: 500px;
+            margin: 0 auto;
+            .searchBar {
+                position: relative;
+                width: 100%;
+                .form_control {
+                  display: block;
+                  width: 100%;
+                  height: 52px;
+                  padding: 0 20px;
+                  color: $black;
+                  background-color: #ffffff;
+                  background-clip: padding-box;
+                  border-radius: 35px;
+                  border: 1px solid $border-2;
+                  &:focus {
+                    outline: 0;
+                  }
+        
+                  &::placeholder {
+                    font-size: 14px;
+                    color: #aeacac;
+                    font-weight: 400;
+                  }
+        
+                  &:optional {
+                    color: #636262;
+                  }
+                }
+        
+                i {
+                  font-size: 20px;
+                  color: $black;
+                  position: absolute;
+                  top: 50%;
+                  right: 10px;
+                  transform: translateY(-50%);
+                  border-left: 1px solid rgb(181, 181, 181);
+                  padding: 0 10px;
+                  cursor: pointer;
+        
+                }
+              }
+           }
+        .community_list_item{
+            padding-top: 40px;
+            padding-bottom: 40px;
+            .commuinity_item{
+                height: 350px;
+                width: 100%;
+                background-color: $white;
+                box-shadow: $shadow;
+                border-radius: 13px;
+                padding: 12px;
+                position: relative;
+                .commuinty_img{
+                    height: 160px;
+                    width: 100%;
+                    border-radius: 8px;
+                    overflow: hidden;
+                    background-color: #f3f3f3;
+                    img{
+                        height: 100%;
+                        width: 100%;
+                        object-fit: cover;
+                    }
+                }
+                .commuinity_name{
+                    font-size: 18px;
+                    font-weight: 700;
+                    color: $black;
+                    line-height: 25px;
+                    
+                    padding-top: 15px;
+                    text-align: center;
+                }
+                .commuinity_location{
+                    font-size: 13px;
+                    font-weight: 400;
+                    color: $text;
+                    line-height: 18px;
+                    
+                    text-align: center;
+                    padding-top: 5px;
+                    span{
+                        font-size: 14px;
+                        font-family: $font-1;
+                        font-weight: 500;
+                        color: $black;
+                    }
+                }
+                .card_footer{
+                        position: absolute;
+                        bottom: 12px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        width: 100%;
+                        padding: 0 12px;
+                        display: flex;
+                        justify-content: space-around;
+                        align-items: center;
+                    .viewBtn{
+                        height: 38px;
+                        border: 1px solid $border-2;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        border-radius: 6px;
+                        font-size: 14px;
+                        color: $text;
+                        cursor: pointer;
+                        width: 45%;
+                        &:hover{
+                            background-color: $primaryColor;
+                            color: $white;
+                            transition:  all linear .2s;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.community_list_item{
+    padding-top: 100px;
+    .commuinity_item{
+        height: 350px;
+        width: 100%;
+        background-color: $white;
+        box-shadow: $shadow;
+        border-radius: 13px;
+        padding: 12px;
+        position: relative;
+        .commuinty_img{
+            height: 160px;
+            width: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #f3f3f3;
+            img{
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+        .commuinity_name{
+            font-size: 18px;
+            font-weight: 700;
+            color: $black;
+            line-height: 25px;
+            
+            padding-top: 15px;
+            text-align: center;
+        }
+        .commuinity_location{
+            font-size: 13px;
+            font-weight: 400;
+            color: $text;
+            line-height: 18px;
+            
+            text-align: center;
+            padding-top: 5px;
+            span{
+                font-size: 14px;
+                font-family: $font-1;
+                font-weight: 500;
+                color: $black;
+            }
+        }
+        .card_footer{
+                position: absolute;
+                bottom: 12px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 100%;
+                padding: 0 12px;
+            .viewBtn{
+                height: 38px;
+                border: 1px solid $border-2;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 6px;
+                font-size: 14px;
+                color: $text;
+                cursor: pointer;
+                &:hover{
+                    background-color: $primaryColor;
+                    color: $white;
+                    transition:  all linear .2s;
+                }
+            }
+        }
+    }
+}
+
+.btn_loader{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+
+.searchLoading{
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+    color: $placeholder;
+} 
+
+// .home_banner{
+//     height: 300px;
+//     width: 100%;
+//     border-radius: 12px;
+//     overflow: hidden;
+//     margin-top: 15px;
+//     img{
+//         height: 100%;
+//         width: 100%;
+//         object-fit: contain;
+//     }
+// }
+
+.backArrow_head{
+    position: absolute;
+    left: 20px;
+    top: 15px;
+    height: 38px;
+    width: 38px;
+    background-color: $white;
+    box-shadow: $shadow;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $black;
+}

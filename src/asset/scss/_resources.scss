@@ -1,0 +1,388 @@
+.resource{
+  height: 300px;
+  width: 100%;
+  background-color: $white;
+  border-radius: 12px;
+  box-shadow: $shadow;
+}
+.section_headear{
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+  padding-bottom: 20px;
+  h4{
+    font-size: 24px;
+    font-weight: 500;
+    color: $black;
+  }
+  .btns_row{
+    display: flex;
+    align-items: center;
+    .Btn_one{
+      height: 40px;
+      padding: 0 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $primaryColor;
+      border-radius: 6px;
+      color: $white;
+      font-size: 15px;
+      margin-left: 15px;
+      border: 1px solid $primaryColor;
+      cursor: pointer;
+      &:hover{
+        background-color: $white;
+        color: $primaryColor;
+      }
+    }
+    .Btn_two{
+      height: 40px;
+      padding: 0 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $white;
+      border-radius: 6px;
+      color: $primaryColor;
+      border: 1px solid $primaryColor;
+      font-size: 15px;
+      margin-left: 15px;
+      cursor: pointer;
+      &:hover{
+        background-color: $primaryColor;
+        color: $white;
+      }
+    }
+  } 
+  
+}
+// .resource_wrapper{
+//   padding-top: 25px;
+// }
+ 
+.resource_item{
+  height: auto;
+  width: 100%;
+  border-radius: 10px;
+  background-color: $white;
+  box-shadow: $shadow;
+  padding: 12px;
+  position: relative;
+  &:hover{
+     box-shadow: 0px 20px 20px rgba(1, 6, 20, 0.1);
+  }
+  .resource_item_top{
+    display: flex;
+    justify-content: space-between;
+  }
+  .resource_title{
+    font-size: 18px;
+    color: $black;
+    font-weight: 500;
+    line-height: 26px;
+    cursor: pointer;
+  }
+  .resource_item_details{
+    font-size: 13px;
+    font-weight: 400;
+    color: $text;
+    line-height: 20px;
+    padding-top: 8px;
+    text-align: start;
+    cursor: pointer;
+  }
+  .resource_footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px 10px 12px ;
+    .res_footer_left{
+      display: flex;
+      align-items: center;
+      .admin_profile{
+        img{
+          height: 25px;
+          width: 25px;
+          object-fit: cover;
+          border-radius: 50%;
+        }
+      }
+      .admin_name{
+        font-size: 14px;
+        font-weight: 500;
+        color: $black;
+        padding-left: 3px;
+      }
+    }
+    .res_footer_right{
+      .resource_date{
+        font-size: 13px;
+        color: $text; 
+        font-weight: 400;
+        display: flex;
+        align-items: center;
+        .MuiSvgIcon-root{
+          font-size: 16px;
+          margin-right: 1px;
+      }
+      }
+      .admin_dropdown{
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+        background-color: #f3f3f3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 5px;
+        cursor: pointer;
+        .MuiSvgIcon-root{
+          font-size: 18px;
+          margin-right: 1px;
+          color: $text;
+      }
+      }
+    }
+  }
+}
+
+.resource_create{
+  padding: 20px;
+  background-color: $white;
+  box-shadow: $shadow;
+  border-radius: 12px;
+
+  .resource_form{
+    padding-top: 20px;
+
+    .field_heading{
+      padding-top: 8px;
+      font-size: 16px;
+      font-weight: 500; 
+      color: $black;
+    }
+    .resource_files_container{
+      padding-top: 10px;
+    }
+    h4{
+      font-size: 18px;
+      color: $black;
+      font-weight: 500;
+      padding: 10px 0 0 0;
+    }
+  }
+}
+
+.resource_details{
+  background-color: $white;
+  box-shadow: $shadow;
+  border-radius: 12px;
+  width: 100%;
+  padding: 25px;
+  position: relative;
+  .admin_dropdown{
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    height: 38px;
+    width: 38px;
+    background-color: #f3f3f3;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    .MuiSvgIcon-root{
+      color: $black;
+      font-size: 20px;
+    }
+  }
+  .resource_admin_info{
+    display: flex;
+    align-items: center;
+    .admin_profile{
+      img{
+        height: 38px;
+        width: 38px;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+    }
+    .admin_post_info{
+      padding-left: 3px;
+      .adminName{
+        font-size: 15px;
+        font-weight: 500;
+        color: $black;
+        line-height: 20px;
+      }
+      .postDate{
+        font-size: 12px;
+        color: $text;
+        font-weight: 400;
+        line-height: 14px;
+      }
+    }
+  }
+
+  h4{
+    font-size: 26px;
+    font-weight: 500;
+    color: $black;
+    line-height: 35px;
+    padding-bottom: 10px;
+  }
+  p{
+    font-size: 15px;
+    color: $text;
+    line-height: 22px;
+    font-weight: 400;
+    text-align: start;
+  }
+
+  h5{
+    font-size: 18px;
+    color: $black;
+    font-weight: 500;
+    padding-top: 40px;
+  }
+  .details_file_container{
+    padding-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    .file_tab{
+      .ant-image{
+        height: 200px;
+        width: 180px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid $border-2;
+        margin-right: 10px;
+        border-radius: 8px;
+        cursor: pointer;
+        overflow: hidden;
+        .ant-image-img{
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+          border-radius: 8px;
+        }
+      }
+    }
+  }
+}
+
+.compnent_heading{
+  font-size: 24px;
+  font-weight: 500;
+  color: $black;
+  padding-bottom: 20px;
+}
+
+.image_list_container{
+  display: flex;
+  .image_place{
+    height: 120px;
+    width: 120px;
+    border-radius: 7px;
+    background-color: #f3f3f3;
+    position: relative;
+    margin-right: 15px;
+    img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 7px;
+    }
+  .img_place_overly{
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0,0,0,0.3);
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: 7px;
+      .img_cross_btn{
+          height: 30px;
+          width: 30px;
+          border-radius: 50%;
+          background-color: $white;
+          color: $text;
+          position: absolute;
+          top: 8px;
+          right: 8px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          .MuiSvgIcon-root{
+              font-size: 16px;
+          }
+        }
+  }
+}
+.image_place_addMore{
+  height: 120px;
+  width: 120px;
+  border-radius: 7px;
+  background-color: #f3f3f3;
+  position: relative;
+  margin-right: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  cursor: pointer;
+}
+}
+
+.Resource_uploadBox {
+  width: 120px;
+  height: 120px;
+  background: rgba(0,0,0,.02); 
+  margin: .5em 0;
+  position: relative;
+  border-radius: 10px;
+  border: 1px dashed #d9d9d9;
+  &:hover{
+      background: $primaryBackground; 
+  }
+}
+.Resource_uploadBox input {
+  width: 100%;
+  height: 100%;
+  opacity: 0; /* Hide the button */
+  cursor: pointer;
+}
+.Resource_uploadBox h1{
+  text-align: center; 
+  color: $black;
+  font-size: 14px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 100%;
+  font-weight: 400;
+  
+}
+
+.create_resource{
+  height: 50px;
+  width: 100%;
+  padding: 0 20px;
+  border-radius: 10px;
+  background-color: $white;
+  border: 1px solid $primaryColor;
+  color: $primaryColor;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

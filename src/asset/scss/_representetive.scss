@@ -1,0 +1,55 @@
+.representative{
+    background-color: $white;
+    box-shadow: $shadow;
+    border-radius: 10px;
+    padding: 15px 15px;
+    .r_mamber{
+        height: 250px;
+        background-color: $primaryBackground;
+        border-radius: 6px;
+        border: 1px solid $border-2;
+        padding: 25px 12px;
+        margin-top: 15px;
+        cursor: pointer;
+        position: relative;
+        .man_category{ 
+            display: inline-block;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            img{
+                height: 30px;
+                width: 30px;
+            }
+        }
+        .man_profile{
+             height: 100px;
+             width: 100px;
+             border-radius: 50%;
+             overflow: hidden;
+             margin: 0 auto;
+            img{
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+
+        .m_name{
+            font-size: 18px;
+            font-weight: 500;
+            color: $black;
+            text-align: center;
+            padding-top: 20px;
+        }
+        .man_title{
+            font-size: 14px;
+            line-height: 20px;
+            font-weight: 400;
+            color: $black;
+            text-align: center;
+            padding-top: 7px;
+        }
+    }
+
+}

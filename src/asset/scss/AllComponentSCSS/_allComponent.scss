@@ -1,0 +1,482 @@
+// Job Search
+.job_searchBar{
+    padding: 15px 15px;
+    background-color: #4a9367;
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    h4{
+        font-size: 24px;
+        color: $white;
+        font-weight: 500;
+    }
+    p{
+        font-size: 15px;
+        color: #e9e9e9;
+        font-weight: 400;
+        
+    }
+.job_plate{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    li{
+        position: relative;
+        i{
+            font-size: 15px;
+            color: $black;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+    .job_srach_item-1{
+        width: 80%;
+        margin-right: 12px;
+        .form_control {
+            display: block;
+            width: 100%;
+            height: 50px;
+            padding:10px;
+            color: $black;
+            background-color: #ffffff7d;
+            background-clip: padding-box;
+            border-radius: 4px;
+            border: 1px solid #dededf00;
+            transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+            -webkit-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+            -moz-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+            -ms-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+            -o-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+
+            &:focus {
+                outline: 0;
+            }
+            &::placeholder {
+                font-size: 14px;
+                color: #ffffff;
+                font-weight: 400;
+            }
+
+            &:optional {
+                color: #636262;
+                font-size: 15px;
+                padding: 10px;
+            }
+        }
+    }
+    .job_btn{
+        width: 20%;
+        height: 49px;
+        background-color: #fff;
+        border-radius: 4px;
+        text-align: center;
+        cursor: pointer;
+        span{
+            line-height: 50px;
+            color: $black;
+            font-weight: 500;
+        }
+
+    }
+}
+}
+// Job Cart 
+.homeJob_cart{
+    height: 340px;
+    width: 100%;
+    background-color: $primaryBackground;
+    cursor: pointer;
+    border-radius: 12px;
+    padding: 30px 15px 15px 15px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid $border-2;
+    margin-top: 20px;
+    &:hover{
+        box-shadow: $shadow;
+    }
+    &::after{
+        position: absolute;
+        content: '';
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background-color: $primaryColor;
+    }
+
+    .cart_title{
+        font-size: 15px;
+        color: $primaryColor;
+        font-weight: 500;
+        text-transform: uppercase;
+        display: block;
+        @include text-g;
+    }
+    .cart_heading{
+        font-size: 20px;
+        color: $black;
+        font-weight: 500;
+        line-height: 26px;
+    }
+    .candidate{
+        font-size: 16px;
+        color: $black;
+        font-weight: 400;
+        padding-top: 15px;
+    }
+    .candidate_activity{
+        height: 95px;
+        width: 100%;
+        background-color: #fff;
+        padding: 10px;
+        border-radius: 7px;
+        border: 1px solid $border-2;
+        margin: 8px 0;
+        display: flex;
+        align-items: center;
+
+        .activity_item{
+            width: 50%;
+            text-align: center;
+
+            .activity_title{
+                font-size: 14px;
+                color: $text;
+                font-weight: 500;
+                text-transform: uppercase;
+                padding-bottom: 7px;
+            }
+            .activity_Count{
+                font-size: 30px;
+                font-weight: 700;
+                color: $black;
+            }
+            .new_activity{
+                color: $primaryColor !important; 
+            }
+        }
+    }
+    .job_status{
+        font-size: 15px;
+        color: $text;
+        font-weight: 400;
+        padding-top: 20px;
+        span{
+            color: $black;
+            font-weight: 500;
+            padding-left: 12px;
+            
+        }
+    }
+    .cart_footer{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid $border-2;
+        padding: 12px 15px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        .cartFooter_item{
+            font-size: 15px;
+            color: $text;
+            font-weight: 500;
+            cursor: pointer;
+            &:hover{
+                color: $primaryColor;
+            }
+            i{
+                padding-right: 5px;
+            }
+        }
+    }
+
+}
+// job Item
+ .job_item_info{
+    margin: 5px 0;
+    // background-color: rgba(255,253,231,1);
+    background-color: $white;
+    border-radius: 8px;
+    height: auto;
+    width: 100%;
+    padding: 13px 15px;
+    box-shadow: $shadow;
+    margin-bottom: 10px;
+    position: relative;
+    .job_item_info_top{
+        display: flex;
+        .company_logo{
+            height: 65px;
+            width: 90px;
+            cursor: pointer;
+            img{
+                max-width: 100%;
+                max-height: 100%;
+            }
+        }
+        .job_item_infoTop_right{
+            margin-left: 10px;
+            width: 100%;
+            padding-right: 40px;
+            h4{
+                font-size: 17px;
+                color: $black;
+                font-weight: 600;
+                line-height: 20px;
+                cursor: pointer;
+            }
+            ul{
+                display: flex;
+                li{
+                    font-size: 14px;
+                    color: $black;
+                    font-weight: 500;
+                    display: flex;
+                    align-items: center;
+                    .MuiSvgIcon-root{
+                        font-size: 15px;
+                        color: $text-2;
+                        margin-right: 3px;
+                    }
+                }
+                .workType{
+                    padding: 1px 15px;
+                    background-color: #4a936729;
+                    color: #4a9367;
+                    font-size: 11px; 
+                    border-radius: 35px;
+                    margin-left: 10px;
+                    font-weight: 500;
+                    .MuiSvgIcon-root{
+                        color: #4a9367;
+                    } 
+                }
+                .postedTime{
+                    font-size: 13px;
+                    color: $text-2;
+                    margin-left: 10px;
+                    display: flex;
+                    align-items: center; 
+                    font-weight: 400;
+                    .MuiSvgIcon-root{
+                        font-size: 18px;
+                        margin-right: 3px;
+                    }
+                }
+            }
+        }
+    }
+    .job_item_info_middle{
+        cursor: pointer; 
+        padding-top: 8px;
+        p{
+            font-size: 13px;
+            color: $text-2;
+            line-height: 20px;
+        }
+    }
+    .job_fotter{
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        cursor: pointer;
+        ul{
+            li{
+                font-size: 13px;
+                color: $text-2;
+                font-weight: 400;
+                i{
+                    font-size: 15px;
+                    margin-right: 3px;
+                }
+            }
+        }
+        .dead-line{
+            font-size: 15px;
+            color: $black;
+            font-weight: 500;
+            font-style: normal !important;
+        }
+    }
+.job_info_btn{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 2;
+    cursor: pointer;
+}
+
+}
+
+// Job Item Details
+.JobItemDetails{
+    background-color: $white;
+    width: 100%;
+    border-radius: 13px; 
+    padding:20px 13px 13px 13px;
+    box-shadow: $shadow;
+        .history_item{
+            cursor: pointer;
+            .job_info{
+                display: flex;
+                justify-content: space-between;
+                .info_1{
+                    width: 68%;
+                    h4{
+                        font-size: 22px;
+                        color: $black;
+                        font-weight: 600;
+                        line-height: 28px;
+                        text-transform: uppercase;
+                    }
+                    h5{
+                       font-size: 18px;
+                       color: $black;
+                       font-weight: 500;
+                       line-height: 18px;
+                    }
+                   
+                    .job_text{
+                     h6{
+                         font-size: 17px;
+                         color: $black;
+                         font-weight: 600;
+                        }
+                    }
+                   
+                   
+                }
+                .info_2{
+                    width: 30%;
+                    .job_summary{
+                     width: 100%;
+                     background-color: $bacground-shade;
+                     border-radius: 8px;
+                     border: 1px solid $border-2;
+                     overflow: hidden;
+                      .summary_title{
+                         height: 42px;
+                         width: 100%;
+                         background-color: $lightPrimary;
+                         text-align: center;
+                         line-height: 42px;
+                         color: $white;
+                         font-weight: 500;
+                         font-size: 17px;
+                      }
+
+                      .job_logo{
+                         height: auto;
+                         width: 95px;
+                         margin: 10px auto; 
+                         img{
+                             max-height: 100%;
+                             max-width: 100%;
+                             object-fit: cover;
+                         }
+                      }
+                      .summary_info{
+                          padding: 12px;
+                         ul{
+                             li{
+                                 font-size: 15px;
+                                 color: $text-2;
+                                 font-weight: 500;
+                                 margin-bottom: 6px;
+                                 span{
+                                     font-weight: 400;
+                                     color: $text-2;
+                                 }
+                             }
+                         }
+                      }
+                    }
+                }
+            }
+            .job_text{
+                padding: 10px 0;
+             h6{
+                 font-size: 17px;
+                 color: $black;
+                 font-weight: 600;
+                 line-height: 18px;
+                 display: flex;
+                 align-items: center;
+                 .MuiSvgIcon-root{
+                    font-size: 10px;
+                    margin-right: 8px;
+                 }
+                }
+              p{
+                font-size: 15px;
+                color: $text-2;
+                line-height: 24px;
+                font-weight: 400;
+                padding-left: 20px;
+                text-align: start;
+              }
+            }
+
+            .apply_btn{
+               text-align: center;
+               border-bottom: 1px solid $border-2;
+               padding: 30px 0;
+               margin: 0 100px;
+              
+               a{
+                  padding: 11px 26px;
+                  background-color: rgb(8, 152, 8);
+                  color: $white;
+                  font-weight: 500;
+                  border-radius: 4px;
+                  font-size: 15px;
+               }
+            }
+
+            .other_option{
+               text-align: center;
+               padding-top: 15px;
+            
+               h5{
+                 font-size: 18px;
+                 font-weight: 500;
+                 color: $black;
+               }
+               h6{
+                 font-size: 16px;
+                 color: $text-2;
+
+                 span{
+                     color: rgb(8, 152, 8);
+                     font-weight: 400;
+                 }
+               }
+            }
+           
+        }
+}
+
+
+
+.top_section{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+// .MuiButtonBase-root{
+//     background-color: $primaryColor;
+//     color: $white;
+//     &:hover{
+//         background-color: $white;
+//         color: $black;
+//     }
+// }
+
+

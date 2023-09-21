@@ -1,0 +1,125 @@
+.notification{
+     .notification_list{
+        box-shadow: $shadow;
+        background-color: $white;
+        height:  720px;
+        border-radius: 13px;
+        padding: 15px;
+        overflow: hidden;
+        .notification_top{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0px;
+            .notification_top_left{
+                 font-size: 20px;
+                 color: $black;
+                 @include text-g;
+                 font-weight: 500;
+            }
+
+.notification_top_right{
+                       .nav{
+                           .nav-link{
+                              margin-left: 15px; 
+                              display: block;
+                              font-size: 16px;
+                              padding: 0px;
+                              color: $black;
+                           }
+                         }
+                     }
+                 }
+            .notification_body{
+                    margin-top: 20px;
+                .notification_item{
+                    height: 105px;
+                    width: 100%;
+                    background-color: $bacground-shade;
+                    border-radius: 7px;
+                    padding: 12px;
+                    margin-top: 10px;
+                    .profile_bio_2{
+                        display: flex;
+                        align-items: center;
+                       .profile_img{
+                           height: 40px;
+                           width: 40px;
+                           border-radius: 50%;
+                           overflow: hidden;
+                        img{
+                            height: 100%;
+                            width: 100%;
+                            object-fit: cover;
+                        }
+                    }
+                    .profile_info{
+                        padding-left: 6px;
+                        width: 100%;
+                       ul{
+                           display: flex;
+                           justify-content: space-between;
+                           li{
+                               font-size: 13px;
+                               color: $text; 
+                               font-size: 400;
+                               .profile_user_name{
+                                   font-size: 17px;
+                                   color: $black;
+                                   font-weight: 500;
+                                }
+                           }
+                           .post_time{
+                                color: $primaryColor;
+                               i{
+                                   font-size: 13px;
+                                   cursor: pointer;
+                               
+                               }
+                           }
+                       }
+                       .profile_title{
+                            font-size: 12px;
+                            line-height: 14px;
+                            color: $primaryColor;
+                            font-weight: 500;
+                       }
+                    }
+                    }
+                    .notify_text{
+                        font-size: 13px;
+                        line-height: 18px;
+                        color: $text;
+                        text-align: justify;
+                    }
+                }
+               }
+             }
+         }
+
+.notfound_wrapper{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    .errorImg{
+        height: 480px;
+        width: auto;
+        img{
+            height: 100%;
+            width: 100%;
+            object-fit: contain;
+        }
+    }
+    .cheking_div{
+        font-size: 20px;
+        color: $black;
+        font-weight: 500;
+    }
+}

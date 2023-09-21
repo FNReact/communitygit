@@ -1,0 +1,324 @@
+.uploader{
+    .backdrop_contorller{
+        z-index: 6;
+    }
+}
+.uploader_dial{
+
+    bottom: 90px !important;
+}
+.my_files_navigate{
+    height: 50px;
+    width: 100%;
+    background-color: $white;
+    padding: 0 12px;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  .navigate_part_one{
+      display: flex;
+      align-items: center;
+      .navigate_Back{
+        display: flex;
+        align-items: center; 
+        color: $black;
+        font-size: 14px;
+        padding-right: 20px;
+        cursor: pointer;
+      }
+    .navigate_bar_icon{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .MuiSvgIcon-root {
+            font-size: 26px;
+            color: $text;
+            cursor: pointer;
+            &:hover{
+                color: $black;
+            }
+        }
+    }
+
+    .navigate_title{
+        font-size: 14px;
+        color: $text;
+        font-weight: 400;
+        padding: 0 0 0 15px;
+        cursor: pointer;
+    }
+  }
+
+  .navigate_part_two{
+    .navigate_serachbar{
+        height: 35px;
+        width: 200px;
+        position: relative;
+      .form_control{
+          background-clip: padding-box;
+          background-color: #f3f3f3;
+          border: 1px solid $border-2;
+          border-radius:8px;
+          color: #333;
+          height: 35px;
+          padding: 0 10px 0 10px;
+          position: relative;
+          transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+          width: 100%;
+          font-size: 18px;
+          &::placeholder{
+            color: rgb(171, 168, 168);
+            font-size: 15px;
+            font-weight: 400;
+          }
+        }
+     }
+  }
+}
+
+
+
+.Media_area{
+    padding-top: 5px;
+}
+
+.my_item{
+    height: 220px;
+    width: 100%;
+    background-color: $white;
+    box-shadow: $shadow;
+    border-radius: 10px;
+    padding: 10px;
+    position: relative;
+    .item_icon{
+        height: 90px;
+        width: 90px;
+        display: flex;
+        align-items: center;
+        img{
+            max-width: 100%;
+            max-height: 100%;
+        }
+    }
+    .myItemBookmark{
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        .MuiSvgIcon-root {
+            font-size: 20px;
+            color: $text;
+            cursor: pointer;
+            &:hover{
+                color: $primaryColor;
+            }
+        }
+    }
+    .item_name{
+        font-size: 14px;
+        color: $black;
+        font-weight: 400;
+        line-height: 21px;
+        padding: 10px 0 6px 0;
+    }
+
+    .my_item_bootom{
+        height: 40px;
+        width: 100%;
+        background-color: $primaryBackground;
+        position: absolute;
+        bottom: 0; 
+        left: 0;
+        padding: 10px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+
+        .uploaded_date{
+            font-size: 12px;
+            color: $black;
+            font-weight: 400;
+        }
+    }
+    .Folder_list_activity{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 40px;
+        background-color: $primaryBackground;
+        width: 100%;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: end;
+    }
+}
+
+.HomeBodyContent{
+    padding: 15px 0 15px 0;
+    .store_Card{
+        height: 130px;
+        width: 100%;
+        background-color: $white;
+        box-shadow: $shadow;
+        border-radius: 10px;
+        padding: 14px;
+        position: relative;
+        overflow: hidden;
+        &:hover{
+            box-shadow: $shadow-2;
+        }
+        cursor: pointer;
+        .store_Card_top{
+            .overviewItem_icon{
+                height: 45px;
+                width: 45px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: $primaryBackground;
+                border-radius: 10px;
+                img{
+                    max-width: 60%;
+                    max-height: 60%;
+                }
+            }
+            .card_name{
+                font-size: 16px;
+                color: $black;
+                font-weight: 500;
+                padding-top: 10px;
+            }
+            .card_file_quantity{
+                font-size: 14px;
+                color: $text;
+                font-weight: 400;
+            }
+        }
+    }
+}
+
+
+.my_file_item{
+    height: 220px;
+    width: 100%;
+    background-color: $white;
+    box-shadow: $shadow;
+    border-radius: 10px;
+    padding: 10px;
+    position: relative;
+    overflow: hidden;
+    .item_icon{
+        height: 115px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        position: relative;
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+        overflow: hidden;
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+    
+  
+    .item_name{
+        font-size: 16px;
+        color: $black;
+        font-weight: 400;
+        line-height: 22px;
+        padding: 10px 0 6px 0;
+        word-wrap: break-word; 
+    }
+
+    .my_item_bootom{
+        height: 38px;
+        width: 100%;
+        background-color: $primaryBackground;
+        position: absolute;
+        bottom: 0; 
+        left: 0;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        display: flex;
+        align-items: center;
+        padding-left: 10px;
+        .uploaded_date{
+            font-size: 12px; 
+            color: $black;
+            font-weight: 400;
+        }
+    }
+
+    .File_list_activity{
+        position: absolute;
+        bottom: 8px;
+        right: 3px;  
+        z-index: 2;
+        i{
+            .MuiSvgIcon-root{
+                color: rgba(75, 78, 81, 0.718);
+                font-size: 20px;
+                cursor: pointer;
+                &:hover{
+                    color: #333; 
+                }
+            }
+        }
+    }
+}
+
+.upload_dialouge_title{
+    position: relative;
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+    color: $black;
+
+    .uploader_dialogue_close{
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        color: $text;
+        cursor: pointer;
+        &:hover{
+            color: $black;
+        }
+    }
+}
+.upload_dialouge_body{
+    width: 500px;
+    .uploader_Content{
+        padding: 20px;
+        width: 100%;
+        .uploader_icon{
+            height: 100px;
+            width: 100px;
+            background-color: $primaryBackground;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            img{
+                 height: 55px;
+                 width: 55px;
+                object-fit: contain;
+            }
+        }
+        h4{
+            font-size: 18px;
+            color: $text;
+            font-weight: 500;
+            padding-top: 10px;
+        }
+    }
+}

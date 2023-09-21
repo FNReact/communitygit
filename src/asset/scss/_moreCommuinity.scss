@@ -1,0 +1,124 @@
+.MoreComuinity_list{
+         box-shadow: $shadow;
+         background-color: $white;
+         border-radius: 10px;
+         padding: 15px;
+         margin-bottom: 12px;
+    .list_heading{
+        font-size: 16px;
+        font-weight: 500;  
+        color: $black;
+    }
+    .commuinity_list{
+         background-color: $primaryBackground;
+         padding: 10px;
+         border-radius: 10px;
+         margin-top: 10px;
+         border: 1px solid $border-2;
+         h5{
+          text-align: center;
+          color: rgba(0, 0, 0, 0.26);
+         }
+       .commuinity_list_top{
+          display: flex;
+           .comuinity_img{
+            height: 55px;
+            width: 55px;
+              img{
+                width: 53px;
+                height: 53px;
+                border-radius: 6px;
+                object-fit: cover;
+              }
+           }
+           .community_text{
+                padding-left: 10px;
+              .community_name{
+                    font-size: 14px;
+                    font-weight: 500;
+                    color: $black;
+                    line-height: 18px;
+              }
+              .commuinity_hint{
+                font-size: 12px;
+                font-weight: 400;
+                color: #333333a8;
+                line-height: 18px;
+              }
+           }
+       }
+       .commuinity_list_bottom{
+           height: 36px;
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           width: 100%;
+           text-align: center;
+           color: $white;
+           font-size: 14px;
+           border-radius: 6px;
+           border: 1px solid $border-2;
+           background-color: $primaryColor;
+           margin-top: 10px;
+           cursor: pointer;
+           &:hover{
+            background-color: #6050b5;
+            transition: all linear .2s;
+          }
+        }
+
+        .job_createBtn{
+          width: 100%;
+          height: 40px;
+          border: 1px solid $border-2;
+          border-radius: 7px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: $text;
+          font-size: 14px;
+          background-color: $white;
+          margin-top: 12px;
+        }
+    }
+    .seeMore_btn{
+        text-align: center;
+        font-size: 16px;
+        color: $text;
+        font-weight: 500;
+        background-color: $bacground-shade;
+        border-radius: 8px;
+        padding: 8px;
+        border: 1px solid $border-2;
+        margin-top: 12px;
+        cursor: pointer;
+        &:hover{
+            background-color: $primaryBackground;
+        }
+    }
+}
+
+.card_t{
+  color: #0e0d0d;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.Card_container{
+  .card_wrap{
+    border-radius: 12px !important;
+    background-color: #fff;
+    height: 220px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    span{
+      font-size: 20px;
+      font-weight: 600;
+      color: $black;
+    }
+  }
+}
