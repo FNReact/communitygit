@@ -244,12 +244,12 @@ const GeneralLoginPage = () => {
                           )}
                         </div>
                         <div className="card_footer">
-                          <div
+                          {/* <div
                             className="viewBtn"
                             onClick={(e) => navigate('/community-info-public', {state:{uuid:data.uuid, memberStatus:memberStatus}})}
                           >
                             Show More
-                          </div>
+                          </div> */}
                           {token &&  memberStatus !==-1 &&
                           <div
                             className="viewBtn"
@@ -262,14 +262,14 @@ const GeneralLoginPage = () => {
                             className="viewBtn"
                             onClick={(e) => handleJoin(data)}
                           >
-                            Join
+                            Show More/Join
                           </div>}
                           {!token && 
                           <div
                             className="viewBtn"
                             onClick={(e) => handleJoin(data)}
                           >
-                            Join
+                            Show More/Join
                           </div>}
                         </div>
                       </div>

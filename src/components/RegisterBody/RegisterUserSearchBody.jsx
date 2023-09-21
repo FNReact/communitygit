@@ -13,7 +13,9 @@ import { Alert, Box, Button, Container, Grid, TextField } from "@mui/material";
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import GeneralTopNavigation from "../../pages/AuthenticationPages/GeneralTopNavigation";
-import parse from 'html-react-parser'
+import parse from 'html-react-parser';
+import qr  from '../../asset/image/download.png'
+
 const RegisterUserSearchBody = () => {
 
   const navigate = useNavigate();
@@ -408,6 +410,9 @@ const handleLounge = ()=>{
                             </Grid>
                             <div className="get_emailBtn" onClick={(e)=> getEmail(e)}>
                                 Check
+                            </div>
+                            <div className="login_qr_img">
+                               <img src={qr} alt="" />
                             </div>
                         </form>}
 

@@ -1433,7 +1433,7 @@
                         font-size: 14px;
                         color: $text;
                         cursor: pointer;
-                        width: 45%;
+                        width: 100%;
                         &:hover{
                             background-color: $primaryColor;
                             color: $white;
@@ -1473,7 +1473,7 @@
             font-weight: 700;
             color: $black;
             line-height: 25px;
-            
+             
             padding-top: 15px;
             text-align: center;
         }
@@ -1483,7 +1483,7 @@
             color: $text;
             line-height: 18px;
             
-            text-align: center;
+            text-align: center; 
             padding-top: 5px;
             span{
                 font-size: 14px;
@@ -1527,7 +1527,16 @@
     margin-top: 10px;
 }
 
-
+.login_qr_img{
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+    img{
+        height: 130px;
+        width: 130px;
+        object-fit: contain;
+    }
+}
 .searchLoading{
     text-align: center;
     font-size: 20px;

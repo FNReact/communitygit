@@ -103,15 +103,15 @@ const IcirclesLoginPage = () => {
               <GeneralTopNavigation back={true} />
              <div className="creatCommuinity_wrapper">
              <div className="creatCommuinity_wrap">
-              <h5> Login</h5>
+              <h5> Log in</h5>
               {(location.state !== null && location.state.message===true ) && <button className="btn btn-warning" disabled>Your account is not yet activated.An activation link was sent to your email. Active first to create your microsite.</button>}
                     <form onSubmit={loginUser}>
                         <Grid container spacing={1} sx={{mt:2}}>
                             <Grid item xs={12}>
-                              <input type="text" className="form_control" onChange={(e)=> setEmail(e.target.value)} value={email}  placeholder="Enter Your E-mail/ Username" />
+                              <input type="text" className="form_control" onChange={(e)=> setEmail(e.target.value)} value={email}  placeholder="E-mail/iCircles username" />
                             </Grid>
                             <Grid item xs={12}>
-                              <input type="password" className="form_control"  placeholder="Enter iCircles Password" onChange={(e)=> setPassword(e.target.value)} />
+                              <input type="password" className="form_control"  placeholder="iCircles Password" onChange={(e)=> setPassword(e.target.value)} />
                             </Grid>
                             <Grid item xs={12}>
                               <Box sx={{mt:1 }}><Button variant="contained" fullWidth  type="submit">Login</Button></Box>
