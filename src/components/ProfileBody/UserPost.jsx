@@ -666,7 +666,7 @@ import {
                                     <Grid container spacing={1}>
                                       <Grid item xs={12}>
                                         <div className="uploaded_Video_container">
-                                          <Player  src={data.video}>
+                                        <Player src={`${baseUrl}/${data.video}`}>
                                             <BigPlayButton position="center" />
                                             <ControlBar
                                               autoHide={false}
@@ -720,7 +720,7 @@ import {
                                     <Grid container spacing={1}>
                                       <Grid item xs={12}>
                                         <div className="uploaded_Video_container">
-                                          <Player  src={data.video}>
+                                        <Player src={`${baseUrl}/${data.video}`}>
                                             <BigPlayButton position="center" />
                                             <ControlBar
                                               autoHide={false}
@@ -782,10 +782,7 @@ import {
                                   <Grid container spacing={1}>
                                     <Grid item xs={12}>
                                       <div className="uploaded_Video_container">
-                                        <Player
-                                          
-                                          src={`${baseUrl}/${data.video}`}
-                                        >
+                                        <Player src={`${baseUrl}/${data.video}`}>
                                           <BigPlayButton position="center" />
                                           <ControlBar
                                             autoHide={false}

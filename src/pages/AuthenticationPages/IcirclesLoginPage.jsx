@@ -103,7 +103,7 @@ const IcirclesLoginPage = () => {
               <GeneralTopNavigation back={true} />
              <div className="creatCommuinity_wrapper">
              <div className="creatCommuinity_wrap">
-              <h5> Login.</h5>
+              <h5> Login</h5>
               {(location.state !== null && location.state.message===true ) && <button className="btn btn-warning" disabled>Your account is not yet activated.An activation link was sent to your email. Active first to create your microsite.</button>}
                     <form onSubmit={loginUser}>
                         <Grid container spacing={1} sx={{mt:2}}>

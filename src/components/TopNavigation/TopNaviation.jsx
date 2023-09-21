@@ -402,7 +402,7 @@ useEffect(()=>{
                                      <span>My Communities</span>
                                    </div>
                                 </Link> */}
-                             <Link to='/' onClick={(e) => handleMenuDrawer(anchor)} >
+                             <Link to='/home' onClick={(e) => handleMenuDrawer(anchor)} >
                               <div className="my_commuinity" >
                                 <i><SearchIcon /></i>
                                 <span>Search Communities</span>
@@ -415,7 +415,7 @@ useEffect(()=>{
                               </div>
                             </Link>
 
-                            <Link to='/report-admin'>
+                            <Link to='/report-admin' onClick={(e) => handleMenuDrawer(anchor)}>
                               <div className="my_commuinity">
                                 <i><ReportIcon /></i>
                                 <span>Report to admin</span>
@@ -424,7 +424,7 @@ useEffect(()=>{
                             <Link to='/' onClick={(e) => handleMenuDrawer(anchor)} >
                               <div className="my_commuinity" >
                                 <i><MailIcon /></i>
-                                <span>Mail</span>
+                                <span>Notifications</span>
                               </div>
                             </Link>   
 
