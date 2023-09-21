@@ -12,7 +12,7 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-        <AppRouter />
+        <AppRouter/>
       </BrowserRouter>
     </div>
   );

@@ -15,7 +15,7 @@
         display: flex;
         justify-content: space-between;
         position: relative;
-        padding: 3px 12px 12px 12px;
+        padding: 8px 12px 12px 12px;
         .com_one{
             display: flex;
         } 
@@ -48,12 +48,14 @@
             color: #fff;
             background-color: #209d56;
             border-radius: 4px;
-            padding: 6px 25px;
+            padding: 4px 22px;
             border-radius: 35px;
-            position: absolute;
-            right: 10px;
-            top: 10px;
-            width: 115px;
+            // position: absolute;
+            // right: 10px;
+            // top: 10px;
+            .MuiSvgIcon-root{
+               font-size: 17px;
+            }
          }
          .community_view_btn {
             border: 1px solid #d5d5d5;
@@ -88,7 +90,7 @@
         .com_info_wrap{
             padding-top: 30px;
             .info_item{
-                font-size: 16px;
+                font-size: 16px; 
                 font-weight: 400;
                 color: #2d2d2d;
                 padding-top:6px;
