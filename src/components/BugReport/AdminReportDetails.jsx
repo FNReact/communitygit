@@ -89,7 +89,6 @@ const handleReplayMessage =()=>{
         data.append('name', userDetails?.profile?.name);
         data.append('email', userDetails?.email);
         data.append('message', message);
-        // data.append('phone', '01627297942');
         data.append('microsite_id', msDetails.id);
 
         if(fileList.length>0){

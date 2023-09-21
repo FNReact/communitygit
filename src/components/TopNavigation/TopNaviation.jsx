@@ -209,7 +209,7 @@ useEffect(()=>{
                 <Grid item lg={4} xs={4}>
                   <div className="header_item_wrapper">
                     <Tooltip title="Home">
-                      <Link to="/">
+                      <Link to="/" onClick={(e)=> window.scroll(0,0)}>
                         <div className="header_item_list">
                           <HomeIcon />
                         </div>
