@@ -100,7 +100,7 @@ const IcirclesLoginPage = () => {
   return (
     <Fragment>
         <div className="creatCommuinity_form_body">
-              <GeneralTopNavigation back={true} />
+              <GeneralTopNavigation back={false} />
              <div className="creatCommuinity_wrapper">
              <div className="creatCommuinity_wrap">
               <h5> Log in</h5>

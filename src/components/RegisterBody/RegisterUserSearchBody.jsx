@@ -409,7 +409,7 @@ const handleLounge = ()=>{
                                 </Grid>
                             </Grid>
                             <div className="get_emailBtn" onClick={(e)=> getEmail(e)}>
-                                Check
+                                Check for iCircles Account
                             </div>
                             <div className="login_qr_img">
                                <img src={qr} alt="" />
