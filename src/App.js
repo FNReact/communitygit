@@ -4,7 +4,7 @@ import AppRouter from "./router/AppRouter";
 import "./asset/css/style.css";
 import "./asset/css/responsive.css";
 import { micrositeDetailsUrl } from "./api/Api";
-import axios from "axios";
+// import axios from "axios";
 // import "antd/dist/reset.css";
 function App() {
 
