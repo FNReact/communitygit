@@ -2,8 +2,40 @@
     .mob_padding_75 {
         margin-top: 75px;
     }
+    .mamber_hedingSide_right button{
+        font-size: 12px;
+    }
+    .mamber .mamber_wrapper .memberItem .user_info .join_date {
+        font-size: 11px;
+        padding-bottom: 0px;
+    }
+    .mamber .mamber_wrapper .memberItem .owner_member {
+        width: 95%;
+    }
     .community_list_item {
         padding-top: 140px;
+    }
+    .mamber .mamber_wrapper .memberItem .icon_list .icon {
+        height: 32px;
+        width: 32px;
+    }
+    .mamber .mamber_wrapper .memberItem .icon_list .icon .MuiSvgIcon-root {
+        font-size: 18px;
+    }
+    .mamber .mamber_wrapper .memberItem .icon_list .icon img {
+        height: 20px;
+        width: 20px;
+    }
+    .mamber .mamber_wrapper .memberItem .memberCard_footer {
+        margin-top: 10px;
+    }
+    .mamber_hedingSIde .mamber_hedingSide_right .addMamber_btn {
+        padding: 4px 16px;
+        font-size: 13px;
+        margin-bottom: 10px;
+    }
+    .mamber_hedingSIde .mamber_hedingSide_right .addMamber_btn span{
+        display: none;
     }
     .uploader_dial {
         bottom: 140px !important;
@@ -74,6 +106,12 @@
     .mamber_hedingSIde .mamber_hedingSide_right {
         flex-wrap: wrap;
         margin-top: 12px;
+        justify-content: center;
+    }
+    .mamber .mamber_wrapper .memberItem .user_info .user_img img {
+        height: 75px;
+        width: 75px;
+
     }
     .user_profile .user_profile_content .user_join_date {
         margin-top: 15px;
@@ -97,7 +135,7 @@
         width: 30px;
     }
     .chat_box_icon {
-        bottom: 80px;
+        bottom: 30px;
         height: 50px;
         width: 50px;
     }
@@ -107,7 +145,6 @@
         right: 0;
         font-size: 13px;
         border-radius: 35px;
-        width: 80px;
         display: inline-block;
         padding: 1px 20px;
         margin: 0 0 0 auto;
@@ -223,7 +260,7 @@
 .header .header_content .header_item .commuinity_name {
     margin-left: 5px;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 14px;
 }
 .lounge_right_fixed{
     display: none;
@@ -368,7 +405,7 @@
 }
 .mamber .mamber_wrapper .memberItem {
     padding: 14px 8px;
-    height: 260px;
+    height: 235px;
 }
 .mamber_hedingSIde .headingSection {
     font-size: 18px;
@@ -477,8 +514,8 @@
     margin-top: 10px;
 }
 .mamber .mamber_wrapper .memberItem .user_info .user_name {
-    font-size: 17px;
-    padding: 5px 0 0 0;
+    font-size: 15px;
+    padding: 2px 0 0 0;
 }
 .section_headear h4 {
     font-size: 20px;

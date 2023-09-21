@@ -31,7 +31,7 @@ import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import SettingsIcon from '@mui/icons-material/Settings';
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import NotificationsIcon from '@mui/icons-material/Notifications';
 import BugReportIcon from '@mui/icons-material/BugReport';
 import ReportIcon from '@mui/icons-material/Report';
 import SearchIcon from '@mui/icons-material/Search';
@@ -225,7 +225,7 @@ useEffect(()=>{
 
                     <Tooltip title="Classified">
                       <Link to="/classified">
-                        <div className="header_item_list">
+                        <div className="header_item_list mob_none">
                           <StoreIcon color="action" />
                         </div>
                       </Link>
@@ -236,9 +236,9 @@ useEffect(()=>{
                         </div>
                       </Link>
                       <Link >
-                        <div className="header_item_list mob_none">
+                        <div className="header_item_list">
                           <Badge badgeContent={4} color="primary">
-                            <MailIcon color="action" />
+                            <NotificationsIcon color="action" />
                           </Badge>
                         </div>
                       </Link>
@@ -421,10 +421,10 @@ useEffect(()=>{
                                 <span>Report to admin</span>
                               </div>
                             </Link>
-                            <Link to='/' onClick={(e) => handleMenuDrawer(anchor)} >
+                            <Link to='/classified' onClick={(e) => handleMenuDrawer(anchor)} >
                               <div className="my_commuinity" >
-                                <i><MailIcon /></i>
-                                <span>Notifications</span>
+                                <i><StoreIcon /></i>
+                                <span>Classified</span>
                               </div>
                             </Link>   
 

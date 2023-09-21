@@ -207,7 +207,7 @@ const MemberBody = () => {
                   ? "Link copied! for invitation"
                   : "Copy link for invitation"}
               </Button>
-              <Link to="/add-member" className="addMamber_btn"> <AddIcon/> Add Member</Link>
+              <Link to="/add-member" className="addMamber_btn"> <AddIcon/> <span>Add Member</span> </Link>
               <form onSubmit={handleSearch}>
                 <div className="search_box">
                   <input type="text" placeholder="Search" className="form_control" onChange={(e)=> handleInputSearch(e)} />
