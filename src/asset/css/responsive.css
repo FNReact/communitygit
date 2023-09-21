@@ -1,4 +1,10 @@
 @media (min-width: 280px) and (max-width: 899.98px) { 
+    .mob_padding_75 {
+        margin-top: 75px;
+    }
+    .classified_order_form {
+        width: 100%;
+    }
     .backArrow_head {
         position: relative;
         left: 15px;
@@ -53,7 +59,7 @@
      justify-content: flex-end;
     }
     .chat_box_icon {
-        bottom: 45px;
+        bottom: 100px;
         height: 50px;
         width: 110px;
     }
@@ -198,7 +204,7 @@
 }
 .content_body {
     padding-top: 55px;
-    margin-bottom: 10px;
+    margin-bottom: 40px;
 }
 .header .header_content .header_item_wrapper2 .profile_dashed {
    display: none;

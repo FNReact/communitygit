@@ -201,7 +201,7 @@ const handleLounge = ()=>{
 
    return (
       <Fragment>
-         <div className="communityInfo_wrapper">
+         <div className="communityInfo_wrapper mob_padding_75">
                {msPublicDetails?.meta?.banner &&
                   <div className="commuinity_banner">
                      <img src={`${baseUrl}/${msPublicDetails?.meta?.banner}`} alt={msPublicDetails?.name} />

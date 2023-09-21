@@ -264,7 +264,7 @@
             img{
                 height: 45px;
                 width: 45px;
-                object-fit: contain;
+                object-fit: cover;
                 border-radius: 50%;
             }
         }
@@ -272,6 +272,8 @@
             font-size: 19px;
             font-weight: 500;
             color: #333;
+            padding-left: 5px;
+            @include text-ellips;
             padding-left: 5px;
         }
     }

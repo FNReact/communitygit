@@ -28,6 +28,8 @@ import PeopleIcon from '@mui/icons-material/People';
 import PersonOffIcon from '@mui/icons-material/PersonOff';
 import { ToastContainer } from "react-toastify";
 import CloseIcon from '@mui/icons-material/Close';
+import Avatar from "../../asset/image/avatar.jpg";
+
 
 const LoungeProfileBio = ({ data, getAllFeeds,getSingleFeedDetails,modalOpen,modalClose,createPost,setContent,setStoreUuid }) => {
  
@@ -41,10 +43,10 @@ const LoungeProfileBio = ({ data, getAllFeeds,getSingleFeedDetails,modalOpen,mod
     data.user !== undefined ? data.user.uuid : ""
   );
   const [name, setName] = useState(
-    data.user !== undefined ? data.user.name : ""
+    (data.user !== undefined && data.user !==null) ? data.user.name : ""
   );
   const [avater, setAvater] = useState(
-    data.user !== undefined ? data.user.avatar : ""
+   ( data.user !== undefined && data.user !==null) ? data.user.avatar : ""
   );
   const options = { year: "numeric", month: "short", day: "numeric" };
   const [date, setDate] = useState(
@@ -186,7 +188,7 @@ const LoungeProfileBio = ({ data, getAllFeeds,getSingleFeedDetails,modalOpen,mod
     <Fragment>
       <div className="profile_bio">
         <div className="profile_img">
-          {userInfo?.avater?<img src={`${baseUrl}/${userInfo?.avater}`} alt={name} />:<img src={`${baseUrl}/${avater}`} alt={name} />}
+          {userInfo?.avater?<img src={`${baseUrl}/${userInfo?.avater}`} alt={name} />: (avater !==null? <img src={`${baseUrl}/${avater}`} alt={name} />: <img src={Avatar} alt={name} />) }
         </div>
         
         <div className="profile_info">

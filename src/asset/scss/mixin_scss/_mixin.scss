@@ -3,3 +3,16 @@
     -webkit-text-fill-color: transparent;
     background-image: linear-gradient(to right, #7952b4 0%, #745ce0 30%, #8169f1 30%, #a44cee 73%, #ff847f 100%);
   }
+
+  $lines-to-show: 1;
+
+  @mixin text-ellips {
+    display: block; /* Fallback for non-webkit */
+    display: -webkit-box;
+    height: $lines-to-show; /* Fallback for non-webkit */
+    -webkit-line-clamp: $lines-to-show;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
