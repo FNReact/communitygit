@@ -407,7 +407,7 @@ const handleLounge = ()=>{
                                 </Grid>
                             </Grid>
                             <div className="get_emailBtn" onClick={(e)=> getEmail(e)}>
-                                Check
+                                Check for iCircles Account
                             </div>
                         </form>}
 

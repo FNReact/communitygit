@@ -79,7 +79,7 @@ const UserCommunitiesSitesPage = () => {
   return (
     <Fragment>
       <div className="entry_header">
-        <GeneralTopNavigation back={true} />
+        <GeneralTopNavigation back={false} />
       </div>
       <div className="community_list_item">
         {userMicrosites !== null && userMicrosites.length > 0 &&
