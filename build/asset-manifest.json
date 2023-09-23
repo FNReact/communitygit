@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.7953bb41.css",
-    "main.js": "/static/js/main.97e409d1.js",
+    "main.css": "/static/css/main.4ea2dfcc.css",
+    "main.js": "/static/js/main.c31f89e0.js",
     "static/js/988.8cdd5e2a.chunk.js": "/static/js/988.8cdd5e2a.chunk.js",
     "static/media/Add.mp4": "/static/media/Add.f85a9c2394d282277f73.mp4",
     "static/media/test1.png": "/static/media/test1.185f4e3658a920b11eb3.png",
@@ -12,6 +12,7 @@
     "static/media/lms.png": "/static/media/lms.2394f66e234429c45794.png",
     "static/media/profile2.png": "/static/media/profile2.437c77ce3d50279c5a76.png",
     "static/media/test3.webp": "/static/media/test3.818e629000196785210a.webp",
+    "static/media/couple.png": "/static/media/couple.e97e49ef010e829ae712.png",
     "static/media/404.png": "/static/media/404.68816f730e75d8d7db85.png",
     "static/media/femaleAvatar.png": "/static/media/femaleAvatar.e6fc8ad8a7de24bec9be.png",
     "static/media/xlsx.png": "/static/media/xlsx.064d3bbc01030ff8ac63.png",
@@ -21,6 +22,7 @@
     "static/media/representiveSide.png": "/static/media/representiveSide.8207080a7717cbd9eef4.png",
     "static/media/Not.jpg": "/static/media/Not.eada226de9316b401341.jpg",
     "static/media/zip.jpeg": "/static/media/zip.172815a0e50af1c77f62.jpeg",
+    "static/media/representetive.png": "/static/media/representetive.d3d9b772383ca668857f.png",
     "static/media/cover.jpeg": "/static/media/cover.c4c90daf528a8286dc4c.jpeg",
     "static/media/bannerUpload.jpeg": "/static/media/bannerUpload.959e9918f0ec82c26d6e.jpeg",
     "static/media/jobSideH.png": "/static/media/jobSideH.602cd8b12870eee1b244.png",
@@ -28,6 +30,7 @@
     "static/media/audio.jpeg": "/static/media/audio.8b25dacf3932a4c487cd.jpeg",
     "static/media/avatar.png": "/static/media/avatar.ef29765785706586da73.png",
     "static/media/noticeSideC.png": "/static/media/noticeSideC.d055177b971a762a92c9.png",
+    "static/media/magazine.png": "/static/media/magazine.312449ad68b6ed2a5ce3.png",
     "static/media/noticeSideE.png": "/static/media/noticeSideE.6e9b90e430b07b5cba3b.png",
     "static/media/serachSide.png": "/static/media/serachSide.3cc7ac40a2708e47a15a.png",
     "static/media/0000111.png": "/static/media/0000111.dbe91f6ec1ac28adba7f.png",
@@ -36,12 +39,12 @@
     "static/media/pdf.png": "/static/media/pdf.61f9fe3633544e38c3bf.png",
     "static/media/Chat.png": "/static/media/Chat.c79485c87049553f20ba.png",
     "index.html": "/index.html",
-    "main.7953bb41.css.map": "/static/css/main.7953bb41.css.map",
-    "main.97e409d1.js.map": "/static/js/main.97e409d1.js.map",
+    "main.4ea2dfcc.css.map": "/static/css/main.4ea2dfcc.css.map",
+    "main.c31f89e0.js.map": "/static/js/main.c31f89e0.js.map",
     "988.8cdd5e2a.chunk.js.map": "/static/js/988.8cdd5e2a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7953bb41.css",
-    "static/js/main.97e409d1.js"
+    "static/css/main.4ea2dfcc.css",
+    "static/js/main.c31f89e0.js"
   ]
 }

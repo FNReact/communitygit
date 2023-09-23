@@ -1,5 +1,6 @@
 import React, { Fragment, useContext, useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+
 import mamberImg from "../../asset/image/noticeSideC.png";
 import eventImg from "../../asset/image/noticeSideE.png";
 import resources from "../../asset/image/noticeSideG.png";
@@ -7,6 +8,11 @@ import resourceImg from "../../asset/image/resourceSide.png";
 import jobImage from "../../asset/image/jobSideH.png";
 import representiveS from "../../asset/image/representiveSide.png";
 import folder from "../../asset/image/folder.png";
+import localRepresentetiveImg from "../../asset/image/representetive.png";
+import coupleImg from "../../asset/image/couple.png";
+import magazineImg from "../../asset/image/magazine.png";
+
+
 import coverImage from "../../asset/image/cover.jpeg";
 import { UserContext } from "../../utils/UserContext";
 import newsfeed from "../../asset/image/newsfeed.png";
@@ -238,6 +244,24 @@ const LeftSideBar = () => {
                    <li>
                        <span> <img src={representiveS} alt="" /></span>
                        <span>Community Business</span>
+                   </li>
+                </Link>
+                <Link to="/local-representatives">
+                   <li>
+                       <span> <img src={localRepresentetiveImg} alt="" /></span>
+                       <span>Local Representative</span>
+                   </li>
+                </Link>
+                <Link to="/matrimonial">
+                   <li>
+                       <span> <img src={coupleImg} alt="" /></span>
+                       <span>Matrimonial Center</span>
+                   </li>
+                </Link>
+                <Link to="/magazine">
+                   <li>
+                       <span> <img src={magazineImg} alt="" /></span>
+                       <span>Community Magazine</span>
                    </li>
                 </Link>
             </ul>

@@ -74,6 +74,9 @@ import RegisterUserSearchPage from "../pages/AuthenticationPages/RegisterUserSea
 import { notifyError } from "../utils/Toast";
 import NotAuthorisedPage from "../pages/NotAuthorisedPage";
 import CompleteBannerAvatarPage from "../pages/CommunitySetUp/CompleteBannerAvatarPage";
+import LocalRepresentetivePage from "../pages/LocalRepresentetivePage/LocalRepresentativePage";
+import MatrimonialPage from "../pages/Matrimonial/MatrimonialPage";
+import MagazinePage from "../pages/Magazine/MagazinePage";
 
 const AppRouter = () => {
   const navigate=useNavigate();
@@ -338,6 +341,16 @@ const AppRouter = () => {
             <Route exact path="/localBusiness-create" element={<Protected Component={LocalBusinessCreatePage} />}/>
             <Route exact path="/myLocalBusiness" element={<Protected Component={MyLocalBusinessPage} />}/>
             <Route exact path="/localBusiness" element={<Protected Component={LocalBusinessPage} />}/>
+
+            {/* Local Representetives Pages Routes */}
+            <Route exact path="/local-representatives" element={<Protected Component={LocalRepresentetivePage} />}/>
+
+            {/* Matrimonial Pages Routes */}
+            <Route exact path="/matrimonial" element={<Protected Component={MatrimonialPage} />}/>
+
+            {/* Magazine Pages Routes */}
+            <Route exact path="/magazine" element={<Protected Component={MagazinePage} />}/>
+
              
             {/* Event Pages Routes */}
             <Route exact path="/event" element={<Protected Component={EventPage} />}/>

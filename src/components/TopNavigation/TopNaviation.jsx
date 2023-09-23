@@ -19,6 +19,7 @@ import StoreIcon from '@mui/icons-material/Store';
 import LogoutIcon from '@mui/icons-material/Logout';
 import Groups3Icon from '@mui/icons-material/Groups3';
 import MenuIcon from '@mui/icons-material/Menu';
+
 import mamberImg from "../../asset/image/noticeSideC.png";
 import eventImg from "../../asset/image/noticeSideE.png";
 import resources from "../../asset/image/noticeSideG.png";
@@ -26,6 +27,10 @@ import resourceImg from "../../asset/image/resourceSide.png";
 import jobImage from "../../asset/image/jobSideH.png";
 import representiveS from "../../asset/image/representiveSide.png";
 import folder from "../../asset/image/folder.png";
+import localRepresentetiveImg from "../../asset/image/representetive.png";
+import coupleImg from "../../asset/image/couple.png";
+import magazineImg from "../../asset/image/magazine.png";
+
 import ChatIcon from '@mui/icons-material/Chat';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import SettingsIcon from '@mui/icons-material/Settings';
@@ -509,8 +514,37 @@ useEffect(()=>{
                                   </div>
                                 </div>
                               </Link>
+                              <Link to='/local-representatives' onClick={(e) => handleMenuDrawer(anchor)}>
+                                <div className="sidebar_list_item">
+                                  <div className="list_icon">
+                                    <img src={localRepresentetiveImg} alt="" />
+                                  </div>
+                                  <div className="list_name">
+                                    Local Representative
+                                  </div>
+                                </div>
+                              </Link>
+                              <Link to='/matrimonial' onClick={(e) => handleMenuDrawer(anchor)}>
+                                <div className="sidebar_list_item">
+                                  <div className="list_icon">
+                                    <img src={coupleImg} alt="" />
+                                  </div>
+                                  <div className="list_name">
+                                    Matrimonial Center
+                                  </div>
+                                </div>
+                              </Link>
+                              <Link to='/magazine' onClick={(e) => handleMenuDrawer(anchor)}>
+                                <div className="sidebar_list_item">
+                                  <div className="list_icon">
+                                    <img src={magazineImg} alt="" />
+                                  </div>
+                                  <div className="list_name">
+                                    Community Magazine
+                                  </div>
+                                </div>
+                              </Link>
                             </div>
-
                             <div className="logout_btn"  onClick={logout}>
                               Logout
                             </div>
