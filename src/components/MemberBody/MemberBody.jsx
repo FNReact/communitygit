@@ -417,7 +417,9 @@ const MemberBody = () => {
                          
                         </div>
                         {info?.user_id  === data?.user_id &&  <Box display="flex" justifyContent="center" alignItems='center' sx={{mt:2}} >
-                          <Button  variant="contained" onClick={(e)=>handleRemoveMember(data?.uuid)} >Leave</Button>
+                          <div className="leave_btn" onClick={(e)=>handleRemoveMember(data?.uuid)}>
+                          Leave
+                          </div>
                         </Box>}
                         </div>
                       </Grid>}

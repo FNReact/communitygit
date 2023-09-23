@@ -368,11 +368,8 @@ const RegisterBody = () => {
                                </Grid>
                             </Grid>
 
-                            {(actionEffectValue !==true)?<><div className="text-center"><Button sx={{ mt:2}} fullWidth variant="contained" onClick={(e)=> registerFunction(e)}>Create</Button ></div></>:ThreeDotLoaderEffect(actionEffectValue)}
-                            
+                            {(actionEffectValue !==true)?<><div className="text-center"><Button sx={{ mt:2}} fullWidth variant="contained" onClick={(e)=> registerFunction(e)}>Create</Button ></div></>:ThreeDotLoaderEffect(actionEffectValue)}  
                         </form>}
-                       
-
                         {/* set details */}
                         {memberID !=='' &&   
                         <form >

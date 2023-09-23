@@ -53,29 +53,9 @@ const EventCommentReplay = ({
                                         <DeleteIcon className='cursorPointer' onClick={(e)=> handleDeleteEventComment(comment.uuid)} />
                                     </>
                                     }
+                                    <ReplyIcon onClick={(e)=>handleReplayClass(comment.id,replayClass)}  className='cursorPointer'/>
                                 </Box>
-                                <div className="reply_icon cursorPointer">
-                                    
-                                    <ReplyIcon onClick={(e)=>handleReplayClass(comment.id,replayClass)} />
-
-                               
-
-
-                                 {/* <div className="memberCard_footer_right">
-                                    {(comment?.user_id && comment.user_id === userDetails.id)  && 
-                                        <div className="memeber_dropDown"><MoreVertIcon/></div>}
-                                            <div className="member_dropdown_Plate">
-                                                <ul>
-                                                <li onClick={(e)=> handleCommentEdit(comment)} >Edit</li>
-                                                <li onClick={(e)=> handleDeleteEventComment(comment.uuid)}>Delete</li>
-                                                </ul>
-                                            </div>
-                                        </div> */}
-                                 </div>
-
-                                
-                            
-                        </div>
+                             </div>
                         <div class="comment-content">
                             {comment?.details}
                         </div>

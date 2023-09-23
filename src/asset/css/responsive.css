@@ -1,4 +1,19 @@
 @media (min-width: 280px) and (max-width: 899.98px) { 
+    .comments-list .comment-avatar {
+       display: none;
+    }
+    .order_list_wrapper .order_list_wrap .list_top .list_top_left .oredr_id {
+        font-size: 16px;
+    }
+    .order_list_wrapper .order_list_wrap .list_top .list_top_left .oredr_id .MuiSvgIcon-root {
+        font-size: 22px;
+    }
+    .comments-list .comment-box {
+        width: 100%;
+    }
+    .comments-list:before {
+       display: none;
+    }
     .mob_padding_75 {
         margin-top: 75px;
     }
@@ -445,10 +460,14 @@
     height: 200px;
 }
 .user_profile .user_profile_content .content_top .user_profileImg {
-    height: 110px;
-    width: 110px;
+    height: 100px;
+    width: 100px;
     margin-top: -60px;
     margin-left: 0px;
+}
+.user_profile .user_profile_content .content_top .profile-name {
+    padding-left: 10px;
+    font-size: 20px;
 }
 .user_profile .user_profile_content {
     padding: 10px 10px;

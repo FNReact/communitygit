@@ -709,11 +709,17 @@
         padding-left: 22px;
         padding-top: 12px;
         .item_img{
+            height: 50px;
+            width: 50px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
            img{
-            height: 55px;
-            width: 55px;
-            object-fit: cover;
-            border-radius: 6px;
+            height: 100%;
+            width: 100%;
+            object-fit: contain; 
+            border-radius: 4px;
            }
         }
         .item_info{

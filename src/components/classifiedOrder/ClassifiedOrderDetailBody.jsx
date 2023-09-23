@@ -91,7 +91,7 @@ const ClassifiedOrderDetailBody = React.forwardRef((props, ref)=>{
                 <h5> Order Information :</h5>
                 <div className="order_info_wrap">
                    <Grid container spacing={3}>
-                      <Grid item xs={6}> 
+                      <Grid item lg={6} xs={12}> 
                         <div className="info_item">
                            <div className="info_left">
                               Name 
@@ -101,7 +101,7 @@ const ClassifiedOrderDetailBody = React.forwardRef((props, ref)=>{
                            </div>
                         </div>
                       </Grid>
-                      <Grid item xs={6}> 
+                      <Grid item lg={12} xs={6}> 
                         <div className="info_item">
                            <div className="info_left">
                               Phone 
@@ -111,7 +111,7 @@ const ClassifiedOrderDetailBody = React.forwardRef((props, ref)=>{
                            </div>
                         </div>
                       </Grid>
-                      <Grid item xs={6}> 
+                      <Grid item lg={12} xs={6}> 
                         <div className="info_item">
                            <div className="info_left">
                               E-mail 
@@ -121,7 +121,7 @@ const ClassifiedOrderDetailBody = React.forwardRef((props, ref)=>{
                            </div>
                         </div>
                       </Grid>
-                      <Grid item xs={6}> 
+                      <Grid item lg={12} xs={6}> 
                         <div className="info_item">
                            <div className="info_left">
                               Quantity 
@@ -131,7 +131,7 @@ const ClassifiedOrderDetailBody = React.forwardRef((props, ref)=>{
                            </div>
                         </div>
                       </Grid>
-                      <Grid item xs={12}> 
+                      <Grid item lg={12} xs={12}> 
                         <div className="info_item">
                            <div className="info_left">
                               Shipping Address 

@@ -243,6 +243,11 @@
 	-o-transition: color 0.3s ease;
 	transition: color 0.3s ease;
 }
+.comment-box .comment-head .MuiSvgIcon-root{
+   font-size: 18px;
+   color: #4f4e4e;
+   margin-left: 12px;
+}
 
 .comment-box .comment-head i:hover {
 	color: #03658c;
