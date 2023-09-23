@@ -145,7 +145,7 @@ const GeneralTopNavigation = ({back}) => {
               </Link>
               {userInfo === null &&  
               <Link to="/login-icircles">
-                <div className="createBtn">Login</div>
+                <div className="createBtn">Log in</div>
               </Link>}
              
              

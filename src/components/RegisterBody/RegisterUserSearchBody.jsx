@@ -4,7 +4,7 @@ import H1  from '../../asset/image/homeDesign.png'
 import { addUserUrl, allMembersUrl, baseUrl, commonUserUrl, loginUrl, micrositeDetailsUrl, registerUrl, userCheckUrl, userMicrositesUrl } from "../../api/Api";
 import axios from 'axios';
 import { notifySuccess,notifyError } from "../../utils/Toast";
-import { ToastContainer} from "react-toastify";
+import { ToastContainer, toast} from "react-toastify";
 import { ThreeCircles } from  'react-loader-spinner'
 import { UserContext } from "../../utils/UserContext";
 import { useEffect } from "react";
@@ -15,9 +15,10 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import GeneralTopNavigation from "../../pages/AuthenticationPages/GeneralTopNavigation";
 import parse from 'html-react-parser';
 import qr  from '../../asset/image/download.png'
-
+import copy from 'clipboard-copy';
 const RegisterUserSearchBody = () => {
 
+  const [linkToCopy, setLinkToCopy] = useState('');
   const navigate = useNavigate();
   const location = useLocation();
   const {msDetails, userDetails} = useContext(UserContext)
@@ -83,6 +84,7 @@ const RegisterUserSearchBody = () => {
 
   useEffect(() => {
     if(msDetails?.id){
+      setLinkToCopy(`https://community.icircles.app/&u=${msDetails.uuid}`)
       getAllMembers()
     }
   }, []);
@@ -380,6 +382,23 @@ const handleLounge = ()=>{
 }
 
 
+const handleCopyLink = () => {
+  copy(linkToCopy)
+    .then(() => {
+      toast.success('Link copied', {
+        position: 'top-right',
+        autoClose: 2000, // Toast message will close after 2 seconds
+      });
+    })
+    .catch((error) => {
+      toast.error('Error copying link to clipboard', {
+        position: 'top-right',
+        autoClose: 2000,
+      });
+      console.error(error);
+    });
+};
+
   
   return (
     <Fragment>
@@ -411,10 +430,9 @@ const handleLounge = ()=>{
                             <div className="get_emailBtn" onClick={(e)=> getEmail(e)}>
                                 Check for iCircles Account
                             </div>
-                            <div className="login_qr_img">
-                               <img src={qr} alt="" />
-                            </div>
+                           
                         </form>}
+                          
 
                         {token&& loggedMemberStatus===0 &&
                           <Alert severity="info">Your request has been sent to admin for aproval. Your joining request is pending...</Alert>
@@ -462,7 +480,7 @@ const handleLounge = ()=>{
                          
                         {showLogin===true &&
                           <form >
-                             <h6>Login iCircles</h6>
+                             <h6>Log in </h6>
                             <Grid container spacing={1}>
                                   <Grid item xs={12}>
                                     <div className="loginInput_filed emailBody">
@@ -472,7 +490,7 @@ const handleLounge = ()=>{
                                   </Grid>
                               </Grid>
                               <div className="get_emailBtn" onClick={(e)=> loginUser(e)}>
-                                  Login
+                                  Log in
                               </div>
                           </form>
                          }
@@ -552,7 +570,9 @@ const handleLounge = ()=>{
                               </Grid>
                             </Grid>
                         </form>}
-                      
+                          <div className="login_qr_img cursorPointer" onClick={handleCopyLink}>
+                               <img src={`${baseUrl}/storage/images/microsites/qr/${msDetails.id}.png`} alt="" />
+                          </div>
                        </div>
                     </div>
                </div>

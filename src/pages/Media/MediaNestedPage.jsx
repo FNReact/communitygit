@@ -374,7 +374,7 @@ useEffect(() => {
       </Grid>
       {loaderVisible ===true &&  <MainLoader/>}
       {media && media.length===0 && loaderVisible ===false &&<><Box display='flex' justifyContent='center' justifyItems='center' ><Button disabled sx={{ml:25}}>No media found...</Button></Box></>}
-      {(userDetails.id === msDetails.user_id || loggedInUser.user_type==="admin")  &&  <DynamicUploader totalSize={total_size} getAllMedia={getAllMedia} position={position} />}
+       <DynamicUploader totalSize={total_size} getAllMedia={getAllMedia} position={position} />
       
        <ToastContainer />
       </Fragment>

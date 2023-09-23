@@ -108,13 +108,13 @@ const IcirclesLoginPage = () => {
                     <form onSubmit={loginUser}>
                         <Grid container spacing={1} sx={{mt:2}}>
                             <Grid item xs={12}>
-                              <input type="text" className="form_control" onChange={(e)=> setEmail(e.target.value)} value={email}  placeholder="E-mail/iCircles username" />
+                              <input type="text" className="form_control" onChange={(e)=> setEmail(e.target.value)} value={email}  placeholder="iCircles email" />
                             </Grid>
                             <Grid item xs={12}>
                               <input type="password" className="form_control"  placeholder="iCircles Password" onChange={(e)=> setPassword(e.target.value)} />
                             </Grid>
                             <Grid item xs={12}>
-                              <Box sx={{mt:1 }}><Button variant="contained" fullWidth  type="submit">Login</Button></Box>
+                              <Box sx={{mt:1 }}><Button variant="contained" fullWidth  type="submit">Log in</Button></Box>
                             </Grid>
                             <div className="btn_loader">
                                 {ThreeDotLoaderEffect(loaderShow)}

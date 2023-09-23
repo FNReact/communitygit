@@ -25,6 +25,7 @@
     "@testing-library/user-event": "^13.5.0",
     "antd": "5.0.4",
     "axios": "^1.2.0",
+    "clipboard-copy": "^4.0.1",
     "cropperjs": "1.5.12",
     "date-fns": "latest",
     "emoji-mart": "^5.5.2",

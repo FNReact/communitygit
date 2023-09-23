@@ -66,7 +66,7 @@ const CreatCommuinityLoginPage = () => {
             <GeneralTopNavigation back ={true} />   
              <div className="creatCommuinity_wrapper">
              <div className="creatCommuinity_wrap">
-              <h5> Login to your iCircles account.</h5>
+              <h5> Log in to your iCircles account.</h5>
               <h6>To create Community you need to login your iCircles account first.</h6>
               {(location.state !== null && location.state.message===true ) && <button className="btn btn-warning" disabled>Your account is not yet activated.An activation link was sent to your email. Active first to create your microsite.</button>}
                     <form>
@@ -78,7 +78,7 @@ const CreatCommuinityLoginPage = () => {
                               <input type="password" className="form_control"  placeholder="Enter iCircles Password" onChange={(e)=> setPassword(e.target.value)} />
                             </Grid>
                             <Grid item xs={12}>
-                              <Box sx={{mt:1 }}><Button variant="contained" fullWidth onClick={(e)=>loginUser()} >Login</Button></Box>
+                              <Box sx={{mt:1 }}><Button variant="contained" fullWidth onClick={(e)=>loginUser()} >Log in</Button></Box>
                             </Grid>
                             <div className="btn_loader">
                                 {ThreeDotLoaderEffect(loaderShow)}
