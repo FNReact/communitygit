@@ -82,7 +82,9 @@ export default function MyAdminBugList() {
   const [totalLength, setTotalLength] = useState(0)
 
   const [loadershow, setLoaderShow] = useState(false)
-  
+  const [scrollTop, setScrollTop] = useState(false)
+
+
   const loggedInUser = sessionStorage.getItem('loggedInUserInfo')
   var parseUserData;
   if(loggedInUser){
@@ -157,6 +159,12 @@ export default function MyAdminBugList() {
   const denseHeight = dense ? 60 : 80;
   const isNotFound =(!dataFiltered.length && !!filterName) 
 
+  useEffect(() => {
+    if(scrollTop ===true){
+      window.scrollTo(0, 0)
+      setScrollTop(false)
+    }
+  }, [scrollTop])
 
      // for table pagination
      const handleChangePage = (event, newPage) => {
@@ -181,26 +189,31 @@ export default function MyAdminBugList() {
             setCurrentData(currentData)
             const storeData = preData.concat(currentData)
             setTableData(storeData)
+            setScrollTop(true)
           })
           .catch((err)=>{
             setLoaderShow(false)
             if (err?.response) {
               notifyError(err?.response?.data?.message)
+              setScrollTop(true)
             }else{
               notifyError('Something went wrong!.')
+              setScrollTop(true)
             }
           })
         }else{
           setLoaderShow(false)
           setTableData(tableData)
-        //  const storeData = tableData?.diff(currentData)
+          setScrollTop(true)
+          //  const storeData = tableData?.diff(currentData)
         //  if(storeData){
         //   setTableData(storeData)
         //  }
         }
       }else{
         setLoaderShow(false)
-        notifyError('No more page to show!')
+        setScrollTop(true)
+        // notifyError('No more page to show!')
       }
     };
 
@@ -289,11 +302,11 @@ export default function MyAdminBugList() {
               onPageChange={handleChangePage}
               onRowsPerPageChange={onChangeRowsPerPage}
             />
-            <FormControlLabel
+            {/* <FormControlLabel
               control={<Switch checked={dense} onChange={onChangeDense} />}
               label="Dense"
               sx={{ px: 3, py: 1.5, top: 0, position: { md: "absolute" } }}
-            />
+            /> */}
           </Box>
         </Card>
         <ToastContainer />

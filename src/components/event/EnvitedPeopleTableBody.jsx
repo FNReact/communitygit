@@ -116,7 +116,7 @@ const EnvitedPeopleTableBody = ({participent, adminId, getAllMembers}) => {
                   </div>
                 </Grid>
                 <Grid item xs={2} md={2}>
-                  {location.state !==null && userDetails.id === location.state?.eventDetail?.meta?.create_by && 
+                  {location.state !==null && userDetails.id === location.state?.eventDetail?.meta?.create_by && participentStatus !==0 &&
                 <div className="item_action">
                 <IconButton
                   aria-label="more"
@@ -141,9 +141,9 @@ const EnvitedPeopleTableBody = ({participent, adminId, getAllMembers}) => {
                   {/* <MenuItem >Invited</MenuItem> */}
                   
                   <MenuItem onClick={(e)=>handleUpdateStatus('1', participent?.uuid)}>Participated</MenuItem>
-                  <MenuItem onClick={(e)=>handleUpdateStatus('2', participent?.uuid)}>Interested</MenuItem>
+                  {/* <MenuItem onClick={(e)=>handleUpdateStatus('2', participent?.uuid)}>Interested</MenuItem>
                   <MenuItem onClick={(e)=>handleUpdateStatus('3', participent?.uuid)}>Going</MenuItem>
-                  <MenuItem onClick={(e)=>handleUpdateStatus('4', participent?.uuid)}>Not Going</MenuItem>
+                  <MenuItem onClick={(e)=>handleUpdateStatus('4', participent?.uuid)}>Not Going</MenuItem> */}
                   <MenuItem onClick={(e)=>handleUpdateStatus('5', participent?.uuid)}>Not Participated</MenuItem>
                 </Menu>
               </div>}
