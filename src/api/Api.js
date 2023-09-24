@@ -61,6 +61,11 @@ const addMediaUrl = `${baseUrl}/api/mymicrosites/media`;
 // Bug report api
 const reportUrl = `${baseUrl}/api/common/micrositecontact`;
 
+// Magazine api
+// const getAlllCategoryUrl = `${baseUrl}/api/cms/pagecategories/25/all`;
+const categoryUrl = `${baseUrl}/api/cms/pagecategories`;
+
+
 
 let token = sessionStorage.getItem("token");
 const header = {
