@@ -16,3 +16,14 @@
     text-overflow: ellipsis;
     max-width: 100%;
   }
+
+  @mixin text-ellips-2 {
+    display: block; /* Fallback for non-webkit */
+    display: -webkit-box;
+    height: 2; /* Fallback for non-webkit */
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }

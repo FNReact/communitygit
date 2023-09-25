@@ -15,27 +15,98 @@
             color: $black;
         }
     }
-    .mag_category_list{
-        margin-top: 15px;
-        h4{
-            font-size: 16px;
-            font-style: 400;
-            color: #464545e0;
-            margin-bottom: 8px;
-        }
-         ul{
-             li{
-                padding: 1px 15px;
-                border: 1px solid #a1a0a0a8;
-                display: inline-block;
-                margin-right: 12px;
-                font-size: 14px;
-                font-weight: 400;
-                border-radius: 35px;
-                color: #6d6b6b;
+   
+    .magazine_nav{
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .nav_list{ 
+            li{
+                padding-right: 25px;
                 cursor: pointer;
+                position: relative;
+                display: inline-block;
+                &:hover a{
+                   width: 100%;
+                }
+                &:hover .sub_down{
+                    top: 38px;
+                    opacity: 1;
+                    margin-top: 0;
+                    visibility: visible;
+                    padding: 10px 10px 10px 10px;
+                } 
+                a{
+                    font-size: 15px;
+                    color: #333;
+                    font-weight: 400;
+                    span{
+                        padding-right: 10px;
+                        font-size: 18px;
+                    } 
+                    .droppper{
+                        font-size: 16px;
+                    }
+                    
+                }
+                .sub_down{
+                    background-color: #ffffff;
+                    border-radius: 6px;
+                    padding: 10px 10px 10px 10px;
+                    box-shadow: 1px 1.732px 20px 0px rgba(0,0,0,0.3);   
+                    -webkit-transition: all 0.3s ease-in-out;
+                    transition: all 0.3s ease-in-out;
+                    position: absolute;
+                    visibility: hidden;
+                    display: block;
+                    width: 190px;
+                    border: none !important;
+                    opacity: 0;
+                    top: 40px;
+                    right: 0;
+                    padding: 0;  
+                    z-index: 10;
+                  li{
+                       padding: 2px 8px;
+                       width: 100%;
+                       &:hover{
+                        background-color: #f3f3f3;
+                       }
+                       &:hover a{
+                        //    background-color: #eeeeeead;
+                           color: $primaryColor;
+                       } 
+                      a{
+                        font-size: 14px;
+                        color: #272626;
+                        font-weight: 400;
+                      }
+                  }
              }
-         }
+            }
+        }
+        .mag_search{
+            position: relative;
+            .form_control{
+                height: 45px;
+                width: 220px;
+                background-color: #f3f3f3;
+                border-radius: 35px;
+                padding: 0 35px 0 15px;
+                border: 1px solid #c3c3c397;
+                &:focus{
+                    outline: 0;
+                }
+            }
+            i{
+             position: absolute;
+             top: 50%;
+             right: 10px;
+             transform: translateY(-50%);
+             cursor: pointer;
+            }
+        }
     }
     .magzine_slider_content{
         height: 300px;
@@ -88,7 +159,7 @@
         padding-top: 40px;
     }
     .sec_head{
-        font-size: 22px;
+        font-size: 20px;
         font-weight: 500;
         color: $black;
         margin-bottom: 20px;
@@ -97,26 +168,115 @@
         padding: 10px;
         border: 1px solid #c3c3c3b4;
         border-radius: 15px;
+        height: 240px;
+        &:hover{
+            background-color: #f3f3f3;
+        }
         .item_img{
-            height: 180px;
+            height: 130px;
             width: 100%;
             img{
             height: 100%;
             width: 100%;
             object-fit: cover;
+            border-radius: 10px;
             }
         }
         .content_title{
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 500;
             color: $black;
             line-height: 22px;
             @include text-ellips;
             margin: 10px 0 5px 0;
+            text-align: center;
         }
         p{
             text-align: start;
             color: $text;
+            line-height: 19px;
+            font-size: 14px;
+            @include text-ellips-2;
+            text-align: center;
+        }
+    }
+
+    .sticky_section{
+        padding-top: 30px;
+        .sticky_wrapper{
+           
+            .sticky_wrapper_main{
+                display: flex;
+                .main_img{
+                    img{
+                        height: 180px;
+                        width: 180px;
+                        object-fit: cover;
+                        border-radius: 10px;
+                    }
+                }
+                .main_text{
+                    padding-left: 10px;
+                    h4{
+                        font-size: 24px;
+                        font-weight: 600;
+                        color: $black;
+                        line-height: 32px;
+                        @include text-ellips-2;
+                    }
+                    p{
+                        font-size: 14px;
+                        font-weight: 400;
+                        color: $text;
+                        line-height: 20px;
+                        @include text-ellips-2;
+                        text-align: start;
+                    }
+                    .read_btn{
+                        font-size: 15px;
+                        text-transform: uppercase;
+                        cursor: pointer;
+                        &:hover{
+                            color: $primaryColor;
+                        }
+                    }
+                }
+            }
+            .sticky_wrapper_sub{
+                display: flex;
+                align-items: center;
+                padding: 10px;
+                border: 1px solid #c3c3c3ab;
+                border-radius: 12px;
+                margin-bottom: 10px;
+                .sub_img{
+                    img{
+                        height: 70px;
+                        width: 70px;
+                        object-fit: cover;
+                        border-radius: 8px;
+                    }
+                }
+                .sub_text{
+                    padding-left: 10px;
+                    h4{
+                        font-size: 16px;
+                        font-weight: 500;
+                        color: $black;
+                        line-height: 22px;
+                        @include text-ellips-2;
+                    }
+                   
+                    .read_btn{
+                        font-size: 13px;
+                        text-transform: uppercase;
+                        cursor: pointer;
+                        &:hover{
+                            color: $primaryColor;
+                        }
+                    }
+                }
+            }
         }
     }
 }
