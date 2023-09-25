@@ -58,9 +58,11 @@ const CommunityInfo = () => {
                    </div>
                   </div>
 
-                  {userInfo?.user_type ==='admin' &&  <div className="edit_button cursorPointer" onClick={(e)=> navigate('/community-setup')}>
+                 <div>
+                 {userInfo?.user_type ==='admin' &&  <div className="edit_button cursorPointer" onClick={(e)=> navigate('/community-setup')}>
                     <EditIcon/>  Edit 
                   </div>}
+                 </div>
                  
 
                </div>

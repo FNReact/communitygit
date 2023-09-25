@@ -81,6 +81,7 @@ import MagazineMenuPage from "../pages/Magazine/MagazineMenuPage";
 import MagazineMenuCreatePage from "../pages/Magazine/MagazineMenuCreatePage";
 import MagazineContentPage from "../pages/Magazine/MagazineContentPage";
 import MagazineContentCreatePage from "../pages/Magazine/MagazineContentCreatePage";
+import MagazineDetailsPage from "../pages/Magazine/MagazineDetailsPage";
 
 const AppRouter = () => {
   const navigate=useNavigate();
@@ -358,6 +359,7 @@ const AppRouter = () => {
             <Route exact path="/magazine-menu-create" element={<Protected Component={MagazineMenuCreatePage} />}/>
             <Route exact path="/magazine-content" element={<Protected Component={MagazineContentPage} />}/>
             <Route exact path="/magazine-content-create" element={<Protected Component={MagazineContentCreatePage} />}/>
+            <Route exact path="/magazine-details" element={<Protected Component={MagazineDetailsPage} />}/>
 
              
             {/* Event Pages Routes */}
