@@ -48,13 +48,13 @@
             color: #fff;
             background-color: #209d56;
             border-radius: 4px;
-            padding: 4px 22px;
+            padding: 4px 20px;
             border-radius: 35px;
-            // position: absolute;
-            // right: 10px;
-            // top: 10px;
+            display: flex;
+            align-items: center;
             .MuiSvgIcon-root{
-               font-size: 17px;
+               font-size: 15px;
+               margin-right: 3px;
             }
          }
          .community_view_btn {
