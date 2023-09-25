@@ -29,7 +29,7 @@ import Iconify from "../Iconify/Iconify";
 import { notifyError, notifySuccess } from "../../utils/Toast";
 import useIsMountedRef from "../../hooks/useIsMountedRef";
 import { UserContext } from "../../utils/UserContext";
-import { categoryUrl, reportUrl } from "../../api/Api";
+import { categoryUrl, postUrl, reportUrl } from "../../api/Api";
 import MainLoader from "../PageLoadEffects/MainLoader";
 import { ToastContainer } from "react-toastify";
 import MagazineMenuTableRow from "../table/Magazine/MagazineMenuTableRow";
@@ -39,8 +39,8 @@ import MagazineContentTableRow from "../table/Magazine/MagazineContentTableRow";
 // ----------------------------------------------------------------------
 
 const TABLE_HEAD = [
-  { id: "name", label: "Name", align: "left" },
-  { id: "type", label: "Type", align: "left" },
+  { id: "postid", label: "Post ID", align: "left" },
+  { id: "title", label: "Title", align: "left" },
   { id: "position", label: "Position", align: "left" },
   { id: "status", label: "Status", align: "left" },
   { id: "action", label: "Action", align: "left" },
@@ -93,18 +93,19 @@ export default function MagazineContentList() {
     parseUserData = JSON.parse(loggedInUser)
   }
     // get all contacts
-    const getAllContacts = useCallback(async () => {
+    const getAllContents = useCallback(async () => {
       setLoaderShow(true)
       let config = {
         method: 'get',
-        url: `${categoryUrl}/${msDetails.id}/all`,
+        url: `${postUrl}/${msDetails.id}`,
       };
       
       axios.request(config)
       .then((response) => {
-            setTableData(response.data.data);
-            setLastPage(response.data?.last_page)
-            setTotalLength(response.data?.total)
+            console.log('content res', response)
+            setTableData(response?.data?.data);
+            setLastPage(response?.data?.meta?.last_page)
+            setTotalLength(response?.data?.meta?.total)
             setLoaderShow(false)
       })
       .catch((error) => {
@@ -113,8 +114,8 @@ export default function MagazineContentList() {
       }, [isMountedRef]);
     
       useEffect(() => {
-        getAllContacts();
-      }, [getAllContacts]);
+        getAllContents();
+      }, [getAllContents]);
     
 
 
@@ -126,7 +127,7 @@ export default function MagazineContentList() {
 
   // delete row
   const handleDeleteRow = (uuid) => {
-    const url = `${categoryUrl}/${uuid}`;
+    const url = `${postUrl}/${uuid}`;
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -140,7 +141,7 @@ export default function MagazineContentList() {
         axios
           .delete(url, { headers: { Authorization: `Bearer ${token}` } })
           .then((response) => {
-            getAllContacts()
+            getAllContents()
             notifySuccess()
           });
       }
@@ -149,7 +150,7 @@ export default function MagazineContentList() {
 
   //edit row
   const handleEditRow = (row)=>{
-    navigate('/magazine-menu-create', {state:{row:row}})
+    navigate('/magazine-content-create', {state:{row:row}})
   }
 
   const dataFiltered = applySortFilter({
@@ -334,7 +335,7 @@ function applySortFilter({ tableData, comparator, filterName }) {
 
   if (filterName) {
     tableData = tableData.filter(
-      (item) => item?.subject.toLowerCase().indexOf(filterName.toLowerCase()) !== -1
+      (item) => item?.title.toLowerCase().indexOf(filterName.toLowerCase()) !== -1
     );
   }
 

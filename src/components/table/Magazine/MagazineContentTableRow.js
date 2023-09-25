@@ -31,24 +31,16 @@ export default function MagazineContentTableRow({
 }) {
   const naviagte = useNavigate()
 
-  const {userDetails, msDetails} = useContext(UserContext)
-  const [loaderEffect, setLoaderEffect] = useState(false)
-  const token = sessionStorage.getItem('token');
-
-
-
-
-
-
+  console.log('row', row)
 
   return (
     <TableRow hover>
-      <TableCell >{row?.name}</TableCell>
-      <TableCell className="cursorPointer">{row?.type}</TableCell>
+      <TableCell >{row?.id}</TableCell>
+      <TableCell >{row?.title}</TableCell>
       <TableCell>{row?.position}</TableCell>
       <TableCell>
-        {row?.status ==='true' && <Typography style={{ color: "#326df5" }}>Active</Typography>}
-        {row?.status ==='false' && <Typography style={{ color: "#f59432" }}>Deactive</Typography>}
+        {row?.status ===true && <Typography style={{ color: "#326df5" }}>Active</Typography>}
+        {row?.status ===false && <Typography style={{ color: "#f59432" }}>Deactive</Typography>}
       </TableCell>
       <TableCell>
        <Button variant="contained" onClick={(e)=> onEditRow()}>Edit</Button>

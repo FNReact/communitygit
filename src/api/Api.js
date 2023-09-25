@@ -64,6 +64,13 @@ const reportUrl = `${baseUrl}/api/common/micrositecontact`;
 // Magazine api
 const categoryUrl = `${baseUrl}/api/cms/pagecategories`;
 
+const postUrl = `${baseUrl}/api/cms/pages`;
+const postDetailsUrl = `${baseUrl}/api/cms/pagebasedpost`;
+
+const mediaUploadUrl = `${baseUrl}/api/cms/pages`;
+const mediaDeleteUrl = `${baseUrl}/api/cms/pages`;
+
+
 
 
 let token = sessionStorage.getItem("token");
@@ -120,5 +127,10 @@ export {
 
   reportUrl,
 
-  categoryUrl
+  categoryUrl,
+  postUrl,
+  postDetailsUrl,
+
+  mediaUploadUrl,
+  mediaDeleteUrl
 };

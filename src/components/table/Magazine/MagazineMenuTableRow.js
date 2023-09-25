@@ -35,20 +35,15 @@ export default function MagazineMenuTableRow({
   const [loaderEffect, setLoaderEffect] = useState(false)
   const token = sessionStorage.getItem('token');
 
-
-
-
-
-
-
+console.log('row', row)
   return (
     <TableRow hover>
       <TableCell >{row?.name}</TableCell>
       <TableCell className="cursorPointer">{row?.type}</TableCell>
       <TableCell>{row?.position}</TableCell>
       <TableCell>
-        {row?.status ==='true' && <Typography style={{ color: "#326df5" }}>Active</Typography>}
-        {row?.status ==='false' && <Typography style={{ color: "#f59432" }}>Deactive</Typography>}
+        {row?.status ==='1' && <Typography style={{ color: "#326df5" }}>Active</Typography>}
+        {row?.status ==='0' && <Typography style={{ color: "#f59432" }}>Deactive</Typography>}
       </TableCell>
       <TableCell>
        <Button variant="contained" onClick={(e)=> onEditRow()}>Edit</Button>

@@ -3,7 +3,7 @@ import { Fragment } from "react";
 import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";  
-import {  baseUrl, categoryUrl, reportUrl } from "../../api/Api";
+import {  baseUrl, categoryUrl, postDetailsUrl, postUrl, reportUrl } from "../../api/Api";
 import { notifyError, notifySuccess } from "../../utils/Toast";
 import { useContext } from "react";
 import { UserContext } from "../../utils/UserContext";
@@ -16,6 +16,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 import MainLoader from "../PageLoadEffects/MainLoader";
 import { Upload, Modal, Image } from 'antd';
+import Dragger from "antd/es/upload/Dragger";
 
 const MagazineContentCreate = ()=>{
   const navigate = useNavigate();
@@ -26,6 +27,8 @@ const MagazineContentCreate = ()=>{
   const [previewVisible, setPreviewVisible] = useState(false);
   const [previewImage, setPreviewImage] = useState("");
   const [fileList, setFileList] = useState([]);
+  const [mediaList, setMediaList] = useState([]);
+
   const [userInfo, setUserInfo] = useState(null);
 
   const [storeImage, setStoreImage] = useState(null)
@@ -48,12 +51,12 @@ const handleCancel = () => setPreviewVisible(false);
 
 
 const handlePreview = async file => {
+    console.log('file.', file)
     if (!file.url && !file.preview) {
       file.preview = await getBase64(file.originFileObj);
     }
     setPreviewImage(file.url || file.preview)
     setPreviewVisible(true)
-   
   };
 
   //  multiple files upload
@@ -71,7 +74,26 @@ const handlePreview = async file => {
           padding: "40px",
         }}
       >
-        Upload Image
+        Feature Image
+      </div>
+    </div>
+  );
+
+
+    //  multiple files upload
+    const handleMediaChange = ({ fileList: newFileList }) => {
+      var files = newFileList;
+      setMediaList(newFileList)
+    };
+  const uploadMediaButton = (
+    <div>
+      <div
+        style={{
+          marginTop: 0,
+          padding: "40px",
+        }}
+      >
+        Upload Media (Photo,Video,Files)
       </div>
     </div>
   );
@@ -89,9 +111,9 @@ const handlePreview = async file => {
     message:'',
   };
 
-  const [parentValue, setParentValue] = useState(null);
-  const [parentId, setParentId] = useState();
-  const [parentTitle, setParentTitle] = useState(null);
+  const [categoryValue, setCategoryValue] = useState(null);
+  const [categoryId, setCategoryId] = useState();
+  const [categoryTitle, setCategoryTitle] = useState(null);
 
   const methods = useForm({defaultValues});
   const {watch,setValue} = methods;
@@ -102,10 +124,6 @@ const handlePreview = async file => {
       setValue('message',content);
     }
   };
-
-  const  handleChangeType = (e)=>{
-    setValue('type',e.target.value)
-  }
   const  handleChangePosition = (e)=>{
     setValue('position',e.target.value)
   }
@@ -113,8 +131,8 @@ const handlePreview = async file => {
     setValue('status', event.target.checked);
   };
 
-  // get all parent categories
-  const [allParentCategories, setAllParentCategories] = useState([]);
+  // get all Category categories
+  const [categories, setCategories] = useState([]);
   const getAllCategories = () => {
     let config = {
       method: 'get',
@@ -123,7 +141,7 @@ const handlePreview = async file => {
     
     axios.request(config)
     .then((response) => {
-      setAllParentCategories(response?.data?.data);
+      setCategories(response?.data?.data);
     })
     .catch((error) => {
       console.log(error);
@@ -137,24 +155,28 @@ const handlePreview = async file => {
 
 
 //Create new job
-const handleMenuAdd = async () => {
+const handleContentAdd = async () => {
   setLoaderVisible(true);
   let formData = new FormData(); //formdata object
   formData.append("uuid", msDetails.uuid); //append the values with key, value pair
   formData.append("microsite_id", msDetails.id);
-  formData.append("name", values.name);
-  formData.append("type", values.type);
+  formData.append("title", values.name);
+  formData.append("slug", values.slug);
   formData.append("position", values.position);
-  formData.append("details", values.message);
+  formData.append("body", values.message);
 
   if(fileList && fileList.length>0){
     formData.append("featured_image", fileList[0].originFileObj);
   }
-  if (parentId) {
-    formData.append("parent", parentId);
+  if (categoryId) {
+    formData.append("category_id", categoryId);
   }
-  formData.append("status", values.status);
-
+  if(values.status ===true){
+    formData.append("status", 1);
+  }else{
+    formData.append("status", 0);
+  }
+  
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -164,9 +186,9 @@ const handleMenuAdd = async () => {
 
   var url;
   if(location?.state !==null){
-    url = `${categoryUrl}/${location?.state?.row?.uuid}`
+    url = `${postUrl}/${location?.state?.row?.uuid}`
   }else{
-    url = `${categoryUrl}`
+    url = `${postUrl}`
   }
 
   axios
@@ -174,7 +196,7 @@ const handleMenuAdd = async () => {
     .then((response) => {
       setLoaderVisible(false);
       notifySuccess();
-      navigate('/magazine-menu')
+      navigate('/magazine-content')
     })
     .catch((err) => {
       notifyError();
@@ -183,35 +205,31 @@ const handleMenuAdd = async () => {
 
 
 // get single category details
-const getSingleCategoryDetails = (row)=>{
+const getSingleContentDetails = (row)=>{
+  console.log('hit')
   // setLoaderVisible(true)
   let config = {
     method: 'get',
-    url: `${categoryUrl}/${row.uuid}`,
+    url: `${postDetailsUrl}/${row.uuid}`,
   };
   
   axios.request(config)
   .then((response) => {
+    console.log('response', response)
     if(response?.data){
-      setValue('name', response?.data?.name)
-      setValue('type', response?.data?.type)
-      setValue('position', response?.data?.position)
-      if(response?.data?.status ==='false'){
-        setValue('status', false)
-      }else{
-        setValue('status', true)
-      }
-      setValue('message', response?.data?.details)
+      setValue('name', response?.data?.posts?.title)
+      setValue('slug', response?.data?.posts?.slug)
+      setValue('position', response?.data?.posts?.position)
+      setValue('status', response?.data?.posts?.status)
+      setValue('message', response?.data?.posts?.body)
 
       if(response?.data?.featured_image !==null){
-        setStoreImage(`${baseUrl}/${response?.data?.featured_image}`)
+        setStoreImage(`${baseUrl}/${response?.data?.posts?.featured_image}`)
       }
-      
-
-      if(response?.data?.parent_id){
-          allParentCategories.forEach(element => {
-            if(element.id ===response?.data?.parent_id){
-              setParentValue(element)
+      if(response?.data?.posts?.category?.id){
+          categories.forEach(element => {
+            if(element.id ===response?.data?.posts?.category?.id){
+              setCategoryValue(element)
             }
           });
       }
@@ -228,9 +246,9 @@ const getSingleCategoryDetails = (row)=>{
 
 useEffect(()=>{
   if(location?.state !==null){
-    getSingleCategoryDetails(location?.state?.row)
+    getSingleContentDetails(location?.state?.row)
   }
-},[parentValue, allParentCategories])
+},[categoryValue, categories])
 
 
 // handle slug 
@@ -240,8 +258,6 @@ useEffect(()=>{
       const slug = inputValue.toLowerCase().replace(/[^\w-]+/g, '-');
       setValue('slug',slug)
     }
-
-
 
  return(
     <Fragment>
@@ -284,17 +300,17 @@ useEffect(()=>{
                         <FormControl fullWidth focused>
                         <Autocomplete
                             sx={{ mt: -2 }}
-                            options={allParentCategories}
+                            options={categories}
                             getOptionLabel={(option) => option.name}
-                            id="parentCategory"
-                            defaultValue={parentValue}
-                            value={parentValue}
+                            id="categoryCategory"
+                            defaultValue={categoryValue}
+                            value={categoryValue}
                             focused
                             onChange={(event, newValue) => {
                               if (newValue) {
-                                setParentValue(newValue);
-                                setParentId(newValue.id);
-                                setParentTitle(newValue.name);
+                                setCategoryValue(newValue);
+                                setCategoryId(newValue.id);
+                                setCategoryTitle(newValue.name);
                               }
                             }}
                             renderInput={(params) => (
@@ -368,6 +384,26 @@ useEffect(()=>{
 {/* ***************Image end************* */}
                   </Grid>
 
+
+                {location?.state !==null &&  <div className="mediaAdd_Body">
+                    <div className="mediaAdder">
+                      <Dragger
+                        action="https://icircles.app/storage/logo/h9kMsnUQzKZ23PfgkLNhl1UxGWcjFXCSIntrNrD5.png"
+                        name="file" 
+                        multiple={true}
+                        listType="picture"
+                        fileList={mediaList}
+                        onChange={handleMediaChange}
+                      >
+                        {mediaList.length >= 10 ? null : uploadMediaButton}
+                      </Dragger>
+                    </div>
+                    <Box sx={{mt:3, mb:3}}>
+                      {mediaList.length>0 && <Button variant="contained">Upload Media</Button>}
+                    </Box>
+                  </div>}
+                 
+
                   <Box sx={{ minWidth: 120 }}>
                         <FormControl component="fieldset" variant="standard">
                             <FormGroup>
@@ -391,7 +427,7 @@ useEffect(()=>{
 
                       <Box sx={{  display: 'flex', justifyContent: 'center', alignItems: 'center',  flexDirection: 'column',    mt:5 }}>
                           {(values.name !=='' && values.message !=='')
-                           ? <Button fullWidth variant="contained" onClick={(e)=>handleMenuAdd()}>{location?.state !==null?'Update':'Create'}</Button>
+                           ? <Button fullWidth variant="contained" onClick={(e)=>handleContentAdd()}>{location?.state !==null?'Update':'Create'}</Button>
                            : <Button fullWidth variant="contained" disabled>{location?.state !==null?'Update':'Create'}</Button>
                           }
                       </Box>

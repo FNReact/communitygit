@@ -92,7 +92,7 @@ export default function MagazineMenuList() {
     parseUserData = JSON.parse(loggedInUser)
   }
     // get all contacts
-    const getAllContacts = useCallback(async () => {
+    const getAllMenu = useCallback(async () => {
       setLoaderShow(true)
       let config = {
         method: 'get',
@@ -112,8 +112,8 @@ export default function MagazineMenuList() {
       }, [isMountedRef]);
     
       useEffect(() => {
-        getAllContacts();
-      }, [getAllContacts]);
+        getAllMenu();
+      }, [getAllMenu]);
     
 
 
@@ -139,7 +139,7 @@ export default function MagazineMenuList() {
         axios
           .delete(url, { headers: { Authorization: `Bearer ${token}` } })
           .then((response) => {
-            getAllContacts()
+            getAllMenu()
             notifySuccess()
           });
       }
@@ -333,7 +333,7 @@ function applySortFilter({ tableData, comparator, filterName }) {
 
   if (filterName) {
     tableData = tableData.filter(
-      (item) => item?.subject.toLowerCase().indexOf(filterName.toLowerCase()) !== -1
+      (item) => item?.name.toLowerCase().indexOf(filterName.toLowerCase()) !== -1
     );
   }
 

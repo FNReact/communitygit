@@ -71,7 +71,7 @@ const handlePreview = async file => {
           padding: "40px",
         }}
       >
-        Upload Image
+        Feature Image
       </div>
     </div>
   );
@@ -153,7 +153,12 @@ const handleMenuAdd = async () => {
   if (parentId) {
     formData.append("parent", parentId);
   }
-  formData.append("status", values.status);
+  if(values.status ===true){
+    formData.append("status", 1);
+  }else{
+    formData.append("status", 0);
+  }
+  
 
   const config = {
     headers: {
@@ -196,7 +201,7 @@ const getSingleCategoryDetails = (row)=>{
       setValue('name', response?.data?.name)
       setValue('type', response?.data?.type)
       setValue('position', response?.data?.position)
-      if(response?.data?.status ==='false'){
+      if(response?.data?.status ==='0'){
         setValue('status', false)
       }else{
         setValue('status', true)
