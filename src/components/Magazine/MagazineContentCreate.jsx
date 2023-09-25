@@ -17,7 +17,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import MainLoader from "../PageLoadEffects/MainLoader";
 import { Upload, Modal, Image } from 'antd';
 
-const MagazineMenuCreate = ()=>{
+const MagazineContentCreate = ()=>{
   const navigate = useNavigate();
   const location = useLocation();
   const getUrl = window.location.href;
@@ -83,7 +83,7 @@ const handlePreview = async file => {
   const token = sessionStorage.getItem('token');
   const defaultValues = {
     name:'',
-    type:'',
+    slug:'',
     position:'',
     status:true,
     message:'',
@@ -233,36 +233,31 @@ useEffect(()=>{
 },[parentValue, allParentCategories])
 
 
+// handle slug 
+    const handleSlug = (e)=>{
+      const inputValue = e.target.value;
+      setValue('name',inputValue)
+      const slug = inputValue.toLowerCase().replace(/[^\w-]+/g, '-');
+      setValue('slug',slug)
+    }
+
+
 
  return(
     <Fragment>
          <div className="jobHome">
                 <Grid container spacing={2}>
                     <Grid item lg={12} md={12} sm={12} xs={12}>
-                      <Box ><TextField label="Category Name" variant="filled" fullWidth  focused onChange={(e)=>setValue("name",e.target.value)} value={values.name} /></Box>
+                      <Box ><TextField label="Content Title" variant="filled" fullWidth  focused onChange={(e)=> handleSlug(e)} value={values.name} /></Box>
                     </Grid>
+                    <Grid item lg={12} md={12} sm={12} xs={12}>
+                      <Box ><TextField label="Content Slug" variant="filled" fullWidth  focused onChange={(e)=>setValue("slug",e.target.value)} value={values.slug} /></Box>
+                    </Grid>
+                    
                     <Grid item lg={12} md={12} sm={12} xs={12}>
                       <Box sx={{ minWidth: 120 }}>
                         <FormControl fullWidth focused>
-                          <InputLabel id="demo-simple-select-label">Category Type</InputLabel>
-                          <Select
-                            labelId="demo-simple-select-label"
-                            id="demo-simple-select"
-                            label="Category Type"
-                            defaultValue={values.type}
-                            value={values.type}
-                            onChange={handleChangeType}
-                            >
-                            <MenuItem value={'menu'}>Menu</MenuItem>
-                            <MenuItem value={'post'}>Post</MenuItem>
-                          </Select>
-                        </FormControl>
-                      </Box>
-                    </Grid>
-                    <Grid item lg={12} md={12} sm={12} xs={12}>
-                      <Box sx={{ minWidth: 120 }}>
-                        <FormControl fullWidth focused>
-                          <InputLabel id="demo-simple-select-label">Category Position</InputLabel>
+                          <InputLabel id="demo-simple-select-label">Content Position</InputLabel>
                           <Select
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
@@ -272,11 +267,14 @@ useEffect(()=>{
                             onChange={handleChangePosition}
                             >
                             <MenuItem value={'no_position'}>No Position</MenuItem>
-                            <MenuItem value={'main_nav'}>Main Menu</MenuItem>
-                            <MenuItem value={'sub_nav1'}>Sub Nav 1</MenuItem>
-                            <MenuItem value={'sub_nav2'}>Sub Nav 2</MenuItem>
-                            <MenuItem value={'front_page_sections'}>Front Section</MenuItem>
-                            <MenuItem value={'stiky_sections'}>Sticky Section</MenuItem>
+                            <MenuItem value={'main'}>Main Section</MenuItem>
+                            <MenuItem value={'stiky'}>Sticky</MenuItem>
+                            <MenuItem value={'exclusive'}>Exclusive</MenuItem>
+                            <MenuItem value={'slider'}>Slider</MenuItem>
+                            <MenuItem value={'footer_nav'}>Footer Navigation</MenuItem>
+                            <MenuItem value={'important1'}>Important 1</MenuItem>
+                            <MenuItem value={'important2'}>Important 2</MenuItem>
+                            <MenuItem value={'front_page'}>Front page</MenuItem>
                           </Select>
                         </FormControl>
                       </Box>
@@ -303,7 +301,7 @@ useEffect(()=>{
                               <TextField
                                 {...params}
                                 focused
-                                label="Parent Category"
+                                label="Content Category"
                                 margin="normal"
                               />
                             )}
@@ -312,7 +310,8 @@ useEffect(()=>{
                       </Box>
                     </Grid>
                     <Grid item lg={12} md={12} sm={12} xs={12}>
-                         <Box  >
+                         <Box>
+                          <label htmlFor="message">Content</label>
                           <SunEditor
                                      name="message"
                                      setContents={values.message}
@@ -409,5 +408,5 @@ useEffect(()=>{
 )
 }
 
-export default MagazineMenuCreate
+export default MagazineContentCreate
 

@@ -33,6 +33,7 @@ import { categoryUrl, reportUrl } from "../../api/Api";
 import MainLoader from "../PageLoadEffects/MainLoader";
 import { ToastContainer } from "react-toastify";
 import MagazineMenuTableRow from "../table/Magazine/MagazineMenuTableRow";
+import MagazineContentTableRow from "../table/Magazine/MagazineContentTableRow";
 
 
 // ----------------------------------------------------------------------
@@ -48,7 +49,7 @@ const TABLE_HEAD = [
 
 // ----------------------------------------------------------------------
 
-export default function MagazineMenuList() {
+export default function MagazineContentList() {
   ReactSession.setStoreType("sessionStorage");
   const {
     dense,
@@ -227,9 +228,9 @@ export default function MagazineMenuList() {
           <TableToolbar
             filterName={filterName}
             onFilterName={handleFilterName}
-            placeholder={'Search Menu...'}
+            placeholder={'Search Content...'}
             addButtonFor={'admin'}
-            path={'/magazine-menu-create'}
+            path={'/magazine-content-create'}
             // path={'/magazine-menu'}
              />
             <TableContainer sx={{ minWidth: 800 }}>
@@ -270,7 +271,7 @@ export default function MagazineMenuList() {
                     ?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                     ?.map((row, index) =>
                       row ? (
-                        <MagazineMenuTableRow
+                        <MagazineContentTableRow
                           key={row.id}
                           row={row}
                           index={index}

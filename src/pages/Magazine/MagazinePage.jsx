@@ -35,7 +35,7 @@ const MagazinePage = () => {
                 <div className="magazine_t">Community Magazine</div>
                 <div className="top_left">
                   <Button variant="outlined" sx={{mr:2}} onClick={(e)=> navigate('/magazine-menu') } >Menu</Button>
-                  <Button variant="contained">Content</Button>
+                  <Button variant="contained" onClick={(e)=> navigate('/magazine-content') } >Content</Button>
                 </div>
               </div>
               <div className="mag_category_list">
