@@ -95,8 +95,8 @@ const MyJobCreate = ()=>{
        setValue('note',res.data.special_note);
 
        setCompanyLogo(res.data.company_logo);
-       setCategoryTitle(res.data.category.category_name);
-       setCategoryId(res.data.category.id)
+       setCategoryTitle(res?.data?.category?.category_name);
+       setCategoryId(res?.data?.category?.id)
       })
 }
 useEffect(()=>{

@@ -81,7 +81,6 @@ const AddMemberBody = () => {
       axios.post(userCheckUrl,{
         email: email
       }).then((response)=>{
-        setLoaderEffect(false)
         if(response.data[0]){
           var find =0;
           allMembers.forEach(element => {
@@ -120,10 +119,12 @@ const AddMemberBody = () => {
             notifySuccess('Invitation sent successfully !.')
             setTimeout(()=>{
               window.location.href = '/member'
-            },3000)
+            },500)
           })
           .catch((err)=>{notifyError();setLoaderEffect(false)})
         }
+        setLoaderEffect(false)
+
       }).catch((err)=>{setLoaderEffect(false)})
   }
 
@@ -269,7 +270,7 @@ const AddMemberBody = () => {
               
            </div>
           }
-        {/* {loaderEffect === true && <MainLoader />} */}
+        {loaderEffect === true && <MainLoader />}
       <ToastContainer />
     </Fragment>
   );

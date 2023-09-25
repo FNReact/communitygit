@@ -62,7 +62,6 @@ const addMediaUrl = `${baseUrl}/api/mymicrosites/media`;
 const reportUrl = `${baseUrl}/api/common/micrositecontact`;
 
 // Magazine api
-// const getAlllCategoryUrl = `${baseUrl}/api/cms/pagecategories/25/all`;
 const categoryUrl = `${baseUrl}/api/cms/pagecategories`;
 
 
@@ -119,5 +118,7 @@ export {
   editMediaUrl,
   addMediaUrl,
 
-  reportUrl
+  reportUrl,
+
+  categoryUrl
 };

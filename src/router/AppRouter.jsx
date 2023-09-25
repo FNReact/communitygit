@@ -77,6 +77,8 @@ import CompleteBannerAvatarPage from "../pages/CommunitySetUp/CompleteBannerAvat
 import LocalRepresentetivePage from "../pages/LocalRepresentetivePage/LocalRepresentativePage";
 import MatrimonialPage from "../pages/Matrimonial/MatrimonialPage";
 import MagazinePage from "../pages/Magazine/MagazinePage";
+import MagazineMenuPage from "../pages/Magazine/MagazineMenuPage";
+import MagazineMenuCreatePage from "../pages/Magazine/MagazineMenuCreatePage";
 
 const AppRouter = () => {
   const navigate=useNavigate();
@@ -350,6 +352,8 @@ const AppRouter = () => {
 
             {/* Magazine Pages Routes */}
             <Route exact path="/magazine" element={<Protected Component={MagazinePage} />}/>
+            <Route exact path="/magazine-menu" element={<Protected Component={MagazineMenuPage} />}/>
+            <Route exact path="/magazine-menu-create" element={<Protected Component={MagazineMenuCreatePage} />}/>
 
              
             {/* Event Pages Routes */}

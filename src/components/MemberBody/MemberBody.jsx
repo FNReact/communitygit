@@ -265,7 +265,7 @@ const MemberBody = () => {
                         </div>
                         <div className="icon_list">
                           <a onClick={(e)=>navigate('/community-profile/other',{state:{uuid:data?.user?.uuid,userId:data?.user?.id,userData:data?.user}})}>
-                          <Tooltip title="Commuinity Profile">
+                          <Tooltip title="Community Profile">
                               <div className="icon">
                                   <PersonIcon/>
                               </div>
@@ -389,7 +389,7 @@ const MemberBody = () => {
                         </div>
                         <div className="icon_list">
                           <a onClick={(e)=>navigate('/community-profile/other',{state:{uuid:data?.user?.uuid,userId:data?.user?.id,userData:data?.user}})}>
-                          <Tooltip title="Commuinity Profile">
+                          <Tooltip title="Community Profile">
                               <div className="icon">
                                   <PersonIcon/>
                               </div>

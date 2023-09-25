@@ -29,25 +29,26 @@ import Iconify from "../Iconify/Iconify";
 import { notifyError, notifySuccess } from "../../utils/Toast";
 import useIsMountedRef from "../../hooks/useIsMountedRef";
 import { UserContext } from "../../utils/UserContext";
-import { reportUrl } from "../../api/Api";
+import { categoryUrl, reportUrl } from "../../api/Api";
 import MainLoader from "../PageLoadEffects/MainLoader";
 import { ToastContainer } from "react-toastify";
+import MagazineMenuTableRow from "../table/MagazineMenuTableRow/MagazineMenuTableRow";
 
 
 // ----------------------------------------------------------------------
 
 const TABLE_HEAD = [
   { id: "name", label: "Name", align: "left" },
-  { id: "Subject", label: "Subject", align: "left" },
-  { id: "Date", label: "Date", align: "left" },
+  { id: "type", label: "Type", align: "left" },
+  { id: "position", label: "Position", align: "left" },
   { id: "status", label: "Status", align: "left" },
-  { id: "replay", label: "Replay", align: "left" },
+  { id: "action", label: "Action", align: "left" },
   { id: "" },
 ];
 
 // ----------------------------------------------------------------------
 
-export default function MyAdminBugList() {
+export default function MagazineMenuList() {
   ReactSession.setStoreType("sessionStorage");
   const {
     dense,
@@ -93,12 +94,8 @@ export default function MyAdminBugList() {
     // get all contacts
     const getAllContacts = useCallback(async () => {
       setLoaderShow(true)
-        var url;
-        if(msDetails?.create_by ===parseUserData?.user_id || parseUserData?.user_type ==='admin' ){
-            url = `${reportUrl}?microsite_id=${msDetails.id}&keyword=`;
-        }else{
-            url = `${reportUrl}?microsite_id=${msDetails.id}&user_id=${parseUserData?.user_id}&keyword=`;
-        }
+        var url =  `${categoryUrl}/${msDetails}/all`;
+        
         try {
           const response = await axios.get(url);
           if (isMountedRef.current) {
@@ -226,10 +223,11 @@ export default function MyAdminBugList() {
           <TableToolbar
             filterName={filterName}
             onFilterName={handleFilterName}
-            placeholder={'Search message...'}
+            placeholder={'Search Menu...'}
             addButtonFor={'admin'}
-            path={'/report-admin/form'}
-            />
+            path={'/magazine-menu-create'}
+            // path={'/magazine-menu'}
+             />
             <TableContainer sx={{ minWidth: 800 }}>
               {selected.length > 0 && (
                 <TableSelectedActions
@@ -268,7 +266,7 @@ export default function MyAdminBugList() {
                     ?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                     ?.map((row, index) =>
                       row ? (
-                        <MyAdminBugTableRow
+                        <MagazineMenuTableRow
                           key={row.id}
                           row={row}
                           index={index}

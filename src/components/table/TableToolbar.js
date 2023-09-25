@@ -12,7 +12,7 @@ TableToolbar.propTypes = {
   onFilterName: PropTypes.func,
 };
 
-export default function TableToolbar({ filterName, onFilterName,placeholder, addButtonFor }) {
+export default function TableToolbar({ filterName, onFilterName,placeholder, addButtonFor,path }) {
   const navigate = useNavigate()
   return (
     <Stack  direction="row" alignItems="center" justifyContent="space-between" sx={{ py: 2.5, px: 3 }}>
@@ -33,7 +33,7 @@ export default function TableToolbar({ filterName, onFilterName,placeholder, add
       {addButtonFor ==='admin'
        && 
        <Tooltip title="Add new">
-        <IconButton color="primary" onClick={(e)=>navigate('/report-admin/form')}>
+        <IconButton color="primary" onClick={(e)=>navigate(path)}>
           <Iconify icon={'ic:round-add'} />
         </IconButton>
       </Tooltip>

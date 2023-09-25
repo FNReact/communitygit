@@ -32,21 +32,21 @@ const MagazinePage = () => {
             </Tooltip>
             <div className="magazine">
               <div className="magazine_top">
-                <div className="magazine_t">Commuinity Magazine</div>
+                <div className="magazine_t">Community Magazine</div>
                 <div className="top_left">
-                  <Button variant="outlined">Category</Button>
-                  <Button variant="contained">Contant</Button>
+                  <Button variant="outlined" sx={{mr:2}} onClick={(e)=> navigate('/magazine-menu') } >Menu</Button>
+                  <Button variant="contained">Content</Button>
                 </div>
               </div>
               <div className="mag_category_list">
-                <h4>Category List</h4>
+                {/* <h4>Category List</h4> */}
                 <ul>
-                  <li> Cat-One</li>
-                  <li> Cat-Two</li>
-                  <li> Cat-Three</li>
-                  <li> Cat-Four</li>
-                  <li> Cat-Five</li>
-                  <li> Cat-Six</li>
+                  <li> Home</li>
+                  <li> Nav-1</li>
+                  <li> Nav-2</li>
+                  <li> Nav-3</li>
+                  <li> Nav-4</li>
+                  <li> Nav-5</li>
                 </ul>
               </div>
               <div className="magzine_slider">
