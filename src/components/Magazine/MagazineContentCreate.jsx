@@ -3,7 +3,7 @@ import { Fragment } from "react";
 import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";  
-import {  baseUrl, categoryUrl, postDetailsUrl, postUrl, reportUrl } from "../../api/Api";
+import {  baseUrl, categoryUrl, mediaUploadUrl, postDetailsUrl, postUrl, reportUrl } from "../../api/Api";
 import { notifyError, notifySuccess } from "../../utils/Toast";
 import { useContext } from "react";
 import { UserContext } from "../../utils/UserContext";
@@ -51,7 +51,6 @@ const handleCancel = () => setPreviewVisible(false);
 
 
 const handlePreview = async file => {
-    console.log('file.', file)
     if (!file.url && !file.preview) {
       file.preview = await getBase64(file.originFileObj);
     }
@@ -144,7 +143,6 @@ const handlePreview = async file => {
       setCategories(response?.data?.data);
     })
     .catch((error) => {
-      console.log(error);
     });
   };
 
@@ -176,6 +174,27 @@ const handleContentAdd = async () => {
   }else{
     formData.append("status", 0);
   }
+
+  if(mediaList && mediaList.length>0){
+    mediaList.forEach(element => {
+      var type= element?.type;
+      var sliceType = type?.split('/')
+      // formData.append("files[]", element.originFileObj);
+      console.log('elelment', sliceType)
+      if(sliceType[0]==='video'){
+        formData.append("file_for", "video");
+        formData.append("file", element?.originFileObj);
+      }
+      if(sliceType[0]==='application'){
+        formData.append("file_for", "attachments");
+        formData.append("file", element?.originFileObj);
+      }
+      if(sliceType[0]==='gallery'){
+        formData.append("file_for", "gallery");
+        formData.append("file", element?.originFileObj);
+      }
+    });
+  }
   
   const config = {
     headers: {
@@ -206,7 +225,6 @@ const handleContentAdd = async () => {
 
 // get single category details
 const getSingleContentDetails = (row)=>{
-  console.log('hit')
   // setLoaderVisible(true)
   let config = {
     method: 'get',
@@ -215,7 +233,7 @@ const getSingleContentDetails = (row)=>{
   
   axios.request(config)
   .then((response) => {
-    console.log('response', response)
+    console.log('single details', response)
     if(response?.data){
       setValue('name', response?.data?.posts?.title)
       setValue('slug', response?.data?.posts?.slug)
@@ -240,7 +258,6 @@ const getSingleContentDetails = (row)=>{
   })
   .catch((error) => {
     setLoaderVisible(false)
-    console.log(error);
   });
 }
 
@@ -249,6 +266,7 @@ useEffect(()=>{
     getSingleContentDetails(location?.state?.row)
   }
 },[categoryValue, categories])
+
 
 
 // handle slug 
@@ -398,9 +416,7 @@ useEffect(()=>{
                         {mediaList.length >= 10 ? null : uploadMediaButton}
                       </Dragger>
                     </div>
-                    <Box sx={{mt:3, mb:3}}>
-                      {mediaList.length>0 && <Button variant="contained">Upload Media</Button>}
-                    </Box>
+                    
                   </div>}
                  
 

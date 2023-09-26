@@ -31,8 +31,6 @@ export default function MagazineContentTableRow({
 }) {
   const naviagte = useNavigate()
 
-  console.log('row', row)
-
   return (
     <TableRow hover>
       <TableCell >{row?.id}</TableCell>

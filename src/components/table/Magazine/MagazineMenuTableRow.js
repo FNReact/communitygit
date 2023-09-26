@@ -35,7 +35,6 @@ export default function MagazineMenuTableRow({
   const [loaderEffect, setLoaderEffect] = useState(false)
   const token = sessionStorage.getItem('token');
 
-console.log('row', row)
   return (
     <TableRow hover>
       <TableCell >{row?.name}</TableCell>

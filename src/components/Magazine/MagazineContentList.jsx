@@ -102,14 +102,12 @@ export default function MagazineContentList() {
       
       axios.request(config)
       .then((response) => {
-            console.log('content res', response)
             setTableData(response?.data?.data);
             setLastPage(response?.data?.meta?.last_page)
             setTotalLength(response?.data?.meta?.total)
             setLoaderShow(false)
       })
       .catch((error) => {
-        console.log(error);
       });
       }, [isMountedRef]);
     

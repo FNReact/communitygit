@@ -126,7 +126,6 @@ const handlePreview = async file => {
       setAllParentCategories(response?.data?.data);
     })
     .catch((error) => {
-      console.log(error);
     });
   };
 
@@ -227,7 +226,6 @@ const getSingleCategoryDetails = (row)=>{
   })
   .catch((error) => {
     setLoaderVisible(false)
-    console.log(error);
   });
 }
 

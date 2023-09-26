@@ -107,7 +107,6 @@ export default function MagazineMenuList() {
             setLoaderShow(false)
       })
       .catch((error) => {
-        console.log(error);
       });
       }, [isMountedRef]);
     
