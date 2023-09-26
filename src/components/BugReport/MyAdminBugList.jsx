@@ -230,7 +230,7 @@ export default function MyAdminBugList() {
             addButtonFor={'admin'}
             path={'/report-admin/form'}
             />
-            <TableContainer sx={{ minWidth: 800 }}>
+            <TableContainer className="report_table">
               {selected.length > 0 && (
                 <TableSelectedActions
                   dense={dense}
