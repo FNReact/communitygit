@@ -6,7 +6,7 @@
     border-radius: 35px;
     height: 55px;
     width: 120px;
-    box-shadow: 8px 8px 8px #c5c2c2;
+    box-shadow: 4px 8px 8px 8px #c5c2c221;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -14,7 +14,7 @@
     cursor: pointer;
     &:hover{
         box-shadow: 10px 10px 8px #eceaea;
-    }
+    } 
     .chat_button{
         display: flex;
         align-items: center;

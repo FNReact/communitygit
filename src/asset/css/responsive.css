@@ -1,4 +1,15 @@
 @media (min-width: 280px) and (max-width: 399.98px){
+    .report_detail .report_text .title {
+        font-size: 18px;
+        line-height: 27px;
+    }
+    .report_detail .reply_component .reply_sec {
+        display: list-item;
+        list-style: none;
+    }
+    .report_detail .reply_component .reply_sec  .user_avtar{
+     display: none;
+    }
     .comments-list .comment-avatar {
         display: none;
      }
@@ -131,14 +142,14 @@
          width: 100%;
      }
      .video-react {
-         height: 370px !important;
+         height: 320px !important;
      }
      .resource_item .resource_footer {
          position: relative;
          padding: 15px 0 0 0;
      }
      .video-react .video-react-video {
-         max-height: 370px !important;
+         max-height: 320px !important;
      }
      .longue_item .uploaded_img_container .single_img img {
          max-height: 420px;
@@ -264,8 +275,8 @@
          width: 100%;
      }
      .communityInfo_wrapper .community_top_info .com_logo img {
-         height: 92px;
-         width: 92px;
+         height: 85px;
+         width: 85px;
      }
      .header .header_content .header_item_wrapper .header_item_list .MuiSvgIcon-root {
          font-size: 20px;
