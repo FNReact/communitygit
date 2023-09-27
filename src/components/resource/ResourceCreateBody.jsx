@@ -114,6 +114,7 @@ const handleResouce = ()=>{
     data.append('instagram_url', values.instagramUrl);
     data.append('youtube_url', values.youtubeUrl);
     data.append('twitter_url', values.twitterUrl);
+    data.append('type', 'resource');
 
     if(fileList.length>0){
       fileList.forEach(file=>{

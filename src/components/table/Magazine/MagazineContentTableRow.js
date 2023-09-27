@@ -34,7 +34,7 @@ export default function MagazineContentTableRow({
   return (
     <TableRow hover>
       <TableCell >{row?.id}</TableCell>
-      <TableCell >{row?.title}</TableCell>
+      <TableCell >{row?.title.length>30?<>{row?.title.slice(0,30)}...</>:row?.title}</TableCell>
       <TableCell>{row?.position}</TableCell>
       <TableCell>
         {row?.status ===true && <Typography style={{ color: "#326df5" }}>Active</Typography>}

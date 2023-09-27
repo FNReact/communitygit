@@ -1,22 +1,62 @@
-import React, { Fragment, useEffect, useRef, useState } from "react";
+import React, { Fragment, useContext, useEffect, useRef, useState } from "react";
 import { Box, Button, Grid, Tooltip } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { Swiper, SwiperSlide } from "swiper/react";
 import ban1 from "../../asset/image/test4.jpg";
-import SearchIcon from "@mui/icons-material/Search";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
+
+import parser from 'html-react-parser'
 
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Pagination, Navigation } from "swiper";
+import MagazineTopNavigation from "../../components/Magazine/MagazineTopNavigation";
+import { UserContext } from "../../utils/UserContext";
+import { baseUrl, postUrl } from "../../api/Api";
+import axios from "axios";
 
 const MagazinePage = () => {
   const navigate = useNavigate();
+  const {magazine, msDetails} = useContext(UserContext);
+  const [frontPageData, setFrontPageData] = useState([])
+
+  //get front page data
+  const getFrontPageData=()=>{
+    let config = {
+      method: 'get',
+      url: `${postUrl}/${msDetails.id}`,
+    };
+
+    var storeData = [];
+    axios.request(config)
+    .then((response) => {
+      if(response?.data?.data && response?.data?.data.length>0){
+        response?.data?.data.forEach(element => {
+          if(element.position ==='front_page'){
+            storeData.push(element)
+          }
+        });
+      }
+      setFrontPageData(storeData)
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  }
+
+  useEffect(()=>{
+    getFrontPageData();
+  },[])
+
+  // handle details
+  const handleDetails = (data)=>[
+    navigate('/magazine-details', {state:{data:data}})
+  ]
+
 
   return (
     <Fragment>
@@ -41,6 +81,13 @@ const MagazinePage = () => {
                   <Button
                     variant="outlined"
                     sx={{ mr: 2 }}
+                    onClick={(e) => navigate("/magazine-demo")}
+                  >
+                    Demo Magazine
+                  </Button>
+                  <Button
+                    variant="outlined"
+                    sx={{ mr: 2 }}
                     onClick={(e) => navigate("/magazine-menu")}
                   >
                     Menu
@@ -53,57 +100,9 @@ const MagazinePage = () => {
                   </Button>
                 </div>
               </div>
-              <div className="magazine_nav">
-                <ul class="nav_list">
-                  <li>
-                    <a href="#"> Home </a>
-                  </li>
-                  <li class="droppper">
-                    <a href="#">
-                      About
-                      <i>
-                        <ArrowDropDownIcon />
-                      </i>
-                    </a>
-                    <ul class="sub_down">
-                      <li>
-                        <a href="#">Mission</a>
-                      </li>
-                      <li>
-                        <a href="#">Vission</a>
-                      </li>
-                      <li>
-                        <a href="#">Our team</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li>
-                    <a href="#"> Admission </a>
-                  </li>
-                  <li>
-                    <a href="#"> Gallery </a>
-                  </li>
-                  <li>
-                    <a href="#"> Teachers </a>
-                  </li>
-                  <li>
-                    <a href="#"> Results </a>
-                  </li>
-                  <li>
-                    <a href="#"> Contact </a>
-                  </li>
-                </ul>
-                <div className="mag_search">
-                  <input
-                    type="text"
-                    placeholder="Search"
-                    className="form_control"
-                  />
-                  <i>
-                    <SearchIcon />
-                  </i>
-                </div>
-              </div>
+             
+            {/* top navigation */}
+            <MagazineTopNavigation />
 
               {/* Magazine Slider are here */}
               <div className="magzine_slider">
@@ -115,68 +114,40 @@ const MagazinePage = () => {
                   modules={[Navigation]}
                   className="mySwiper"
                 >
-                  <SwiperSlide>
-                    <div className="magzine_slider_content">
-                      <img src={ban1} alt="" />
-                      <div className="mag_content">
-                        <div className="content_info">
-                          <h2>Slider Heading Is Here</h2>
-                        </div>
-                      </div>
-                    </div>
-                  </SwiperSlide>
+                  {magazine && magazine?.slider && magazine?.slider?.length >0 && magazine?.slider.map((data,key)=>{
+                      return(
+                        <SwiperSlide key={data.uuid}>
+                          <div className="magzine_slider_content">
+                            <img src={`${baseUrl}/${data?.featured_image}`} alt={data?.title} />
+                            <div className="mag_content">
+                              <div className="content_info">
+                                <h2>{data?.title}</h2>
+                              </div>
+                            </div>
+                          </div>
+                        </SwiperSlide>
+                      )
+                  }) }
                 </Swiper>
               </div>
 
               {/* Main Ccontent are here */}
               <div className="main_contant">
-                <div className="sec_head">Mian Content</div>
+                <div className="sec_head">Main Content</div>
                 <Grid container spacing={2}>
-                  <Grid item xs={3}>
-                    <div className="main_content_item">
-                      <div className="item_img">
-                        <img src={ban1} alt="" />
-                      </div>
-                      <div className="content_title">This Is Content Title</div>
-                      <p>
-                        Lorem ipsum dolor sit amet consec dd tetur, adipisicing
-                        elit.
-                      </p>
-                    </div>
-                  </Grid>
-                  <Grid item xs={3}>
-                    <div className="main_content_item">
-                      <div className="item_img">
-                        <img src={ban1} alt="" />
-                      </div>
-                      <div className="content_title">This Is Content Title</div>
-                      <p>
-                        Lorem ipsum dolor sit amet consec dd tetur, adipisicing
-                        elit.
-                      </p>
-                    </div>
-                  </Grid>
-                  <Grid item xs={3}>
-                    <div className="main_content_item">
-                      <div className="item_img">
-                        <img src={ban1} alt="" />
-                      </div>
-                      <div className="content_title">This Is Content Title</div>
-                      <p>
-                        Lorem ipsum dolor sit amet consec dd tetur, adipisicing
-                        elit.
-                      </p>
-                    </div>
-                  </Grid>
-                  <Grid item xs={3}>
-                    <div className="main_content_item">
-                      <div className="item_img">
-                        <img src={ban1} alt="" />
-                      </div>
-                      <div className="content_title">This Is Content Title</div>
-                      <p>Lorem ipsum dolor sit amet dd tetur.</p>
-                    </div>
-                  </Grid>
+                  {magazine && magazine?.main && magazine?.main?.length>0 && magazine?.main.map((data,key)=>{
+                    return(
+                      <Grid item xs={3} key={data.uuid} onClick={(e)=> handleDetails(data)}>
+                          <div className="main_content_item">
+                            <div className="item_img">
+                              <img src={`${baseUrl}/${data?.featured_image}`} alt={data?.title} />
+                            </div>
+                            <div className="content_title">{data?.title}</div>
+                            <p>{parser(data?.body?.slice(0,100))}</p>
+                          </div>
+                        </Grid>
+                    )
+                  })}
                 </Grid>
               </div>
 
@@ -186,64 +157,59 @@ const MagazinePage = () => {
                 <div className="sticky_wrapper">
                   <Grid container spacing={2}>
                     <Grid item xs={7}>
-                      <div className="sticky_wrapper_main">
+                      {magazine?.stiky && magazine?.stiky.length>0 &&  
+                      <div className="sticky_wrapper_main" onClick={(e)=> handleDetails(magazine?.stiky[0])}>
                         <div className="main_img">
-                          <img src={ban1} alt="" />
+                          <img src={`${baseUrl}/${magazine?.stiky[0].featured_image}`} alt={magazine?.stiky[0].title} />
                         </div>
                         <div className="main_text">
-                          <h4>
-                            Lorem ipsum dolor sit, amet consectetur adipisicing
-                            elit.
-                          </h4>
-                          <p>
-                            Lorem, ipsum dolor sit amet consectetur adipisicing
-                            elit. Nemo, porro sit praesentium inventore{" "}
-                          </p>
-                          <div className="read_btn">
+                          <h4>{magazine?.stiky[0]?.title}</h4>
+                          <p>{parser(magazine?.stiky[0]?.body?.slice(0,200))}</p>
+                          <div className="read_btn" onClick={(e)=> handleDetails(magazine?.stiky[0])}>
                             Read more <ArrowForwardIcon />
                           </div>
                         </div>
-                      </div>
+                      </div>}
+                     
+
+                     {magazine?.stiky && magazine?.stiky.length>3 &&
                       <div className="sticky_list">
                         <ul>
-                          <li>
+                          <li onClick={(e)=> handleDetails(magazine?.stiky[3])}>
                             <Link>
-                              <ArrowRightIcon /> But I must explain to you how
-                              all this
+                              <ArrowRightIcon />{magazine?.stiky[3].title}
                             </Link>
                           </li>
-                          <li>
+                          <li onClick={(e)=> handleDetails(magazine?.stiky[4])}>
                             <Link>
-                              <ArrowRightIcon /> But I must explain to you how
-                              all this mistaken idea
+                              <ArrowRightIcon /> {magazine?.stiky[4].title}
                             </Link>
                           </li>
                         </ul>
-                      </div>
+                      </div> }
+                     
                     </Grid>
                     <Grid item xs={5}>
-                      <div className="sticky_wrapper_sub">
+                    {magazine?.stiky && magazine?.stiky.length>1 &&
+                    <>
+                      <div className="sticky_wrapper_sub" onClick={(e)=> handleDetails(magazine?.stiky[1])}>
                         <div className="sub_img">
-                          <img src={ban1} alt="" />
+                          <img src={`${baseUrl}/${magazine?.stiky[1].featured_image}`} alt={magazine?.stiky[1].title} />
                         </div>
                         <div className="sub_text">
-                          <h4>
-                            Lorem ipsum dolor sit, amet consectetur adipisicing
-                            elit.
-                          </h4>
+                          <h4>{magazine?.stiky[1].title}</h4>
                         </div>
                       </div>
-                      <div className="sticky_wrapper_sub">
+                      <div className="sticky_wrapper_sub" onClick={(e)=> handleDetails(magazine?.stiky[2])}>
                         <div className="sub_img">
-                          <img src={ban1} alt="" />
+                          <img src={`${baseUrl}/${magazine?.stiky[2].featured_image}`} alt={magazine?.stiky[2].title} />
                         </div>
                         <div className="sub_text">
-                          <h4>
-                            Lorem ipsum dolor sit, amet consectetur adipisicing
-                            elit.
-                          </h4>
+                          <h4>{magazine?.stiky[2].title}</h4>
                         </div>
                       </div>
+                    </>
+                    }
                     </Grid>
                   </Grid>
                 </div>
@@ -254,35 +220,15 @@ const MagazinePage = () => {
                 <div className="exclusive_wrapper">
                   <div className="exclusive_head">Exclusive Header</div>
                   <ul>
-                    <li>
-                      <Link>
-                        <ArrowRightIcon /> But I must explain to you how all
-                        this.
-                      </Link>
-                    </li>
-                    <li>
-                      <Link>
-                        <ArrowRightIcon /> But I must explain to you how all
-                        this But I must explain to .
-                      </Link>
-                    </li>
-                    <li>
-                      <Link>
-                        <ArrowRightIcon /> But I must explain to you But I must
-                        explain to you how all this how all this
-                      </Link>
-                    </li>
-                    <li>
-                      <Link>
-                        <ArrowRightIcon /> But I must all this how all this
-                      </Link>
-                    </li>
-                    <li>
-                      <Link>
-                        <ArrowRightIcon /> But I must explain to you how all
-                        this all this
-                      </Link>
-                    </li>
+                    {magazine?.exclusive && magazine?.exclusive.length>0 && magazine?.exclusive.slice(0,5).map((data, key)=>{
+                      return(
+                        <li onClick={(e)=> handleDetails(data)}>
+                          <Link>
+                            <ArrowRightIcon /> {data?.title}
+                          </Link>
+                      </li>
+                      )
+                    }) }
                   </ul>
                 </div>
               </div>
@@ -290,82 +236,74 @@ const MagazinePage = () => {
               {/* Front Page Section Here are here */}
 
               <div className="front_section">
-                  <div className="sec_head">Front Section One</div>
+                  <div className="sec_head">Front Section </div>
                    <Grid container spacing={2}>
-                       <Grid item xs={3}>
-                       <div className="front_main">
-                        <div className="front_main_img">
-                          <img src={ban1} alt="" />
+                    {frontPageData && frontPageData.length>0 && 
+                    <Grid item xs={3}>
+                        <div className="front_main" onClick={(e)=> handleDetails(frontPageData[0])}>
+                          <div className="front_main_img">
+                            <img src={`${baseUrl}/${frontPageData[0].featured_image}`} alt={frontPageData[0].title} />
+                          </div>
+                          <div className="front_main_text">
+                            <h4>{frontPageData[0].title}</h4>
+                          </div>
                         </div>
-                        <div className="front_main_text">
-                          <h4>
-                            Lorem ipsum dolor sit, amet consectetur adipisicing
-                            elit.
-                          </h4>
-                        </div>
-                      </div>
-                       </Grid>
+                       </Grid> }
+                       
+                       {frontPageData && frontPageData.length>1 &&
                        <Grid item xs={5}>
-                          <div className="front_sub">
+                          <div className="front_sub" onClick={(e)=> handleDetails(frontPageData[1])}>
                            <div className="front_sub_img">
-                             <img src={ban1} alt="" />
+                            <img src={`${baseUrl}/${frontPageData[1].featured_image}`} alt={frontPageData[1].title} />
                            </div>
                            <div className="front_sub_text">
-                             <h4>
-                               Lorem ipsum dolor sit, amet consectetur adipisicing
-                               elit.
-                             </h4>
+                            <h4>{frontPageData[1].title}</h4>
                            </div>
                          </div>
-                          <div className="front_sub">
+                         {frontPageData[2]?.featured_image &&
+                          <div className="front_sub" onClick={(e)=> handleDetails(frontPageData[2])}>
                            <div className="front_sub_img">
-                             <img src={ban1} alt="" />
+                            <img src={`${baseUrl}/${frontPageData[2]?.featured_image}`} alt={frontPageData[2]?.title} />
                            </div>
                            <div className="front_sub_text">
-                             <h4>
-                               Lorem ipsum dolor sit, amet consectetur adipisicing
-                               elit.
-                             </h4>
+                            <h4>{frontPageData[2]?.title}</h4>
                            </div>
-                         </div>
-                       </Grid>
+                         </div>}
+                          
+                       </Grid>}
+                       {frontPageData && frontPageData.length>3 &&
                        <Grid item xs={4}>
                        <div className="front_list">
                         <ul>
-                          <li>
+                          <li onClick={(e)=> handleDetails(frontPageData[3])}>
                             <Link>
-                              <ArrowRightIcon /> But I must explain to you how
-                              all this
+                              <ArrowRightIcon /> {frontPageData[3]?.title}
                             </Link>
                           </li>
-                          <li>
+                          {frontPageData[4]?.title && <li onClick={(e)=> handleDetails(frontPageData[4])}>
                             <Link>
-                              <ArrowRightIcon /> But I must explain to you how
-                              all this mistaken idea
+                              <ArrowRightIcon /> {frontPageData[4]?.title}
                             </Link>
-                          </li>
-                          <li>
+                          </li>}
+                          {frontPageData[5]?.title && <li onClick={(e)=> handleDetails(frontPageData[5])}>
                             <Link>
-                              <ArrowRightIcon /> But I must explain to you how
-                              all this
+                              <ArrowRightIcon /> {frontPageData[5]?.title}
                             </Link>
-                          </li>
-                          <li>
+                          </li>}
+                          
+                          {frontPageData[6]?.title && <li onClick={(e)=> handleDetails(frontPageData[6])}>
                             <Link>
-                              <ArrowRightIcon /> But I must explain to you how
-                              all this mistaken idea
+                              <ArrowRightIcon /> {frontPageData[6]?.title}
                             </Link>
-                          </li>
-                         
-                          <li>
+                          </li>}
+                         {frontPageData[7]?.title && <li onClick={(e)=> handleDetails(frontPageData[7])}>
                             <Link>
-                              <ArrowRightIcon /> But I must explain to you how
-                              all this
+                              <ArrowRightIcon /> {frontPageData[7]?.title}
                             </Link>
-                          </li>
+                          </li>}
                         </ul>
                       </div>
-                       </Grid>
+                       </Grid>}
                    </Grid>
               </div>
             </div>
