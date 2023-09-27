@@ -23,7 +23,7 @@ import LeftSideBar from "../components/LeftSideBar/LeftSideBar";
 import NotFoundComponent from "../components/404/404";
 import AddMemberPage from "../pages/MemberPages/AddMemberPage";
 import axios from "axios";
-import { commonUserUrl, micrositeDetailsUrl, userInfoUrl, userMicrositesUrl } from "../api/Api";
+import { commonUserUrl, magazineMainUrl, micrositeDetailsUrl, userInfoUrl, userMicrositesUrl } from "../api/Api";
 import MyJobCreatePage from "../pages/JobPages/MyJobCreatePage";
 import { Container } from "@mui/material";
 import ClassifiedCreatePage from "../pages/ClassifiedPages/ClassifiedCreatePage";
@@ -82,12 +82,20 @@ import MagazineMenuCreatePage from "../pages/Magazine/MagazineMenuCreatePage";
 import MagazineContentPage from "../pages/Magazine/MagazineContentPage";
 import MagazineContentCreatePage from "../pages/Magazine/MagazineContentCreatePage";
 import MagazineDetailsPage from "../pages/Magazine/MagazineDetailsPage";
+import MagazineDemoPage from "../pages/Magazine/MagazineDemoPage";
+import RepresentativePage from "../pages/RepresentativePage/RepresentativePage";
+import RepresentativeDetailsPage from "../pages/RepresentativePage/RepresentativeDetailsPage";
+import RepresentativeCreatePage from "../pages/RepresentativePage/RepresentativeCreatePage";
+import MyRepresentativePage from "../pages/RepresentativePage/MyRepresentativePage";
+import MagazineDetailsDemoPage from "../pages/Magazine/MagazineDetailsDemoPage";
+import MagazineCatgoryPostsPage from "../pages/Magazine/MagazineCatgoryPostsPage";
 
 const AppRouter = () => {
   const navigate=useNavigate();
   const userDetails = JSON.parse(sessionStorage.getItem("data"));
   const msDetails = JSON.parse(sessionStorage.getItem("msDetails"));
   const loggedInUser = JSON.parse(sessionStorage.getItem("loggedInUserInfo"));
+  const magazine = JSON.parse(sessionStorage.getItem("magazine"));
   const url = window.location.href;
   const getUrl = window.location.href;
   const segNamae = getUrl.split("/").pop();
@@ -225,11 +233,38 @@ const AppRouter = () => {
         getAllUserMicrosites()
       }
     },[])
+
+
+    // handle get main magazine datas
+    const handleGetMainMagazine = ()=>{
+      let config = {
+        method: 'get',
+        url: `${magazineMainUrl}/${msDetails.id}`,
+      };
+
+      axios.request(config)
+      .then((response) => {
+        sessionStorage.setItem("magazine", JSON.stringify(response.data));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    }
+
+    useEffect(()=>{
+      if(magazine ===null && msDetails?.id){
+        handleGetMainMagazine()
+      }else if(magazine?.microsite_info?.id !==msDetails?.id){
+        handleGetMainMagazine()
+      }
+    },[magazine])
+
     
 
   return (
     <Fragment>
-      <UserContext.Provider value={{userDetails,msDetails,loggedInUser}}>
+      <UserContext.Provider value={{userDetails,msDetails,loggedInUser,magazine}}>
         {(userDetails 
           && msDetails 
           && segNamae !=='commuinityList' 
@@ -340,6 +375,12 @@ const AppRouter = () => {
             <Route exact path="/resource-create" element={<Protected Component={ResourceCreatePage} />}/>
             <Route exact path="/myResource" element={<Protected Component={MyResourcePage} />}/>
 
+            {/* Representative Pages Routes */}
+            <Route exact path="/local-representatives" element={<Protected Component={RepresentativePage} />}/>
+            <Route exact path="/representative-details" element={<Protected Component={RepresentativeDetailsPage} />}/>
+            <Route exact path="/representative-create" element={<Protected Component={RepresentativeCreatePage} />}/>
+            <Route exact path="/my-representative" element={<Protected Component={MyRepresentativePage} />}/>
+
              {/* Local Business Pages Routes */}
             <Route exact path="/localBusiness" element={<Protected Component={LocalBusinessPage} />}/>
             <Route exact path="/localBusiness-details" element={<Protected Component={LocalBusinessDetailsPage} />}/>
@@ -347,19 +388,19 @@ const AppRouter = () => {
             <Route exact path="/myLocalBusiness" element={<Protected Component={MyLocalBusinessPage} />}/>
             <Route exact path="/localBusiness" element={<Protected Component={LocalBusinessPage} />}/>
 
-            {/* Local Representetives Pages Routes */}
-            <Route exact path="/local-representatives" element={<Protected Component={LocalRepresentetivePage} />}/>
-
             {/* Matrimonial Pages Routes */}
             <Route exact path="/matrimonial" element={<Protected Component={MatrimonialPage} />}/>
 
             {/* Magazine Pages Routes */}
             <Route exact path="/magazine" element={<Protected Component={MagazinePage} />}/>
+            <Route exact path="/magazine-category-posts" element={<Protected Component={MagazineCatgoryPostsPage} />}/>
+            <Route exact path="/magazine-demo" element={<Protected Component={MagazineDemoPage} />}/>
             <Route exact path="/magazine-menu" element={<Protected Component={MagazineMenuPage} />}/>
             <Route exact path="/magazine-menu-create" element={<Protected Component={MagazineMenuCreatePage} />}/>
             <Route exact path="/magazine-content" element={<Protected Component={MagazineContentPage} />}/>
             <Route exact path="/magazine-content-create" element={<Protected Component={MagazineContentCreatePage} />}/>
             <Route exact path="/magazine-details" element={<Protected Component={MagazineDetailsPage} />}/>
+            <Route exact path="/magazine-details-demo" element={<Protected Component={MagazineDetailsDemoPage} />}/>
 
              
             {/* Event Pages Routes */}

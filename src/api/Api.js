@@ -63,10 +63,9 @@ const reportUrl = `${baseUrl}/api/common/micrositecontact`;
 
 // Magazine api
 const categoryUrl = `${baseUrl}/api/cms/pagecategories`;
-
+const magazineMainUrl = `${baseUrl}/api/cms/frontpages`;
 const postUrl = `${baseUrl}/api/cms/pages`;
 const postDetailsUrl = `${baseUrl}/api/cms/pagebasedpost`;
-
 const mediaUploadUrl = `${baseUrl}/api/cms/pages`;
 const mediaDeleteUrl = `${baseUrl}/api/cms/pages`;
 
@@ -127,6 +126,7 @@ export {
 
   reportUrl,
 
+  magazineMainUrl,
   categoryUrl,
   postUrl,
   postDetailsUrl,

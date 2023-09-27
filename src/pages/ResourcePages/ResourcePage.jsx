@@ -16,7 +16,7 @@ const ResourcePage = () => {
   const getAllResouces = () =>{
     let config = {
       method: 'get',
-      url: `${resourceUrl}?microsite_id=${msDetails.id}`,
+      url: `${resourceUrl}?microsite_id=${msDetails.id}&type=resource`,
       headers: { 
         'Authorization': `Bearer ${token}`,
       },

@@ -3,7 +3,7 @@ import { Fragment } from "react";
 import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";  
-import {  baseUrl, categoryUrl, reportUrl } from "../../api/Api";
+import {  baseUrl, categoryUrl, magazineMainUrl, reportUrl } from "../../api/Api";
 import { notifyError, notifySuccess } from "../../utils/Toast";
 import { useContext } from "react";
 import { UserContext } from "../../utils/UserContext";
@@ -134,6 +134,30 @@ const handlePreview = async file => {
   }, []);
 
 
+   // handle get main magazine datas
+   const handleGetMainMagazine = ()=>{
+    setLoaderVisible(true);
+    let config = {
+      method: 'get',
+      url: `${magazineMainUrl}/${msDetails.id}`,
+    };
+
+    axios.request(config)
+    .then((response) => {
+      console.log('maahssh', response)
+      sessionStorage.setItem("magazine", JSON.stringify(response.data));
+      setTimeout(()=>{
+        window.location.href='/magazine-menu'
+      },1000)
+      setLoaderVisible(false);
+    })
+    .catch((error) => {
+      setLoaderVisible(false);
+      console.log(error);
+    });
+
+  }
+
 
 //Create new job
 const handleMenuAdd = async () => {
@@ -178,7 +202,7 @@ const handleMenuAdd = async () => {
     .then((response) => {
       setLoaderVisible(false);
       notifySuccess();
-      navigate('/magazine-menu')
+      handleGetMainMagazine();
     })
     .catch((err) => {
       notifyError();
