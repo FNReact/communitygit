@@ -248,7 +248,7 @@ export default function MyAdminBugList() {
                         color="primary"
                         // onClick={() => handleDeleteRows(selected)}
                       >
-                        <Iconify icon={"eva:trash-2-outline"} />
+                        <Iconify icon={"eva:trash-2-outline"}/>
                       </IconButton>
                     </Tooltip>
                   }
