@@ -53,6 +53,9 @@ const MagazineDemoPage = () => {
                   </Button>
                 </div> */}
               </div>
+              <Box sx={{mt:2}}>
+
+              </Box>
               <div className="magazine_nav">
                 <ul class="nav_list">
                   <li>
@@ -93,7 +96,7 @@ const MagazineDemoPage = () => {
                     <a href="#"> Contact </a>
                   </li>
                 </ul>
-                <div className="mag_search">
+                {/* <div className="mag_search">
                   <input
                     type="text"
                     placeholder="Search"
@@ -102,7 +105,7 @@ const MagazineDemoPage = () => {
                   <i>
                     <SearchIcon />
                   </i>
-                </div>
+                </div> */}
               </div>
 
               {/* Magazine Slider are here */}
@@ -130,7 +133,7 @@ const MagazineDemoPage = () => {
 
               {/* Main Ccontent are here */}
               <div className="main_contant">
-                <div className="sec_head">Mian Content</div>
+                <div className="sec_head">Main Content</div>
                 <Grid container spacing={2}>
                   <Grid item xs={3}>
                     <div className="main_content_item">

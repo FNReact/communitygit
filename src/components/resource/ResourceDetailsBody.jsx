@@ -38,8 +38,6 @@ const ResourceDetailsBody = () => {
     }
   }, []);
 
-  console.log("details", details);
-
   return (
     <>
       <div className="resource_details">

@@ -29,7 +29,7 @@ import Iconify from "../Iconify/Iconify";
 import { notifyError, notifySuccess } from "../../utils/Toast";
 import useIsMountedRef from "../../hooks/useIsMountedRef";
 import { UserContext } from "../../utils/UserContext";
-import { categoryUrl, reportUrl } from "../../api/Api";
+import { categoryUrl, magazineMainUrl, reportUrl } from "../../api/Api";
 import MainLoader from "../PageLoadEffects/MainLoader";
 import { ToastContainer } from "react-toastify";
 import MagazineMenuTableRow from "../table/Magazine/MagazineMenuTableRow";
@@ -121,6 +121,26 @@ export default function MagazineMenuList() {
     setPage(0);
   };
 
+     // handle get main magazine datas
+     const handleGetMainMagazine = ()=>{
+      setLoaderShow(true)
+      let config = {
+        method: 'get',
+        url: `${magazineMainUrl}/${msDetails.id}`,
+      };
+  
+      axios.request(config)
+      .then((response) => {
+        sessionStorage.setItem("magazine", JSON.stringify(response.data));
+        getAllMenu()
+        setLoaderShow(false)
+      })
+      .catch((error) => {
+        setLoaderShow(false)
+        // setLoaderVisible(false);
+      });
+  
+    }
 
   // delete row
   const handleDeleteRow = (uuid) => {
@@ -138,7 +158,7 @@ export default function MagazineMenuList() {
         axios
           .delete(url, { headers: { Authorization: `Bearer ${token}` } })
           .then((response) => {
-            getAllMenu()
+            handleGetMainMagazine()
             notifySuccess()
           });
       }

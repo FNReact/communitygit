@@ -21,7 +21,7 @@ import axios from "axios";
 
 const MagazinePage = () => {
   const navigate = useNavigate();
-  const {magazine, msDetails} = useContext(UserContext);
+  const {magazine, msDetails, userDetails, loggedInUser} = useContext(UserContext);
   const [frontPageData, setFrontPageData] = useState([])
 
   //get front page data
@@ -53,9 +53,14 @@ const MagazinePage = () => {
   },[])
 
   // handle details
-  const handleDetails = (data)=>[
+  const handleDetails = (data)=>{
     navigate('/magazine-details', {state:{data:data}})
-  ]
+  }
+
+  // handle see all
+  const handleSeeAll =(position)=>{
+    navigate(`/magazine-see-all/${position}`,{state:{position:position}})
+  }
 
 
   return (
@@ -75,8 +80,10 @@ const MagazinePage = () => {
               </div>
             </Tooltip>
             <div className="magazine">
+
               <div className="magazine_top">
-                <div className="magazine_t">Community Magazine</div>
+                <div className="magazine_t">{msDetails?.name} Magazine</div>
+                {(loggedInUser?.user_type ==='admin' || userDetails.id === msDetails?.user_id) &&
                 <div className="top_left">
                   <Button
                     variant="outlined"
@@ -98,8 +105,9 @@ const MagazinePage = () => {
                   >
                     Content
                   </Button>
-                </div>
-              </div>
+                </div>}
+              </div> 
+            
              
             {/* top navigation */}
             <MagazineTopNavigation />
@@ -133,9 +141,13 @@ const MagazinePage = () => {
 
               {/* Main Ccontent are here */}
               <div className="main_contant">
-                <div className="sec_head">Main Content</div>
+                <Box display='flex' justifyContent='space-between' justifyItems='space-between'>
+                  {/* <div className="sec_head">Main Content</div> */}
+                  <div className="sec_head"></div>
+                   {magazine && magazine?.main && magazine?.main?.length>4 &&<Button onClick={(e)=> handleSeeAll('main')} >See All</Button>}
+                </Box>
                 <Grid container spacing={2}>
-                  {magazine && magazine?.main && magazine?.main?.length>0 && magazine?.main.map((data,key)=>{
+                  {magazine && magazine?.main && magazine?.main?.length>0 && magazine?.main.slice(0,4).map((data,key)=>{
                     return(
                       <Grid item xs={3} key={data.uuid} onClick={(e)=> handleDetails(data)}>
                           <div className="main_content_item">
@@ -153,7 +165,11 @@ const MagazinePage = () => {
 
               {/* Sticky Section are here */}
               <div className="sticky_section">
-                <div className="sec_head">Sticky Section</div>
+                <Box display='flex' justifyContent='space-between' justifyItems='space-between'>
+                  {/* <div className="sec_head">Sticky Section</div> */}
+                  <div className="sec_head"></div>
+                   {magazine && magazine?.stiky && magazine?.stiky?.length>5 &&<Button onClick={(e)=> handleSeeAll('stiky')} >See All</Button>}
+                </Box>
                 <div className="sticky_wrapper">
                   <Grid container spacing={2}>
                     <Grid item xs={7}>
@@ -218,7 +234,11 @@ const MagazinePage = () => {
               {/* Exclusive Section are here */}
               <div className="exclusive_section">
                 <div className="exclusive_wrapper">
-                  <div className="exclusive_head">Exclusive Header</div>
+                  <Box display='flex' justifyContent='space-between' justifyItems='space-between'>
+                    {/* <div className="sec_head">Exclusive Header</div> */}
+                    <div className="sec_head"></div>
+                    {magazine && magazine?.exclusive && magazine?.exclusive?.length>5 &&<Button onClick={(e)=> handleSeeAll('exclusive')} >See All</Button>}
+                  </Box>
                   <ul>
                     {magazine?.exclusive && magazine?.exclusive.length>0 && magazine?.exclusive.slice(0,5).map((data, key)=>{
                       return(
@@ -236,7 +256,11 @@ const MagazinePage = () => {
               {/* Front Page Section Here are here */}
 
               <div className="front_section">
-                  <div className="sec_head">Front Section </div>
+                  <Box display='flex' justifyContent='space-between' justifyItems='space-between'>
+                    {/* <div className="sec_head">Front Section</div> */}
+                    <div className="sec_head"></div>
+                    {magazine && magazine?.frontPageData && magazine?.frontPageData?.length>7 &&<Button onClick={(e)=> handleSeeAll('front_page')} >See All</Button>}
+                  </Box>
                    <Grid container spacing={2}>
                     {frontPageData && frontPageData.length>0 && 
                     <Grid item xs={3}>

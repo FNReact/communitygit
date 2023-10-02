@@ -26,6 +26,8 @@ const LoungePage = () => {
     }
   },[])
 
+
+
   return (
     <Fragment>
         <Grid container spacing={2}>
@@ -63,8 +65,8 @@ const LoungePage = () => {
                         </div>
                          <div className="com_botttom">
                          {(userInfo?.user_type ==='admin' || msDetails?.user_id ===userDetails?.id) &&  <div className="edit_button cursorPointer" onClick={(e)=> navigate('/community-setup',{state:{path:'/'}})}>
-                          <EditIcon/>  Edit 
-                        </div>}
+                            <EditIcon/>  Edit 
+                          </div>}
                          </div>
                        
                       

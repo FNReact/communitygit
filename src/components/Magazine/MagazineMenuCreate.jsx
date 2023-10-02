@@ -120,10 +120,18 @@ const handlePreview = async file => {
       method: 'get',
       url: `${categoryUrl}/${msDetails.id}/all`,
     };
-    
+
+    const storeCat =[];
     axios.request(config)
     .then((response) => {
-      setAllParentCategories(response?.data?.data);
+      if(response?.data?.data && response?.data?.data.length>0){
+        response?.data?.data.forEach(element => {
+          if(element?.parent_id ===null){
+            storeCat.push(element)
+          }
+        });
+      }
+     setAllParentCategories(storeCat)
     })
     .catch((error) => {
     });
@@ -144,7 +152,6 @@ const handlePreview = async file => {
 
     axios.request(config)
     .then((response) => {
-      console.log('maahssh', response)
       sessionStorage.setItem("magazine", JSON.stringify(response.data));
       setTimeout(()=>{
         window.location.href='/magazine-menu'
@@ -153,7 +160,7 @@ const handlePreview = async file => {
     })
     .catch((error) => {
       setLoaderVisible(false);
-      console.log(error);
+      // console.log(error);
     });
 
   }
@@ -166,7 +173,8 @@ const handleMenuAdd = async () => {
   formData.append("uuid", msDetails.uuid); //append the values with key, value pair
   formData.append("microsite_id", msDetails.id);
   formData.append("name", values.name);
-  formData.append("type", values.type);
+  // formData.append("type", values.type);
+  formData.append("type", 'menu');
   formData.append("position", values.position);
   formData.append("details", values.message);
 
@@ -268,7 +276,7 @@ useEffect(()=>{
                     <Grid item lg={12} md={12} sm={12} xs={12}>
                       <Box ><TextField label="Category Name" variant="filled" fullWidth  focused onChange={(e)=>setValue("name",e.target.value)} value={values.name} /></Box>
                     </Grid>
-                    <Grid item lg={12} md={12} sm={12} xs={12}>
+                    {/* <Grid item lg={12} md={12} sm={12} xs={12}>
                       <Box sx={{ minWidth: 120 }}>
                         <FormControl fullWidth focused>
                           <InputLabel id="demo-simple-select-label">Category Type</InputLabel>
@@ -285,7 +293,7 @@ useEffect(()=>{
                           </Select>
                         </FormControl>
                       </Box>
-                    </Grid>
+                    </Grid> */}
                     <Grid item lg={12} md={12} sm={12} xs={12}>
                       <Box sx={{ minWidth: 120 }}>
                         <FormControl fullWidth focused>
@@ -298,12 +306,12 @@ useEffect(()=>{
                             value={values.position}
                             onChange={handleChangePosition}
                             >
-                            <MenuItem value={'no_position'}>No Position</MenuItem>
+                            {/* <MenuItem value={'no_position'}>No Position</MenuItem> */}
                             <MenuItem value={'main_nav'}>Main Menu</MenuItem>
-                            <MenuItem value={'sub_nav1'}>Sub Nav 1</MenuItem>
-                            <MenuItem value={'sub_nav2'}>Sub Nav 2</MenuItem>
-                            <MenuItem value={'front_page_sections'}>Front Section</MenuItem>
-                            <MenuItem value={'stiky_sections'}>Sticky Section</MenuItem>
+                            <MenuItem value={'sub_nav1'}>Sub Menu</MenuItem>
+                            {/* <MenuItem value={'sub_nav2'}>Sub Nav 2</MenuItem> */}
+                            {/* <MenuItem value={'front_page_sections'}>Front Section</MenuItem> */}
+                            {/* <MenuItem value={'stiky_sections'}>Sticky Section</MenuItem> */}
                           </Select>
                         </FormControl>
                       </Box>
@@ -319,6 +327,7 @@ useEffect(()=>{
                             defaultValue={parentValue}
                             value={parentValue}
                             focused
+                            disabled={values.position ==='sub_nav1'?false:true}
                             onChange={(event, newValue) => {
                               if (newValue) {
                                 setParentValue(newValue);
@@ -362,6 +371,7 @@ useEffect(()=>{
                                           "fontColor",
                                           "align",
                                           "horizontalRule",
+                                          "image",
                                           "table",
                                           "fullScreen",
                                         ],

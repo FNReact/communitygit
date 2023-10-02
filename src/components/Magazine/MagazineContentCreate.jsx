@@ -161,7 +161,6 @@ const handlePreview = async file => {
 
     axios.request(config)
     .then((response) => {
-      console.log('maahssh', response)
       sessionStorage.setItem("magazine", JSON.stringify(response.data));
       setTimeout(()=>{
         window.location.href='/magazine-content'
@@ -170,7 +169,6 @@ const handlePreview = async file => {
     })
     .catch((error) => {
       setLoaderVisible(false);
-      console.log(error);
     });
 
   }
@@ -204,7 +202,6 @@ const handleContentAdd = async () => {
       var type= element?.type;
       var sliceType = type?.split('/')
       // formData.append("files[]", element.originFileObj);
-      console.log('elelment', sliceType)
       if(sliceType[0]==='video'){
         formData.append("file_for", "video");
         formData.append("file", element?.originFileObj);
@@ -257,7 +254,6 @@ const getSingleContentDetails = (row)=>{
   
   axios.request(config)
   .then((response) => {
-    console.log('single details', response)
     if(response?.data){
       setValue('name', response?.data?.posts?.title)
       setValue('slug', response?.data?.posts?.slug)
@@ -324,15 +320,15 @@ useEffect(()=>{
                             value={values.position}
                             onChange={handleChangePosition}
                             >
-                            <MenuItem value={'no_position'}>No Position</MenuItem>
+                            {/* <MenuItem value={'no_position'}>No Position</MenuItem> */}
                             <MenuItem value={'main'}>Main Section</MenuItem>
                             <MenuItem value={'stiky'}>Sticky</MenuItem>
                             <MenuItem value={'exclusive'}>Exclusive</MenuItem>
                             <MenuItem value={'slider'}>Slider</MenuItem>
-                            <MenuItem value={'footer_nav'}>Footer Navigation</MenuItem>
-                            <MenuItem value={'important1'}>Important 1</MenuItem>
-                            <MenuItem value={'important2'}>Important 2</MenuItem>
-                            <MenuItem value={'front_page'}>Front page</MenuItem>
+                            {/* <MenuItem value={'footer_nav'}>Footer Navigation</MenuItem> */}
+                            {/* <MenuItem value={'important1'}>Important 1</MenuItem> */}
+                            {/* <MenuItem value={'important2'}>Important 2</MenuItem> */}
+                            <MenuItem value={'front_page'}>Bottom Section</MenuItem>
                           </Select>
                         </FormControl>
                       </Box>
@@ -392,6 +388,7 @@ useEffect(()=>{
                                           "fontColor",
                                           "align",
                                           "horizontalRule",
+                                          "image",
                                           "table",
                                           "fullScreen",
                                         ],

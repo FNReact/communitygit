@@ -63,7 +63,6 @@ import chat from "../asset/image/Chat.png";
 import InvitatonMemberPage from "../pages/AuthenticationPages/InvitatonMemberPage";
 import DeveloperReportPage from "../pages/BugReports/DeveloperReportPage";
 import AdminReportPage from "../pages/BugReports/AdminReportPage";
-import AdminBugSetUp from "../components/BugReport/AdminBugSetUp";
 import AdminReportCreatePage from "../pages/BugReports/AdminReportCreatePage";
 import AdminReportDetailsPage from "../pages/BugReports/AdminReportDetailsPage";
 import EventBannrUpdatePage from "../pages/EventPages/EventBannrUpdatePage";
@@ -72,9 +71,7 @@ import CommunityInfoPublicPage from "../pages/CommunityInfoPublicPage";
 import CommunityPtofileCompletePage from "../pages/CommunitySetUp/CommunityPtofileCompletePage";
 import RegisterUserSearchPage from "../pages/AuthenticationPages/RegisterUserSearchPage";
 import { notifyError } from "../utils/Toast";
-import NotAuthorisedPage from "../pages/NotAuthorisedPage";
 import CompleteBannerAvatarPage from "../pages/CommunitySetUp/CompleteBannerAvatarPage";
-import LocalRepresentetivePage from "../pages/LocalRepresentetivePage/LocalRepresentativePage";
 import MatrimonialPage from "../pages/Matrimonial/MatrimonialPage";
 import MagazinePage from "../pages/Magazine/MagazinePage";
 import MagazineMenuPage from "../pages/Magazine/MagazineMenuPage";
@@ -89,6 +86,10 @@ import RepresentativeCreatePage from "../pages/RepresentativePage/Representative
 import MyRepresentativePage from "../pages/RepresentativePage/MyRepresentativePage";
 import MagazineDetailsDemoPage from "../pages/Magazine/MagazineDetailsDemoPage";
 import MagazineCatgoryPostsPage from "../pages/Magazine/MagazineCatgoryPostsPage";
+import MagazineCategoryDetailsPage from "../pages/Magazine/MagazineCategoryDetailsPage";
+import MagazineSeeAllPostsPage from "../pages/Magazine/MagazineSeeAllPostsPage";
+import MatrimonyProfilePage from "../pages/Matrimonial/MatrimonyProfilePage";
+import MatrimonyProfileCreatePage from "../pages/Matrimonial/MatrimonyProfileCreatePage";
 
 const AppRouter = () => {
   const navigate=useNavigate();
@@ -247,18 +248,23 @@ const AppRouter = () => {
         sessionStorage.setItem("magazine", JSON.stringify(response.data));
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
       });
 
     }
 
+    // useEffect(()=>{
+    //   if(magazine ===null && msDetails?.id){
+    //     handleGetMainMagazine()
+    //   }else if(magazine?.microsite_info?.id !==msDetails?.id){
+    //     handleGetMainMagazine()
+    //   }
+    // },[magazine])
     useEffect(()=>{
-      if(magazine ===null && msDetails?.id){
-        handleGetMainMagazine()
-      }else if(magazine?.microsite_info?.id !==msDetails?.id){
+      if( msDetails?.id){
         handleGetMainMagazine()
       }
-    },[magazine])
+    },[])
 
     
 
@@ -393,6 +399,8 @@ const AppRouter = () => {
 
             {/* Magazine Pages Routes */}
             <Route exact path="/magazine" element={<Protected Component={MagazinePage} />}/>
+            <Route exact path="/magazine-see-all/:position" element={<Protected Component={MagazineSeeAllPostsPage} />}/>
+            <Route exact path="/magazine-category-details" element={<Protected Component={MagazineCategoryDetailsPage} />}/>
             <Route exact path="/magazine-category-posts" element={<Protected Component={MagazineCatgoryPostsPage} />}/>
             <Route exact path="/magazine-demo" element={<Protected Component={MagazineDemoPage} />}/>
             <Route exact path="/magazine-menu" element={<Protected Component={MagazineMenuPage} />}/>
@@ -401,6 +409,10 @@ const AppRouter = () => {
             <Route exact path="/magazine-content-create" element={<Protected Component={MagazineContentCreatePage} />}/>
             <Route exact path="/magazine-details" element={<Protected Component={MagazineDetailsPage} />}/>
             <Route exact path="/magazine-details-demo" element={<Protected Component={MagazineDetailsDemoPage} />}/>
+
+            {/* Matrimony pages route */}
+            <Route exact path="/my-matrimony-profile" element={<Protected Component={MatrimonyProfilePage} />}/>
+            <Route exact path="/my-matrimony-profile-create" element={<Protected Component={MatrimonyProfileCreatePage} />}/>
 
              
             {/* Event Pages Routes */}

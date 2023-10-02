@@ -66,6 +66,13 @@ const categoryUrl = `${baseUrl}/api/cms/pagecategories`;
 const magazineMainUrl = `${baseUrl}/api/cms/frontpages`;
 const postUrl = `${baseUrl}/api/cms/pages`;
 const postDetailsUrl = `${baseUrl}/api/cms/pagebasedpost`;
+
+const getPostsByCatIdUrl= `${baseUrl}/api/cms/categorypages`;
+
+const matrimonyUrl = `${baseUrl}/api/matrimony`;
+
+// const getSinglePostUrl =  `${baseUrl}/api/cms/dynamiccontent`
+
 const mediaUploadUrl = `${baseUrl}/api/cms/pages`;
 const mediaDeleteUrl = `${baseUrl}/api/cms/pages`;
 
@@ -130,7 +137,10 @@ export {
   categoryUrl,
   postUrl,
   postDetailsUrl,
+  getPostsByCatIdUrl,
 
+  matrimonyUrl,
+  
   mediaUploadUrl,
   mediaDeleteUrl
 };

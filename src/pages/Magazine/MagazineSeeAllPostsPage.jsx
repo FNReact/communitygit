@@ -7,11 +7,11 @@ import { MagazineRightSide } from "../../components/Magazine/MagazineRightSide";
 import MagazineTopNavigation from "../../components/Magazine/MagazineTopNavigation";
 import { UserContext } from "../../utils/UserContext";
 import axios from "axios";
-import { baseUrl, getPostsByCatIdUrl, magazineMainUrl, postUrl } from "../../api/Api";
+import { baseUrl, getPostsByCatIdUrl, postUrl } from "../../api/Api";
 import parser from "html-react-parser";
 import MainLoader from "../../components/PageLoadEffects/MainLoader";
 
-const MagazineCatgoryPostsPage = () => {
+const MagazineSeeAllPostsPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { msDetails } = useContext(UserContext);
@@ -20,56 +20,36 @@ const MagazineCatgoryPostsPage = () => {
   const [scrollTop, setScrollTop] = useState(false)
 
 
-  // get all post by category id
-  const getAllPosts = (catId) => {
-    setLoaderVisible(true)
-    let config = {
-      method: "get",
-      url: `${getPostsByCatIdUrl}/${catId}/${msDetails.id}`,
-    };
-    axios
-      .request(config)
+    //get front page data
+    const getFrontPageData=(position)=>{
+      let config = {
+        method: 'get',
+        url: `${postUrl}/${msDetails.id}`,
+      };
+  
+      var storeData = [];
+      axios.request(config)
       .then((response) => {
-        setPosts(response?.data?.posts);
+        if(response?.data?.data && response?.data?.data.length>0){
+          response?.data?.data.forEach(element => {
+            if(element.position ===position){
+              storeData.push(element)
+            }
+          });
+        }
+        setPosts(storeData)
         setScrollTop(true)
-        setLoaderVisible(false)
       })
       .catch((error) => {
-        setLoaderVisible(false)
         console.log(error);
       });
-  };
-
-  // handle all search posts
-  const getAllSearchPosts = (searchQuery)=>{
-    let config = {
-      method: 'get',
-      url: `${postUrl}/${msDetails.id}?keyword=${searchQuery}`,
-    };
-    axios.request(config)
-    .then((response) => {
-      setPosts(response?.data?.data);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-  }
-
-  console.log('search', location?.state?.search)
-
-  useEffect(() => {
-    if (location?.state !== null && location?.state?.id) {
-      getAllPosts(location?.state?.id);
     }
-    if (location?.state !== null && location?.state?.search) {
-      if(location?.state?.search.length>0){
-        getAllSearchPosts(location?.state?.search);
+  
+    useEffect(()=>{
+      if(location?.state !==null){
+        getFrontPageData(location?.state?.position);
       }
-    }
-    if (location?.state !== null && location?.state?.search ==='') {
-      setPosts([])
-    }
-  }, [location]);
+    },[])
 
   // handle details
   const handleDetails = (data) => {
@@ -146,4 +126,4 @@ const MagazineCatgoryPostsPage = () => {
   );
 };
 
-export default MagazineCatgoryPostsPage;
+export default MagazineSeeAllPostsPage;
