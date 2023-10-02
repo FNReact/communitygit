@@ -90,6 +90,7 @@ import MagazineCategoryDetailsPage from "../pages/Magazine/MagazineCategoryDetai
 import MagazineSeeAllPostsPage from "../pages/Magazine/MagazineSeeAllPostsPage";
 import MatrimonyProfilePage from "../pages/Matrimonial/MatrimonyProfilePage";
 import MatrimonyProfileCreatePage from "../pages/Matrimonial/MatrimonyProfileCreatePage";
+import MatrimonialCardDetails from "../pages/Matrimonial/MatrimonialCardDetails";
 
 const AppRouter = () => {
   const navigate=useNavigate();
@@ -396,6 +397,7 @@ const AppRouter = () => {
 
             {/* Matrimonial Pages Routes */}
             <Route exact path="/matrimonial" element={<Protected Component={MatrimonialPage} />}/>
+            <Route exact path="/matrimonial-details" element={<Protected Component={MatrimonialCardDetails} />}/>
 
             {/* Magazine Pages Routes */}
             <Route exact path="/magazine" element={<Protected Component={MagazinePage} />}/>

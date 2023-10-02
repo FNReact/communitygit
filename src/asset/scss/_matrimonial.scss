@@ -1,0 +1,185 @@
+.matrimonial_card{
+    width: 100%;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: $shadow;
+    padding: 10px;
+  .card_top{
+      text-align: center;
+      .card_profil{
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding-bottom: 10px;
+          img{
+              height: 120px;
+              width: 120px;
+              object-fit: cover;
+              border-radius: 50%;
+          }
+      }
+      .person_name{
+        font-size: 17px;
+        color: #333;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+      .DOB{
+        font-size: 13px;
+        font-weight: 400;
+        color: $text-2;
+      }
+  }
+  .card_content{
+    padding: 10px 15px 5px 15px;
+      .content_box{
+        height: 120px;
+        width: 100%;
+        border: 1px solid #c3c3c3c6;
+        border-radius: 8px;
+        padding: 5px;
+        position: relative;
+        &::after{
+            position: absolute;
+            content: '';
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 90%;
+            width: .7px;
+            background-color: #c3c3c3ac ;
+        }
+        .box_content_item{
+            border-bottom: 1px solid #c3c3c3c6;
+            display: flex;
+            justify-content: center;
+            padding: 5px 3px;
+            &:last-child{
+                border-bottom: 1px solid transparent;
+            }
+            .box_item{
+                width: 50%;
+                text-align: center;
+                font-size: 13px;
+                color: #434141;
+                font-weight:400;
+            }
+            .bold_text{
+                font-weight: 500;
+                font-size: 14px;
+                color: #333;
+            }
+        }
+      }
+      .view_details{
+        height: 35px;
+        width: 100%;
+        background-color: #e9e9e9d0;
+        color: #585757;
+        border: 1px solid #c3c3c3c6;
+        font-weight: 400;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 6px;
+        margin-top: 12px;
+        font-size: 14px;
+        cursor: pointer;
+        &:hover{
+            background-color: $primaryColor;
+            color: $white;
+        }
+      }
+  }
+} 
+
+.matrimonial_card_details{
+    width: 100%;
+    background-color: #fff;
+    box-shadow: $shadow;
+    border-radius: 10px;
+    padding: 20px 50px;
+    h4{
+        font-size: 22px;
+        font-weight: 600;
+        color: $black;
+        text-align: center;
+        padding-bottom: 20px;
+    }
+    .person_information{
+       width: 100%;
+       border: 1px solid #c3c3c3b7;
+       border-radius: 10px;
+       background-color: #fff;
+       position: relative;
+       overflow: hidden;
+       padding: 20px 20px 0 20px;
+       margin-bottom: 25px;
+       &::after{
+        position: absolute;
+        content: '';
+        height: 200px;
+        width: 100%;
+        border-top: 4px solid $primaryColor;
+        top:0;
+        left: 0;
+       }
+
+       .person_image{
+        height: 220px;
+        width: 200px;
+        margin: 0 0 0 auto;
+        display: flex;
+        background-color: #f3f3f3;
+        border: 1px solid #c3c3c3c8;
+        border-radius: 8px;
+        justify-content: center;
+        img{
+            height: 100%;
+            width: 100%;
+            object-fit: contain;
+        }
+       }
+    }
+    .information_table{
+        width: 100%;
+        padding: 12px 12px 0 12px;
+        .section_title{
+            font-size: 20px;
+            font-weight: 600;
+            color: $black;
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #c3c3c3a6;
+            margin-bottom: 12px;
+        }
+        .info_item_list{
+            display: flex;
+            padding-bottom: 15px;
+            &:last-child{
+                padding-bottom: 5px;
+            }
+            .info_lebel{
+                width: 30%;
+                font-size: 15px;
+                font-weight: 400;
+                color: $text-2;
+            }
+            .info_item{
+                width: 70%;
+                font-size: 17px;
+                font-weight: 600;
+                color: $black;
+
+                p{
+                    font-size: 15px;
+                    font-weight: 400;
+                    color: $black;
+                    line-height: 22px;
+                    text-align: start;
+                }
+            }
+        }
+    }
+}

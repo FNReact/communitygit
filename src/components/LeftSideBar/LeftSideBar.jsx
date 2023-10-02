@@ -136,9 +136,7 @@ const LeftSideBar = () => {
               {
                 //Cover
                 (cover !==undefined && cover !==null) ? (
-                  <div className="profile_img">
-                    <img src={`${baseUrl}/${cover}`} alt={name} />
-                  </div>
+                  <img src={`${baseUrl}/${cover}`} alt={name} />
                 ) : (
                   <>
                   <div className="leftsideCover">
@@ -202,6 +200,12 @@ const LeftSideBar = () => {
                      <span>Member</span>
                   </li>
                 </Link>
+                <Link to="/my-job-list">
+                   <li>
+                       <span> <img src={jobImage} alt="" /></span>
+                       <span>Jobs</span>
+                   </li>
+                </Link>
 
                 <a className="cursorPointer">
                     <li onClick={(e)=> navigate('/community-profile',{state:{showInfo:false}})}>
@@ -209,12 +213,6 @@ const LeftSideBar = () => {
                        <span>My Posts</span>
                    </li>
                 </a>
-                <Link to="/my-job-list">
-                   <li>
-                       <span> <img src={jobImage} alt="" /></span>
-                       <span>Jobs</span>
-                   </li>
-                </Link>
                 <Link to="/event">
                    <li>
                        <span> <img src={eventImg} alt="" /></span>
