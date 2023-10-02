@@ -30,7 +30,6 @@ const MatrimonialPage = () => {
                         </Link>
                      </div>
                  </div> 
-
                    
                   <Box display='flex' justifyContent='center' justifyItems='center'>
                     <Button disabled><h1>Upcoming...</h1></Button>
