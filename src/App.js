@@ -7,8 +7,6 @@ import { micrositeDetailsUrl } from "./api/Api";
 // import axios from "axios";
 // import "antd/dist/reset.css";
 function App() {
-
-
   return (
     <div>
       <BrowserRouter>
