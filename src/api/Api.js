@@ -72,10 +72,12 @@ const getPostsByCatIdUrl= `${baseUrl}/api/cms/categorypages`;
 const matrimonyUrl = `${baseUrl}/api/matrimony`;
 
 // const getSinglePostUrl =  `${baseUrl}/api/cms/dynamiccontent`
-
 const mediaUploadUrl = `${baseUrl}/api/cms/pages`;
 const mediaDeleteUrl = `${baseUrl}/api/cms/pages`;
 
+// chat rooms
+const chatRoomUrl = `${baseUrl}/api/chat/rooms`;
+const chatDetailsUrl = `${baseUrl}/api/chat/messages`;
 
 
 
@@ -142,5 +144,8 @@ export {
   matrimonyUrl,
   
   mediaUploadUrl,
-  mediaDeleteUrl
+  mediaDeleteUrl,
+
+  chatRoomUrl,
+  chatDetailsUrl
 };

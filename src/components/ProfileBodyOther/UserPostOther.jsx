@@ -390,7 +390,7 @@ import LoungeUploadProgress from "../LoungeUploadProgress/LoungeUploadProgress";
                   }
                   </div>
                   <div className="uploader_input">
-                    <input type="text" className="form_control" placeholder="Text Here"/>
+                    <input type="text" className="form_control" placeholder="Post your text, video or photo"/>
                   </div>
                 </div>
                 <div className="upload_box_bottom">
@@ -943,7 +943,7 @@ import LoungeUploadProgress from "../LoungeUploadProgress/LoungeUploadProgress";
                 <TextareaAutosize
                 aria-label="minimum height"
                 minRows={7}
-                placeholder="Text  what do you want"
+                placeholder="Post your text, video or photo"
                 className="Upload_textarea"
                 onChange={(e) => setContent(e.target.value)}
                 value={content}/>

@@ -44,7 +44,7 @@ const MagazinePage = () => {
       setFrontPageData(storeData)
     })
     .catch((error) => {
-      console.log(error);
+      // console.log(error);
     });
   }
 
@@ -61,7 +61,6 @@ const MagazinePage = () => {
   const handleSeeAll =(position)=>{
     navigate(`/magazine-see-all/${position}`,{state:{position:position}})
   }
-
 
   return (
     <Fragment>
@@ -80,34 +79,6 @@ const MagazinePage = () => {
               </div>
             </Tooltip>
             <div className="magazine">
-
-              <div className="magazine_top">
-                <div className="magazine_t">{msDetails?.name} Magazine</div>
-                {(loggedInUser?.user_type ==='admin' || userDetails.id === msDetails?.user_id) &&
-                <div className="top_left">
-                  <Button
-                    variant="outlined"
-                    sx={{ mr: 2 }}
-                    onClick={(e) => navigate("/magazine-demo")}
-                  >
-                    Demo Magazine
-                  </Button>
-                  <Button
-                    variant="outlined"
-                    sx={{ mr: 2 }}
-                    onClick={(e) => navigate("/magazine-menu")}
-                  >
-                    Menu
-                  </Button>
-                  <Button
-                    variant="contained"
-                    onClick={(e) => navigate("/magazine-content")}
-                  >
-                    Content
-                  </Button>
-                </div>}
-              </div> 
-            
              
             {/* top navigation */}
             <MagazineTopNavigation />
@@ -137,30 +108,6 @@ const MagazinePage = () => {
                       )
                   }) }
                 </Swiper>
-              </div>
-
-              {/* Main Ccontent are here */}
-              <div className="main_contant">
-                <Box display='flex' justifyContent='space-between' justifyItems='space-between'>
-                  {/* <div className="sec_head">Main Content</div> */}
-                  <div className="sec_head"></div>
-                   {magazine && magazine?.main && magazine?.main?.length>4 &&<Button onClick={(e)=> handleSeeAll('main')} >See All</Button>}
-                </Box>
-                <Grid container spacing={2}>
-                  {magazine && magazine?.main && magazine?.main?.length>0 && magazine?.main.slice(0,4).map((data,key)=>{
-                    return(
-                      <Grid item xs={3} key={data.uuid} onClick={(e)=> handleDetails(data)}>
-                          <div className="main_content_item">
-                            <div className="item_img">
-                              <img src={`${baseUrl}/${data?.featured_image}`} alt={data?.title} />
-                            </div>
-                            <div className="content_title">{data?.title}</div>
-                            <p>{parser(data?.body?.slice(0,100))}</p>
-                          </div>
-                        </Grid>
-                    )
-                  })}
-                </Grid>
               </div>
 
               {/* Sticky Section are here */}
@@ -231,12 +178,12 @@ const MagazinePage = () => {
                 </div>
               </div>
 
-              {/* Exclusive Section are here */}
-              <div className="exclusive_section">
+               {/* Exclusive Section are here */}
+               <div className="exclusive_section">
                 <div className="exclusive_wrapper">
                   <Box display='flex' justifyContent='space-between' justifyItems='space-between'>
                     {/* <div className="sec_head">Exclusive Header</div> */}
-                    <div className="sec_head"></div>
+                    <div className=""></div>
                     {magazine && magazine?.exclusive && magazine?.exclusive?.length>5 &&<Button onClick={(e)=> handleSeeAll('exclusive')} >See All</Button>}
                   </Box>
                   <ul>
@@ -252,6 +199,31 @@ const MagazinePage = () => {
                   </ul>
                 </div>
               </div>
+
+              {/* Main Ccontent are here */}
+              <div className="main_contant">
+                <Box display='flex' justifyContent='space-between' justifyItems='space-between'>
+                  {/* <div className="sec_head">Main Content</div> */}
+                  <div className="sec_head"></div>
+                   {magazine && magazine?.main && magazine?.main?.length>4 &&<Button onClick={(e)=> handleSeeAll('main')} >See All</Button>}
+                </Box>
+                <Grid container spacing={2}>
+                  {magazine && magazine?.main && magazine?.main?.length>0 && magazine?.main.slice(0,4).map((data,key)=>{
+                    return(
+                      <Grid item xs={3} key={data.uuid} onClick={(e)=> handleDetails(data)}>
+                          <div className="main_content_item">
+                            <div className="item_img">
+                              <img src={`${baseUrl}/${data?.featured_image}`} alt={data?.title} />
+                            </div>
+                            <div className="content_title">{data?.title}</div>
+                            <p>{parser(data?.body?.slice(0,100))}</p>
+                          </div>
+                        </Grid>
+                    )
+                  })}
+                </Grid>
+              </div>
+             
 
               {/* Front Page Section Here are here */}
 

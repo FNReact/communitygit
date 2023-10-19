@@ -34,15 +34,16 @@ import PopupBanner from "../../utils/Banner/PopupBanner";
 import uploadLogo from '../../asset/image/upload-logo.jpeg'
 import bannerDefault from '../../asset/image/bannerUpload.jpeg'
 
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Switch from '@mui/material/Switch';
+import CoomunityMenuSettings from "./CoomunityMenuSettings";
+
+
 const CommunitySetUp = ()=>{
   const navigate = useNavigate();
   const location = useLocation();
 
-  const [allJobs,setAllJobs] = useState(null);
-  const [allCategory,setAllCategory] = useState([])
-  const [categoryTitle,setCategoryTitle] = useState('')
-  const [categoryValue,setCategoryValue] = useState('')
-  const [categoryId,setCategoryId] = useState('')
   const [companyLogo,setCompanyLogo] = useState(null)
   const [companyBanner,setCompanyBanner] = useState(null)
   const {msDetails,userDetails} = useContext(UserContext);
@@ -51,6 +52,9 @@ const CommunitySetUp = ()=>{
   const [loaderEffect, setLoaderEffect] = useState(false)
 
   const [navigatePath, setNavigatePath] = useState(location?.state?.path?location.state.path:'/community-info')
+
+  const [magazineLogo, setMagazineLogo] = useState([]);
+  const [storeMagazineImage, setStoreMagazineImage] = useState(null)
 
   const token = sessionStorage.getItem('token');
   const defaultValues = {
@@ -64,12 +68,51 @@ const CommunitySetUp = ()=>{
     tagline:'',
     details:'',
     logo:null,
-    banner:null
+    banner:null,
 
+    member_enable:false,
+    member_menu_name:'Member',
+    
+    my_job_enable:false,
+    my_job_menu_name:'Jobs',
+
+    my_lounge_post_enable:false,
+    my_lounge_menu_name:'My Post',
+
+    event_enable:false,
+    event_menu_name:'Event',
+
+    resource_enable:false,
+    resource_menu_name:'Resources',
+
+    media_enable:false,
+    media_menu_name:'Media',
+
+    my_classified_enable:false,
+    my_classified_menu_name:'Classifieds',
+
+    business_enable:false,
+    business_menu_name:'Community Business',
+
+    representative_enable:false,
+    representative_menu_name:'Local Representetive',
+
+    matrimony_enable:false,
+    matrimony_menu_name:'Matrimonial Center',
+
+    magazine_menu_enable:false,
+    magazine_menu_name:'Community Magazine',
+    magazine_name_enable:false,
+    magazine_name:'',
+    
+    magazine_logo_enable:false,
+    magazine_logo: null,
   };
   const methods = useForm({defaultValues});
   const {watch,setValue} = methods;
   const values = watch();
+
+
 
   //get single job details
    const getMicrositeDetails = ()=>{
@@ -97,6 +140,77 @@ const CommunitySetUp = ()=>{
 
        setCompanyLogo(res?.data?.entity_logo);
        setCompanyBanner(res?.data?.meta?.banner)
+       
+       if(res?.data?.meta?.community_settings){
+        if(res?.data?.meta?.community_settings?.member_enable==='1'){
+          setValue('member_enable',true)
+          }else{setValue('member_enable',false)}
+        setValue('member_menu_name',res?.data?.meta?.community_settings?.member_menu_name)
+
+        if(res?.data?.meta?.community_settings?.my_job_enable==='1'){
+          setValue('my_job_enable',true)
+          }else{setValue('my_job_enable',false)}
+        setValue('my_job_menu_name',res?.data?.meta?.community_settings?.my_job_menu_name)
+
+        if(res?.data?.meta?.community_settings?.my_lounge_post_enable==='1'){
+          setValue('my_lounge_post_enable',true)
+          }else{setValue('my_lounge_post_enable',false)}
+        setValue('my_lounge_menu_name',res?.data?.meta?.community_settings?.my_lounge_menu_name)
+
+        if(res?.data?.meta?.community_settings?.event_enable==='1'){
+          setValue('event_enable',true)
+          }else{setValue('event_enable',false)}
+        setValue('event_menu_name',res?.data?.meta?.community_settings?.event_menu_name)
+
+        if(res?.data?.meta?.community_settings?.resource_enable==='1'){
+          setValue('resource_enable',true)
+          }else{setValue('resource_enable',false)}
+        setValue('resource_menu_name',res?.data?.meta?.community_settings?.resource_menu_name)
+
+        if(res?.data?.meta?.community_settings?.media_enable==='1'){
+          setValue('media_enable',true)
+          }else{setValue('media_enable',false)}
+        setValue('media_menu_name',res?.data?.meta?.community_settings?.media_menu_name)
+
+        if(res?.data?.meta?.community_settings?.my_classified_enable==='1'){
+          setValue('my_classified_enable',true)
+          }else{setValue('my_classified_enable',false)}
+        setValue('my_classified_menu_name',res?.data?.meta?.community_settings?.my_classified_menu_name)
+
+        if(res?.data?.meta?.community_settings?.business_enable==='1'){
+          setValue('business_enable',true)
+          }else{setValue('business_enable',false)}
+        setValue('business_menu_name',res?.data?.meta?.community_settings?.business_menu_name)
+
+        if(res?.data?.meta?.community_settings?.representative_enable==='1'){
+          setValue('representative_enable',true)
+          }else{setValue('representative_enable',false)}
+        setValue('representative_menu_name',res?.data?.meta?.community_settings?.representative_menu_name)
+
+        if(res?.data?.meta?.community_settings?.matrimony_enable==='1'){
+          setValue('matrimony_enable',true)
+          }else{setValue('matrimony_enable',false)}
+        setValue('matrimony_menu_name',res?.data?.meta?.community_settings?.matrimony_menu_name)
+
+        if(res?.data?.meta?.community_settings?.magazine_menu_enable==='1'){
+          setValue('magazine_menu_enable',true)
+          }else{setValue('magazine_menu_enable',false)}
+        setValue('magazine_menu_name',res?.data?.meta?.community_settings?.magazine_menu_name)
+
+        if(res?.data?.meta?.community_settings?.magazine_name_enable==='1'){
+          setValue('magazine_name_enable',true)
+          }else{setValue('magazine_name_enable',false)}
+        setValue('magazine_name',res?.data?.meta?.community_settings?.magazine_name)
+
+        if(res?.data?.meta?.community_settings?.magazine_logo_enable==='1'){
+          setValue('magazine_logo_enable',true)
+          }else{setValue('magazine_logo_enable',false)}
+       }
+       var magazineUrl =null;
+       if(res?.data?.meta?.community_settings?.magazine_logo){
+        magazineUrl=`${baseUrl}/${res?.data?.meta?.community_settings?.magazine_logo}`
+       }
+        setStoreMagazineImage(magazineUrl)
       }).catch((e)=>  { setLoaderVisible(false)})
 }
 useEffect(()=>{
@@ -134,6 +248,74 @@ useEffect(()=>{
 
       if(values.banner){
         data.append('banner', values.banner);
+      }
+
+      if(JSON.parse(values.member_enable)===true){
+        data.append('member_enable', 1)
+        }else{data.append('member_enable', 0)}
+      data.append('member_menu_name', values.member_menu_name);
+
+      if(JSON.parse(values.my_job_enable)===true){
+        data.append('my_job_enable', 1)
+        }else{data.append('my_job_enable', 0)}
+      data.append('my_job_menu_name', values.my_job_menu_name);
+
+      if(JSON.parse(values.my_lounge_post_enable)===true){
+        data.append('my_lounge_post_enable', 1)
+        }else{data.append('my_lounge_post_enable', 0)}
+      data.append('my_lounge_menu_name', values.my_lounge_menu_name);
+
+      if(JSON.parse(values.event_enable)===true){
+        data.append('event_enable', 1)
+        }else{data.append('event_enable', 0)}
+      data.append('event_menu_name', values.event_menu_name);
+
+      if(JSON.parse(values.resource_enable)===true){
+        data.append('resource_enable', 1)
+        }else{data.append('resource_enable', 0)}
+      data.append('resource_menu_name', values.resource_menu_name);
+
+      if(JSON.parse(values.media_enable)===true){
+        data.append('media_enable', 1)
+        }else{data.append('media_enable', 0)}
+      data.append('media_menu_name', values.media_menu_name);
+
+      if(JSON.parse(values.my_classified_enable)===true){
+        data.append('my_classified_enable', 1)
+        }else{data.append('my_classified_enable', 0)}
+      data.append('my_classified_menu_name', values.my_classified_menu_name);
+
+      if(JSON.parse(values.business_enable)===true){
+        data.append('business_enable', 1)
+        }else{data.append('business_enable', 0)}
+      data.append('business_menu_name', values.business_menu_name);
+
+      if(JSON.parse(values.representative_enable)===true){
+        data.append('representative_enable', 1)
+        }else{data.append('representative_enable', 0)}
+      data.append('representative_menu_name', values.representative_menu_name);
+
+      if(JSON.parse(values.matrimony_enable)===true){
+        data.append('matrimony_enable', 1)
+        }else{data.append('matrimony_enable', 0)}
+      data.append('matrimony_menu_name', values.matrimony_menu_name);
+
+      if(JSON.parse(values.magazine_menu_enable)===true){
+        data.append('magazine_menu_enable', 1)
+        }else{data.append('magazine_menu_enable', 0)}
+      data.append('magazine_menu_name', values.magazine_menu_name);
+
+      if(JSON.parse(values.magazine_name_enable)===true){
+        data.append('magazine_name_enable', 1)
+        }else{data.append('magazine_name_enable', 0)}
+      data.append('magazine_name', values.magazine_name);
+
+      if(JSON.parse(values.magazine_logo_enable)===true){
+        data.append('magazine_logo_enable', 1)
+        }else{data.append('magazine_logo_enable', 0)}
+
+      if(values?.magazine_logo && values?.magazine_logo.length >0){
+        data.append('magazine_logo', values?.magazine_logo[0]?.originFileObj);
       }
     
        var config = {
@@ -183,6 +365,10 @@ useEffect(()=>{
   };
   const handleClose2 = () => {
     setOpen2(false);
+  };
+
+  const handleChangeStatus = (event,field) => {
+    setValue(`${field}`, event.target.checked);
   };
 
 
@@ -435,6 +621,17 @@ useEffect(()=>{
                      </Grid>  } */}
                   
       {/* ***************Banner End************* */}
+                 {/* menu settings    */}
+                 <CoomunityMenuSettings 
+                    values={values} 
+                    setValue={setValue} 
+                    handleChangeStatus={handleChangeStatus}
+                    magazineLogo={magazineLogo}
+                    setMagazineLogo={setMagazineLogo}
+                    storeMagazineImage={storeMagazineImage}
+                    setStoreMagazineImage={setStoreMagazineImage}
+                  />
+                    
                   </Grid>
 
                       <Box sx={{  display: 'flex', justifyContent: 'center', alignItems: 'center',  flexDirection: 'column',    mt:5 }}> 

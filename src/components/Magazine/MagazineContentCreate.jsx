@@ -163,7 +163,8 @@ const handlePreview = async file => {
     .then((response) => {
       sessionStorage.setItem("magazine", JSON.stringify(response.data));
       setTimeout(()=>{
-        window.location.href='/magazine-content'
+        // window.location.href='/magazine-content'
+        navigate(-1)
       },1000)
       setLoaderVisible(false);
     })
@@ -246,7 +247,7 @@ const handleContentAdd = async () => {
 
 // get single category details
 const getSingleContentDetails = (row)=>{
-  // setLoaderVisible(true)
+  setLoaderVisible(true)
   let config = {
     method: 'get',
     url: `${postDetailsUrl}/${row.uuid}`,
@@ -369,7 +370,7 @@ useEffect(()=>{
                           <SunEditor
                                      name="message"
                                      setContents={values.message}
-                                     placeholder="Type message Here..."
+                                     placeholder="Type  Here..."
                                      showToolbar={true}
                                      setDefaultStyle="height: 200px"
                                      onChange={(e)=>handleEditorChange(e,'message')}
@@ -380,6 +381,7 @@ useEffect(()=>{
                                           "fontSize",
                                           "formatBlock",
                                           "paragraphStyle",
+                                          "lineHeight",
                                           "blockquote",
                                           "bold",
                                           "underline",
@@ -389,6 +391,7 @@ useEffect(()=>{
                                           "align",
                                           "horizontalRule",
                                           "image",
+                                          "imageGallery",
                                           "table",
                                           "fullScreen",
                                         ],
@@ -424,7 +427,7 @@ useEffect(()=>{
                   </Grid>
 
 
-                {location?.state !==null &&  <div className="mediaAdd_Body">
+                {/* {location?.state !==null &&  <div className="mediaAdd_Body">
                     <div className="mediaAdder">
                       <Dragger
                         action="https://icircles.app/storage/logo/h9kMsnUQzKZ23PfgkLNhl1UxGWcjFXCSIntrNrD5.png"
@@ -438,7 +441,7 @@ useEffect(()=>{
                       </Dragger>
                     </div>
                     
-                  </div>}
+                  </div>} */}
                  
 
                   <Box sx={{ minWidth: 120 }}>

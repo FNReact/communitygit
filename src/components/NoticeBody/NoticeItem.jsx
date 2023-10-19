@@ -54,7 +54,7 @@ import ReactReadMoreReadLess from "react-read-more-read-less";
                                     <img src={L1}  alt='' />
                                 </div>
                                 <div className="commentor_placehold">
-                                    <input type="text" placeholder="Text here" className="form_control" />
+                                    <input type="text" placeholder="Post your text, video or photo" className="form_control" />
                                 </div>
                              </div>
                             )}

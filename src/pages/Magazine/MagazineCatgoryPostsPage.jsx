@@ -36,7 +36,7 @@ const MagazineCatgoryPostsPage = () => {
       })
       .catch((error) => {
         setLoaderVisible(false)
-        console.log(error);
+        // console.log(error);
       });
   };
 
@@ -51,11 +51,11 @@ const MagazineCatgoryPostsPage = () => {
       setPosts(response?.data?.data);
     })
     .catch((error) => {
-      console.log(error);
+      // console.log(error);
     });
   }
 
-  console.log('search', location?.state?.search)
+  // console.log('search', location?.state?.search)
 
   useEffect(() => {
     if (location?.state !== null && location?.state?.id) {
@@ -98,7 +98,10 @@ const MagazineCatgoryPostsPage = () => {
 
             <div className="magazine_category_wrapper magazine_details">
               <MagazineTopNavigation />
-              <Grid container spacing={2} sx={{ mt: 2 }}>
+              <Box sx={{mt:2}}>
+                {location?.state !==null && <h4>Posts of {location?.state?.data?.name}</h4>}
+              </Box>
+              <Grid container spacing={2} sx={{ mt: 1 }}>
                 <Grid item xs={8}>
                   {posts &&
                     posts.length > 0 &&

@@ -97,7 +97,7 @@ const  SingleComment =({data, getAllComments, replayShow,findLast,avatar,createB
             fullTime = secs+'s';
           }
           if(minutes !== 0 &&  secs !== 0 ){
-            fullTime = minutes+'m'+ " "+ secs+'s';
+            fullTime = minutes+'m'+" "+ secs+'s';
           }
           if(hours !==0 && minutes !== 0 &&  secs !== 0 ){
             fullTime = hours+'h'+ " "+ minutes+'m'+ " "+ secs+'s';

@@ -60,6 +60,8 @@ import 'video-react/dist/video-react.css';
 import UploadLoader from "../PageLoadEffects/UploadLoader";
 import LoungeUploadProgress from "../LoungeUploadProgress/LoungeUploadProgress";
 
+import { getLinkPreview, getPreviewFromContent } from "link-preview-js";
+
 const LoungeBody = () => {
 const navigate = useNavigate();
   const [open, setOpen] = useState(false);
@@ -419,6 +421,12 @@ const navigate = useNavigate();
       })
   }
 
+// useEffect(()=>{
+//   // pass a chunk of text
+//   getLinkPreview(
+//     "This is a text supposed to be parsed and the first link displayed https://www.youtube.com/watch?v=MejbOFk7H6c"
+//   ).then((data) => console.debug(data));
+// },[])
 
 
 
@@ -449,7 +457,7 @@ const navigate = useNavigate();
                 }
                 </div>
                 <div className="uploader_input">
-                  <input type="text" className="form_control" placeholder="Text Here"/>
+                  <input type="text" className="form_control" placeholder="Post your text, video or photo"/>
                 </div>
               </div>
             </div>
@@ -997,7 +1005,7 @@ const navigate = useNavigate();
               <TextareaAutosize
               aria-label="minimum height"
               minRows={7}
-              placeholder="Text  what do you want"
+              placeholder="Post your text, video or photo"
               className="Upload_textarea"
               onChange={(e) => setContent(e.target.value)}
               value={content}/>

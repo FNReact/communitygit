@@ -187,7 +187,7 @@ const GeneralLoginPage = () => {
         <div className="home_title">
               Welcome to iCircles Community Microsites
             </div>
-          <div className="commuinity_search_form">  
+          <div className="commuinity_search_form">   
             <div className="searchBar">
               <input
                 type="text"

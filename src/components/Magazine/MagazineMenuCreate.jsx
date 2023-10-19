@@ -154,7 +154,8 @@ const handlePreview = async file => {
     .then((response) => {
       sessionStorage.setItem("magazine", JSON.stringify(response.data));
       setTimeout(()=>{
-        window.location.href='/magazine-menu'
+        // window.location.href='/magazine-menu'
+        navigate(-1)
       },1000)
       setLoaderVisible(false);
     })

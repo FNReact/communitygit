@@ -14,6 +14,7 @@ import AddIcon from '@mui/icons-material/Add';
 import Swal from "sweetalert2";
 import SunEditor from "suneditor-react"; 
 import UploadLoader from "../PageLoadEffects/UploadLoader";
+import MainLoader from "../PageLoadEffects/MainLoader";
 const RepresentativeCreateBody = () => { 
   const navigate = useNavigate();
   const location = useLocation();
@@ -21,6 +22,7 @@ const RepresentativeCreateBody = () => {
   const [fileList, setFileList] = useState([]);
   const [getFileList, setGetFileList] = useState(null)
   const [loaderEffectValue, setLoaderEffectValue] = useState(false)
+  const [loaderVisible, setLoaderVisible] = useState(false)
   const token = sessionStorage.getItem('token');
   const onChange = ({ fileList: newFileList }) => {
     setFileList(newFileList);
@@ -42,7 +44,12 @@ const RepresentativeCreateBody = () => {
 
   // input default state value
 const defaultValues = {
+  name:'',
+  email:'',
   title: '',
+  fromDate:'',
+  toDate:'',
+  district:'',
   subtitle:'',
   details: '',
   websiteUrl:'',
@@ -63,6 +70,7 @@ const handleEditorChange = (content,type) => {
 
 // get details item
 const getSingleResouceDetails = ()=>{
+  setLoaderVisible(true)
   let config = {
     method: 'get',
     url: `${resourceUrl}/${location.state.uuid}`,
@@ -77,6 +85,12 @@ const getSingleResouceDetails = ()=>{
       setValue('subtitle', response.data.subtitle)
       setValue('details', response.data.details)
 
+      setValue('name', response?.data?.meta?.name)
+      setValue('email', response?.data?.meta?.email)
+      setValue('fromDate', response?.data?.meta?.from_date)
+      setValue('toDate', response?.data?.meta?.to_date)
+      setValue('district', response?.data?.meta?.district)
+
       setValue('websiteUrl', response?.data?.meta?.website_url)
       setValue('googleUrl', response?.data?.meta?.google_url)
       setValue('facebookUrl', response?.data?.meta?.facebook_url)
@@ -87,6 +101,7 @@ const getSingleResouceDetails = ()=>{
       if(response.data.files.length>0){
         setGetFileList(response.data.files)
       }
+      setLoaderVisible(false)
     }
   })
 }
@@ -104,6 +119,13 @@ const handleResouce = ()=>{
     let data = new FormData();
     data.append('microsite_id', msDetails.id);
     data.append('user_id', userDetails.id);
+
+    data.append('name', values.name);
+    data.append('email', values.email);
+    data.append('district', values.district);
+    data.append('from_date', values.fromDate);
+    data.append('to_date', values.toDate);
+
     data.append('title', values.title);
     data.append('subtitle', values.subtitle);
     data.append('details', values.details);
@@ -151,7 +173,7 @@ const handleResouce = ()=>{
       // }else{
       //   navigate('/myResource');
       // }
-      navigate('/my-representative');
+      navigate('/local-representatives');
      
     })
     .catch((error) => {
@@ -200,6 +222,7 @@ const handleResouce = ()=>{
 
 
 
+
   return (
     <Fragment>
          <div className="resource_create">
@@ -207,12 +230,27 @@ const handleResouce = ()=>{
              <div className="resource_form">
                 <Grid container spacing={2}>
                     <Grid item xs={12}>
+                      <Box><TextField label="Representative Name"  variant="filled" fullWidth  focused onChange={(e)=>setValue('name', e.target.value)} value={values.name}/></Box>
+                    </Grid>
+                    <Grid item xs={12}>
+                      <Box><TextField label="Representative Email"  variant="filled" fullWidth  focused onChange={(e)=>setValue('email', e.target.value)} value={values.email}/></Box>
+                    </Grid>
+                    <Grid item xs={4}>
+                      <Box><TextField label="Representative District"  variant="filled" fullWidth  focused onChange={(e)=>setValue('district', e.target.value)} value={values.district}/></Box>
+                    </Grid>
+                    <Grid item xs={4}>
+                      <Box><TextField label="Tennure" type="date"  variant="filled" fullWidth  focused onChange={(e)=>setValue('fromDate', e.target.value)} value={values.fromDate}/></Box>
+                    </Grid>
+                    <Grid item xs={4}>
+                      <Box><TextField label="Until Date" type="date"  variant="filled" fullWidth  focused onChange={(e)=>setValue('toDate', e.target.value)} value={values.toDate}/></Box>
+                    </Grid>
+                    <Grid item xs={12}>
                       <Box><TextField label="Representative Title"  variant="filled" fullWidth  focused onChange={(e)=>setValue('title', e.target.value)} value={values.title}/></Box>
                     </Grid>
                     <Grid item xs={12}>
                       <Box><TextField label="Representative Sub-title"  variant="filled" fullWidth  focused onChange={(e)=>setValue('subtitle', e.target.value)} value={values.subtitle}/></Box>
                     </Grid>
-                    {/* <Grid item xs={12}>
+                    <Grid item xs={12}>
                       <Box><TextField label="Website URL"  variant="filled" fullWidth  focused onChange={(e)=>setValue('websiteUrl', e.target.value)} value={values.websiteUrl}/></Box>
                     </Grid>
                     <Grid item xs={12}>
@@ -229,7 +267,7 @@ const handleResouce = ()=>{
                     </Grid>
                     <Grid item xs={12}>
                       <Box><TextField label="Twitter URL"  variant="filled" fullWidth  focused onChange={(e)=>setValue('twitterUrl', e.target.value)} value={values.twitterUrl}/></Box>
-                    </Grid> */}
+                    </Grid>
                     <Grid item xs={12}>
                       <Box> 
                       <SunEditor
@@ -296,8 +334,9 @@ const handleResouce = ()=>{
                       </Grid> }
 
                      {loaderEffectValue===true &&<>{<UploadLoader/>}</> }
+                     {loaderVisible===true &&<>{<MainLoader/>}</> }
                      {loaderEffectValue ===false && <Grid item xs={12}>
-                      {(values.title && values.details)?<Button onClick={(e)=>handleResouce()} variant="contained" fullWidth> Submit </Button>
+                      {(values.name && values.email)?<Button onClick={(e)=>handleResouce()} variant="contained" fullWidth> Submit </Button>
                       :
                       <Button variant="contained" fullWidth disabled> Submit </Button>
                       }

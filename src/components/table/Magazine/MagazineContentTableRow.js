@@ -31,19 +31,63 @@ export default function MagazineContentTableRow({
 }) {
   const naviagte = useNavigate()
 
+  
+  const [openMenu, setOpenMenuActions] = useState(null);
+
+  const handleOpenMenu = (event) => {
+    setOpenMenuActions(event.currentTarget);
+  };
+
+  const handleCloseMenu = () => {
+    setOpenMenuActions(null);
+  };
+
+
   return (
     <TableRow hover>
       <TableCell >{row?.id}</TableCell>
+      {/* <TableCell >{row?.author}</TableCell> */}
       <TableCell >{row?.title.length>30?<>{row?.title.slice(0,30)}...</>:row?.title}</TableCell>
       <TableCell>{row?.position}</TableCell>
       <TableCell>
-        {row?.status ===true && <Typography style={{ color: "#326df5" }}>Active</Typography>}
-        {row?.status ===false && <Typography style={{ color: "#f59432" }}>Deactive</Typography>}
+        {row?.status ===true && <Typography style={{ color: "#326df5" }}>Published</Typography>}
+        {row?.status ===false && <Typography style={{ color: "#f59432" }}>Unpublished</Typography>}
       </TableCell>
-      <TableCell>
+      {/* <TableCell>
        <Button variant="contained" onClick={(e)=> onEditRow()}>Edit</Button>
         <DeleteForeverIcon onClick={(e)=> onDeleteRow()} className="cursorPointer" sx={{ml:5}} style={{ color: "red" }} />
 
+      </TableCell> */}
+      <TableCell>
+      <TableMoreMenu
+          open={openMenu}
+          onOpen={handleOpenMenu}
+          onClose={handleCloseMenu}
+          actions={
+            <>
+              <MenuItem
+                onClick={() => {
+                  onEditRow();
+                  handleCloseMenu();
+                }}
+              >
+                <Iconify icon={"eva:edit-fill"} />
+                Edit
+              </MenuItem>
+              
+              <MenuItem
+                onClick={() => {
+                  onDeleteRow();
+                  handleCloseMenu();
+                }}
+                sx={{ color: "error.main" }}
+              >
+                <Iconify icon={"eva:trash-2-outline"} />
+                Delete
+              </MenuItem>
+            </>
+          }
+        />
       </TableCell>
     </TableRow>
   );

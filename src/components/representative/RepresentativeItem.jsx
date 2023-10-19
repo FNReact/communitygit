@@ -60,6 +60,8 @@ const RepresentativeItem = ({data,admin, getAllResouces}) => {
           });  
     }
 
+
+
   return (
       <>
         
@@ -74,14 +76,15 @@ const RepresentativeItem = ({data,admin, getAllResouces}) => {
             }} >
             <div className="dropdown_menuTab">
                 <ul>
-                    <li onClick={(e)=>navigate('/resource-create', {state:{uuid:data.uuid}})}> Edit</li>
+                    <li onClick={(e)=>navigate('/representative-create', {state:{uuid:data.uuid}})}> Edit</li>
                     <li onClick={(e)=>{handleDeleteResource(data.uuid);handleClose()} }> Delete Representative </li>
                 </ul>
             </div>
           </Menu>
             <div className="resource_item">
               <div className="resource_item_top">
-              {data && data.title &&  <div className="resource_title" onClick={(e)=>navigate('/representative-details', {state:{uuid:data.uuid}})}>{data.title.slice(0,22)}..</div>}
+              {data && data?.meta?.name &&  <div className="resource_title" onClick={(e)=>navigate('/representative-details', {state:{uuid:data.uuid}})}>{data?.meta?.name}</div>}
+              {data && data.title &&  <div className="resource_title" onClick={(e)=>navigate('/representative-details', {state:{uuid:data.uuid}})}>({data.title})</div>}
               {admin ===true &&   <div className="admin_dropdown"
                         id="demo-positioned-button"
                         aria-controls={dropdown ? 'demo-positioned-menu' : undefined}
@@ -92,9 +95,9 @@ const RepresentativeItem = ({data,admin, getAllResouces}) => {
                 </div>}
             
               </div>
-              {data && data.details && <div className="resource_item_details" onClick={(e)=>navigate('/representative-details', {state:{uuid:data.uuid}})}>{parser(data.details.slice(0,120))} ...</div>}
+              {data && data.details && <div className="resource_item_details" onClick={(e)=>navigate('/representative-details', {state:{uuid:data.uuid}})}>{parser(data.details.slice(0,200))}</div>}
 
-                <div className="resource_footer">
+                {/* <div className="resource_footer">
                   <div className="res_footer_left">
                       {(data && data.user.avatar) && <div className="admin_profile"><img src={`${baseUrl}/${data.user.avatar}`} alt={data.user.name} /></div>}
                       {data && <div className="admin_name">{data.user.name.slice(0,10)}..</div>}
@@ -105,7 +108,7 @@ const RepresentativeItem = ({data,admin, getAllResouces}) => {
                     </div>
                    
                   </div>
-                </div>
+                </div> */}
 
                 
                 

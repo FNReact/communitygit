@@ -6,10 +6,15 @@ import { UserContext } from "../../utils/UserContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
-import { categoryUrl } from "../../api/Api";
+import { baseUrl, categoryUrl } from "../../api/Api";
 import MainLoader from "../PageLoadEffects/MainLoader";
+import { Button, Tooltip } from "@mui/material";
+import PreviewIcon from '@mui/icons-material/Preview';
+import MenuIcon from '@mui/icons-material/Menu';
+import PostAddIcon from '@mui/icons-material/PostAdd';
+import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 const MagazineTopNavigation = () => {
-  const { magazine } = useContext(UserContext);
+  const { magazine,msDetails,userDetails,loggedInUser } = useContext(UserContext);
   const navigate = useNavigate();
   const [loaderVisible, setLoaderVisible] = useState(false)
 
@@ -23,7 +28,7 @@ const MagazineTopNavigation = () => {
     axios.request(config)
     .then((response) => {
       if(response?.data?.type ==='menu'){
-        navigate('/magazine-category-posts', {state:{id:data.id}})
+        navigate('/magazine-category-posts', {state:{id:data.id,data:data}})
       }else{
         navigate('/magazine-category-details', {state:{data:data}})
       }
@@ -69,17 +74,17 @@ const MagazineTopNavigation = () => {
             <>
               <li class="droppper" >
                 {/* <Link onClick={(e)=> handleNavigate(data)}> */}
-                <Link onClick={(e)=> navigate('/magazine-category-posts', {state:{id:data.id}})}>
+                <a onClick={(e)=> handleNavigate(data)}>
                   {data?.name}
                   <i>
                     <ArrowDropDownIcon />
                   </i>
-                </Link>
+                </a>
                 <ul class="sub_down">
                 {data.children.map((data, key) => {
                     return (
                       // <li onClick={(e)=> handleNavigate(data)}>
-                      <li onClick={(e)=>navigate('/magazine-category-posts', {state:{id:data.id}})}>
+                      <li onClick={(e)=> handleNavigate(data)}>
                         <Link> {data.name} </Link>
                       </li>
                     );
@@ -96,6 +101,62 @@ const MagazineTopNavigation = () => {
   return (
     <>
     {loaderVisible ===true && <MainLoader />} 
+
+    <div className="magazine_top">
+                <div className="magazine_left">
+                   <div className="magzin_logo">
+                      { msDetails?.meta?.community_settings?.magazine_logo_enable==='1'  
+                        && msDetails?.meta?.community_settings?.magazine_logo
+                        && <img src={`${baseUrl}/${msDetails?.meta?.community_settings?.magazine_logo}`} alt="" />
+                      }
+                   </div>
+                   {msDetails?.meta?.community_settings?.magazine_name_enable==='1'
+                    && msDetails?.meta?.community_settings?.magazine_name 
+                    && <div className="magazine_t">
+                      <span>
+                      {msDetails?.meta?.community_settings?.magazine_name}
+                      </span>
+                    </div>
+                   }
+                </div>
+                {(loggedInUser?.user_type ==='admin' || userDetails.id === msDetails?.user_id) &&
+                <div className="top_left">
+                  {/* <Button
+                    variant="outlined"
+                    sx={{ mr: 2 }}
+                    onClick={(e) => navigate("/my-magazine-content")}
+                  >
+                    My Compositions
+                  </Button> */}
+                  <Tooltip title="Preview Demo Magazine">
+                    <Button
+                      variant="outlined"
+                      sx={{ mr: 2 }}
+                      onClick={(e) => navigate("/magazine-demo")}
+                    >
+                      <i><PreviewIcon /></i>
+                    </Button>
+                  </Tooltip>
+                  <Tooltip title='Add Menu'>
+                    <Button
+                      variant="contained"
+                      sx={{ mr: 2 }}
+                      onClick={(e) => navigate("/magazine-menu")}
+                    >
+                      <i><PostAddIcon /></i>
+                    </Button>
+                  </Tooltip>
+                  
+                  <Tooltip title='Add Content'>
+                    <Button
+                      variant="contained"
+                      onClick={(e) => navigate("/magazine-content")}
+                    >
+                      <i><PlaylistAddIcon /></i>
+                    </Button>
+                  </Tooltip>
+                </div>}
+              </div> 
       <div className="magazine_nav">
         <ul class="nav_list">
           <li>

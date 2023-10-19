@@ -22,9 +22,10 @@ import { baseUrl, commonUserUrl } from "../../api/Api";
 import axios from "axios";
 import EditIcon from '@mui/icons-material/Edit';
 import { notifyError } from "../../utils/Toast";
+import { Box, Button } from "@mui/material";
 const LeftSideBar = () => {
   const navigate = useNavigate()
-  const {userDetails,msDetails} = useContext(UserContext);
+  const {userDetails,msDetails,loggedInUser} = useContext(UserContext);
   const [gender, setGender] = useState();
   const [avatar, setAvatar] = useState();
   const [name, setName] = useState();
@@ -125,7 +126,6 @@ const LeftSideBar = () => {
 
 
 
-
   return (
     <Fragment>
       <div className="main_c p-relative">
@@ -192,78 +192,117 @@ const LeftSideBar = () => {
               </div>
             </div>
           </div>
-          <div className="sidebar_list">
+          {msDetails?.meta?.community_settings ===undefined && (loggedInUser?.user_type ==='admin' || userDetails.id === msDetails?.user_id) &&
+            <div className="sidebar_list">
+              <Box display='flex' justifyContent='center' justifyItems='center'>
+                <Button variant="contained" onClick={(e) => navigate('/community-setup')}>Setup Menu</Button>
+              </Box>
+            </div>
+          }
+          {msDetails?.meta?.community_settings &&  <div className="sidebar_list">
             <ul> 
-                <Link to="/member">
-                   <li>
-                     <span><img src={mamberImg} alt="" /></span>
-                     <span>Member</span>
-                  </li>
-                </Link>
-                <Link to="/my-job-list">
-                   <li>
-                       <span> <img src={jobImage} alt="" /></span>
-                       <span>Jobs</span>
-                   </li>
-                </Link>
-
-                <a className="cursorPointer">
-                    <li onClick={(e)=> navigate('/community-profile',{state:{showInfo:false}})}>
-                       <span> <img src={newsfeed} alt="" /></span>
-                       <span>My Posts</span>
-                   </li>
-                </a>
-                <Link to="/event">
-                   <li>
-                       <span> <img src={eventImg} alt="" /></span>
-                       <span>Event</span>
-                   </li>
-                </Link>
-                <Link to="/resource">
-                   <li>
-                       <span> <img src={resources} alt="" /></span>
-                       <span>Resources</span>
-                   </li>
-                </Link>
-                
-                <Link to="/media">
-                   <li>
-                       <span> <img src={folder} alt="" /></span>
-                       <span>Media</span>
-                   </li>
-                </Link>
-                <Link to="myClassified">
-                  <li>
-                      <span><img src={resourceImg} alt="" /></span>
-                      <span>Classifieds</span>
-                  </li>
-                </Link>
-                <Link to="/localBusiness">
-                   <li>
-                       <span> <img src={representiveS} alt="" /></span>
-                       <span>Community Business</span>
-                   </li>
-                </Link>
-                <Link to="/local-representatives">
-                   <li>
-                       <span> <img src={localRepresentetiveImg} alt="" /></span>
-                       <span>Local Representative</span>
-                   </li>
-                </Link>
-                <Link to="/matrimonial">
-                   <li>
-                       <span> <img src={coupleImg} alt="" /></span>
-                       <span>Matrimonial Center</span>
-                   </li>
-                </Link>
-                <Link to="/magazine">
-                   <li>
-                       <span> <img src={magazineImg} alt="" /></span>
-                       <span>Community Magazine</span>
-                   </li>
-                </Link>
+              {msDetails?.meta?.community_settings && msDetails?.meta?.community_settings?.member_enable==='1'  
+                && msDetails?.meta?.community_settings?.member_menu_name &&
+                    <Link to="/member">
+                      <li>
+                        <span><img src={mamberImg} alt="" /></span>
+                        <span>{msDetails?.meta?.community_settings?.member_menu_name}</span>
+                      </li>
+                    </Link>
+                }
+                 {msDetails?.meta?.community_settings && msDetails?.meta?.community_settings?.my_job_enable==='1'  
+                    && msDetails?.meta?.community_settings?.my_job_menu_name &&
+                    <Link to="/my-job-list">
+                      <li>
+                          <span> <img src={jobImage} alt="" /></span>
+                          <span>{msDetails?.meta?.community_settings?.my_job_menu_name}</span>
+                      </li>
+                    </Link>
+                }
+                 {msDetails?.meta?.community_settings && msDetails?.meta?.community_settings?.my_lounge_post_enable==='1'  
+                    && msDetails?.meta?.community_settings?.my_lounge_menu_name &&
+                    <a className="cursorPointer">
+                        <li onClick={(e)=> navigate('/community-profile',{state:{showInfo:false}})}>
+                          <span> <img src={newsfeed} alt="" /></span>
+                          <span>{msDetails?.meta?.community_settings?.my_lounge_menu_name}</span>
+                      </li>
+                    </a>
+                  }
+                 {msDetails?.meta?.community_settings && msDetails?.meta?.community_settings?.event_enable==='1'  
+                    && msDetails?.meta?.community_settings?.event_menu_name && 
+                    <Link to="/event">
+                      <li>
+                          <span> <img src={eventImg} alt="" /></span>
+                          <span>{msDetails?.meta?.community_settings?.event_menu_name}</span>
+                      </li>
+                    </Link>
+                  }
+                  {msDetails?.meta?.community_settings && msDetails?.meta?.community_settings?.resource_enable==='1'  
+                    && msDetails?.meta?.community_settings?.resource_menu_name && 
+                    <Link to="/resource">
+                      <li>
+                          <span> <img src={resources} alt="" /></span>
+                          <span>{msDetails?.meta?.community_settings?.resource_menu_name}</span>
+                      </li>
+                    </Link>
+                  }
+                {msDetails?.meta?.community_settings && msDetails?.meta?.community_settings?.media_enable==='1'  
+                    && msDetails?.meta?.community_settings?.media_menu_name &&
+                    <Link to="/media">
+                      <li>
+                          <span> <img src={folder} alt="" /></span>
+                          <span>{msDetails?.meta?.community_settings?.media_menu_name}</span>
+                      </li>
+                    </Link>
+                }
+                {msDetails?.meta?.community_settings && msDetails?.meta?.community_settings?.my_classified_enable==='1'  
+                    && msDetails?.meta?.community_settings?.my_classified_menu_name &&
+                    <Link to="myClassified">
+                      <li>
+                          <span><img src={resourceImg} alt="" /></span>
+                          <span>{msDetails?.meta?.community_settings?.my_classified_menu_name}</span>
+                      </li>
+                    </Link>
+                }
+                {msDetails?.meta?.community_settings && msDetails?.meta?.community_settings?.business_enable==='1'  
+                    && msDetails?.meta?.community_settings?.business_menu_name &&
+                    <Link to="/localBusiness">
+                      <li>
+                          <span> <img src={representiveS} alt="" /></span>
+                          <span>{msDetails?.meta?.community_settings?.business_menu_name}</span>
+                      </li>
+                    </Link>
+                }
+                 {msDetails?.meta?.community_settings && msDetails?.meta?.community_settings?.representative_enable==='1'  
+                    && msDetails?.meta?.community_settings?.representative_menu_name &&
+                    <Link to="/local-representatives">
+                      <li>
+                          <span> <img src={localRepresentetiveImg} alt="" /></span>
+                          <span>{msDetails?.meta?.community_settings?.representative_menu_name}</span>
+                      </li>
+                    </Link>
+                }
+                {msDetails?.meta?.community_settings && msDetails?.meta?.community_settings?.matrimony_enable==='1'  
+                    && msDetails?.meta?.community_settings?.matrimony_menu_name &&
+                    <Link to="/matrimonial">
+                      <li>
+                          <span> <img src={coupleImg} alt="" /></span>
+                          <span>{msDetails?.meta?.community_settings?.matrimony_menu_name}</span>
+                      </li>
+                    </Link>
+                }
+                 {msDetails?.meta?.community_settings && msDetails?.meta?.community_settings?.magazine_menu_enable==='1'  
+                    && msDetails?.meta?.community_settings?.magazine_menu_name &&
+                    <Link to="/magazine">
+                      <li>
+                          <span> <img src={magazineImg} alt="" /></span>
+                          <span>{msDetails?.meta?.community_settings?.magazine_menu_name}</span>
+                      </li>
+                    </Link>
+                }
             </ul>
-          </div>
+          </div>}
+         
           <div className="Commuinity_Detail">
             <ul>
               <li>Privecy & Terms </li>

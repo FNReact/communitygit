@@ -71,26 +71,26 @@ const FileItem = ({getData, handleDeleteItem, handleFileUpdateDetails, adminId})
           {(getData?.mime ==='video/mp4' 
             || getData?.mime ==='video/mov' 
             || getData?.mime ==='image/mkv') &&
-            <video src={getData.url}  width={'100%'} autoPlay controls></video>
+            <video src={getData.url}  width={'100%'}  controls></video>
           }
          
          {(getData?.mime ==='application/pdf') &&
-            <img src={pdfImage}  width={'100%'} alt="" ></img>
+             <a href={getData.url} target="_blank"><img src={pdfImage}  width={'100%'} alt="" ></img></a>
           }
          {(getData?.mime ==='application/msword') &&
-            <img src={docImage}  width={'100%'} alt="" ></img>
+             <a href={getData.url} target="_blank"><img src={docImage}  width={'100%'} alt="" ></img></a>
           }
            {(getData?.mime ==='application/zip') &&
-            <img src={zipImage}  width={'100%'} alt="" ></img>
+            <a href={getData.url} target="_blank"><img src={zipImage}  width={'100%'} alt="" ></img></a>
           }
          {(getData?.mime ==='application/vnd.ms-excel') &&
-            <img src={xlsxImage}  width={'100%'} alt="" ></img>
+            <a href={getData.url} target="_blank"><img src={xlsxImage}  width={'100%'} alt="" ></img></a>
           }
          {(getData?.mime ==='audio/mpeg') &&
-            <img src={audioImage}  width={'100%'} alt="" ></img>
+            <a href={getData.url} target="_blank"><img src={audioImage}  width={'100%'} alt="" ></img></a> 
           }
           {(getData?.mime ==='application/vnd.openxmlformats-officedocument.presentationml.presentation') &&
-            <img src={pptxImage}  width={'100%'} alt="" ></img>
+            <a href={getData.url} target="_blank"><img src={pptxImage}  width={'100%'} alt="" ></img></a>
           }
           </div>
           {getData?.name && <div className="item_name">{getData.name.split("-").join(" ")}</div>}

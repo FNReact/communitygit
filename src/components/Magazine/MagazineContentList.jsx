@@ -40,6 +40,7 @@ import MagazineContentTableRow from "../table/Magazine/MagazineContentTableRow";
 
 const TABLE_HEAD = [
   { id: "postid", label: "Post ID", align: "left" },
+  // { id: "writter", label: "Writter", align: "left" },
   { id: "title", label: "Title", align: "left" },
   { id: "position", label: "Position", align: "left" },
   { id: "status", label: "Status", align: "left" },

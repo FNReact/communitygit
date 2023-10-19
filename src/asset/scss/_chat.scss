@@ -782,11 +782,17 @@
 
                     .file-input__label {
                         i {
-                            cursor: pointer;
+                          
 
                             .MuiSvgIcon-root {
                                 font-size: 22px;
                                 color: $text;
+                            }
+                            
+                        }
+                        .cursor_denied{
+                            &:hover{
+                                cursor: not-allowed;
                             }
                         }
                     }
@@ -910,4 +916,10 @@
 
 .chat_contentBody {
     height: 100vh;
+}
+
+.chat_emojy_picker{
+    position: absolute;
+    bottom: 60px !important;
+    left: 20px !important; 
 }

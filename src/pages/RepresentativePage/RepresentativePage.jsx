@@ -8,10 +8,11 @@ import { UserContext } from "../../utils/UserContext";
 import { BoxLoadEffect} from "../../components/PageLoadEffects";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import InfoIcon from '@mui/icons-material/Info';
+import RepresentativeItem from "../../components/representative/RepresentativeItem";
 const RepresentativePage = () => {
    const navigate = useNavigate();
   const [resource, setResouce] = useState(null)
-  const {msDetails,userDetails} = useContext(UserContext)
+  const {msDetails,userDetails, loggedInUser} = useContext(UserContext)
   const token = sessionStorage.getItem('token');
   const getAllResouces = () =>{
     let config = {
@@ -31,6 +32,8 @@ const RepresentativePage = () => {
   useEffect(()=>{
     getAllResouces();
   },[])
+
+  console.log('loggedInUserInfo', loggedInUser)
   return (
     <Fragment>
        <Grid container spacing={2}>
@@ -48,16 +51,18 @@ const RepresentativePage = () => {
                     </Tooltip>
                     
                     <div className="btns_row">
-                      <Link to='/my-representative'>
+                      {/* <Link to='/my-representative'>
                         <div className="Btn_one">
                            My Representative
                         </div>
-                      </Link>
-                      <Link to='/representative-create'>
+                      </Link> */}
+                      {(loggedInUser?.user_type ==='admin' || userDetails?.id===msDetails.user_id) && 
+                       <Link to='/representative-create'>
                         <div className="Btn_two">
                            Add Representative
                         </div>
-                      </Link>
+                      </Link>}
+                     
                     </div>
                  </div> 
                  
@@ -70,7 +75,7 @@ const RepresentativePage = () => {
                       {(resource !==null && resource.length>0 )&& resource.map((data,key)=>{
                         return(
                            <Grid item lg={4} md={6} sm={12} xs={12}>
-                             <ResourceItem data={data} key={key} getAllResouces={getAllResouces} admin={false}/>
+                             <RepresentativeItem data={data} key={key} getAllResouces={getAllResouces} admin={(loggedInUser?.user_type ==='admin' || userDetails?.id===msDetails.user_id)?true:false}/>
                            </Grid>
                         )
                       })}  

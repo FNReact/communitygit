@@ -44,7 +44,7 @@ import Badge from '@mui/material/Badge';
 import MailIcon from '@mui/icons-material/Mail';
 const TopNaviation = (props) => {
 
-  const { userDetails, msDetails } = useContext(UserContext);
+  const { userDetails, msDetails,loggedInUser } = useContext(UserContext);
   const [gender, setGender] = useState();
   const [avatar, setAvatar] = useState();
   const [name, setName] = useState();
@@ -220,6 +220,13 @@ useEffect(()=>{
                         </div>
                       </Link>
                     </Tooltip>
+                    <Link >
+                        <div className="header_item_list">
+                          <Badge badgeContent={4} color="primary">
+                            <NotificationsIcon color="action" />
+                          </Badge>
+                        </div>
+                      </Link>
                     <Tooltip title="Jobs">
                       <Link to="/job">
                         <div className="header_item_list">
@@ -235,16 +242,10 @@ useEffect(()=>{
                         </div>
                       </Link>
                     </Tooltip>
+                     
                       <Link >
                         <div className="header_item_list mob_none" onClick={(e)=>window.location.href='/home'}>
                           <SearchIcon color="action" />
-                        </div>
-                      </Link>
-                      <Link >
-                        <div className="header_item_list">
-                          <Badge badgeContent={4} color="primary">
-                            <NotificationsIcon color="action" />
-                          </Badge>
                         </div>
                       </Link>
                    
@@ -254,6 +255,15 @@ useEffect(()=>{
                 
                 <Grid item lg={4} xs={2}>
                   <div className="header_item_wrapper2">
+                  {(loggedInUser?.user_type ==='admin' || userDetails.id === msDetails?.user_id) &&
+                      <Tooltip title="Community Setup" className="mob_none">
+                            <Link to="/community-setup">
+                            <div className="header_item_list">
+                                <SettingsIcon color="action" />
+                            </div>
+                          </Link>
+                        </Tooltip>
+                      }
                   <Tooltip title="Report to admin" className="mob_none">
                       <Link to="/report-admin">
                         <div className="header_item_list">
@@ -346,7 +356,7 @@ useEffect(()=>{
                                     <i><Groups3Icon /></i>
                                     <span>My Communities</span>
                                   </div>
-                                  {msDetails.user_id === userDetails.id && <div className="menu_wrapper_list" onClick={(e) => {navigate('community-setup');handleToggle()}}>
+                                  {(loggedInUser?.user_type ==='admin' || userDetails.id === msDetails?.user_id) && <div className="menu_wrapper_list" onClick={(e) => {navigate('/community-setup');handleToggle()}}>
                                     <i><SettingsIcon /></i>
                                     <span>Community Setup</span>
                                   </div>

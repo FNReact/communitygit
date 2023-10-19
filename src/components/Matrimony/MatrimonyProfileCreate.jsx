@@ -136,6 +136,13 @@ const handlePreview = async file => {
     special_note:'',
     other_text:'',
     posted_by:'',
+
+    height:'',
+    weight:'',
+    complexion:'',
+    blood_group:'O+',
+    address:'',
+
     status:true
   };
 
@@ -148,12 +155,16 @@ const handlePreview = async file => {
   const values = watch();
 
   const handleEditorChange = (content,type) => {
-    if(type ==='message'){
-      setValue('message',content);
-    }
+    setValue(`${type}`,content);
+    // if(type ==='about_me'){
+    //   setValue('about_me',content);
+    // }
   };
   const  handleGender = (e)=>{
-    setValue('position',e.target.value)
+    setValue('gender',e.target.value)
+  }
+  const  handleBloodGroup = (e)=>{
+    setValue('blood_group',e.target.value)
   }
   const  handleMaritalStatus = (e)=>{
     setValue('marital_status',e.target.value)
@@ -243,13 +254,21 @@ const handleMatrimonyAdd = async () => {
     data.append('special_note', values.special_note);
     data.append('other_text', values.other_text);
     data.append('posted_by', userDetails?.profile.name);
+
+    data.append('height', values?.height);
+    data.append('weight', values?.weight);
+    data.append('complexion', values?.complexion);
+    data.append('blood_group', values?.blood_group);
+    data.append('address', values?.address);
+
+
     if(mediaList && mediaList.length>0){
       mediaList.forEach(element => {
         data.append('files[]', element.originFileObj);
       });
     }
     if(fileList && fileList.length>0){
-      data.append('featured_image', fileList[0]);
+      data.append('featured_image', fileList[0].originFileObj);
     }
 
       const config = {
@@ -261,9 +280,9 @@ const handleMatrimonyAdd = async () => {
 
       var url;
       if(location?.state !==null){
-        url = `${matrimonyUrl}/${location?.state?.row?.uuid}`
+        url = `${matrimonyUrl}/${location?.state?.uuid}`
       }else{
-        url = `${matrimonyUrl}/${'9a186a23-1e61-4a93-a2e7-2cfb9b866c92'}`
+        url = `${matrimonyUrl}`
       }
 
       axios
@@ -272,6 +291,7 @@ const handleMatrimonyAdd = async () => {
           // handleGetMainMagazine();
           setLoaderVisible(false);
           notifySuccess();
+          navigate('/my-matrimony-profile',{state:{data:response?.data?.matrimony_profile}})
         })
         .catch((err) => {
           notifyError();
@@ -280,12 +300,15 @@ const handleMatrimonyAdd = async () => {
 
 
 // get single category details
-const getSingleMaritalDetails = (row)=>{
+const getSingleMaritalDetails = (uuid)=>{
   // setLoaderVisible(true)
   let config = {
     method: 'get',
     // url: `${matrimonyUrl}/${row.uuid}`,
-    url: `${matrimonyUrl}/${'9a186a23-1e61-4a93-a2e7-2cfb9b866c92'}`,
+    url: `${matrimonyUrl}/${uuid}`,
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
   };
   
   axios.request(config)
@@ -323,12 +346,18 @@ const getSingleMaritalDetails = (row)=>{
       setValue('special_note', response?.data?.meta?.special_note)
       setValue('other_text', response?.data?.meta?.other_text)
 
+      setValue('height', response?.data?.meta?.height)
+      setValue('weight', response?.data?.meta?.weight)
+      setValue('complexion', response?.data?.meta?.complexion)
+      setValue('blood_group', response?.data?.meta?.blood_group)
+      setValue('address', response?.data?.meta?.address)
+
 
       setStoreFiles(response?.data?.files)
 
-      // if(response?.data?.featured_image !==null){
-      //   setStoreImage(`${baseUrl}/${response?.data?.posts?.featured_image}`)
-      // }
+      if(response?.data?.featured_image !==null){
+        setStoreImage(`${baseUrl}/${response?.data?.featured_image}`)
+      }
       
     }
     
@@ -340,7 +369,10 @@ const getSingleMaritalDetails = (row)=>{
 }
 
 useEffect(()=>{
-  getSingleMaritalDetails()
+  if(location?.state !==null){
+    getSingleMaritalDetails(location?.state?.uuid)
+  }
+  
   // if(location?.state !==null){
   //   getSingleMaritalDetails(location?.state?.row)
   // }
@@ -386,7 +418,6 @@ useEffect(()=>{
       });  
 }
 
-
  return(
     <Fragment>
          <div className="jobHome">
@@ -412,7 +443,43 @@ useEffect(()=>{
                     <Grid item lg={4} md={4} sm={4} xs={4}>
                       <Box ><TextField label="Religion" type="text" variant="filled" fullWidth  focused onChange={(e)=>setValue("religion",e.target.value)} value={values.religion} /></Box>
                     </Grid>
+                    <Grid item lg={3} md={3} sm={3} xs={3}>
+                      <Box ><TextField label="Height" type="text" variant="filled" fullWidth  focused onChange={(e)=>setValue("height",e.target.value)} value={values.height} /></Box>
+                    </Grid>
+                    <Grid item lg={3} md={3} sm={3} xs={3}>
+                      <Box ><TextField label="Weight" type="text" variant="filled" fullWidth  focused onChange={(e)=>setValue("weight",e.target.value)} value={values.weight} /></Box>
+                    </Grid>
+                    <Grid item lg={3} md={3} sm={3} xs={3}>
+                      <Box ><TextField label="Complexion" type="text" variant="filled" fullWidth  focused onChange={(e)=>setValue("complexion",e.target.value)} value={values.complexion} /></Box>
+                    </Grid>
                     
+                    <Grid item lg={3} md={3} sm={3} xs={3}>
+                      <Box sx={{ minWidth: 120 }}>
+                        <FormControl fullWidth focused>
+                          <InputLabel id="demo-simple-select-label">Blood Group</InputLabel>
+                          <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            label="Blood Group"
+                            defaultValue={values.blood_group}
+                            value={values.blood_group}
+                            onChange={handleBloodGroup}
+                            >
+                            <MenuItem value={'O+'}>O Positive</MenuItem>
+                            <MenuItem value={'O-'}>O Negative</MenuItem>
+                            <MenuItem value={'A+'}>A Positive</MenuItem>
+                            <MenuItem value={'A-'}>A Negative</MenuItem>
+                            <MenuItem value={'B+'}>B Positive</MenuItem>
+                            <MenuItem value={'B-'}>B Negative</MenuItem>
+                            <MenuItem value={'AB+'}>AB Positive</MenuItem>
+                            <MenuItem value={'AB-'}>AB Negative</MenuItem>
+                          </Select>
+                        </FormControl>
+                      </Box>
+                    </Grid>
+                    <Grid item lg={12} md={12} sm={12} xs={12}>
+                      <Box ><TextField label="Address" type="text" variant="filled" fullWidth  focused onChange={(e)=>setValue("address",e.target.value)} value={values.address} /></Box>
+                    </Grid>
                     <Grid item lg={4} md={4} sm={4} xs={4}>
                       <Box sx={{ minWidth: 120 }}>
                         <FormControl fullWidth focused>
@@ -989,18 +1056,22 @@ useEffect(()=>{
                         {mediaList.length >= 10 ? null : uploadMediaButton}
                       </Dragger>
                     </div>
-                    
                   </div>
-                  <Box display='flex' justifyContent='center' justifyItems='center' sx={{mt:3, mb:3}}>
-                    {storeFiles && storeFiles !==null && storeFiles.length>0 && storeFiles.map((data, i)=>{
+          
+                <div className="img_gallary_wrapper">
+                  <Grid container spacing={2}>
+                  {storeFiles && storeFiles !==null && storeFiles.length>0 && storeFiles.map((data, i)=>{
                       return (
-                          <Box key={data.uuid} className='cursorPointer'>
-                            <img src={data?.url} width={'20%'} alt={data?.name}/>
-                            <DeleteIcon onClick={(e)=> handleDeleteItem(data.uuid)} />
-                          </Box>
+                           <Grid item lg={2} key={data.uuid}>
+                              <div className="image_Item">
+                              <img src={data?.url} width={'20%'} alt={data?.name}/>
+                               <i onClick={(e)=> handleDeleteItem(data.uuid)} ><DeleteIcon/></i>
+                              </div>
+                           </Grid>
                       )
                     })}
-                 </Box>
+                  </Grid>
+                </div>
                  
 
                   <Box sx={{ minWidth: 120 }}>

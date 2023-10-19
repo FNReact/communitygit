@@ -1,31 +1,35 @@
 import { faArrowRight, faBoxArchive, faCircleCheck, faCircleUp, faMessage, faPlusSquare, faReply, faTrash, faUser, faUserGroup, faVolumeXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useContext, useEffect, useState } from "react";
 import L1 from '../../asset/image/profile2.png';
-import test1 from '../../asset/image/com.jpg';
-import test2 from '../../asset/image/Add.mp4';
-import test3 from '../../asset/image/test1.png';
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css/free-mode";
 import "swiper/css";
 import { FreeMode } from "swiper";
-import { Grid } from "@mui/material";
+import { Avatar, Box, Button, Grid } from "@mui/material";
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import CallIcon from '@mui/icons-material/Call';
-import VideocamIcon from '@mui/icons-material/Videocam';
-import {TextareaAutosize} from '@mui/base/TextareaAutosize';
-import { styled } from '@mui/system';
-import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
-import AddToPhotosIcon from '@mui/icons-material/AddToPhotos';
-import CloseIcon from '@mui/icons-material/Close';
-import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
-import SendIcon from '@mui/icons-material/Send';
+
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useNavigate } from "react-router-dom";
+import { allMembersUrl, baseUrl, chatDetailsUrl } from "../../api/Api";
+import ChatRoomDetailsBody from "./ChatRoomDetailsBody";
+import axios from "axios";
+import MainLoader from "../PageLoadEffects/MainLoader";
+import { UserContext } from "../../utils/UserContext";
 
-const ChatBody = () => {
+const ChatBody = ({chatRooms,setChatRooms, getAllChatRooms}) => {
+    const navigate = useNavigate();
+    const token = sessionStorage.getItem('token');
+    const {msDetails} = useContext(UserContext)
+    const [chatRoomDetails, setChatRoomDetails] = useState(null)
+    const [singleRoom, setSingleRoom] = useState(null)
+    const [loaderVisible, setLoaderVisible] = useState(false)
+    const [allMembers, setAllMembers] = useState([])
+
+    const [storeMembers, setStoreMembers] = useState([])
 
     const [anchorEl, setAnchorEl] = useState(null);
     const openChatMenu = Boolean(anchorEl);
@@ -36,28 +40,68 @@ const ChatBody = () => {
         setAnchorEl(null);
     };
 
-    // Style text area Part
-    const StyledTextarea = styled(TextareaAutosize)(
-        ({ theme }) => `
-        width: 100%;
-        font-size: 14px;
-        font-weight: 400;
-        line-height: 19px;
-        padding: 10px 10px 10px 0px;
-        border-radius: 12px;
-        border:none;
-        background-color:#f3f3f3;
 
-        // firefox
-        &:focus-visible {
-          outline: 0;
+      //get all members
+  const membersUrl = `${allMembersUrl}/${msDetails.id}`;
+  const getAllMembers = ()=>{
+    let config = {
+      method: "get",
+      url: membersUrl,
+    };
+
+    axios
+      .request(config)
+      .then((response) => {
+        setAllMembers(response.data.data);
+      })
+      .catch((error) => {});
+  }
+  useEffect(() => {
+    getAllMembers()
+  }, []);
+
+    // handle handleChatDetails
+    const handleChatDetails =(roomUuid)=>{
+        setLoaderVisible(true)
+        let config = {
+            method: 'get',
+            url: `${chatDetailsUrl}?chat_room=${roomUuid}`,
+            headers: { 
+              'Authorization': `Bearer ${token}`
+            }
+          };
+          
+          axios.request(config)
+          .then((response) => {
+            setChatRoomDetails(response.data)
+            setLoaderVisible(false)
+          })
+          .catch((error) => {
+            setLoaderVisible(false)
+
+          });
+    }
+
+
+    // store members
+    useEffect(()=>{
+        const findsMember = [];
+        if(chatRooms && chatRooms?.data && chatRooms?.data.length>0 && allMembers && allMembers.length>0){
+            chatRooms?.data.forEach(chat => {
+                allMembers.forEach(member => {
+                    if(member?.user?.uuid === chat?.member?.uuid){
+                        findsMember.push(chat)
+                    }
+                });
+            });
         }
-      `,
-    );
-    const navigate = useNavigate();
+        setStoreMembers(findsMember)
+    },[chatRooms])
+    
 
     return (
         <Fragment>
+            {loaderVisible ===true && <MainLoader/>}
             <div className="chat_content_wrapper">
                 <div className="chat">
                     <div className="chat_left">
@@ -189,377 +233,68 @@ const ChatBody = () => {
                          </div>
                         <div className="chat_list">
                             <Grid container spacing={0}>
-                                <Grid item xs={12}>
-                                    <div className="chat_list_item active">
-                                        <div className="profile_active">
-                                            <div className="profile">
-                                                <img src={L1} alt='' />
-                                                <div className="massage_count">
-                                                    10+
+                                {storeMembers 
+                                    && storeMembers.length>0 
+                                    && storeMembers.map((chat, i)=>{
+                                        // let diffTime = Math.abs(new Date().valueOf() - new Date(chat.created_at).valueOf());
+                                        let diffTime = Math.abs(new Date(chat?.updated_at).valueOf() - new Date().valueOf());
+                                        let days = diffTime / (24*60*60*1000);
+                                        let hours = (days % 1) * 24;
+                                        let minutes = (hours % 1) * 60;
+                                        let secs = (minutes % 1) * 60;
+                                        [days, hours, minutes, secs] = [Math.floor(days), Math.floor(hours), Math.floor(minutes), Math.floor(secs)]
+                                        var fullTime;
+                                    
+                                        if(secs !== 0 ){
+                                            fullTime = secs+'s';
+                                        }
+                                        if(minutes !== 0 &&  secs !== 0 ){
+                                            fullTime = minutes+'m'+" "+ secs+'s';
+                                        }
+                                        if(hours !==0 && minutes !== 0 &&  secs !== 0 ){
+                                            fullTime = hours+'h'+ " "+ minutes+'m'+ " "+ secs+'s';
+                                        }
+                                        if(days !==0 && hours !==0 && minutes !== 0 &&  secs !== 0 ){
+                                            fullTime = days+'d'+ " "+hours+'h'+ " "+ minutes+'m'+ " "+ secs+'s';
+                                        }
+                                        return(
+                                            <Grid item xs={12} key={chat.uuid} onClick={(e)=> {handleChatDetails(chat.uuid);setSingleRoom(chat)}}>
+                                                <div className="chat_list_item active">
+                                                    <div className="profile_active">
+                                                        <div className="profile">
+                                                            {chat?.is_group ===true? 
+                                                            <Avatar alt={chat?.name} src="/static/images/avatar/1.jpg"/>
+                                                            :<img src={`${baseUrl}/${chat?.member?.profile?.avatar}`} alt={chat?.name} />}
+                                                            {/* <div className="massage_count">
+                                                                10+
+                                                            </div> */}
+                                                        </div>
+            
+                                                    </div>
+                                                    <div className="chat_overview">
+                                                        <div className="profile-name">{chat?.name && chat?.name.length>20?`${chat.name.slice(0,20)}...`:chat.name}</div>
+                                                        <div className="overview_massage">
+                                                            {chat?.message && chat?.message.length>20?`${chat.message.slice(0,20)}...`:chat.message}
+                                                        </div>
+                                                    </div>
+                                                    <div className="lastMassage-time">
+                                                       {fullTime}
+                                                    </div>
+                                                    <div className="senting">
+                                                        <i><FontAwesomeIcon icon={faCircleCheck} /></i>
+                                                    </div>
                                                 </div>
-                                            </div>
-
-                                        </div>
-                                        <div className="chat_overview">
-                                            <div className="profile-name">Fahim Ahmed </div>
-                                            <div className="overview_massage">
-                                                Lorem ipsum  sit amet elit.
-                                            </div>
-                                        </div>
-                                        <div className="lastMassage-time">
-                                            2 hr.
-                                        </div>
-                                        <div className="senting">
-                                            <i><FontAwesomeIcon icon={faCircleCheck} /></i>
-                                        </div>
-                                    </div>
-                                </Grid>
-                                <Grid item xs={12}>
-                                    <div className="chat_list_item">
-                                        <div className="profile_active">
-                                            <div className="profile active_online">
-                                                <img src={L1} alt='' />
-                                            </div>
-
-                                        </div>
-                                        <div className="chat_overview">
-                                            <div className="profile-name">Nayem Munshi </div>
-                                            <div className="overview_massage">
-                                                Ok
-
-                                            </div>
-                                        </div>
-                                        <div className="lastMassage-time">
-                                            1 W.
-                                        </div>
-                                        <div className="senting">
-                                            <i><FontAwesomeIcon icon={faCircleCheck} /></i>
-                                        </div>
-                                    </div>
-                                </Grid>
-                                <Grid item xs={12}>
-                                    <div className="chat_list_item ">
-                                        <div className="profile_active">
-                                            <div className="profile">
-                                                <img src={L1} alt='' />
-                                            </div>
-
-                                        </div>
-                                        <div className="chat_overview">
-                                            <div className="profile-name">Fahim Ahmed </div>
-                                            <div className="overview_massage">
-                                                Lorem ipsum  sit amet elit.
-                                            </div>
-                                        </div>
-                                        <div className="lastMassage-time">
-                                            2 hr.
-                                        </div>
-                                        <div className="senting">
-                                            <i><FontAwesomeIcon icon={faCircleCheck} /></i>
-                                        </div>
-                                    </div>
-                                </Grid>
-                                <Grid item xs={12}>
-                                    <div className="chat_list_item">
-                                        <div className="profile_active">
-                                            <div className="profile active_online">
-                                                <img src={L1} alt='' />
-                                            </div>
-
-                                        </div>
-                                        <div className="chat_overview">
-                                            <div className="profile-name">Nayem Munshi </div>
-                                            <div className="overview_massage">
-                                                Ok
-
-                                            </div>
-                                        </div>
-                                        <div className="lastMassage-time">
-                                            1 W.
-                                        </div>
-                                        <div className="senting">
-                                            <i><FontAwesomeIcon icon={faCircleCheck} /></i>
-                                        </div>
-                                    </div>
-                                </Grid>
-                                <Grid item xs={12}>
-                                    <div className="chat_list_item">
-                                        <div className="profile_active">
-                                            <div className="profile">
-                                                <img src={L1} alt='' />
-                                            </div>
-
-                                        </div>
-                                        <div className="chat_overview">
-                                            <div className="profile-name"> Shahin Alam</div>
-                                            <div className="overview_massage">
-                                                Acca.
-                                            </div>
-                                        </div>
-                                        <div className="lastMassage-time">
-                                            8 hr.
-                                        </div>
-                                        <div className="senting">
-                                            <i><FontAwesomeIcon icon={faCircleCheck} /></i>
-                                        </div>
-                                    </div>
-                                </Grid>
-                                <Grid item xs={12}>
-                                    <div className="chat_list_item">
-                                        <div className="profile_active">
-                                            <div className="profile">
-                                                <img src={L1} alt='' />
-                                            </div>
-
-                                        </div>
-                                        <div className="chat_overview">
-                                            <div className="profile-name">Fahim Ahmed </div>
-                                            <div className="overview_massage">
-                                                Lorem ipsum  sit amet elit.
-                                            </div>
-                                        </div>
-                                        <div className="lastMassage-time">
-                                            2 hr.
-                                        </div>
-                                        <div className="senting">
-                                            <i><FontAwesomeIcon icon={faCircleCheck} /></i>
-                                        </div>
-                                    </div>
-                                </Grid>
-                                <Grid item xs={12}>
-                                    <div className="chat_list_item">
-                                        <div className="profile_active">
-                                            <div className="profile active_online">
-                                                <img src={L1} alt='' />
-                                            </div>
-
-                                        </div>
-                                        <div className="chat_overview">
-                                            <div className="profile-name">Nayem Munshi </div>
-                                            <div className="overview_massage">
-                                                Ok
-
-                                            </div>
-                                        </div>
-                                        <div className="lastMassage-time">
-                                            1 W.
-                                        </div>
-                                        <div className="senting">
-                                            <i><FontAwesomeIcon icon={faCircleCheck} /></i>
-                                        </div>
-                                    </div>
-                                </Grid>
-                                <Grid item xs={12}>
-                                    <div className="chat_list_item">
-                                        <div className="profile_active">
-                                            <div className="profile">
-                                                <img src={L1} alt='' />
-                                            </div>
-                                        </div>
-                                        <div className="chat_overview">
-                                            <div className="profile-name"> Shahin Alam</div>
-                                            <div className="overview_massage">
-                                                Acca.
-                                            </div>
-                                        </div>
-                                        <div className="lastMassage-time">
-                                            8 hr.
-                                        </div>
-                                        <div className="senting">
-                                            <i><FontAwesomeIcon icon={faCircleCheck} /></i>
-                                        </div>
-                                    </div>
-                                </Grid>
+                                            </Grid>
+                                        )
+                                    }) }
+                               
                             </Grid>
                         </div>
                     </div>
-                    <div className="chatter_box_container">
-                        <div className="fixed_profilr_header">
-                            <div className="ct_left">
-                                <div className="profile">
-                                    <img src={L1} alt='' />
-                                </div>
-                                <div className="name_T">
-                                    <div className="name">Fahim Ahmed</div>
-                                    <div className="active_status">Active 2 hr. left</div>
-                                </div>
-                            </div>
-                            <div className="ct_right">
-                                <div className="chat_title_dashed">
-                                    <div className="dashed_btn">
-                                        <CallIcon />
-                                    </div>
-                                    <div className="dashed_btn">
-                                        <VideocamIcon />
-                                    </div>
-                                    <div className="chat_D">
-                                        <div className="info_btn">
-                                            <MoreVertIcon />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="chat_body">
-                            {/* Chatter message delet */}
-                            <div className="chat_delet_massage_item">
-                                <div className="chat_delet_message">
-                                  The message was deleted..
-                                </div>
-                            </div>
-
-                            {/* Own message delet */}
-                            <div className="own_delet_massage_item">
-                                <div className="own_delet_message">
-                                  The message was deleted..
-                                </div>
-                            </div>
-                            {/* Owner Image */}
-                            <div className="own_media_massage_item">
-                                <div className="media_content">
-                                    <img src={test3} alt="" />
-                                </div>
-                                <div className="chat_timing"><i><FontAwesomeIcon icon={faCircleCheck} /></i>  12:38 AM</div>
-                            </div>
-
-                            {/* Chatter Image */}
-                            <div className="chat_massage_item">
-                                <div className="profile_part">
-                                    <div className="chatter_profile">
-                                        <img src={L1} alt='' />
-                                    </div>
-                                </div>
-
-                                <div className="chatter_chat">
-                                    <div className="chatter_media_massage_item">
-                                        <div className="media_content">
-                                            <img src={test3} alt="" />
-                                        </div>
-                                        <div className="chat_timing"><i><FontAwesomeIcon icon={faCircleCheck} /></i>  12:38 AM</div>
-                                    </div>
-                                    <div className=" massage_D">
-                                        <ul>
-                                            <li> <i><FontAwesomeIcon icon={faReply} /></i>  </li>
-                                            <li> <i><FontAwesomeIcon icon={faTrash} /></i>  </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* chatter Media Vedio */}
-                            <div className="chat_massage_item">
-                                <div className="profile_part">
-                                    <div className="chatter_profile">
-                                        <img src={L1} alt='' />
-                                    </div>
-                                </div>
-
-                                <div className="chatter_chat">
-                                    <div className="chatter_media_massage_item">
-                                        <div className="media_content">
-                                            <video class="video_file_img" controls  controlsList="nodownload" preload="metadata" webkit-playsinline="webkit-playsinline" >
-                                                <source src={test2} type="video/mp4"  autostart="false"/>
-                                            </video>
-                                        </div>
-                                        <div className="chat_timing"><i><FontAwesomeIcon icon={faCircleCheck} /></i>  12:38 AM</div>
-                                    </div>
-                                    <div className=" massage_D">
-                                        <ul>
-                                            <li> <i><FontAwesomeIcon icon={faReply} /></i>  </li>
-                                            <li> <i><FontAwesomeIcon icon={faTrash} /></i>  </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Chatter Massage */}
-                            <div className="chat_massage_item">
-                                <div className="profile_part">
-                                    <div className="chatter_profile">
-                                        <img src={L1} alt='' />
-                                    </div>
-                                </div>
-                                <div className="chatter_chat">
-                                    <div className="senting_massage">
-                                        What are you doing right now?
-                                        <div className="chat_timing"><i><FontAwesomeIcon icon={faCircleCheck} /></i>  12:38 AM</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Owner Media Vedio  */}
-
-                            <div className="own_media_massage_item">
-                                <div className="media_content">
-                                    <video class="video_file_img" controls controlsList="nodownload" preload="metadata" webkit-playsinline="webkit-playsinline" >
-                                        <source src={test2} type="video/mp4" autostart="false"/>
-                                    </video>
-                                </div>
-                                <div className="chat_timing"><i><FontAwesomeIcon icon={faCircleCheck} /></i>  12:38 AM</div>
-                            </div>
-                            
-                            {/* Owner Massage */}
-                            <div className="own_massage_item">
-                                <div className="own_chat">
-                                    <div className="senting_massage">
-                                        OK Dear ?
-                                        <div className="chat_timing"><i><FontAwesomeIcon icon={faCircleCheck} /></i>  12:38 AM</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="chatting_Input_container">
-                            <div className="attachment_content">
-
-                                {/* Photo Part */}
-
-                                {/* <div className="photo_content">
-                                    <div className="photo_item">
-                                        <img src={test1} alt="" />
-                                        <div className="photo_overly"> 
-                                            <CloseIcon />
-                                        </div>
-                                    </div>
-                                </div> */}
-
-                                {/* Vedio Part */}
-
-                                {/* <div className="vedio_content">
-                                    <div className="vedio_item">
-                                        <video class="video_file_img" controlsList="nodownload" preload="metadata" webkit-playsinline="webkit-playsinline" >
-                                            <source src={test2} type="video/mp4" />
-                                        </video>
-                                        <div className="vedio_overly">
-                                            <CloseIcon />
-                                        </div>
-                                        <i className="play_icon"> <PlayCircleOutlineIcon/></i>
-                                    </div>
-                                </div> */}
-                            </div>
-                            <div className="chating_path">
-                                <div className="path_side_1">
-                                    <div class="file-input">
-                                        <input
-                                            type="file"
-                                            name="file-input"
-                                            id="file-input"
-                                            class="file-input__input"
-                                        />
-                                        <label class="file-input__label" for="file-input">
-                                            <i><AddToPhotosIcon /></i></label>
-                                    </div>
-                                    <i><EmojiEmotionsIcon /></i>
-                                </div>
-                                {/* <div className="path_side_2">
-                               
-                            </div> */}
-                                <StyledTextarea aria-label="empty textarea" placeholder="Type .. " className="path_side_2" />
-                                <div className="path_side_3">
-                                    <i><SendIcon/> </i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {chatRoomDetails ===null &&  <Box display='flex' justifyContent='center' justifyItems='center'>
+                        <Button sx={{ml:25}} disabled>No chats to show </Button>
+                    </Box>}
+                   {chatRoomDetails !==null && <ChatRoomDetailsBody chatRoomDetails={chatRoomDetails} singleRoom={singleRoom} setChatRoomDetails={setChatRoomDetails} handleChatDetails={handleChatDetails} getAllChatRooms={getAllChatRooms} />}
                 </div>
             </div>
         </Fragment>

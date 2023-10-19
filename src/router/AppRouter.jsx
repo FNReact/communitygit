@@ -91,6 +91,7 @@ import MagazineSeeAllPostsPage from "../pages/Magazine/MagazineSeeAllPostsPage";
 import MatrimonyProfilePage from "../pages/Matrimonial/MatrimonyProfilePage";
 import MatrimonyProfileCreatePage from "../pages/Matrimonial/MatrimonyProfileCreatePage";
 import MatrimonialCardDetails from "../pages/Matrimonial/MatrimonialCardDetails";
+import MyMagazineContentPage from "../pages/Magazine/MyMagazineContentPage";
 
 const AppRouter = () => {
   const navigate=useNavigate();
@@ -408,6 +409,7 @@ const AppRouter = () => {
             <Route exact path="/magazine-menu" element={<Protected Component={MagazineMenuPage} />}/>
             <Route exact path="/magazine-menu-create" element={<Protected Component={MagazineMenuCreatePage} />}/>
             <Route exact path="/magazine-content" element={<Protected Component={MagazineContentPage} />}/>
+            <Route exact path="/my-magazine-content" element={<Protected Component={MyMagazineContentPage} />}/>
             <Route exact path="/magazine-content-create" element={<Protected Component={MagazineContentCreatePage} />}/>
             <Route exact path="/magazine-details" element={<Protected Component={MagazineDetailsPage} />}/>
             <Route exact path="/magazine-details-demo" element={<Protected Component={MagazineDetailsDemoPage} />}/>

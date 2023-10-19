@@ -61,39 +61,34 @@ const MagazineDemoPage = () => {
                   <li>
                     <a href="#"> Home </a>
                   </li>
+                  
+                  <li>
+                    <a href="#"> Story </a>
+                  </li>
+                  <li>
+                    <a href="#"> Novel </a>
+                  </li>
+                  <li>
+                    <a href="#"> Article </a>
+                  </li>
                   <li class="droppper">
                     <a href="#">
-                      About
+                      More
                       <i>
                         <ArrowDropDownIcon />
                       </i>
                     </a>
                     <ul class="sub_down">
                       <li>
-                        <a href="#">Mission</a>
+                        <a href="#">Sub Menu 1</a>
                       </li>
                       <li>
-                        <a href="#">Vission</a>
+                        <a href="#">Sub Menu 2</a>
                       </li>
                       <li>
-                        <a href="#">Our team</a>
+                        <a href="#">Sub Menu 3</a>
                       </li>
                     </ul>
-                  </li>
-                  <li>
-                    <a href="#"> Admission </a>
-                  </li>
-                  <li>
-                    <a href="#"> Gallery </a>
-                  </li>
-                  <li>
-                    <a href="#"> Teachers </a>
-                  </li>
-                  <li>
-                    <a href="#"> Results </a>
-                  </li>
-                  <li>
-                    <a href="#"> Contact </a>
                   </li>
                 </ul>
                 {/* <div className="mag_search">
@@ -131,61 +126,10 @@ const MagazineDemoPage = () => {
                 </Swiper>
               </div>
 
-              {/* Main Ccontent are here */}
-              <div className="main_contant">
-                <div className="sec_head">Main Content</div>
-                <Grid container spacing={2}>
-                  <Grid item xs={3}>
-                    <div className="main_content_item">
-                      <div className="item_img">
-                        <img src={ban1} alt="" />
-                      </div>
-                      <div className="content_title">This Is Content Title</div>
-                      <p>
-                        Lorem ipsum dolor sit amet consec dd tetur, adipisicing
-                        elit.
-                      </p>
-                    </div>
-                  </Grid>
-                  <Grid item xs={3}>
-                    <div className="main_content_item">
-                      <div className="item_img">
-                        <img src={ban1} alt="" />
-                      </div>
-                      <div className="content_title">This Is Content Title</div>
-                      <p>
-                        Lorem ipsum dolor sit amet consec dd tetur, adipisicing
-                        elit.
-                      </p>
-                    </div>
-                  </Grid>
-                  <Grid item xs={3}>
-                    <div className="main_content_item">
-                      <div className="item_img">
-                        <img src={ban1} alt="" />
-                      </div>
-                      <div className="content_title">This Is Content Title</div>
-                      <p>
-                        Lorem ipsum dolor sit amet consec dd tetur, adipisicing
-                        elit.
-                      </p>
-                    </div>
-                  </Grid>
-                  <Grid item xs={3}>
-                    <div className="main_content_item">
-                      <div className="item_img">
-                        <img src={ban1} alt="" />
-                      </div>
-                      <div className="content_title">This Is Content Title</div>
-                      <p>Lorem ipsum dolor sit amet dd tetur.</p>
-                    </div>
-                  </Grid>
-                </Grid>
-              </div>
 
-              {/* Sticky Section are here */}
+            {/* Sticky Section are here */}
               <div className="sticky_section">
-                <div className="sec_head">Sticky Section</div>
+                <div className="sec_head">Pinned Posts</div>
                 <div className="sticky_wrapper">
                   <Grid container spacing={2}>
                     <Grid item xs={7}>
@@ -252,10 +196,11 @@ const MagazineDemoPage = () => {
                 </div>
               </div>
 
+
               {/* Exclusive Section are here */}
               <div className="exclusive_section">
                 <div className="exclusive_wrapper">
-                  <div className="exclusive_head">Exclusive Header</div>
+                  <div className="exclusive_head">Highlights</div>
                   <ul>
                     <li>
                       <Link>
@@ -290,10 +235,64 @@ const MagazineDemoPage = () => {
                 </div>
               </div>
 
-              {/* Front Page Section Here are here */}
 
+              {/* Main Ccontent are here */}
+              <div className="main_contant">
+                <div className="sec_head">Main Section</div>
+                <Grid container spacing={2}>
+                  <Grid item xs={3}>
+                    <div className="main_content_item">
+                      <div className="item_img">
+                        <img src={ban1} alt="" />
+                      </div>
+                      <div className="content_title">This Is Content Title</div>
+                      <p>
+                        Lorem ipsum dolor sit amet consec dd tetur, adipisicing
+                        elit.
+                      </p>
+                    </div>
+                  </Grid>
+                  <Grid item xs={3}>
+                    <div className="main_content_item">
+                      <div className="item_img">
+                        <img src={ban1} alt="" />
+                      </div>
+                      <div className="content_title">This Is Content Title</div>
+                      <p>
+                        Lorem ipsum dolor sit amet consec dd tetur, adipisicing
+                        elit.
+                      </p>
+                    </div>
+                  </Grid>
+                  <Grid item xs={3}>
+                    <div className="main_content_item">
+                      <div className="item_img">
+                        <img src={ban1} alt="" />
+                      </div>
+                      <div className="content_title">This Is Content Title</div>
+                      <p>
+                        Lorem ipsum dolor sit amet consec dd tetur, adipisicing
+                        elit.
+                      </p>
+                    </div>
+                  </Grid>
+                  <Grid item xs={3}>
+                    <div className="main_content_item">
+                      <div className="item_img">
+                        <img src={ban1} alt="" />
+                      </div>
+                      <div className="content_title">This Is Content Title</div>
+                      <p>Lorem ipsum dolor sit amet dd tetur.</p>
+                    </div>
+                  </Grid>
+                </Grid>
+              </div>
+
+
+
+              {/* Front Page Section Here are here */}
               <div className="front_section">
-                  <div className="sec_head">Front Section One</div>
+                  <div className="sec_head">Featured</div>
                    <Grid container spacing={2}>
                        <Grid item xs={3}>
                        <div className="front_main">

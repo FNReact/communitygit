@@ -41,7 +41,7 @@ const MagazineSeeAllPostsPage = () => {
         setScrollTop(true)
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
       });
     }
   
