@@ -69,6 +69,7 @@
   box-shadow: $shadow;
   padding: 12px;
   position: relative;
+  margin-bottom: 20px;
   &:hover{
      box-shadow: 0px 20px 20px rgba(1, 6, 20, 0.1);
   }
@@ -151,6 +152,59 @@
   }
 }
 
+.resource_item_2{
+  height: 380px;
+  width: 100%;
+  border-radius: 10px;
+  background-color: $white;
+  box-shadow: $shadow;
+  padding: 12px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 20px;
+  &:hover{
+     box-shadow: 0px 20px 20px rgba(1, 6, 20, 0.1);
+  }
+  h4{
+    font-size: 20px;
+    font-weight: 500;
+    color: $black;
+    line-height: 20px;
+    margin-top:10px ;
+  }
+  h5{
+    font-size: 16px;
+    font-weight: 400;
+    color: $black;
+    line-height: 20px;
+  }
+  .create_owner{
+    font-size: 15px;
+    font-weight: 400;
+    color: $text;
+    line-height: 22px;
+  }
+  .create_date{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 15px;
+    font-weight: 500;
+    color: $black;
+    span{
+      font-weight: 400;
+      font-size: 14px;
+      color: $text;
+    }
+  }
+  .recomment_overview{
+    padding: 10px 0 6px 0;
+  }
+}
+
 .resource_create{
   padding: 20px;
   background-color: $white;
@@ -176,6 +230,11 @@
       padding: 10px 0 0 0;
     }
   }
+}
+
+.recommended_body{
+  overflow: hidden;
+  width: 100%;
 }
 
 .resource_details{
@@ -385,4 +444,55 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+
+.rating_container{
+  width: 100%;
+  border-top: 1px solid #c3c3c37f;
+  margin-top: 70px;
+  .section_top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 12px 0;
+    
+    .sec_title{
+      font-size: 20px;
+      font-weight: 500;
+      color: $black;
+    }
+    .rating_add{
+      padding: 8px 20px;
+      background-color: $primaryColor;
+      font-size: 14px;
+      font-weight: 500;
+      color: $white;
+      border-radius: 35px;
+      cursor: pointer;
+
+    }
+  }
+  .rating_item{
+    display: flex;
+    border-bottom: 1px solid #c3c3c35a;
+    padding: 16px 0;
+    &:last-child{
+      border-bottom: 1px solid transparent;
+    }
+    .rating_content{
+      padding-left: 10px;
+      .user_name{
+        font-size: 16px;
+        font-weight: 500;
+        color: $black;
+      }
+      .review_text{
+        font-size: 15px;
+        font-weight: 400;
+        color: $text;
+        line-height: 22px;
+      }
+    }
+  }
 }

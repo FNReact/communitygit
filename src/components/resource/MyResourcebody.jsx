@@ -7,6 +7,7 @@ import { UserContext } from "../../utils/UserContext";
 import { Button } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import { BoxLoadEffect } from "../PageLoadEffects";
+import ResourceItem2 from "./ResourceItem2";
 
 
 const MyResourcebody = () => { 
@@ -54,7 +55,7 @@ const MyResourcebody = () => {
                       </Link>
                     </div>
               </div> 
-        <Grid container spacing={2}>
+        {/* <Grid container spacing={2}>
         {(resource !==null && resource.length>0 )&& resource.map((data,key)=>{
           if(userDetails.id === data.user.id){
             return(
@@ -63,7 +64,7 @@ const MyResourcebody = () => {
                  </Grid>
             )}
             })}
-        </Grid>
+        </Grid> */}
 
           {(resource !==null && resource.length===0)  && <div>
              <div className="placeholder_text">
