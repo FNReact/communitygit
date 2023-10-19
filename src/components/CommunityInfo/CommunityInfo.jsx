@@ -31,8 +31,7 @@ const CommunityInfo = () => {
 
    const userInfo = JSON.parse(sessionStorage?.getItem('loggedInUserInfo')) 
    const [details, setDetails] = useState(msDetails?.entity_details?msDetails.entity_details:'')
-
-
+   const [appartmentDetails, setAppartmentDetails] = useState(msDetails?.meta?.community_settings?msDetails?.meta?.community_settings:'')
 
    return (
       <Fragment>
@@ -74,8 +73,40 @@ const CommunityInfo = () => {
                      {msDetails?.location && <div className="info_item"> Location : <span> {msDetails?.location}</span></div>}
                      {msDetails?.address && <div className="info_item"> Address : <span> {msDetails?.address}</span></div>}
                      {(msDetails?.website && msDetails?.website !=="null") && <div className="info_item"> Website : <span> {msDetails?.website}</span></div>}
-                  
-               </div>
+
+                     {/* apartments details */}
+                     {msDetails?.meta?.community_type ==='apartment' &&
+                     <> 
+                           {appartmentDetails?.apartment_building_name && <div className="info_item"> Apartment Building Name : <span> {appartmentDetails?.apartment_building_name}</span></div>}
+                           {appartmentDetails?.apartment_contractors_name && <div className="info_item"> Apartment Contractors Name : <span> {appartmentDetails?.apartment_contractors_name}</span></div>}
+                           {appartmentDetails?.apartment_builder && <div className="info_item"> Apartment Builder Name : <span> {appartmentDetails?.apartment_builder}</span></div>}
+
+                           {appartmentDetails?.apartment_electrical_contractor_name && <div className="info_item"> Apartment Electrical Contractor Name : <span> {appartmentDetails?.apartment_electrical_contractor_name}</span></div>}
+                           {appartmentDetails?.apartment_electrical_contractor_address && <div className="info_item"> Apartment Electrical Contractor Address : <span> {appartmentDetails?.apartment_electrical_contractor_address}</span></div>}
+                           {appartmentDetails?.apartment_electrical_contractor_phone && <div className="info_item"> Apartment Electrical Contractor Phone : <span> {appartmentDetails?.apartment_electrical_contractor_phone}</span></div>}
+
+                           {appartmentDetails?.apartment_plumbing_contractor_name && <div className="info_item"> Apartment Plumbing Contractor Name : <span> {appartmentDetails?.apartment_plumbing_contractor_name}</span></div>}
+                           {appartmentDetails?.apartment_plumbing_contractor_address && <div className="info_item"> Apartment Plumbing Contractor Address : <span> {appartmentDetails?.apartment_plumbing_contractor_address}</span></div>}
+                           {appartmentDetails?.apartment_plumbing_contractor_phone && <div className="info_item"> Apartment Plumbing Contractor Phone : <span> {appartmentDetails?.apartment_plumbing_contractor_phone}</span></div>}
+
+                           {appartmentDetails?.apartment_windows_and_glass_contractor_name && <div className="info_item"> Apartment Windows & Glass Contractor Name : <span> {appartmentDetails?.apartment_windows_and_glass_contractor_name}</span></div>}
+                           {appartmentDetails?.apartment_windows_and_glass_contractor_address && <div className="info_item"> Apartment Windows & Glass Contractor Address : <span> {appartmentDetails?.apartment_windows_and_glass_contractor_address}</span></div>}
+                           {appartmentDetails?.apartment_windows_and_glass_contractor_phone && <div className="info_item"> Apartment Windows & Glass Contractor Phone : <span> {appartmentDetails?.apartment_windows_and_glass_contractor_phone}</span></div>}
+
+                           {appartmentDetails?.apartment_landscape_contractor_name && <div className="info_item"> Apartment Landscape Contractor Name : <span> {appartmentDetails?.apartment_landscape_contractor_name}</span></div>}
+                           {appartmentDetails?.apartment_landscape_contractor_address && <div className="info_item"> Apartment Landscape Contractor Address  : <span> {appartmentDetails?.apartment_landscape_contractor_address}</span></div>}
+                           {appartmentDetails?.apartment_landscape_contractor_phone && <div className="info_item"> Apartment Landscape Contractor Phone  : <span> {appartmentDetails?.apartment_landscape_contractor_phone}</span></div>}
+
+                           {appartmentDetails?.apartment_retention_wall_contractor_name && <div className="info_item"> Apartment Retention Wall Contractor Name : <span> {appartmentDetails?.apartment_retention_wall_contractor_name}</span></div>}
+                           {appartmentDetails?.apartment_retention_wall_contractor_address && <div className="info_item"> Apartment Retention Wall Contractor Address  : <span> {appartmentDetails?.apartment_retention_wall_contractor_address}</span></div>}
+                           {appartmentDetails?.apartment_retention_wall_contractor_phone && <div className="info_item"> Apartment Retention Wall Contractor Phone  : <span> {appartmentDetails?.apartment_retention_wall_contractor_phone}</span></div>}
+
+                           {appartmentDetails?.apartment_air_condition_contractor_name && <div className="info_item"> Apartment Air Condition Contractor Name : <span> {appartmentDetails?.apartment_air_condition_contractor_name}</span></div>}
+                           {appartmentDetails?.apartment_air_condition_contractor_address && <div className="info_item"> Apartment Air Condition Contractor Address  : <span> {appartmentDetails?.apartment_air_condition_contractor_address}</span></div>}
+                           {appartmentDetails?.apartment_air_condition_contractor_phone && <div className="info_item"> Apartment Air Condition Contractor Phone  : <span> {appartmentDetails?.apartment_air_condition_contractor_phone}</span></div>}
+                     </>
+                     }
+                  </div>
                </div>
             </div>
          <ToastContainer />

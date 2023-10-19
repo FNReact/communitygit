@@ -107,6 +107,36 @@ const CommunitySetUp = ()=>{
     
     magazine_logo_enable:false,
     magazine_logo: null,
+
+
+
+    apartment_building_name:'',
+    apartment_contractors_name:'',
+    apartment_builder:'',
+
+    apartment_electrical_contractor_name:'',
+    apartment_electrical_contractor_address:'',
+    apartment_electrical_contractor_phone:'',
+
+    apartment_plumbing_contractor_name:'',
+    apartment_plumbing_contractor_address:'',
+    apartment_plumbing_contractor_phone:'',
+
+    apartment_windows_and_glass_contractor_name:'',
+    apartment_windows_and_glass_contractor_address:'',
+    apartment_windows_and_glass_contractor_phone:'',
+
+    apartment_landscape_contractor_name:'',
+    apartment_landscape_contractor_address:'',
+    apartment_landscape_contractor_phone:'',
+
+    apartment_retention_wall_contractor_name:'',
+    apartment_retention_wall_contractor_address:'',
+    apartment_retention_wall_contractor_phone:'',
+    
+    apartment_air_condition_contractor_name:'',
+    apartment_air_condition_contractor_address:'',
+    apartment_air_condition_contractor_phone:'',
   };
   const methods = useForm({defaultValues});
   const {watch,setValue} = methods;
@@ -140,7 +170,33 @@ const CommunitySetUp = ()=>{
 
        setCompanyLogo(res?.data?.entity_logo);
        setCompanyBanner(res?.data?.meta?.banner)
+
+       // set all appartments data
+       if(res?.data?.meta?.community_settings){
+          setValue('apartment_building_name',res?.data?.meta?.community_settings?.apartment_building_name )
+          setValue('apartment_contractors_name',res?.data?.meta?.community_settings?.apartment_contractors_name )
+          setValue('apartment_builder',res?.data?.meta?.community_settings?.apartment_builder )
+          setValue('apartment_electrical_contractor_name',res?.data?.meta?.community_settings?.apartment_electrical_contractor_name )
+          setValue('apartment_electrical_contractor_address',res?.data?.meta?.community_settings?.apartment_electrical_contractor_address )
+          setValue('apartment_electrical_contractor_phone',res?.data?.meta?.community_settings?.apartment_electrical_contractor_phone )
+          setValue('apartment_plumbing_contractor_name',res?.data?.meta?.community_settings?.apartment_plumbing_contractor_name )
+          setValue('apartment_plumbing_contractor_address',res?.data?.meta?.community_settings?.apartment_plumbing_contractor_address )
+          setValue('apartment_plumbing_contractor_phone',res?.data?.meta?.community_settings?.apartment_plumbing_contractor_phone )
+          setValue('apartment_windows_and_glass_contractor_name',res?.data?.meta?.community_settings?.apartment_windows_and_glass_contractor_name )
+          setValue('apartment_windows_and_glass_contractor_address',res?.data?.meta?.community_settings?.apartment_windows_and_glass_contractor_address )
+          setValue('apartment_windows_and_glass_contractor_phone',res?.data?.meta?.community_settings?.apartment_windows_and_glass_contractor_phone )
+          setValue('apartment_landscape_contractor_name',res?.data?.meta?.community_settings?.apartment_landscape_contractor_name )
+          setValue('apartment_landscape_contractor_address',res?.data?.meta?.community_settings?.apartment_landscape_contractor_address )
+          setValue('apartment_landscape_contractor_phone',res?.data?.meta?.community_settings?.apartment_landscape_contractor_phone )
+          setValue('apartment_retention_wall_contractor_name',res?.data?.meta?.community_settings?.apartment_retention_wall_contractor_name )
+          setValue('apartment_retention_wall_contractor_address',res?.data?.meta?.community_settings?.apartment_retention_wall_contractor_address )
+          setValue('apartment_retention_wall_contractor_phone',res?.data?.meta?.community_settings?.apartment_retention_wall_contractor_phone )
+          setValue('apartment_air_condition_contractor_name',res?.data?.meta?.community_settings?.apartment_air_condition_contractor_name )
+          setValue('apartment_air_condition_contractor_address',res?.data?.meta?.community_settings?.apartment_air_condition_contractor_address )
+          setValue('apartment_air_condition_contractor_phone',res?.data?.meta?.community_settings?.apartment_air_condition_contractor_phone )
+        }
        
+       // set all settings data
        if(res?.data?.meta?.community_settings){
         if(res?.data?.meta?.community_settings?.member_enable==='1'){
           setValue('member_enable',true)
@@ -250,6 +306,35 @@ useEffect(()=>{
         data.append('banner', values.banner);
       }
 
+      // appends for appartments 
+       data.append('apartment_building_name', values.apartment_building_name);
+       data.append('apartment_contractors_name', values.apartment_contractors_name);
+       data.append('apartment_builder', values.apartment_builder);
+
+       data.append('apartment_electrical_contractor_name', values.apartment_electrical_contractor_name);
+       data.append('apartment_electrical_contractor_address', values.apartment_electrical_contractor_address);
+       data.append('apartment_electrical_contractor_phone', values.apartment_electrical_contractor_phone);
+
+       data.append('apartment_plumbing_contractor_name', values.apartment_plumbing_contractor_name);
+       data.append('apartment_plumbing_contractor_address', values.apartment_plumbing_contractor_address);
+       data.append('apartment_plumbing_contractor_phone', values.apartment_plumbing_contractor_phone);
+
+       data.append('apartment_windows_and_glass_contractor_name', values.apartment_windows_and_glass_contractor_name);
+       data.append('apartment_windows_and_glass_contractor_address', values.apartment_windows_and_glass_contractor_address);
+       data.append('apartment_windows_and_glass_contractor_phone', values.apartment_windows_and_glass_contractor_phone);
+
+       data.append('apartment_landscape_contractor_name', values.apartment_landscape_contractor_name);
+       data.append('apartment_landscape_contractor_address', values.apartment_landscape_contractor_address);
+       data.append('apartment_landscape_contractor_phone', values.apartment_landscape_contractor_phone);
+
+       data.append('apartment_retention_wall_contractor_name', values.apartment_retention_wall_contractor_name);
+       data.append('apartment_retention_wall_contractor_address', values.apartment_retention_wall_contractor_address);
+       data.append('apartment_retention_wall_contractor_phone', values.apartment_retention_wall_contractor_phone);
+
+       data.append('apartment_air_condition_contractor_name', values.apartment_air_condition_contractor_name);
+       data.append('apartment_air_condition_contractor_address', values.apartment_air_condition_contractor_address);
+       data.append('apartment_air_condition_contractor_phone', values.apartment_air_condition_contractor_phone);
+
       if(JSON.parse(values.member_enable)===true){
         data.append('member_enable', 1)
         }else{data.append('member_enable', 0)}
@@ -355,8 +440,8 @@ useEffect(()=>{
  }
 
 
- const [open1, setOpen1] = React.useState(false);
- const [open2, setOpen2] = React.useState(false);
+  const [open1, setOpen1] = React.useState(false);
+  const [open2, setOpen2] = React.useState(false);
   const [image1, setImage1] = React.useState('');
   const [image2, setImage2] = React.useState('');
 
@@ -371,8 +456,7 @@ useEffect(()=>{
     setValue(`${field}`, event.target.checked);
   };
 
-
-
+  console.log('values', values)
 
 
  return(
@@ -386,32 +470,120 @@ useEffect(()=>{
 
                     </Grid>
                     <Grid item lg={6} md={12} sm={12} xs={12}>
-                    {msDetails?.meta?.community_type ==='personal' 
-                      && <Box ><TextField label="Community Name"  variant="filled" fullWidth  focused onChange={(e)=>setValue ("name",e.target.value)} value={values.name} /></Box>}
-                    {msDetails?.meta?.community_type ==='apartment' 
-                      && <Box ><TextField label="Apartment Number"  variant="filled" fullWidth  focused onChange={(e)=>setValue ("name",e.target.value)} value={values.name} /></Box>}
+                      {msDetails?.meta?.community_type ==='personal' 
+                      && <Box sx={{mt:1}}><TextField label="Community Name"  variant="filled" fullWidth  focused onChange={(e)=>setValue ("name",e.target.value)} value={values.name} /></Box>}
+                    </Grid>
+                    <Grid item lg={6} md={12} sm={12} xs={12}>
                     {msDetails?.meta?.community_type ==='business' 
-                      && <Box ><TextField label="Business Name"  variant="filled" fullWidth  focused onChange={(e)=>setValue ("name",e.target.value)} value={values.name} /></Box>}
+                      && <Box sx={{mt:1}}><TextField label="Business Name"  variant="filled" fullWidth  focused onChange={(e)=>setValue ("name",e.target.value)} value={values.name} /></Box>}
+                    </Grid>
+
+                  {/* for appartment start */}
+                    <Grid item lg={6} md={12} sm={12} xs={12}>
+                      {msDetails?.meta?.community_type ==='apartment' 
+                        && <Box sx={{mt:1}}><TextField label="Apartment Building Name"  variant="filled" fullWidth  focused onChange={(e)=>setValue ("apartment_building_name",e.target.value)} value={values.apartment_building_name} /></Box>}
+                    </Grid>  
+                    <Grid item lg={6} md={12} sm={12} xs={12}>
+                      {msDetails?.meta?.community_type ==='apartment' 
+                      && <Box sx={{mt:1}} ><TextField label="Apartment Contractors Name"  variant="filled" fullWidth  focused onChange={(e)=>setValue ("apartment_contractors_name",e.target.value)} value={values.apartment_contractors_name} /></Box>}
+                    </Grid>  
+                    <Grid item lg={6} md={12} sm={12} xs={12}>
+                      {msDetails?.meta?.community_type ==='apartment' 
+                      && <Box sx={{mt:1}} ><TextField label="Apartment Builder"  variant="filled" fullWidth  focused onChange={(e)=>setValue ("apartment_builder",e.target.value)} value={values.apartment_builder} /></Box>}
+                    </Grid>  
+                    <Grid item lg={6} md={12} sm={12} xs={12}>
+                      {msDetails?.meta?.community_type ==='apartment' 
+                      && <Box sx={{mt:1}} ><TextField label="Electrical Contractor Name"  variant="filled" fullWidth  focused onChange={(e)=>setValue ("apartment_electrical_contractor_name",e.target.value)} value={values.apartment_electrical_contractor_name} /></Box>}
+                    </Grid>  
+                    <Grid item lg={6} md={12} sm={12} xs={12}>
+                      {msDetails?.meta?.community_type ==='apartment' 
+                      && <Box sx={{mt:1}} ><TextField label="Electrical Contractor Address"  variant="filled" fullWidth  focused onChange={(e)=>setValue ("apartment_electrical_contractor_address",e.target.value)} value={values.apartment_electrical_contractor_address} /></Box>}
+                    </Grid>  
+                    <Grid item lg={6} md={12} sm={12} xs={12}>
+                      {msDetails?.meta?.community_type ==='apartment' 
+                      && <Box sx={{mt:1}} ><TextField type="number" label="Electrical Contractor Phone"  variant="filled" fullWidth  focused onChange={(e)=>setValue ("apartment_electrical_contractor_phone",e.target.value)} value={values.apartment_electrical_contractor_phone} /></Box>}
+                    </Grid>  
+                    <Grid item lg={6} md={12} sm={12} xs={12}>
+                      {msDetails?.meta?.community_type ==='apartment' 
+                      && <Box sx={{mt:1}} ><TextField label="Plumbing Contractor Name"  variant="filled" fullWidth  focused onChange={(e)=>setValue ("apartment_plumbing_contractor_name",e.target.value)} value={values.apartment_plumbing_contractor_name} /></Box>}
+                    </Grid>  
+                    <Grid item lg={6} md={12} sm={12} xs={12}>
+                      {msDetails?.meta?.community_type ==='apartment' 
+                      && <Box sx={{mt:1}} ><TextField label="Plumbing Contractor Address"  variant="filled" fullWidth  focused onChange={(e)=>setValue ("apartment_plumbing_contractor_address",e.target.value)} value={values.apartment_plumbing_contractor_address} /></Box>}
+                    </Grid>  
+                    <Grid item lg={6} md={12} sm={12} xs={12}>
+                      {msDetails?.meta?.community_type ==='apartment' 
+                      && <Box sx={{mt:1}} ><TextField type="number" label="Plumbing Contractor Phone"  variant="filled" fullWidth  focused onChange={(e)=>setValue ("apartment_plumbing_contractor_phone",e.target.value)} value={values.apartment_plumbing_contractor_phone} /></Box>}
+                    </Grid>  
+                    <Grid item lg={6} md={12} sm={12} xs={12}>
+                      {msDetails?.meta?.community_type ==='apartment' 
+                      && <Box sx={{mt:1}} ><TextField label="Windows & Glass Contractor Name"  variant="filled" fullWidth  focused onChange={(e)=>setValue ("apartment_windows_and_glass_contractor_name",e.target.value)} value={values.apartment_windows_and_glass_contractor_name} /></Box>}
+                    </Grid>  
+                    <Grid item lg={6} md={12} sm={12} xs={12}>
+                      {msDetails?.meta?.community_type ==='apartment' 
+                      && <Box sx={{mt:1}} ><TextField label="Windows & Glass Contractor Address"  variant="filled" fullWidth  focused onChange={(e)=>setValue ("apartment_windows_and_glass_contractor_address",e.target.value)} value={values.apartment_windows_and_glass_contractor_address} /></Box>}
+                    </Grid>  
+                    <Grid item lg={6} md={12} sm={12} xs={12}>
+                      {msDetails?.meta?.community_type ==='apartment' 
+                      && <Box sx={{mt:1}} ><TextField type="number" label="Windows & Glass Contractor Phone"  variant="filled" fullWidth  focused onChange={(e)=>setValue ("apartment_windows_and_glass_contractor_phone",e.target.value)} value={values.apartment_windows_and_glass_contractor_phone} /></Box>}
+                    </Grid>  
+                    <Grid item lg={6} md={12} sm={12} xs={12}>
+                      {msDetails?.meta?.community_type ==='apartment' 
+                      && <Box sx={{mt:1}} ><TextField label="Landscape Contractor Name"  variant="filled" fullWidth  focused onChange={(e)=>setValue ("apartment_landscape_contractor_name",e.target.value)} value={values.apartment_landscape_contractor_name} /></Box>}
+                    </Grid>  
+                    <Grid item lg={6} md={12} sm={12} xs={12}>
+                      {msDetails?.meta?.community_type ==='apartment' 
+                      && <Box sx={{mt:1}} ><TextField label="Landscape Contractor Address"  variant="filled" fullWidth  focused onChange={(e)=>setValue ("apartment_landscape_contractor_address",e.target.value)} value={values.apartment_landscape_contractor_address} /></Box>}
+                    </Grid>  
+                    <Grid item lg={6} md={12} sm={12} xs={12}>
+                      {msDetails?.meta?.community_type ==='apartment' 
+                      && <Box sx={{mt:1}} ><TextField type="number" label="Landscape Contractor Phone"  variant="filled" fullWidth  focused onChange={(e)=>setValue ("apartment_landscape_contractor_phone",e.target.value)} value={values.apartment_landscape_contractor_phone} /></Box>}
+                    </Grid>  
+                    <Grid item lg={6} md={12} sm={12} xs={12}>
+                      {msDetails?.meta?.community_type ==='apartment' 
+                      && <Box sx={{mt:1}} ><TextField label="Retention Wall Contractor Name"  variant="filled" fullWidth  focused onChange={(e)=>setValue ("apartment_retention_wall_contractor_name",e.target.value)} value={values.apartment_retention_wall_contractor_name} /></Box>}
+                    </Grid>  
+                    <Grid item lg={6} md={12} sm={12} xs={12}>
+                      {msDetails?.meta?.community_type ==='apartment' 
+                      && <Box sx={{mt:1}} ><TextField label="Retention Wall Contractor Address"  variant="filled" fullWidth  focused onChange={(e)=>setValue ("apartment_retention_wall_contractor_address",e.target.value)} value={values.apartment_retention_wall_contractor_address} /></Box>}
+                    </Grid>  
+                    <Grid item lg={6} md={12} sm={12} xs={12}>
+                      {msDetails?.meta?.community_type ==='apartment' 
+                      && <Box sx={{mt:1}} ><TextField label="Retention Wall Contractor Phone"  variant="filled" fullWidth  focused onChange={(e)=>setValue ("apartment_retention_wall_contractor_phone",e.target.value)} value={values.apartment_retention_wall_contractor_phone} /></Box>}
+                    </Grid>  
+                    <Grid item lg={6} md={12} sm={12} xs={12}>
+                      {msDetails?.meta?.community_type ==='apartment' 
+                      && <Box sx={{mt:1}} ><TextField label="Air Condition Contractor Name"  variant="filled" fullWidth  focused onChange={(e)=>setValue ("apartment_air_condition_contractor_name",e.target.value)} value={values.apartment_air_condition_contractor_name} /></Box>}
+                    </Grid>  
+                    <Grid item lg={6} md={12} sm={12} xs={12}>
+                      {msDetails?.meta?.community_type ==='apartment' 
+                      && <Box sx={{mt:1}} ><TextField label="Air Condition Contractor Address"  variant="filled" fullWidth  focused onChange={(e)=>setValue ("apartment_air_condition_contractor_address",e.target.value)} value={values.apartment_air_condition_contractor_address} /></Box>}
+                    </Grid>  
+                    <Grid item lg={6} md={12} sm={12} xs={12}>
+                      {msDetails?.meta?.community_type ==='apartment' 
+                      && <Box sx={{mt:1}} ><TextField type="number" label="Air Condition Contractor Phone"  variant="filled" fullWidth  focused onChange={(e)=>setValue ("apartment_air_condition_contractor_phone",e.target.value)} value={values.apartment_air_condition_contractor_phone} /></Box>}
+                    </Grid>  
+                    {/* for appartment end */}
+
                       
+                    <Grid item lg={6} md={12} sm={12} xs={12}>
+                      <Box sx={{mt:1}} ><TextField label="Email" variant="filled" fullWidth  focused onChange={(e)=>setValue("email",e.target.value)} value={values.email} /></Box>
                     </Grid>
                     <Grid item lg={6} md={12} sm={12} xs={12}>
-                      <Box  ><TextField label="Email" variant="filled" fullWidth  focused onChange={(e)=>setValue("email",e.target.value)} value={values.email} /></Box>
-                    </Grid>
-                    <Grid item lg={6} md={12} sm={12} xs={12}>
-                      <Box  ><TextField label="Phone" variant="filled" fullWidth  focused onChange={(e) =>setValue("phone",e.target.value)} value={values.phone} /></Box>  
+                      <Box sx={{mt:1}} ><TextField label="Phone" variant="filled" fullWidth  focused onChange={(e) =>setValue("phone",e.target.value)} value={values.phone} /></Box>  
                     </Grid>
                     <Grid item lg={4} md={12} sm={12} xs={12}>
-                      <Box  ><TextField label="Website" variant="filled" fullWidth  focused onChange={(e)=>setValue("website",e.target.value)} value={values.website} /></Box>
+                      <Box sx={{mt:1}} ><TextField label="Website" variant="filled" fullWidth  focused onChange={(e)=>setValue("website",e.target.value)} value={values.website} /></Box>
                     </Grid>
                     <Grid item lg={2} md={12} sm={12} xs={12}>
-                      <Box  ><TextField label="Currency" variant="filled" fullWidth  focused onChange={(e)=>setValue("currency",e.target.value)} value={values.currency} /></Box>
+                      <Box sx={{mt:1}} ><TextField label="Currency" variant="filled" fullWidth  focused onChange={(e)=>setValue("currency",e.target.value)} value={values.currency} /></Box>
                     </Grid>
                    
                     <Grid item lg={12} md={12} sm={12} xs={12}>
-                      <Box  ><TextField label="Location" variant="filled" fullWidth  focused onChange={(e)=>setValue("location",e.target.value)} value={values.location} /></Box>
+                      <Box sx={{mt:1}} ><TextField label="Location" variant="filled" fullWidth  focused onChange={(e)=>setValue("location",e.target.value)} value={values.location} /></Box>
                     </Grid>
                     <Grid item lg={12} md={12} sm={12} xs={12}>
-                      <Box  ><TextField label="Address" variant="filled" fullWidth  focused onChange={(e)=>setValue("address",e.target.value)} value={values.address} /></Box>
+                      <Box sx={{mt:1}} ><TextField label="Address" variant="filled" fullWidth  focused onChange={(e)=>setValue("address",e.target.value)} value={values.address} /></Box>
                     </Grid>
                     
                     <Grid item lg={12} md={12} sm={12} xs={12}>
