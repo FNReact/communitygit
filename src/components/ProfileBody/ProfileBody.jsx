@@ -176,6 +176,8 @@ useEffect(()=>{
 },[])
 
 
+const [parseUser, setParseUser] = useState(null)
+
 useEffect(()=>{
   const getData = sessionStorage.getItem('loggedInUserInfo')
   if(getData){
@@ -183,6 +185,7 @@ useEffect(()=>{
     const userDetails = parseData?.user_details
     if(userDetails){
       const parseUser = JSON.parse(userDetails)
+      setParseUser(parseUser)
       if(parseUser){
         setName(parseUser?.name)
       }else{
@@ -196,6 +199,8 @@ useEffect(()=>{
 },[])
 
 
+
+console.log('parseUser', parseUser)
 
    
 
@@ -277,24 +282,156 @@ useEffect(()=>{
 
                 </div>
               </div>
-                <Box>
-                   {/* <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                     <Tab label="Posts" {...a11yProps(0)} />
-                     <Tab label="About Community" {...a11yProps(1)} />
-                     <Tab label="Friends" {...a11yProps(2)} />
-                   </Tabs> */}
-                 
-                </Box>            
+              <div className="com_info_body">
+               <div className="com_info_wrap">
+                  <Grid container spacing={1}>
+                     {msDetails?.meta?.community_type === 'apartment' &&
+                        <>
+                        {parseUser?.individual_email_status ===1 && <Grid item xs={6}>
+                              {parseUser?.individual_email && <div className="info_item"> E-mail : <span> {parseUser?.individual_email} </span></div>}
+                          </Grid>}
+                        {parseUser?.individual_mobile_status ===1 && <Grid item xs={6}>
+                              {parseUser?.individual_mobile && <div className="info_item"> Phone : <span> {parseUser?.individual_mobile}</span></div>}
+                          </Grid>} 
+                         
+                           <Grid item xs={6}>
+                              {parseUser?.apartment_number && <div className="info_item"> Apartment Number : <span> {parseUser?.apartment_number}</span></div>}
+                           </Grid>
+                           <Grid item xs={6}>
+                              {parseUser?.individual_builder && <div className="info_item"> Apartment Builder Name : <span> {parseUser?.individual_builder}</span></div>}
+                           </Grid>
+                           <Grid item xs={6}>
+                              {parseUser?.individual_contractors_name && <div className="info_item"> Apartment Contractors Name : <span> {parseUser?.individual_contractors_name}</span></div>}
+                           </Grid>
+                        </>
+                     }
+                    
+                  </Grid>
+
+                  <Grid container spacing={1}>
+                     <Grid item xs={12}>
+                        <div className="info_item_title">
+                           Electrical Contractor Information :
+                        </div>
+                     </Grid>
+                     {msDetails?.meta?.community_type === 'apartment' &&
+                        <>
+                           <Grid item xs={6}>
+                              {parseUser?.individual_electrical_contractor_name && <div className="info_item_2">  <span className="item_lebel">Name </span> <span className="info_item_bold"> : {parseUser?.individual_electrical_contractor_name}</span></div>}
+                           </Grid>
+                           <Grid item xs={6}>
+                              {parseUser?.individual_electrical_contractor_phone && <div className="info_item_2"> <span className="item_lebel"> Phone</span> <span className="info_item_bold"> : {parseUser?.individual_electrical_contractor_phone}</span></div>}
+                           </Grid>
+                           <Grid item xs={6}>
+                              {parseUser?.individual_electrical_contractor_address && <div className="info_item_2"> <span className="item_lebel" >Address</span>  <span className="info_item_bold"> : {parseUser?.individual_electrical_contractor_address}</span></div>}
+                           </Grid>
+                        </>}
+                  </Grid>
+
+                  <Grid container spacing={1}>
+                     <Grid item xs={12}>
+                        <div className="info_item_title">
+                            Plumbing Contractor Information :
+                        </div>
+                     </Grid>
+                     {msDetails?.meta?.community_type === 'apartment' &&
+                        <>
+                           <Grid item xs={6}>
+                              {parseUser?.individual_plumbing_contractor_name && <div className="info_item_2"> <span className="item_lebel" >Name</span>  <span className="info_item_bold"> : {parseUser?.individual_plumbing_contractor_name}</span></div>}
+                           </Grid>
+                           <Grid item xs={6}>
+                              {parseUser?.individual_plumbing_contractor_phone && <div className="info_item_2"> <span className="item_lebel" > Phone</span>   <span className="info_item_bold"> : {parseUser?.individual_plumbing_contractor_phone}</span></div>}
+                           </Grid>
+                           <Grid item xs={6}>
+                              {parseUser?.individual_plumbing_contractor_address && <div className="info_item_2">  <span className="item_lebel" >Address</span>   <span className="info_item_bold"> : {parseUser?.individual_plumbing_contractor_address}</span></div>}
+                           </Grid>
+                        </>}
+                  </Grid>
+
+                  <Grid container spacing={1}>
+                     <Grid item xs={12}>
+                        <div className="info_item_title">
+                            Windows & Glass Contractor Information :
+                        </div>
+                     </Grid>
+                     {msDetails?.meta?.community_type === 'apartment' &&
+                        <>
+                           <Grid item xs={6}>
+                              {parseUser?.individual_windows_and_glass_contractor_name && <div className="info_item_2">  <span className="item_lebel" >Name </span>   <span className="info_item_bold"> : {parseUser?.individual_windows_and_glass_contractor_name}</span></div>}
+                           </Grid>
+                           <Grid item xs={6}>
+                              {parseUser?.individual_windows_and_glass_contractor_phone && <div className="info_item_2"> <span className="item_lebel" >Phone</span>   <span className="info_item_bold"> : {parseUser?.individual_windows_and_glass_contractor_phone}</span></div>}
+                           </Grid>
+                           <Grid item xs={6}>
+                              {parseUser?.individual_windows_and_glass_contractor_address && <div className="info_item_2"> <span className="item_lebel" >Address</span>   <span className="info_item_bold"> : {parseUser?.individual_windows_and_glass_contractor_address}</span></div>}
+                           </Grid>
+                        </>}
+                  </Grid>
+
+                  <Grid container spacing={1}>
+                     <Grid item xs={12}>
+                        <div className="info_item_title">
+                            Landscape Contractor Information :
+                        </div>
+                     </Grid>
+                     {msDetails?.meta?.community_type === 'apartment' &&
+                        <>
+                           <Grid item xs={6}>
+                              {parseUser?.individual_landscape_contractor_name && <div className="info_item_2"> <span className="item_lebel" >Name</span>  <span className="info_item_bold"> : {parseUser?.individual_landscape_contractor_name}</span></div>}
+                           </Grid>
+                           <Grid item xs={6}>
+                              {parseUser?.individual_landscape_contractor_phone && <div className="info_item_2"> <span className="item_lebel" >Phone </span> <span className="info_item_bold"> : {parseUser?.individual_landscape_contractor_phone}</span></div>}
+                           </Grid>
+                           <Grid item xs={6}>
+                              {parseUser?.individual_landscape_contractor_address && <div className="info_item_2"> <span className="item_lebel" >Address</span> <span className="info_item_bold"> : {parseUser?.individual_landscape_contractor_address}</span></div>}
+                           </Grid>
+                        </>}
+                  </Grid>
+
+                  <Grid container spacing={1}>
+                     <Grid item xs={12}>
+                        <div className="info_item_title">
+                            Retention Wall Contractor Information :
+                        </div>
+                     </Grid>
+                     {msDetails?.meta?.community_type === 'apartment' &&
+                        <>
+                           <Grid item xs={6}>
+                              {parseUser?.individual_retention_wall_contractor_name && <div className="info_item_2"> <span className="item_lebel" >Name </span> <span className="info_item_bold"> : {parseUser?.individual_retention_wall_contractor_name}</span></div>}
+                           </Grid>
+                           <Grid item xs={6}>
+                              {parseUser?.individual_retention_wall_contractor_phone && <div className="info_item_2"> <span className="item_lebel" >Phone </span>  <span className="info_item_bold"> : {parseUser?.individual_retention_wall_contractor_phone}</span></div>}
+                           </Grid>
+                           <Grid item xs={6}>
+                              {parseUser?.individual_retention_wall_contractor_address && <div className="info_item_2"> <span className="item_lebel" >Address </span> <span className="info_item_bold"> : {parseUser?.individual_retention_wall_contractor_address}</span></div>}
+                           </Grid>
+                        </>}
+                  </Grid>
+
+                  <Grid container spacing={1}>
+                     <Grid item xs={12}>
+                        <div className="info_item_title">
+                            Air Condition Contractor Information :
+                        </div>
+                     </Grid>
+                     {msDetails?.meta?.community_type === 'apartment' &&
+                        <>
+                           <Grid item xs={6}>
+                              {parseUser?.individual_air_condition_contractor_name && <div className="info_item_2"> <span className="item_lebel"> Name </span> <span className="info_item_bold"> : {parseUser?.individual_air_condition_contractor_name}</span></div>}
+                           </Grid>
+                           <Grid item xs={6}>
+                              {parseUser?.individual_air_condition_contractor_phone && <div className="info_item_2"> <span className="item_lebel">Phone</span>   <span className="info_item_bold"> : {parseUser?.individual_air_condition_contractor_phone}</span></div>}
+                           </Grid>
+                           <Grid item xs={6}>
+                              {parseUser?.individual_air_condition_contractor_address && <div className="info_item_2">  <span className="item_lebel">Address </span>  <span className="info_item_bold"> : {parseUser?.individual_air_condition_contractor_address}</span></div>}
+                           </Grid>
+                        </>}
+                  </Grid>
+               </div>
+              </div>           
           </div>}
           
-          {/* <TabPanel value={value} index={0}>
-          </TabPanel>
-          <TabPanel value={value} index={1}>
-            Item Two
-          </TabPanel>
-          <TabPanel value={value} index={2}>
-            Item Three
-         </TabPanel> */}
+         
          <div>
             <UserPost />
          </div>
