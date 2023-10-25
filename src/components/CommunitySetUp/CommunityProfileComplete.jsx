@@ -28,6 +28,7 @@ import PopupBanner from "../../utils/Banner/PopupBanner";
 
 import uploadLogo from '../../asset/image/uploadLogo.png'
 import bannerUpload from '../../asset/image/bannerUpload.jpeg'
+import CoomunityProfileApartmentSettings from "./CoomunityProfileApartmentSettings";
 
 const CommunityProfileComplete = ()=>{
   const navigate = useNavigate();
@@ -71,12 +72,51 @@ const CommunityProfileComplete = ()=>{
     instagram:'',
     logo:null,
     banner:null,
-    apartmentNumber:''
+
+    apartmentNumber:'',
+
+    individual_house_no:'', //this will be user id
+    individual_member_since:'',
+    individual_emergency_contact_number:'',
+    individual_mobile_status:false,
+    individual_mobile:'',
+    individual_email_status:false,
+    individual_email:'',
+    individual_profession:'',
+    individual_willing_to_response_emgergency_needs:false,
+    individual_contractors_name:'',
+    individual_builder:'',
+
+    individual_electrical_contractor_name:'',
+    individual_electrical_contractor_address:'',
+    individual_electrical_contractor_phone:'',
+
+    individual_plumbing_contractor_name:'',
+    individual_plumbing_contractor_address:'',
+    individual_plumbing_contractor_phone:'',
+
+    individual_windows_and_glass_contractor_name:'',
+    individual_windows_and_glass_contractor_address:'',
+    individual_windows_and_glass_contractor_phone:'',
+
+    individual_landscape_contractor_name:'',
+    individual_landscape_contractor_address:'',
+    individual_landscape_contractor_phone:'',
+
+    individual_retention_wall_contractor_name:'',
+    individual_retention_wall_contractor_address:'',
+    individual_retention_wall_contractor_phone:'',
+    
+    individual_air_condition_contractor_name:'',
+    individual_air_condition_contractor_address:'',
+    individual_air_condition_contractor_phone:'',
 
   };
   const methods = useForm({defaultValues});
   const {watch,setValue} = methods;
   const values = watch();
+
+  console.log('values', values)
 
   useEffect(()=>{
       if(userDetails){
@@ -105,13 +145,14 @@ const CommunityProfileComplete = ()=>{
       axios.request(config)
       .then((res) => {
        sessionStorage.setItem('loggedInUserInfo', JSON.stringify(res?.data))
-        window.location.href='/';
+        // window.location.href='/';
         setLoaderVisible(false)
       }).catch((e)=>  {   setLoaderVisible(false)})
 }
 
 //Create new job
- const handleUpdateCommunity = ()=>{
+ const handleUpdateCommunity = (e)=>{
+      e.preventDefault();
       setLoaderVisible(true)
       const userInfo = sessionStorage.getItem('loggedInUserInfo')
       const parseData = JSON.parse(userInfo)
@@ -169,6 +210,119 @@ const CommunityProfileComplete = ()=>{
       if(values.banner){
         data.append('banner', values.banner);
       }
+
+      if(values.individual_house_no){
+        data.append('banner', values.individual_house_no);
+      }
+      if(values.individual_house_no){
+        data.append('individual_house_no', values.individual_house_no);
+      }
+      if(values.individual_member_since){
+        data.append('individual_member_since', values.individual_member_since);
+      }
+      if(values.individual_emergency_contact_number){
+        data.append('individual_emergency_contact_number', values.individual_emergency_contact_number);
+      }
+      if(values.individual_mobile_status ===true){
+        data.append('individual_mobile_status', 1);
+      }else{
+        data.append('individual_mobile_status', 0);
+      }
+      if(values.individual_mobile){
+        data.append('individual_mobile', values.individual_mobile);
+      }
+
+      if(values.individual_email_status ===true){
+        data.append('individual_email_status', 1);
+      }else{
+        data.append('individual_email_status', 0);
+      }
+      if(values.individual_mobile){
+        data.append('individual_email', values.individual_email);
+      }
+
+      if(values.individual_profession){
+        data.append('individual_profession', values.individual_profession);
+      }
+
+      if(values.individual_willing_to_response_emgergency_needs ===true){
+        data.append('individual_willing_to_response_emgergency_needs', 1);
+      }else{
+        data.append('individual_willing_to_response_emgergency_needs', 0);
+      }
+
+      if(values.individual_contractors_name){
+        data.append('individual_contractors_name', values.individual_contractors_name);
+      }
+      if(values.individual_builder){
+        data.append('individual_builder', values.individual_builder);
+      }
+
+      if(values.individual_electrical_contractor_name){
+        data.append('individual_electrical_contractor_name', values.individual_electrical_contractor_name);
+      }
+      if(values.individual_electrical_contractor_address){
+        data.append('individual_electrical_contractor_address', values.individual_electrical_contractor_address);
+      }
+      if(values.individual_electrical_contractor_phone){
+        data.append('individual_electrical_contractor_phone', values.individual_electrical_contractor_phone);
+      }
+
+
+      if(values.individual_plumbing_contractor_name){
+        data.append('individual_plumbing_contractor_name', values.individual_plumbing_contractor_name);
+      }
+      if(values.individual_plumbing_contractor_address){
+        data.append('individual_plumbing_contractor_address', values.individual_plumbing_contractor_address);
+      }
+      if(values.individual_plumbing_contractor_phone){
+        data.append('individual_plumbing_contractor_phone', values.individual_plumbing_contractor_phone);
+      }
+
+
+      if(values.individual_windows_and_glass_contractor_name){
+        data.append('individual_windows_and_glass_contractor_name', values.individual_windows_and_glass_contractor_name);
+      }
+      if(values.individual_windows_and_glass_contractor_address){
+        data.append('individual_windows_and_glass_contractor_address', values.individual_windows_and_glass_contractor_address);
+      }
+      if(values.individual_windows_and_glass_contractor_phone){
+        data.append('individual_windows_and_glass_contractor_phone', values.individual_windows_and_glass_contractor_phone);
+      }
+
+
+      if(values.individual_landscape_contractor_name){
+        data.append('individual_landscape_contractor_name', values.individual_landscape_contractor_name);
+      }
+      if(values.individual_landscape_contractor_address){
+        data.append('individual_landscape_contractor_address', values.individual_landscape_contractor_address);
+      }
+      if(values.individual_landscape_contractor_phone){
+        data.append('individual_landscape_contractor_phone', values.individual_landscape_contractor_phone);
+      }
+
+
+      if(values.individual_retention_wall_contractor_name){
+        data.append('individual_retention_wall_contractor_name', values.individual_retention_wall_contractor_name);
+      }
+      if(values.individual_retention_wall_contractor_address){
+        data.append('individual_retention_wall_contractor_address', values.individual_retention_wall_contractor_address);
+      }
+      if(values.individual_retention_wall_contractor_phone){
+        data.append('individual_retention_wall_contractor_phone', values.individual_retention_wall_contractor_phone);
+      }
+
+      if(values.individual_air_condition_contractor_name){
+        data.append('individual_air_condition_contractor_name', values.individual_air_condition_contractor_name);
+      }
+      if(values.individual_air_condition_contractor_address){
+        data.append('individual_air_condition_contractor_address', values.individual_air_condition_contractor_address);
+      }
+      if(values.individual_air_condition_contractor_phone){
+        data.append('individual_air_condition_contractor_phone', values.individual_air_condition_contractor_phone);
+      }
+
+     
     
        var config = {
           method: 'post',
@@ -183,7 +337,7 @@ const CommunityProfileComplete = ()=>{
         getUserDetails();
         notifySuccess();
         // window.location.href='/';
-        // navigate('/community-profile')
+        navigate('/community-profile',{state:{showInfo:true}})
       })
       .catch((err)=>{
         setLoaderVisible(false)
@@ -209,7 +363,9 @@ const CommunityProfileComplete = ()=>{
     setOpen2(false);
   };
 
-
+  const handleChangeStatus = (event,field) => {
+    setValue(`${field}`, event.target.checked);
+  };
 
  return(
     <Fragment>
@@ -217,41 +373,64 @@ const CommunityProfileComplete = ()=>{
             <Box sx={{mb:1}}> 
             <Alert severity="warning">{`Update your information on ${msDetails.name}!`}</Alert>
             </Box>
+
+            
          
                 <Grid container spacing={2}>
                     
                     <Grid item lg={4} md={4} sm={12} xs={12}>
-                      <Box ><TextField name="name" label="Name on the community"  variant="filled" fullWidth  focused onChange={(e)=>setValue("name",e.target.value)} value={values.name} /></Box>
+                      <Box ><TextField name="name" label={`Name on the ${msDetails.name}`}  variant="filled" fullWidth  focused onChange={(e)=>setValue("name",e.target.value)} value={values.name} /></Box>
                     </Grid>
-                    {msDetails.meta.community_type ==='apartment' &&  <Grid item lg={4} md={4} sm={12} xs={12}>
-                       <Box ><TextField name="HoldingNumber" label="Apartment/Holding Number"  variant="filled" fullWidth  focused onChange={(e)=>setValue("apartmentNumber",e.target.value)} value={values.apartmentNumber} /></Box>
-                     </Grid>}
+                    {msDetails.meta.community_type ==='apartment' && 
+                      <>
+                       <Grid item lg={4} md={4} sm={12} xs={12}>
+                            <Box ><TextField name="HoldingNumber" label="Apartment/Holding Number"  variant="filled" fullWidth  focused onChange={(e)=>setValue("apartmentNumber",e.target.value)} value={values.apartmentNumber} /></Box>
+                        </Grid>
+                        <Grid item lg={4} md={4} sm={12} xs={12}>
+                          <Box ><TextField name="House No" label="House No"  variant="filled" fullWidth  focused onChange={(e)=>setValue("individual_house_no",e.target.value)} value={values.individual_house_no} /></Box>
+                        </Grid>
+                        <Grid item lg={4} md={4} sm={12} xs={12}>
+                          <Box ><TextField type="date" name="Member Since" label="Member Since"  variant="filled" fullWidth  focused onChange={(e)=>setValue("individual_member_since",e.target.value)} value={values.individual_member_since} /></Box>
+                        </Grid>
+                        <Grid item lg={8} md={8} sm={12} xs={12}>
+                          <Box ><TextField  name="Emergency Contact Number" label="Emergency Contact Number"  variant="filled" fullWidth  focused onChange={(e)=>setValue("individual_emergency_contact_number",e.target.value)} value={values.individual_emergency_contact_number} /></Box>
+                        </Grid>
+                        <Grid container spacing={2}>
+                            <CoomunityProfileApartmentSettings 
+                              values={values} 
+                              setValue={setValue} 
+                              handleChangeStatus={handleChangeStatus}
+                            />
+                        </Grid>
+                        
+                      </>
+                     }
                    
                     <Grid item lg={4} md={4} sm={12} xs={12}>
                        <Box ><TextField label="Email"  variant="filled" fullWidth  focused onChange={(e)=>setValue ("email",e.target.value)} value={values.email} /></Box>
                      </Grid>
-                    <Grid item lg={3} md={3} sm={12} xs={12}>
+                    <Grid item lg={4} md={4} sm={12} xs={12}>
                        <Box ><TextField label="Phone Number"  variant="filled" fullWidth  focused onChange={(e)=>setValue ("phone",e.target.value)} value={values.phone} /></Box>
                      </Grid>
-                    <Grid item lg={3} md={3} sm={12} xs={12}>
+                    <Grid item lg={4} md={4} sm={12} xs={12}>
                       <Box ><TextField label="Wesite"  variant="filled" fullWidth  focused onChange={(e)=>setValue ("website",e.target.value)} value={values.website} /></Box>
                     </Grid>
-                    <Grid item lg={3} md={3} sm={12} xs={12}>
+                    <Grid item lg={4} md={4} sm={12} xs={12}>
                       <Box ><TextField label="Skype"  variant="filled" fullWidth  focused onChange={(e)=>setValue ("skype",e.target.value)} value={values.skype} /></Box>
                     </Grid>
-                    <Grid item lg={3} md={3} sm={12} xs={12}>
+                    <Grid item lg={4} md={4} sm={12} xs={12}>
                       <Box ><TextField label="Whatsapp"  variant="filled" fullWidth  focused onChange={(e)=>setValue ("whatsapp",e.target.value)} value={values.whatsapp} /></Box>
                     </Grid>
-                    <Grid item lg={3} md={3} sm={12} xs={12}>
+                    <Grid item lg={4} md={4} sm={12} xs={12}>
                       <Box ><TextField label="Facebook"  variant="filled" fullWidth  focused onChange={(e)=>setValue ("facebook",e.target.value)} value={values.facebook} /></Box>
                     </Grid>
-                    <Grid item lg={3} md={3} sm={12} xs={12}>
+                    <Grid item lg={4} md={4} sm={12} xs={12}>
                       <Box ><TextField label="Linkedin"  variant="filled" fullWidth  focused onChange={(e)=>setValue ("linkedin",e.target.value)} value={values.linkedin} /></Box>
                     </Grid>
-                    <Grid item lg={3} md={3} sm={12} xs={12}>
+                    <Grid item lg={4} md={4} sm={12} xs={12}>
                       <Box ><TextField label="Github"  variant="filled" fullWidth  focused onChange={(e)=>setValue ("github",e.target.value)} value={values.github} /></Box>
                     </Grid>
-                    <Grid item lg={3} md={3} sm={12} xs={12}>
+                    <Grid item lg={4} md={4} sm={12} xs={12}>
                       <Box ><TextField label="Instagram"  variant="filled" fullWidth  focused onChange={(e)=>setValue ("instagram",e.target.value)} value={values.instagram} /></Box>
                     </Grid> 
 
@@ -385,7 +564,7 @@ const CommunityProfileComplete = ()=>{
                   </Grid>
 
                       <Box sx={{  display: 'flex', justifyContent: 'center', alignItems: 'center',  flexDirection: 'column',    mt:5 }}> 
-                          <Button fullWidth variant="contained" onClick={(e)=>handleUpdateCommunity()}>Update</Button>
+                          <Button fullWidth variant="contained" onClick={(e)=>handleUpdateCommunity(e)}>Update</Button>
                         </Box>
 
                       

@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect} from "react";
+import React, { Fragment, useEffect, useState} from "react";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import HomePage from "../pages/HomePage";
 import MemberPage from "../pages/MemberPages/MemberPage";
@@ -265,6 +265,21 @@ const AppRouter = () => {
     useEffect(()=>{
       if( msDetails?.id){
         handleGetMainMagazine()
+      }
+    },[])
+
+
+    const getUserInfo = sessionStorage?.getItem('loggedInUserInfo')
+    const storeUserDetailsParse = JSON?.parse(getUserInfo)
+    const [visit, setVisit] = useState(0)
+    useEffect(()=>{
+      if(visit === 0 && storeUserDetailsParse?.status ===1 && storeUserDetailsParse?.user_details){
+        const parseData = JSON.parse(storeUserDetailsParse?.user_details)
+        if(!parseData?.name){
+          // window.location.href='/complete-profile'
+          navigate('/complete-profile')
+          setVisit(1)
+        }
       }
     },[])
 

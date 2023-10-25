@@ -29,13 +29,17 @@ const HomePage = () => {
         navigate('/commuinityList')
      },100)
     }
+    
+  },[])
+
+  useEffect(()=>{
     if(storeUserDetailsParse?.status ===1 && storeUserDetailsParse?.user_details){
       const parseData = JSON.parse(storeUserDetailsParse?.user_details)
       if(!parseData?.name){
         window.location.href='/complete-profile'
       }
     }
-  },[])
+  },[getUserInfo,storeUserDetailsParse])
 
   return (
     <Fragment>
