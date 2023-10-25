@@ -20,7 +20,7 @@ const MyResourcebody = () => {
      const getAllResouces = () =>{
        let config = {
          method: 'get',
-         url: `${resourceUrl}?microsite_id=${msDetails.id}`,
+         url: `${resourceUrl}?microsite_id=${msDetails.id}&type=resource`,
          headers: { 
            'Authorization': `Bearer ${token}`,
          },
@@ -55,16 +55,17 @@ const MyResourcebody = () => {
                       </Link>
                     </div>
               </div> 
-        {/* <Grid container spacing={2}>
+        <Grid container spacing={2}>
         {(resource !==null && resource.length>0 )&& resource.map((data,key)=>{
           if(userDetails.id === data.user.id){
             return(
                  <Grid item lg={4} md={6} sm={6} xs={12}>
-                    <ResourceItem data={data} key={key} getAllResouces={getAllResouces} admin={true}/>
+                    {/* <ResourceItem data={data} key={key} getAllResouces={getAllResouces} admin={true}/> */}
+                    <ResourceItem2 resource={data} />
                  </Grid>
             )}
             })}
-        </Grid> */}
+        </Grid>
 
           {(resource !==null && resource.length===0)  && <div>
              <div className="placeholder_text">

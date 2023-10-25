@@ -58,7 +58,7 @@ const MyLocalBusinessbody = () => {
         {(business !==null && business.length>0 )&& business.map((data,key)=>{
           if(userDetails.id === data.meta.create_by){
             return(
-                 <Grid item lg={8} md={12} sm={12} xs={12}>
+                 <Grid item lg={12} md={12} sm={12} xs={12}>
                     <LocalBusinessItem data={data} key={key} getAllResouces={getAllResouces} admin={true}/>
                  </Grid>
             )}
@@ -72,7 +72,7 @@ const MyLocalBusinessbody = () => {
          </div>}
           {business ===null && <>
              <Grid container spacing={2} sx={{ mt:2 }}>
-                <Grid item lg={8} md={12} sm={12} xs={12}>{BoxLoadEffect()}</Grid>
+                <Grid item lg={12} md={12} sm={12} xs={12}>{BoxLoadEffect()}</Grid>
              </Grid>
            </> }
       </>

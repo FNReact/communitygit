@@ -9,6 +9,10 @@ import { BoxLoadEffect} from "../../components/PageLoadEffects";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import InfoIcon from '@mui/icons-material/Info';
 import RepresentativeItem from "../../components/representative/RepresentativeItem";
+import LocalRepresentetiveItem2 from "../../components/representative/LocalRepresentetiveItem2";
+import Swal from "sweetalert2";
+import { notifyError, notifySuccess } from "../../utils/Toast";
+import { ToastContainer } from "react-toastify";
 const RepresentativePage = () => {
    const navigate = useNavigate();
   const [resource, setResouce] = useState(null)
@@ -34,6 +38,42 @@ const RepresentativePage = () => {
   },[])
 
   console.log('loggedInUserInfo', loggedInUser)
+
+    //handle delete a resouce
+    const handleDeleteRepresentetive=(uuid)=>{
+      Swal.fire({
+          heightAuto: false,
+          backdrop: false,
+          title: "Are you sure?",
+          text: "You won't be able to revert this!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, Delete it!",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            let config = {
+              method: "delete",
+              url: `${resourceUrl}/${uuid}`,
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            };
+            axios 
+              .request(config)
+              .then((response) => {
+                notifySuccess();
+                getAllResouces();
+              })
+              .catch((error) => {
+                  notifyError('Something went wrong')
+              });
+          }
+        });  
+  }
+  
+
   return (
     <Fragment>
        <Grid container spacing={2}>
@@ -75,12 +115,13 @@ const RepresentativePage = () => {
                       {(resource !==null && resource.length>0 )&& resource.map((data,key)=>{
                         return(
                            <Grid item lg={4} md={6} sm={12} xs={12}>
-                             <RepresentativeItem data={data} key={key} getAllResouces={getAllResouces} admin={(loggedInUser?.user_type ==='admin' || userDetails?.id===msDetails.user_id)?true:false}/>
+                             {/* <RepresentativeItem data={data} key={key} getAllResouces={getAllResouces} admin={(loggedInUser?.user_type ==='admin' || userDetails?.id===msDetails.user_id)?true:false}/> */}
+                             <LocalRepresentetiveItem2 representative={data} handleDeleteRepresentetive={handleDeleteRepresentetive} />
                            </Grid>
                         )
                       })}  
                        
-                    </Grid>
+                    </Grid>       
                     {resource ===null && <>
                       <Grid container spacing={2}>
                          <Grid item lg={4} md={6} sm={12} xs={12}>{BoxLoadEffect()}</Grid>
@@ -92,6 +133,7 @@ const RepresentativePage = () => {
               </div>
            </Grid>
         </Grid>
+        <ToastContainer />
     </Fragment>
   );
 };

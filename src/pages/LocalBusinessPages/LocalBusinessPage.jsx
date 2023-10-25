@@ -2,17 +2,20 @@ import React, { Fragment, useContext, useEffect, useState } from "react";
 import { Grid, Tooltip } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { localBusinessUrl } from "../../api/Api";
+import { localBusinessUrl, resourceUrl } from "../../api/Api";
 import { UserContext } from "../../utils/UserContext";
 import LocalBusinessItem from "../../components/localBusiness/LocalBusinessItem";
 import { BoxLoadEffectTwo } from "../../components/PageLoadEffects";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import LocalBusinessItem2 from "../../components/localBusiness/LocalBusinessItem2";
+import Swal from "sweetalert2";
+import { notifyError, notifySuccess } from "../../utils/Toast";
+import { ToastContainer } from "react-toastify";
 
 
 const LocalBusinessPage = () => {
   const navigate = useNavigate();
-  const [business, setResouce] = useState(null)
+  const [business, setBusiness] = useState(null)
   const { msDetails, userDetails } = useContext(UserContext)
   const token = sessionStorage.getItem('token');
   const getAllResouces = () => {
@@ -26,13 +29,49 @@ const LocalBusinessPage = () => {
 
     axios.request(config)
       .then((response) => {
-        setResouce(response.data.data);
+        setBusiness(response.data.data);
       })
   }
 
   useEffect(() => {
     getAllResouces();
   }, [])
+
+   //handle delete a resouce
+   const handleDeleteResource=(uuid)=>{
+    Swal.fire({
+        heightAuto: false,
+        backdrop: false,
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, Delete it!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          let config = {
+            method: "delete",
+            url: `${localBusinessUrl}/${uuid}`,
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          };
+          axios 
+            .request(config)
+            .then((response) => {
+              notifySuccess();
+              getAllResouces();
+            })
+            .catch((error) => {
+                notifyError('Something went wrong')
+            });
+        }
+      });  
+}
+
+console.log('business', business)
 
   return (
     <Fragment>
@@ -61,13 +100,13 @@ const LocalBusinessPage = () => {
               </div>
             </Tooltip>
             <Grid container spacing={2}>
-              <Grid item lg={8} md={12} sm={12} xs={12}>
+              <Grid item lg={12} md={12} sm={12} xs={12}>
                 <div className="business_wrapper">
                   <Grid container spacing={2}>
                     {(business !== null && business.length > 0) && business.map((data, key) => {
                       return (
                         <Grid item xs={12}>
-                          <LocalBusinessItem data={data} key={key} getAllResouces={getAllResouces} admin={false} />
+                          <LocalBusinessItem resource={data} handleDeleteResource={handleDeleteResource} data={data} key={key} getAllResouces={getAllResouces} admin={false} />
                         </Grid>
                       )
                     })}
@@ -77,11 +116,11 @@ const LocalBusinessPage = () => {
               </Grid>
             </Grid>
 
-            <Grid container spacing={2}>
+            {/* <Grid container spacing={2}>
               <Grid item lg={4} md={6} sm={6} xs={12}>
                 <LocalBusinessItem2 />
               </Grid>
-            </Grid>
+            </Grid> */}
 
             {(business !== null && business.length === 0) && <div className="placeholder_text">
               No Community Business Found
@@ -95,6 +134,7 @@ const LocalBusinessPage = () => {
           </div>
         </Grid>
       </Grid>
+      <ToastContainer />
     </Fragment>
   );
 };

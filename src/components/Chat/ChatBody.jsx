@@ -99,6 +99,8 @@ const ChatBody = ({chatRooms,setChatRooms, getAllChatRooms}) => {
     },[chatRooms])
     
 
+    console.log('allMembers', allMembers)
+
     return (
         <Fragment>
             {loaderVisible ===true && <MainLoader/>}
@@ -142,7 +144,8 @@ const ChatBody = ({chatRooms,setChatRooms, getAllChatRooms}) => {
                         </div>
                         <div className="active_list">
                             <div className="active_title">
-                                Active Now
+                                {/* Active Now */}
+                                Members
                             </div>
                             <Swiper
                                 slidesPerView={6}
@@ -150,84 +153,16 @@ const ChatBody = ({chatRooms,setChatRooms, getAllChatRooms}) => {
                                 freeMode={true}
                                 modules={[FreeMode]}
                                 className="mySwiper">
-                                <SwiperSlide>
-                                    <div className="activeMamber">
-                                        <img src={L1} alt='' />
-                                        <div className="active_btn"></div>
-                                    </div>
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <div className="activeMamber">
-                                        <img src={L1} alt='' />
-                                        <div className="active_btn"></div>
-                                    </div>
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <div className="activeMamber">
-                                        <img src={L1} alt='' />
-                                        <div className="active_btn"></div>
-                                    </div>
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <div className="activeMamber">
-                                        <img src={L1} alt='' />
-                                        <div className="active_btn"></div>
-                                    </div>
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <div className="activeMamber">
-                                        <img src={L1} alt='' />
-                                        <div className="active_btn"></div>
-                                    </div>
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <div className="activeMamber">
-                                        <img src={L1} alt='' />
-                                        <div className="active_btn"></div>
-                                    </div>
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <div className="activeMamber">
-                                        <img src={L1} alt='' />
-                                        <div className="active_btn"></div>
-                                    </div>
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <div className="activeMamber">
-                                        <img src={L1} alt='' />
-                                        <div className="active_btn"></div>
-                                    </div>
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <div className="activeMamber">
-                                        <img src={L1} alt='' />
-                                        <div className="active_btn"></div>
-                                    </div>
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <div className="activeMamber">
-                                        <img src={L1} alt='' />
-                                        <div className="active_btn"></div>
-                                    </div>
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <div className="activeMamber">
-                                        <img src={L1} alt='' />
-                                        <div className="active_btn"></div>
-                                    </div>
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <div className="activeMamber">
-                                        <img src={L1} alt='' />
-                                        <div className="active_btn"></div>
-                                    </div>
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <div className="activeMamber">
-                                        <img src={L1} alt='' />
-                                        <div className="active_btn"></div>
-                                    </div>
-                                </SwiperSlide>
+                               {allMembers && allMembers.length>0 && allMembers.map((member,i)=>{
+                                    return(
+                                        <SwiperSlide>
+                                            <div className="activeMamber" key={member.uuid}>
+                                                <img src={`${baseUrl}/${member?.user?.avatar}`} alt={member?.user?.name} />
+                                                <div className="active_btn"></div>
+                                            </div>
+                                        </SwiperSlide>
+                                    )
+                               })}  
                             </Swiper>
                         </div>
                          </div>

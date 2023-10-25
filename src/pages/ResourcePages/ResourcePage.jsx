@@ -9,6 +9,9 @@ import { BoxLoadEffect } from "../../components/PageLoadEffects";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import InfoIcon from '@mui/icons-material/Info';
 import ResourceItem2 from "../../components/resource/ResourceItem2";
+import Swal from "sweetalert2";
+import { notifyError, notifySuccess } from "../../utils/Toast";
+import { ToastContainer } from "react-toastify";
 const ResourcePage = () => {
   const navigate = useNavigate();
   const [resource, setResouce] = useState(null)
@@ -29,9 +32,51 @@ const ResourcePage = () => {
       })
   }
 
+  console.log('resource', resource)
+
   useEffect(() => {
     getAllResouces();
   }, [])
+
+
+
+  //handle delete a resouce
+  const handleDeleteResource=(uuid)=>{
+    Swal.fire({
+        heightAuto: false,
+        backdrop: false,
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, Delete it!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          let config = {
+            method: "delete",
+            url: `${resourceUrl}/${uuid}`,
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          };
+          axios 
+            .request(config)
+            .then((response) => {
+              notifySuccess();
+              getAllResouces();
+            })
+            .catch((error) => {
+                notifyError('Something went wrong')
+            });
+        }
+      });  
+}
+
+
+
+
   return (
     <Fragment>
       <Grid container spacing={2}>
@@ -49,11 +94,11 @@ const ResourcePage = () => {
               </Tooltip>
 
               <div className="btns_row">
-                <Link to='/myResource'>
+                {/* <Link to='/myResource'>
                   <div className="Btn_one">
                     My Resource
                   </div>
-                </Link>
+                </Link> */}
                 <Link to='/resource-create'>
                   <div className="Btn_two">
                     Add Resource
@@ -67,7 +112,7 @@ const ResourcePage = () => {
                 <div className="placeholder_text">
                   No Resource Found
                 </div>}
-              <Grid container spacing={2}>
+              {/* <Grid container spacing={2}>
                 {(resource !== null && resource.length > 0) && resource.map((data, key) => {
                   return (
                     <Grid item lg={4} md={6} sm={12} xs={12}>
@@ -75,12 +120,15 @@ const ResourcePage = () => {
                     </Grid>
                   )
                 })}
-
-              </Grid>
+              </Grid> */}
               <Grid container spacing={2}>
-                <Grid item lg={4} md={6} sm={6} xs={12}>
-                  <ResourceItem2 />
-                </Grid>
+                {(resource !== null && resource.length > 0) && resource.map((data, key) => {
+                  return(
+                    <Grid item lg={4} md={6} sm={6} xs={12}>
+                      <ResourceItem2 resource={data} handleDeleteResource={handleDeleteResource} />
+                    </Grid>
+                  )
+                })}
               </Grid>
               {resource === null && <>
                 <Grid container spacing={2}>
@@ -93,6 +141,7 @@ const ResourcePage = () => {
           </div>
         </Grid>
       </Grid>
+      <ToastContainer />
     </Fragment>
   );
 };

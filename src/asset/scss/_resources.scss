@@ -161,12 +161,34 @@
   padding: 12px;
   position: relative;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  // justify-content: center;
+  // align-items: center;
   flex-direction: column;
-  margin-bottom: 20px;
+  .action_list{
+    i{
+      margin-left: 10px;
+      .MuiSvgIcon-root{
+        font-size: 20px;
+        color: $text;
+      }
+    }
+  }
   &:hover{
      box-shadow: 0px 20px 20px rgba(1, 6, 20, 0.1);
+  }
+  .Item_image{
+    height: 180px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f3f3f3;
+    border-radius: 8px;
+    img{
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+    }
   }
   h4{
     font-size: 20px;
@@ -187,10 +209,17 @@
     color: $text;
     line-height: 22px;
   }
-  .create_date{
+  .item_Bottom{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     position: absolute;
-    bottom: 10px;
-    right: 10px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+  }
+  .create_date{
     font-size: 15px;
     font-weight: 500;
     color: $black;
@@ -202,7 +231,18 @@
   }
   .recomment_overview{
     padding: 10px 0 6px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .star_mark{
+      .MuiBox-root{
+        width: auto;
+      }
+    }
   }
+}
+.representative_item_2{
+  align-items: center;
 }
 
 .resource_create{
@@ -482,6 +522,18 @@
     }
     .rating_content{
       padding-left: 10px;
+      width: 100%;
+      .content_top{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        .action_btn{
+          i{
+            margin-left: 10px;
+          }
+        }
+      }
       .user_name{
         font-size: 16px;
         font-weight: 500;

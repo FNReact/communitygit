@@ -151,7 +151,7 @@ const handleResouce = ()=>{
       // }else{
       //   navigate('/myResource');
       // }
-      navigate('/myResource');
+      navigate('/resource');
      
     })
     .catch((error) => {

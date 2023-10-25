@@ -25,6 +25,8 @@ const RepresentativeItem = ({data,admin, getAllResouces}) => {
     setAnchorEl(null);
   };
 
+  console.log('data', data)
+
 
       //handle delete a resouce
       const handleDeleteResource=(uuid)=>{

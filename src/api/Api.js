@@ -79,6 +79,11 @@ const mediaDeleteUrl = `${baseUrl}/api/cms/pages`;
 const chatRoomUrl = `${baseUrl}/api/chat/rooms`;
 const chatDetailsUrl = `${baseUrl}/api/chat/messages`;
 
+// recommendation 
+const resourceRecommendationUrl = `${baseUrl}/api/community/resourcerecommandations`
+
+const businessRecommendationUrl = `${baseUrl}/api/community/recommandations`
+
 
 
 let token = sessionStorage.getItem("token");
@@ -147,5 +152,9 @@ export {
   mediaDeleteUrl,
 
   chatRoomUrl,
-  chatDetailsUrl
+  chatDetailsUrl,
+
+
+  resourceRecommendationUrl,
+  businessRecommendationUrl
 };

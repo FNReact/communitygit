@@ -29,6 +29,8 @@ const CreatCommuinityForm = () => {
   const [location, setLocation] = useState("");
   const [logo,setLogo] = useState("");
   const [logoPreview,setLogoPreview] = useState("");
+  const [latitude, setLatitude] = useState('')
+  const [longitude, setLongitude] = useState('')
 
   const [actionEffectValue,setActionEffectValue] = useState(false);
   const [checked, setChecked] = useState(false);
@@ -47,6 +49,8 @@ const CreatCommuinityForm = () => {
       } else {
         Geocode.fromLatLng(geolocation.latitude, geolocation.longitude).then(
           (response) => {
+            setLatitude(geolocation.latitude)
+            setLongitude(geolocation.longitude)
             const address = response.results[9].formatted_address;
             setLocation(address);
           },
@@ -81,6 +85,8 @@ const CreatCommuinityForm = () => {
         data.append('website', website);
         data.append('address', address);
         data.append('status', '1');
+        data.append('latitude', latitude);
+        data.append('longitude', longitude);
 
         if(typeLocation?.state !==null){
           data.append('community_type', typeLocation.state.type);
@@ -139,7 +145,7 @@ const CreatCommuinityForm = () => {
     <Fragment>
         <div className="creatCommuinity_form_body">
              <div className="creatCommuinity_wrapper">
-              {typeLocation?.state?.type ==='apartment' && <h5>Create Apartment/Home Owner's Community</h5>}
+              {typeLocation?.state?.type ==='apartment' && <h5>Create Apartment Owner's Community</h5>}
               {typeLocation?.state?.type ==='business' && <h5>Create Business Community</h5>}
               {typeLocation?.state?.type ==='personal' && <h5>Create Personal Community</h5>}
             {/* <h5>Create your {typeLocation?.state?.type} community</h5> */}
@@ -151,14 +157,14 @@ const CreatCommuinityForm = () => {
                               <input type="text" className="form_control"  placeholder="Community Name" onChange={(e)=>setCommunityName(e.target.value)} />
                           </Grid>}
                           {typeLocation?.state?.type ==='apartment' && <Grid item xs={12} sm={12} md={12}>
-                              <input type="text" className="form_control"  placeholder="Apartment Number" onChange={(e)=>setCommunityName(e.target.value)} />
+                              <input type="text" className="form_control"  placeholder="Apartment Building Name" onChange={(e)=>setCommunityName(e.target.value)} />
                           </Grid>}
                           {typeLocation?.state?.type ==='business' && <Grid item xs={12} sm={12} md={12}>
                               <input type="text" className="form_control"  placeholder="Business Name" onChange={(e)=>setCommunityName(e.target.value)} />
                           </Grid>}
                           
                           <Grid item xs={12} sm={12} md={12}>
-                              <input type="text" className="form_control"  placeholder="Website" onChange={(e)=>setWebsite(e.target.value)} />
+                              <input type="text" className="form_control"  placeholder="Website (If any)" onChange={(e)=>setWebsite(e.target.value)} />
                           </Grid>
                           <Grid item xs={12} sm={12} md={12}>
                             <input type="email" className="form_control"  placeholder="Email (For your community use)" onChange={(e)=>setEmail(e.target.value)} />
