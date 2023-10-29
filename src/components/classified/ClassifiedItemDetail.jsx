@@ -339,7 +339,7 @@ const handleClassifiedOrder = (classifiedId)=>{
                         </Swiper>
                     </div>
                 </Grid>
-                <Grid item g={6} md={12} sm={12} xs={12}>
+                <Grid item lg={6} md={12} sm={12} xs={12}>
                    <div className="swipper_item_content">
                         {details !==null && <h4> {details.title} </h4>}
                        <div className="product_price">

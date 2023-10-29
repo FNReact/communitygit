@@ -212,13 +212,27 @@ const LocalBusinessDetailsBody = () => {
       <div className="business_details">
 
         <div className="b_details_top">
-           {details !== null && <h4> {details.title} </h4>}
-           <Button variant="contained" endIcon={<SendIcon />} onClick={handleClickOpenHire}>
-              Hire This Business
-         </Button>
+          <Grid container spacing={2}>
+            <Grid item xs={8}>
+              {details !== null && <div className="business_Title"> {details.title} </div>}
+            </Grid>
+            <Grid item xs={4}>
+              {/* <div className="hire_btn">
+                <Button variant="contained" endIcon={<SendIcon />} onClick={handleClickOpenHire}>
+                   Service Request
+                </Button>
+              </div> */}
+              <div className="hire_btn">
+                <Button variant="contained" endIcon={<SendIcon />} onClick={handleClickOpenHire}>
+                  Hire This Business
+                </Button>
+              </div>
+            </Grid>
+          </Grid>
+
         </div>
 
-       
+
         {details !== null && details?.subtitle !== "null" && <h6>{details.subtitle}</h6>}
         {details !== null && <p>{parser(details.details)}</p>}
 
@@ -364,70 +378,71 @@ const LocalBusinessDetailsBody = () => {
 
 
       {/* Hire Dialouge / Modal */}
-        <Dialog
-          fullScreen={fullScreen}
-          open={openHire}
-          onClose={handleCloseHire}
-          aria-labelledby="responsive-dialog-title"
-        >
-          <DialogTitle id="responsive-dialog-title">
-            {"Hire This Business"}
-          </DialogTitle>
-          <DialogContent>
-            <div className="recommended_body">
-              <Grid container spacing={2}>
-                <Grid item xs={12}>
-                  <Box><TextField label="Your estimated budget" variant="filled" type="number" fullWidth focused /></Box>
-                </Grid>
-                <Grid item xs={12}>
-                  <SunEditor
-                    name="details"
-                    placeholder="Describe Here..."
-                    showToolbar={true}
-                    setDefaultStyle="height: 140px"
-                    setOptions={{
-                      buttonList: [
-                        [
-                          "fontSize",
-                          "formatBlock",
-                          "paragraphStyle",
-                          "blockquote",
-                          "bold",
-                          "underline",
-                          "italic",
-                          "hiliteColor",
-                          "align",
-                          "list",
-                          "link",
-                          "codeView",
-                        ],
+      <Dialog
+        fullScreen={fullScreen}
+        open={openHire}
+        onClose={handleCloseHire}
+        aria-labelledby="responsive-dialog-title"
+      >
+        <DialogTitle id="responsive-dialog-title">
+          {"Hire This Business"}
+        </DialogTitle>
+        <DialogContent>
+          <div className="recommended_body">
+            <Grid container spacing={2}>
+              
+              <Grid item xs={12}>
+                <SunEditor
+                  name="details"
+                  placeholder="Describe Here..."
+                  showToolbar={true}
+                  setDefaultStyle="height: 140px"
+                  setOptions={{
+                    buttonList: [
+                      [
+                        "fontSize",
+                        "formatBlock",
+                        "paragraphStyle",
+                        "blockquote",
+                        "bold",
+                        "underline",
+                        "italic",
+                        "hiliteColor",
+                        "align",
+                        "list",
+                        "link",
+                        "codeView",
                       ],
-                    }}
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <Upload
-                    action="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188"
-                    listType="picture-card"
-                    fileList={fileList}
-                    onChange={onChange}
-                    onPreview={onPreview}
-                  >
-                    {fileList.length < 5 && '+ Upload'}
-                  </Upload>
-                </Grid>
+                    ],
+                  }}
+                />
               </Grid>
-            </div>
-          </DialogContent>
-          <DialogActions>
-            <Button autoFocus onClick={handleCloseHire}>
-              Disagree
-            </Button>
-            <Button onClick={handleCloseHire} autoFocus>
-              Agree
-            </Button>
-          </DialogActions>
-        </Dialog>
+              <Grid item xs={12}>
+                <Box><TextField label="Your estimated budget" variant="filled" type="number" fullWidth focused /></Box>
+              </Grid>
+              <Grid item xs={12}>
+                <Upload
+                  action="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188"
+                  listType="picture-card"
+                  fileList={fileList}
+                  onChange={onChange}
+                  onPreview={onPreview}
+                >
+                  {fileList.length < 5 && '+ Upload'}
+                </Upload>
+              </Grid>
+            </Grid>
+          </div>
+        </DialogContent>
+        <DialogActions>
+        <Button onClick={handleCloseHire} autoFocus>
+            Cancel
+          </Button>
+          <Button onClick={handleCloseHire} autoFocus>
+            Submit
+          </Button>
+        </DialogActions>
+      </Dialog>
       <ToastContainer />
     </>
   );

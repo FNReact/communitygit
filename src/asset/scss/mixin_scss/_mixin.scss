@@ -27,3 +27,14 @@
     text-overflow: ellipsis;
     max-width: 100%;
   }
+
+  @mixin text-ellips-3 {
+    display: block; /* Fallback for non-webkit */
+    display: -webkit-box;
+    height: 3; /* Fallback for non-webkit */
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
