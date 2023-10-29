@@ -1053,7 +1053,7 @@ useEffect(()=>{
                     }
 
                     {/* housing information */}
-                    {(msDetails.meta.community_type ==='housing' || msDetails.meta.community_type ==='apartment' ) &&
+                    {(msDetails.meta.community_type ==='housing') &&
                     <>
                         <Grid item lg={12} md={12} sm={12} xs={12}>
                          <Box ><TextField name="Builder" label="Builder Name"  variant="filled" fullWidth  focused onChange={(e)=>setValue("builder_name",e.target.value)} value={values.builder_name} /></Box>

@@ -391,7 +391,7 @@ useEffect(()=>{
                               </Grid>}
                            </>}
                            
-                           {(msDetails.meta.community_type ==='apartment' || msDetails.meta.community_type ==='housing') && 
+                           {( msDetails.meta.community_type ==='housing') && 
                               <>
                                  <Grid item xs={6}>
                                     {parseUser?.builder_name && <div className="info_item"> Builder Name : <span> {parseUser?.builder_name}</span></div>}
@@ -403,28 +403,31 @@ useEffect(()=>{
 
 
 
-                  {(msDetails.meta.community_type ==='apartment' || msDetails.meta.community_type ==='housing') && 
+                  {(msDetails.meta.community_type ==='housing') && 
                   <>
-                     <Grid container>
-                        <Grid item xs={12}>
-                           <div className="info_item_title">
-                              Electrical Contractor Information :
-                           </div>
-                        </Grid>
-                     
-                           <>
-                              <Grid item xs={4}>
-                                 {parseUser?.electrical_constructor_name && <div className="info_item_2">  <span className="item_lebel">Name </span> <span className="info_item_bold"> : {parseUser?.electrical_constructor_name}</span></div>}
-                              </Grid>
-                              <Grid item xs={4}>
-                                 {parseUser?.electrical_constructor_phone && <div className="info_item_2"> <span className="item_lebel"> Phone</span> <span className="info_item_bold"> : {parseUser?.electrical_constructor_phone}</span></div>}
-                              </Grid>
-                              <Grid item xs={4}>
-                                 {parseUser?.electrical_constructor_address && <div className="info_item_2"> <span className="item_lebel" >Address</span>  <span className="info_item_bold"> : {parseUser?.electrical_constructor_address}</span></div>}
-                              </Grid>
-                           </>
-                     </Grid>
-
+                  {(parseUser?.electrical_constructor_name || parseUser?.electrical_constructor_phone || parseUser?.electrical_constructor_address)  &&
+                      <Grid container>
+                      <Grid item xs={12}>
+                         <div className="info_item_title">
+                            Electrical Contractor Information :
+                         </div>
+                      </Grid>
+                   
+                         <>
+                            <Grid item xs={4}>
+                               {parseUser?.electrical_constructor_name && <div className="info_item_2">  <span className="item_lebel">Name </span> <span className="info_item_bold"> : {parseUser?.electrical_constructor_name}</span></div>}
+                            </Grid>
+                            <Grid item xs={4}>
+                               {parseUser?.electrical_constructor_phone && <div className="info_item_2"> <span className="item_lebel"> Phone</span> <span className="info_item_bold"> : {parseUser?.electrical_constructor_phone}</span></div>}
+                            </Grid>
+                            <Grid item xs={4}>
+                               {parseUser?.electrical_constructor_address && <div className="info_item_2"> <span className="item_lebel" >Address</span>  <span className="info_item_bold"> : {parseUser?.electrical_constructor_address}</span></div>}
+                            </Grid>
+                         </>
+                   </Grid> 
+                  }
+                    
+                  {(parseUser?.plumbing_constructor_name  || parseUser?.plumbing_constructor_phone || parseUser?.plumbing_constructor_address) && 
                      <Grid container >
                         <Grid item xs={12}>
                            <div className="info_item_title">
@@ -441,14 +444,16 @@ useEffect(()=>{
                                  {parseUser?.plumbing_constructor_address && <div className="info_item_2">  <span className="item_lebel" >Address</span>   <span className="info_item_bold"> : {parseUser?.plumbing_constructor_address}</span></div>}
                               </Grid>
                      </Grid>
+                  }
 
-                     <Grid container >
+                  {(parseUser?.window_glass_constructor_name || parseUser?.window_glass_constructor_phone || parseUser?.window_glass_constructor_address) && 
+                      <Grid container >
                         <Grid item xs={12}>
                            <div className="info_item_title">
                               Windows & Glass Contractor Information :
                            </div>
                         </Grid>
-                       
+                        
                               <Grid item xs={4}>
                                  {parseUser?.window_glass_constructor_name && <div className="info_item_2">  <span className="item_lebel" >Name </span>   <span className="info_item_bold"> : {parseUser?.window_glass_constructor_name}</span></div>}
                               </Grid>
@@ -459,14 +464,16 @@ useEffect(()=>{
                                  {parseUser?.window_glass_constructor_address && <div className="info_item_2"> <span className="item_lebel" >Address</span>   <span className="info_item_bold"> : {parseUser?.window_glass_constructor_address}</span></div>}
                               </Grid>
                      </Grid>
+                  }
 
-                     <Grid container >
+                  {(parseUser?.landscape_constructor_name || parseUser?.landscape_constructor_phone || parseUser?.landscape_constructor_address) &&
+                      <Grid container >
                         <Grid item xs={12}>
                            <div className="info_item_title">
                               Landscape Contractor Information :
                            </div>
                         </Grid>
-                       
+                        
                               <Grid item xs={4}>
                                  {parseUser?.landscape_constructor_name && <div className="info_item_2"> <span className="item_lebel" >Name</span>  <span className="info_item_bold"> : {parseUser?.landscape_constructor_name}</span></div>}
                               </Grid>
@@ -477,8 +484,10 @@ useEffect(()=>{
                                  {parseUser?.landscape_constructor_address && <div className="info_item_2"> <span className="item_lebel" >Address</span> <span className="info_item_bold"> : {parseUser?.landscape_constructor_address}</span></div>}
                               </Grid>
                      </Grid>
+                  }
 
-                     <Grid container >
+                  {(parseUser?.retention_wall_constructor_name || parseUser?.retention_wall_constructor_phone || parseUser?.retention_wall_constructor_address) && 
+                      <Grid container >
                         <Grid item xs={12}>
                            <div className="info_item_title">
                               Retention Wall Contractor Information :
@@ -495,25 +504,26 @@ useEffect(()=>{
                                  {parseUser?.retention_wall_constructor_address && <div className="info_item_2"> <span className="item_lebel" >Address </span> <span className="info_item_bold"> : {parseUser?.retention_wall_constructor_address}</span></div>}
                               </Grid>
                      </Grid>
-
-                     <Grid container >
-                        <Grid item xs={12}>
-                           <div className="info_item_title">
-                              Air Condition Contractor Information :
-                           </div>
+                     }
+                     {(parseUser?.air_condition_constructor_name || parseUser?.air_condition_constructor_phone  || parseUser?.air_condition_constructor_address) && 
+                         <Grid container >
+                           <Grid item xs={12}>
+                              <div className="info_item_title">
+                                 Air Condition Contractor Information :
+                              </div>
+                           </Grid>
+                           
+                                 <Grid item xs={4}>
+                                    {parseUser?.air_condition_constructor_name && <div className="info_item_2"> <span className="item_lebel"> Name </span> <span className="info_item_bold"> : {parseUser?.air_condition_constructor_name}</span></div>}
+                                 </Grid>
+                                 <Grid item xs={4}>
+                                    {parseUser?.air_condition_constructor_phone && <div className="info_item_2"> <span className="item_lebel">Phone</span>   <span className="info_item_bold"> : {parseUser?.air_condition_constructor_phone}</span></div>}
+                                 </Grid>
+                                 <Grid item xs={4}>
+                                    {parseUser?.air_condition_constructor_address && <div className="info_item_2">  <span className="item_lebel">Address </span>  <span className="info_item_bold"> : {parseUser?.air_condition_constructor_address}</span></div>}
+                                 </Grid>
                         </Grid>
-                       
-                              <Grid item xs={4}>
-                                 {parseUser?.air_condition_constructor_name && <div className="info_item_2"> <span className="item_lebel"> Name </span> <span className="info_item_bold"> : {parseUser?.air_condition_constructor_name}</span></div>}
-                              </Grid>
-                              <Grid item xs={4}>
-                                 {parseUser?.air_condition_constructor_phone && <div className="info_item_2"> <span className="item_lebel">Phone</span>   <span className="info_item_bold"> : {parseUser?.air_condition_constructor_phone}</span></div>}
-                              </Grid>
-                              <Grid item xs={4}>
-                                 {parseUser?.air_condition_constructor_address && <div className="info_item_2">  <span className="item_lebel">Address </span>  <span className="info_item_bold"> : {parseUser?.air_condition_constructor_address}</span></div>}
-                              </Grid>
-                     </Grid>
-
+                        }
                   </>}
                </div>
               </div>           

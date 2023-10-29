@@ -43,11 +43,13 @@ const ChatBody = ({chatRooms,setChatRooms, getAllChatRooms}) => {
         setAnchorEl(null);
     };
 
-const [chatDetailsOpner, setChatDetailsOpner] = useState(true)    
+const [chatDetailsOpner, setChatDetailsOpner] = useState(true)  
+
+// console.log('allMembers', allMembers)
 
 // set default chat
 useEffect(()=>{
-    if(chatRooms && chatRooms?.data?.length>0 && chatDetailsOpner ===true){
+    if(chatRooms && chatRooms?.data?.length>0 && chatDetailsOpner ===true && allMembers && allMembers.length>1){
         handleChatDetails(chatRooms?.data[0].uuid);
         setSingleRoom(chatRooms?.data[0])
         setChatDetailsOpner(false)
