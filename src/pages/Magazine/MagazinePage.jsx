@@ -119,7 +119,7 @@ const MagazinePage = () => {
                 </Box>
                 <div className="sticky_wrapper">
                   <Grid container spacing={2}>
-                    <Grid item xs={7}>
+                    <Grid item lg={7} md={12} sm={12} xs={12}>
                       {magazine?.stiky && magazine?.stiky.length>0 &&  
                       <div className="sticky_wrapper_main" onClick={(e)=> handleDetails(magazine?.stiky[0])}>
                         <div className="main_img">
@@ -152,7 +152,7 @@ const MagazinePage = () => {
                       </div> }
                      
                     </Grid>
-                    <Grid item xs={5}>
+                    <Grid item lg={5} md={8} sm={12} xs={12}>
                     {magazine?.stiky && magazine?.stiky.length>1 &&
                     <>
                       <div className="sticky_wrapper_sub" onClick={(e)=> handleDetails(magazine?.stiky[1])}>

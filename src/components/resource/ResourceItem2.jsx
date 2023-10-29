@@ -110,16 +110,16 @@ const ResourceItem2 = ({ resource, handleDeleteResource }) => {
           </div>
         )} */}
 
-{/* community-profile */}
+        {/* community-profile */}
 
-        {(resource?.user  && resource?.user.id === userDetails.id)?
-          <div className="create_owner" onClick={(e)=>navigate('/community-profile',{state:{uuid:resource?.user?.uuid,userId:resource?.user.id,userData:resource?.user}})}>
+        {(resource?.user && resource?.user.id === userDetails.id) ?
+          <div className="create_owner" onClick={(e) => navigate('/community-profile', { state: { uuid: resource?.user?.uuid, userId: resource?.user.id, userData: resource?.user } })}>
             Create by <span> {resource?.user?.name} </span>
           </div>
-        :
-            <div className="create_owner" onClick={(e)=>navigate('/community-profile/other',{state:{uuid:resource?.user?.uuid,userId:resource?.user.id,userData:resource?.user}})}>
-              Create by <span> {resource?.user?.name} </span>
-            </div>
+          :
+          <div className="create_owner" onClick={(e) => navigate('/community-profile/other', { state: { uuid: resource?.user?.uuid, userId: resource?.user.id, userData: resource?.user } })}>
+            Create by <span> {resource?.user?.name} </span>
+          </div>
         }
 
         <div className="item_Bottom">
@@ -135,27 +135,27 @@ const ResourceItem2 = ({ resource, handleDeleteResource }) => {
             {(userDetails.id === msDetails.user_id ||
               loggedInUser.user_type === "admin" ||
               userDetails.id === resource?.user?.id) && (
-              <i
-                className="cursorPointer"
-                onClick={(e) =>
-                  navigate("/resource-create", {
-                    state: { uuid: resource.uuid },
-                  })
-                }
-              >
-                <EditIcon />
-              </i>
-            )}
+                <i
+                  className="cursorPointer"
+                  onClick={(e) =>
+                    navigate("/resource-create", {
+                      state: { uuid: resource.uuid },
+                    })
+                  }
+                >
+                  <EditIcon />
+                </i>
+              )}
             {(userDetails.id === msDetails.user_id ||
               loggedInUser.user_type === "admin" ||
               userDetails.id === resource?.user?.id) && (
-              <i
-                className="cursorPointer"
-                onClick={(e) => handleDeleteResource(resource.uuid)}
-              >
-                <DeleteIcon />
-              </i>
-            )}
+                <i
+                  className="cursorPointer"
+                  onClick={(e) => handleDeleteResource(resource.uuid)}
+                >
+                  <DeleteIcon />
+                </i>
+              )}
           </div>
         </div>
         {resource?.recommendations && resource.recommendations.length > 0 && (
@@ -167,23 +167,21 @@ const ResourceItem2 = ({ resource, handleDeleteResource }) => {
                     <Avatar
                       key={data.uuid}
                       alt={data?.user?.name}
-                      src={`${baseUrl}/${data?.user?.avatar}`}
-                    />
+                      src={`${baseUrl}/${data?.user?.avatar}`} />
                   </>
                 );
               })}
             </AvatarGroup>
             <div className="star_mark">
-                <Box
-                  sx={{
-                    width: 200,
-                    display: "flex",
-                    alignItems: "center",
-                  }}
-                >
-                  <Rating name="hover-feedback" value={rating} readOnly />
-                </Box>
-              </div>
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                }}>
+
+                <Rating name="hover-feedback" value={rating} readOnly />
+              </Box>
+            </div>
           </div>
         )}
       </div>

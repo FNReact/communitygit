@@ -44,11 +44,9 @@ const LocalBusinessItem2 = () => {
                         <Avatar alt="Agnes Walker" src={avatar2} />
                         <Avatar alt="Trevor Henderson" src={avatar2} />
                     </AvatarGroup>
-                </div>
-                <div className="star_mark">
+                    <div className="star_mark">
                     <Box
                         sx={{
-                            width: 200,
                             display: 'flex',
                             alignItems: 'center',
                         }}>
@@ -70,6 +68,8 @@ const LocalBusinessItem2 = () => {
                         )}
                     </Box>
                 </div>
+                </div>
+                
             </div>
         </Fragment >
     )

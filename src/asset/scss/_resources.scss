@@ -235,6 +235,8 @@
     align-items: center;
     justify-content: center;
     .star_mark{
+      display: flex;
+      align-items: center;
       .MuiBox-root{
         width: auto;
       }
