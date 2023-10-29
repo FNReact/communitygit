@@ -83,6 +83,16 @@ const LocalBusinessItem = ({data,admin, getAllResouces,resource, handleDeleteRes
            {data && data.type &&  <div className="business_type">{data.type}</div>}
           {data && data.title &&  <div className="resource_title" onClick={(e)=>navigate('/localBusiness-details', {state:{uuid:data.uuid,userRecommended:userRecommended}})}>{data.title}</div>}
           {data && data.details && <div className="business_item_details" onClick={(e)=>navigate('/localBusiness-details', {state:{uuid:data.uuid,userRecommended:userRecommended}})}>{parser(data.details.slice(0,300))}</div>}
+
+          {data && data?.meta?.phone &&  <Box className="business_type">Phone: {data?.meta?.phone}</Box>}
+          {data && data?.meta?.email &&  <Box sx={{ml:1}} className="business_type">Email : {data?.meta?.email}</Box>}
+          <Box sx={{mt:1}}>
+            {data && data?.meta?.address &&  <Box className="business_type">Address : {data?.meta?.address}</Box>}
+            {data && data?.meta?.location &&  <Box sx={{ml:1}} className="business_type">Location : {data?.meta?.location}</Box>}
+          </Box>
+         
+
+
           {((userDetails.id === msDetails.user_id || loggedInUser.user_type==="admin") || (userDetails.id === data?.user?.id)) && 
               <div className="admin_dropdown"
                 id="demo-positioned-button"

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Box, Button, Grid, TextField, Tooltip } from "@mui/material";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { baseUrl, businessRecommendationUrl, localBusinessUrl, resourceUrl } from "../../api/Api";
 import { Image, Upload } from 'antd';
@@ -28,9 +28,15 @@ import SendIcon from '@mui/icons-material/Send';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 
+import ChatIcon from '@mui/icons-material/Chat';
+
+import chatImage from "../../asset/image/Chat.png";
+
+
 
 const LocalBusinessDetailsBody = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const token = sessionStorage.getItem('token');
   const { msDetails, userDetails, loggedInUser } = useContext(UserContext)
   const [details, setDetails] = useState(null);
@@ -78,7 +84,10 @@ const LocalBusinessDetailsBody = () => {
   // create new recommendation
   const defaultValues = {
     rating: '',
-    details: ''
+    details: '',
+
+    budget:'',
+    details:''
   };
   const methods = useForm({ defaultValues });
   const { watch, setValue } = methods;
@@ -206,6 +215,10 @@ const LocalBusinessDetailsBody = () => {
     imgWindow?.document.write(image.outerHTML);
   };
 
+  const handleHireBusiness = ()=>{
+
+  }
+
 
   return (
     <>
@@ -220,6 +233,10 @@ const LocalBusinessDetailsBody = () => {
 
        
         {details !== null && details?.subtitle !== "null" && <h6>{details.subtitle}</h6>}
+        {details !== null && details?.meta?.phone !== "null" && <h6>{details.meta.phone}</h6>}
+        {details !== null && details?.meta?.email !== "null" && <h6>{details.meta.email}</h6>}
+        {details !== null && details?.meta?.address !== "null" && <h6>{details.meta.address}</h6>}
+        {details !== null && details?.meta?.location !== "null" && <h6>{details.meta.location}</h6>}
         {details !== null && <p>{parser(details.details)}</p>}
 
         {(details !== null && details.files.length > 0) && <>
@@ -260,7 +277,8 @@ const LocalBusinessDetailsBody = () => {
                       {data?.user?.name}
                     </div>
                     <div className="action_btn">
-                      {((userDetails.id === msDetails.user_id || loggedInUser.user_type === "admin") || (userDetails.id === data?.user?.id)) && <i className="cursorPointer" onClick={(e) => handleEditRecommendation(data)}><EditIcon /></i>}
+                      {userDetails.id !==data?.user?.id && <i className="cursorPointer" onClick={(e)=> navigate('/chat', {state:{user:data.user,title:details.title}})}><img src={chatImage} width={'15%'} /></i>} 
+                      {((userDetails.id === data?.user?.id)) && <i className="cursorPointer" onClick={(e) => handleEditRecommendation(data)}><EditIcon /></i>}
                       {((userDetails.id === msDetails.user_id || loggedInUser.user_type === "admin") || (userDetails.id === data?.user?.id)) && <i className="cursorPointer" onClick={(e) => handleDeleteRecommendation(data.uuid, userDetails.id === data?.user?.id)}><DeleteIcon /></i>}
                     </div>
                   </div>
@@ -327,7 +345,7 @@ const LocalBusinessDetailsBody = () => {
                   placeholder="Details Here..."
                   setContents={values.details}
                   showToolbar={true}
-                  onChange={(e) => handleEditorChange(e, 'details')}
+                  onChange={(e) => handleEditorChange(e,'details')}
                   setDefaultStyle="height: 140px"
                   setOptions={{
                     buttonList: [
@@ -377,13 +395,16 @@ const LocalBusinessDetailsBody = () => {
             <div className="recommended_body">
               <Grid container spacing={2}>
                 <Grid item xs={12}>
-                  <Box><TextField label="Your estimated budget" variant="filled" type="number" fullWidth focused /></Box>
+                  <Box><TextField label="Your Estimated Budget" variant="filled" type="number" fullWidth focused onChange={(e)=> setValue('budget', e.target.value)} value={values.budget} /></Box>
                 </Grid>
                 <Grid item xs={12}>
+                  <label>Description</label>
                   <SunEditor
                     name="details"
                     placeholder="Describe Here..."
+                    setContents={values.details}
                     showToolbar={true}
+                    onChange={(e)=>handleEditorChange(e,'details')}
                     setDefaultStyle="height: 140px"
                     setOptions={{
                       buttonList: [
@@ -407,12 +428,12 @@ const LocalBusinessDetailsBody = () => {
                 </Grid>
                 <Grid item xs={12}>
                   <Upload
-                    action="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188"
+                    action='https://icircles.app/storage/logo/h9kMsnUQzKZ23PfgkLNhl1UxGWcjFXCSIntrNrD5.png'
                     listType="picture-card"
                     fileList={fileList}
                     onChange={onChange}
                     onPreview={onPreview}
-                  >
+                    >
                     {fileList.length < 5 && '+ Upload'}
                   </Upload>
                 </Grid>
@@ -421,10 +442,10 @@ const LocalBusinessDetailsBody = () => {
           </DialogContent>
           <DialogActions>
             <Button autoFocus onClick={handleCloseHire}>
-              Disagree
+              Cancel
             </Button>
-            <Button onClick={handleCloseHire} autoFocus>
-              Agree
+            <Button onClick={(e)=>{handleHireBusiness();handleCloseHire()}} autoFocus>
+              Submit
             </Button>
           </DialogActions>
         </Dialog>

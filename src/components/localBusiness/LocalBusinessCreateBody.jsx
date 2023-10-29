@@ -70,6 +70,10 @@ const LocalBusinessCreateBody = () => {
 const defaultValues = {
   title: '',
   subtitle:'',
+  phone:'',
+  email:'',
+  address:'',
+  location:'',
   details: '',
   websiteUrl:'',
   googleUrl:'',
@@ -112,6 +116,11 @@ const getSingleResouceDetails = ()=>{
       setValue('youtubeUrl', response?.data?.meta?.youtube_url)
       setValue('twitterUrl', response?.data?.meta?.twitter_url)
 
+      setValue('phone', response?.data?.meta?.phone)
+      setValue('email', response?.data?.meta?.email)
+      setValue('address', response?.data?.meta?.address)
+      setValue('location', response?.data?.meta?.location)
+
       if(response.data.files.length>0){
         setGetFileList(response.data.files)
       }
@@ -134,6 +143,11 @@ const handleLocalBusiness = ()=>{
     data.append('user_id', userDetails.id);
     data.append('title', values.title);
     data.append('subtitle', values.subtitle);
+    data.append('phone', values.phone);
+    data.append('email', values.email);
+    data.append('address', values.address);
+    data.append('location', values.location);
+
     data.append('details', values.details);
     data.append('type', BusinessTypeValue);
 
@@ -265,9 +279,22 @@ const handleLocalBusiness = ()=>{
                     <Grid item xs={12}>
                       <Box><TextField label="Business Name"  variant="filled" fullWidth  focused onChange={(e)=>setValue('title', e.target.value)} value={values.title}/></Box>
                     </Grid>
-                    {/* <Grid item xs={12}>
+                     <Grid item xs={12}>
                       <Box><TextField label="Business Sub-title"  variant="filled" fullWidth  focused onChange={(e)=>setValue('subtitle', e.target.value)} value={values.subtitle}/></Box>
-                    </Grid> */}
+                    </Grid>
+                    <Grid item xs={12}>
+                      <Box><TextField type="number" label="Business Phone"  variant="filled" fullWidth  focused onChange={(e)=>setValue('phone', e.target.value)} value={values.phone}/></Box>
+                    </Grid>
+                    <Grid item xs={12}>
+                      <Box><TextField type="email" label="Business Email"  variant="filled" fullWidth  focused onChange={(e)=>setValue('email', e.target.value)} value={values.email}/></Box>
+                    </Grid>
+                    <Grid item xs={12}>
+                      <Box><TextField type="text" label="Business Address"  variant="filled" fullWidth  focused onChange={(e)=>setValue('address', e.target.value)} value={values.address}/></Box>
+                    </Grid>
+                    <Grid item xs={12}>
+                      <Box><TextField type="text" label="Business Location"  variant="filled" fullWidth  focused onChange={(e)=>setValue('location', e.target.value)} value={values.location}/></Box>
+                    </Grid>
+                   
                       <Grid item xs={10}>
                      <Box>
                                <Autocomplete

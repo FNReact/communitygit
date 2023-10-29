@@ -38,7 +38,7 @@ const classifiedMyOrderUrl = `${baseUrl}/api/classified/myorder`;
 const resourceUrl = `${baseUrl}/api/community/localresource`;
 const resourceMediaUrl = `${baseUrl}/api/community/localresource/media`;
 
-//local business
+//local business/entity
 const localBusinessUrl = `${baseUrl}/api/community/localentity`;
 const businessTypeUrl = `${baseUrl}/api/community/typesuggestion`;
 const localBusinessMediaUrl = `${baseUrl}/api/community/localentity/media`;

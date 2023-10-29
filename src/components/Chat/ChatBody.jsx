@@ -13,7 +13,7 @@ import MenuItem from '@mui/material/MenuItem';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { allMembersUrl, baseUrl, chatMessagesUrl } from "../../api/Api";
 import ChatRoomDetailsBody from "./ChatRoomDetailsBody";
 import axios from "axios";
@@ -25,6 +25,7 @@ import Pusher from 'pusher-js';
 
 const ChatBody = ({chatRooms,setChatRooms, getAllChatRooms}) => {
     const navigate = useNavigate();
+    const location = useLocation();
     const token = sessionStorage.getItem('token');
     const {msDetails, userDetails} = useContext(UserContext)
     const [chatRoomDetails, setChatRoomDetails] = useState(null)
@@ -48,11 +49,67 @@ const [chatDetailsOpner, setChatDetailsOpner] = useState(true)
 // console.log('allMembers', allMembers)
 
 // set default chat
+
+console.log('location', location)
+
 useEffect(()=>{
-    if(chatRooms && chatRooms?.data?.length>0 && chatDetailsOpner ===true && allMembers && allMembers.length>1){
+    if(location?.state ===null && chatRooms && chatRooms?.data?.length>0 && chatDetailsOpner ===true && allMembers && allMembers.length>1){
         handleChatDetails(chatRooms?.data[0].uuid);
         setSingleRoom(chatRooms?.data[0])
         setChatDetailsOpner(false)
+    }
+    if(location?.state !==null && chatDetailsOpner ===true){
+        setLoaderVisible(true)
+        let config = {
+            method: 'get',
+            url: `${chatMessagesUrl}?user=${location?.state?.user?.uuid}`,
+            headers: { 
+              'Authorization': `Bearer ${token}`, 
+            }
+          };
+          
+          axios.request(config)
+          .then((response) => {
+
+            // handleChatDetails(chat.uuid);
+            // setSingleRoom(chat)
+            if(response?.data?.meta?.chat_room !==null){
+                handleChatDetails(response?.data?.meta?.chat_room.uuid);
+                setSingleRoom(response?.data?.meta?.chat_room)
+            }else{
+                var data = JSON.stringify({
+                    "message": `I want to know more about ${location?.state.title} as you recommended this.Would you have sometimes to chat?.`,
+                    "chat_room": null,
+                    "user": location?.state?.user
+                });
+                let config = {
+                    method: 'post',
+                    url: chatMessagesUrl,
+                    headers: { 
+                        'Authorization': `Bearer ${token}`, 
+                        'Content-Type': 'application/json'
+                    },
+                    data : data
+                };
+    
+            axios.request(config)
+            .then((response) => {
+                handleChatDetails(response?.data?.data?.chat_room.uuid);
+                setSingleRoom(response?.data?.data?.chat_room)
+                setLoaderVisible(false)
+            })
+            .catch((error) => {
+                setLoaderVisible(false)
+            });
+            }
+
+          })
+          .catch((error) => {
+            console.log(error);
+            setLoaderVisible(false)
+          });
+          setChatDetailsOpner(false)
+
     }
 },[chatRooms])
 
