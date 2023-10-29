@@ -56,6 +56,9 @@ const CommunitySetUp = ()=>{
   const [magazineLogo, setMagazineLogo] = useState([]);
   const [storeMagazineImage, setStoreMagazineImage] = useState(null)
 
+  const [magazineBanner, setMagazineBanner] = useState([])
+  const [storeMagazineBanner, setStoreMagazineBanner] = useState(null)
+
   const token = sessionStorage.getItem('token');
   const defaultValues = {
     name: '',
@@ -107,6 +110,8 @@ const CommunitySetUp = ()=>{
     
     magazine_logo_enable:false,
     magazine_logo: null,
+    magazine_banner_enable:false,
+    magazine_banner: null,
 
 
 
@@ -348,12 +353,22 @@ const CommunitySetUp = ()=>{
         if(res?.data?.meta?.community_settings?.magazine_logo_enable==='1'){
           setValue('magazine_logo_enable',true)
           }else{setValue('magazine_logo_enable',false)}
+
+        if(res?.data?.meta?.community_settings?.magazine_banner_enable==='1'){
+          setValue('magazine_banner_enable',true)
+          }else{setValue('magazine_banner_enable',false)}
        }
        var magazineUrl =null;
        if(res?.data?.meta?.community_settings?.magazine_logo){
         magazineUrl=`${baseUrl}/${res?.data?.meta?.community_settings?.magazine_logo}`
        }
         setStoreMagazineImage(magazineUrl)
+
+       var magazineBannerUrl =null;
+       if(res?.data?.meta?.community_settings?.magazine_banner){
+        magazineUrl=`${baseUrl}/${res?.data?.meta?.community_settings?.magazine_banner}`
+       }
+        setStoreMagazineBanner(magazineBannerUrl)
       }).catch((e)=>  { setLoaderVisible(false)})
 }
 useEffect(()=>{
@@ -485,9 +500,15 @@ useEffect(()=>{
       if(JSON.parse(values.magazine_logo_enable)===true){
         data.append('magazine_logo_enable', 1)
         }else{data.append('magazine_logo_enable', 0)}
+      if(JSON.parse(values.magazine_banner_enable)===true){
+        data.append('magazine_banner_enable', 1)
+        }else{data.append('magazine_banner_enable', 0)}
 
       if(values?.magazine_logo && values?.magazine_logo.length >0){
         data.append('magazine_logo', values?.magazine_logo[0]?.originFileObj);
+      }
+      if(values?.magazine_banner && values?.magazine_banner.length >0){
+        data.append('magazine_banner', values?.magazine_banner[0]?.originFileObj);
       }
     
        var config = {
@@ -899,6 +920,11 @@ useEffect(()=>{
                     setMagazineLogo={setMagazineLogo}
                     storeMagazineImage={storeMagazineImage}
                     setStoreMagazineImage={setStoreMagazineImage}
+
+                    magazineBanner={magazineBanner}
+                    setMagazineBanner={setMagazineBanner}
+                    storeMagazineBanner={storeMagazineBanner}
+                    setStoreMagazineBanner={setStoreMagazineBanner}
                   />
                     
                   </Grid>

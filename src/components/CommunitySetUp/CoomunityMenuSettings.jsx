@@ -11,7 +11,7 @@ import {
 import { Image, Modal, Upload } from "antd";
 import React, { useState } from "react";
 
-const CoomunityMenuSettings = ({ values, setValue, handleChangeStatus,magazineLogo,setMagazineLogo,storeMagazineImage,setStoreMagazineImage }) => {
+const CoomunityMenuSettings = ({ values, setValue, handleChangeStatus,magazineLogo,setMagazineLogo,storeMagazineImage,setStoreMagazineImage,magazineBanner,setMagazineBanner,storeMagazineBanner,setStoreMagazineBanner }) => {
     const [previewVisible, setPreviewVisible] = useState(false);
     const [previewImage, setPreviewImage] = useState("");
 
@@ -34,10 +34,15 @@ const CoomunityMenuSettings = ({ values, setValue, handleChangeStatus,magazineLo
       };
     
       //  multiple files upload
-      const handleChange = ({ fileList: newFileList  }) => {
+      const handleChangeLogo = ({ fileList: newFileList  }) => {
         var files = newFileList;
        
           setValue('magazine_logo',newFileList);
+        }      
+      const handleChangeBanner = ({ fileList: newFileList  }) => {
+        var files = newFileList;
+       
+          setValue('magazine_banner',newFileList);
         }      
       const uploadButton = (
         <div>
@@ -47,7 +52,7 @@ const CoomunityMenuSettings = ({ values, setValue, handleChangeStatus,magazineLo
               padding: "40px",
             }}
           >
-            Magazine Logo
+            Upload Now
           </div>
         </div>
       );
@@ -510,7 +515,7 @@ const CoomunityMenuSettings = ({ values, setValue, handleChangeStatus,magazineLo
                           listType="picture-card"
                           fileList={values.magazine_logo}
                           onPreview={handlePreview}
-                          onChange={handleChange}
+                          onChange={handleChangeLogo}
                           disabled={values.magazine_logo_enable===true?false:true}
                         >
                           {magazineLogo.length >= 1 ? null : uploadButton}
@@ -522,6 +527,56 @@ const CoomunityMenuSettings = ({ values, setValue, handleChangeStatus,magazineLo
 
         </Box>
       </Grid>
+
+{/* magazine banner */}
+<Grid item lg={4} md={12} sm={12} xs={12} sx={{ mt: 1.5 }}>
+        <Box sx={{ minWidth: 120 }}>
+          <FormControl component="fieldset" variant="standard">
+            <FormGroup>
+              <FormControlLabel
+                control={
+                  <Switch
+                    id="myToggleStatus"
+                    label="Publish"
+                    labelPlacement="start"
+                    checked={JSON.parse(values.magazine_banner_enable)}
+                    onChange={(e) => handleChangeStatus(e, "magazine_banner_enable")}
+                    inputProps={{ "aria-label": "controlled" }}
+                  />
+                }
+                label="Enable Magazine Banner"
+              />
+            </FormGroup>
+          </FormControl>
+        </Box>
+      </Grid>
+      <Grid item lg={8} md={12} sm={12} xs={12}>
+        <Box display='flex' justifyContent='center' justifyItems='center'>
+            {/* ***************Magazine Image start************* */}
+            {storeMagazineBanner !==null && <Box className="" sx={{mt:2, ml:2, mb:3}}>
+                      <Image src={storeMagazineBanner} alt="" width='20%'></Image>
+                      <Button onClick={()=>{setStoreMagazineBanner(null)}}>Update Image</Button>
+                    </Box>}
+
+                    {storeMagazineBanner===null &&  <Box className="clearfix" sx={{mt:2, ml:2, mb:3}}>
+                        <Upload
+                          action='https://icircles.app/storage/logo/h9kMsnUQzKZ23PfgkLNhl1UxGWcjFXCSIntrNrD5.png'
+                          listType="picture-card"
+                          fileList={values.magazine_banner}
+                          onPreview={handlePreview}
+                          onChange={handleChangeBanner}
+                          disabled={values.magazine_banner_enable===true?false:true}
+                        >
+                          {magazineBanner.length >= 1 ? null : uploadButton}
+                        </Upload>
+                        <Modal visible={previewVisible} footer={null} onCancel={handleCancel}>
+                          <img alt="example" style={{ width: '100%' }} src={previewImage} />
+                        </Modal>
+                    </Box>}
+
+        </Box>
+      </Grid>
+
     </>
   );
 };
