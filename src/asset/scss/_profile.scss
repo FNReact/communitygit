@@ -147,18 +147,28 @@
       border-top-left-radius: 10px;
       border-top-right-radius: 10px;
       position: relative;
-
-      i{
+      .overly_content{
         position: absolute;
         bottom: 10px;
         right: 10px;
         z-index: 3;
-        background: #6d6b6a;
-        padding: 5px;
-        border-radius: 5px;
-        .MuiSvgIcon-root{
-            color: #fff;
-        }
+        display: flex;
+        i{
+            background: #6d6b6a;
+            padding: 5px;
+            border-radius: 5px;
+            margin-left: 10px;
+            height: 40px;
+            width: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            .MuiSvgIcon-root{
+                color: #fff;
+                font-size: 22px;
+            }
+          }
       }
     }
     .user_profile_content{
@@ -175,6 +185,7 @@
                 background-color: #fff;
                 border-radius: 50%;
                 overflow: hidden;
+                margin-top: -15px;
                 img{
                     height: 100%; 
                     width: 100%;
@@ -248,7 +259,7 @@
             border-radius: 8px;
             margin-top: 16px;
             p{
-                font-size: 15px;
+                font-size: 13px;
                 color: #333333;
                 line-height: 22px;
             }

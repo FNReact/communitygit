@@ -49,8 +49,6 @@ const ResourceItem2 = ({ resource, handleDeleteResource }) => {
     }
   }, []);
 
-  console.log("resouce", resource);
-
   return (
     <Fragment>
       <div className="resource_item_2 cursorPointer">

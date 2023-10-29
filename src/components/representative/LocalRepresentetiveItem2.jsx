@@ -49,8 +49,6 @@ const LocalRepresentetiveItem2 = ({representative,handleDeleteRepresentetive}) =
     }
   }, []);
 
-    console.log('representative', representative)
-
     return (
         <Fragment>
 

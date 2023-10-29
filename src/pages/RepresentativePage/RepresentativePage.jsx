@@ -37,8 +37,6 @@ const RepresentativePage = () => {
     getAllResouces();
   },[])
 
-  console.log('loggedInUserInfo', loggedInUser)
-
     //handle delete a resouce
     const handleDeleteRepresentetive=(uuid)=>{
       Swal.fire({

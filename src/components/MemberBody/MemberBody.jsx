@@ -246,12 +246,12 @@ const MemberBody = () => {
                         <div className="user_info">
                            <div className="user_img">
                             {(userDetails?.avater)?<>
-                              {(userDetails?.avater )?<img src={`${baseUrl}/${userDetails?.avater}`} alt={data?.user?.name} />
-                                :<img src={Avatar} alt=""/>
+                              {(userDetails?.avater && msDetails.meta.community_type !=='apartment' )?<img src={`${baseUrl}/${userDetails?.avater}`} alt={data?.user?.name} />
+                                :<img src={Avatar} alt={data?.user?.name}/>
                                 }
                             </>:<>
-                              {(data?.user?.avatar !==null)?<img src={`${baseUrl}/${data?.user?.avatar}`} alt={data?.user?.name} />
-                              :<img src={Avatar} alt="" />
+                              {(data?.user?.avatar !==null && msDetails.meta.community_type !=='apartment')?<img src={`${baseUrl}/${data?.user?.avatar}`} alt={data?.user?.name} />
+                              :<img src={Avatar} alt={data?.user?.name} />
                               }
                             </> }
                            

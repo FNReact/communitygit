@@ -48,7 +48,6 @@ const ChatPage = () => {
     // Listen for online/offline status updates
     socket.on((data) => {
       setOnlineUsers(data.onlineUsers);
-      console.log('user-status', data)
     });
 
     // client-side
@@ -65,9 +64,9 @@ const ChatPage = () => {
     });
 
     // Clean up the socket connection on unmount
-    return () => {
-      socket.disconnect();
-    };
+    // return () => {
+    //   socket.disconnect();
+    // };
   }, []);
 
   // console.log('onlineUsers', onlineUsers)

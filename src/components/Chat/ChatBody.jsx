@@ -14,16 +14,19 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useNavigate } from "react-router-dom";
-import { allMembersUrl, baseUrl, chatDetailsUrl } from "../../api/Api";
+import { allMembersUrl, baseUrl, chatMessagesUrl } from "../../api/Api";
 import ChatRoomDetailsBody from "./ChatRoomDetailsBody";
 import axios from "axios";
 import MainLoader from "../PageLoadEffects/MainLoader";
 import { UserContext } from "../../utils/UserContext";
 
+import Pusher from 'pusher-js';
+
+
 const ChatBody = ({chatRooms,setChatRooms, getAllChatRooms}) => {
     const navigate = useNavigate();
     const token = sessionStorage.getItem('token');
-    const {msDetails} = useContext(UserContext)
+    const {msDetails, userDetails} = useContext(UserContext)
     const [chatRoomDetails, setChatRoomDetails] = useState(null)
     const [singleRoom, setSingleRoom] = useState(null)
     const [loaderVisible, setLoaderVisible] = useState(false)
@@ -40,8 +43,20 @@ const ChatBody = ({chatRooms,setChatRooms, getAllChatRooms}) => {
         setAnchorEl(null);
     };
 
+const [chatDetailsOpner, setChatDetailsOpner] = useState(true)    
 
-      //get all members
+// set default chat
+useEffect(()=>{
+    if(chatRooms && chatRooms?.data?.length>0 && chatDetailsOpner ===true){
+        handleChatDetails(chatRooms?.data[0].uuid);
+        setSingleRoom(chatRooms?.data[0])
+        setChatDetailsOpner(false)
+    }
+},[chatRooms])
+
+
+
+//get all members
   const membersUrl = `${allMembersUrl}/${msDetails.id}`;
   const getAllMembers = ()=>{
     let config = {
@@ -65,7 +80,7 @@ const ChatBody = ({chatRooms,setChatRooms, getAllChatRooms}) => {
         setLoaderVisible(true)
         let config = {
             method: 'get',
-            url: `${chatDetailsUrl}?chat_room=${roomUuid}`,
+            url: `${chatMessagesUrl}?chat_room=${roomUuid}`,
             headers: { 
               'Authorization': `Bearer ${token}`
             }
@@ -73,6 +88,7 @@ const ChatBody = ({chatRooms,setChatRooms, getAllChatRooms}) => {
           
           axios.request(config)
           .then((response) => {
+            getAllChatRooms()
             setChatRoomDetails(response.data)
             setLoaderVisible(false)
           })
@@ -97,10 +113,91 @@ const ChatBody = ({chatRooms,setChatRooms, getAllChatRooms}) => {
         }
         setStoreMembers(findsMember)
     },[chatRooms])
+
+
+    // handle chat Member
+
+    const handleMemberChat = (member) =>{
+        setLoaderVisible(true)
+        let config = {
+            method: 'get',
+            url: `${chatMessagesUrl}?user=${member?.user?.uuid}`,
+            headers: { 
+              'Authorization': `Bearer ${token}`, 
+            }
+          };
+          
+          axios.request(config)
+          .then((response) => {
+
+            // handleChatDetails(chat.uuid);
+            // setSingleRoom(chat)
+            if(response?.data?.meta?.chat_room !==null){
+                handleChatDetails(response?.data?.meta?.chat_room.uuid);
+                setSingleRoom(response?.data?.meta?.chat_room)
+            }else{
+                var data = JSON.stringify({
+                    "message": 'chat_room_create',
+                    "chat_room": null,
+                    "user": member?.user
+                });
+                let config = {
+                    method: 'post',
+                    url: chatMessagesUrl,
+                    headers: { 
+                        'Authorization': `Bearer ${token}`, 
+                        'Content-Type': 'application/json'
+                    },
+                    data : data
+                };
     
+            axios.request(config)
+            .then((response) => {
+                handleChatDetails(response?.data?.data?.chat_room.uuid);
+                setSingleRoom(response?.data?.data?.chat_room)
+                setLoaderVisible(false)
+            })
+            .catch((error) => {
+                setLoaderVisible(false)
+            });
+            }
 
-    console.log('allMembers', allMembers)
+          })
+          .catch((error) => {
+            console.log(error);
+            setLoaderVisible(false)
+          });
+    }
 
+
+    useEffect(() => {
+        var pusher = new Pusher("69ef518953032858d64d", {
+          cluster: "ap1",
+          encrypted: true,
+        });   
+        var channel = pusher.subscribe("notifyChannel");
+         channel.bind("notifyChannel", async function (response) {
+             alert('some notification');
+         })
+   });
+
+   const [gmtOffset, setGMTOffset] = useState('');
+
+   useEffect(() => {
+     // Get the GMT offset
+     const date = new Date();
+     const gmtOffsetHours = -date.getTimezoneOffset() / 60; // Convert minutes to hours
+     const gmtOffsetMinutes = -date.getTimezoneOffset() % 60;
+ 
+     // Create a string representation of the GMT offset
+     const gmtOffsetString = (gmtOffsetHours >= 0 ? '+' : '-') +
+       ('0' + Math.abs(gmtOffsetHours)).slice(-2)
+ 
+     setGMTOffset(gmtOffsetString);
+     
+   }, []);
+
+    
     return (
         <Fragment>
             {loaderVisible ===true && <MainLoader/>}
@@ -154,14 +251,18 @@ const ChatBody = ({chatRooms,setChatRooms, getAllChatRooms}) => {
                                 modules={[FreeMode]}
                                 className="mySwiper">
                                {allMembers && allMembers.length>0 && allMembers.map((member,i)=>{
-                                    return(
-                                        <SwiperSlide>
-                                            <div className="activeMamber" key={member.uuid}>
-                                                <img src={`${baseUrl}/${member?.user?.avatar}`} alt={member?.user?.name} />
-                                                <div className="active_btn"></div>
-                                            </div>
-                                        </SwiperSlide>
-                                    )
+                                    if(userDetails?.id !==member?.user?.id && member.status ===1){
+                                        return(
+                                            <SwiperSlide>
+                                                <div className="activeMamber" key={member.uuid} onClick={(e)=> handleMemberChat(member)}>
+                                                    {/* <img src={`${baseUrl}/${member?.user?.avatar}`} alt={member?.user?.name} /> */}
+                                                    <Avatar alt={member?.user?.name} src={`${baseUrl}/${member?.user?.avatar}`}/>
+    
+                                                    <div className="active_btn"></div>
+                                                </div>
+                                            </SwiperSlide>
+                                        )
+                                    }
                                })}  
                             </Swiper>
                         </div>
@@ -171,8 +272,12 @@ const ChatBody = ({chatRooms,setChatRooms, getAllChatRooms}) => {
                                 {storeMembers 
                                     && storeMembers.length>0 
                                     && storeMembers.map((chat, i)=>{
+                                        const newTime = new Date(chat?.updated_at);
+
+                                        // Add the GMT offset to the time
+                                        const updateTime =  newTime.setHours((newTime.getHours()) + (parseInt(gmtOffset) ));
                                         // let diffTime = Math.abs(new Date().valueOf() - new Date(chat.created_at).valueOf());
-                                        let diffTime = Math.abs(new Date(chat?.updated_at).valueOf() - new Date().valueOf());
+                                        let diffTime = Math.abs(new Date(updateTime).valueOf()- new Date().valueOf());
                                         let days = diffTime / (24*60*60*1000);
                                         let hours = (days % 1) * 24;
                                         let minutes = (hours % 1) * 60;
@@ -192,14 +297,13 @@ const ChatBody = ({chatRooms,setChatRooms, getAllChatRooms}) => {
                                         if(days !==0 && hours !==0 && minutes !== 0 &&  secs !== 0 ){
                                             fullTime = days+'d'+ " "+hours+'h'+ " "+ minutes+'m'+ " "+ secs+'s';
                                         }
+
                                         return(
                                             <Grid item xs={12} key={chat.uuid} onClick={(e)=> {handleChatDetails(chat.uuid);setSingleRoom(chat)}}>
                                                 <div className="chat_list_item active">
                                                     <div className="profile_active">
                                                         <div className="profile">
-                                                            {chat?.is_group ===true? 
-                                                            <Avatar alt={chat?.name} src="/static/images/avatar/1.jpg"/>
-                                                            :<img src={`${baseUrl}/${chat?.member?.profile?.avatar}`} alt={chat?.name} />}
+                                                            <Avatar alt={chat?.name} src={chat?.member?.profile?.avatar !=='null'?`${baseUrl}/${chat?.member?.profile?.avatar}`:"/static/images/avatar/1.jpg"}  />
                                                             {/* <div className="massage_count">
                                                                 10+
                                                             </div> */}
@@ -208,9 +312,12 @@ const ChatBody = ({chatRooms,setChatRooms, getAllChatRooms}) => {
                                                     </div>
                                                     <div className="chat_overview">
                                                         <div className="profile-name">{chat?.name && chat?.name.length>20?`${chat.name.slice(0,20)}...`:chat.name}</div>
-                                                        <div className="overview_massage">
-                                                            {chat?.message && chat?.message.length>20?`${chat.message.slice(0,20)}...`:chat.message}
-                                                        </div>
+                                                        {chat?.message !=='chat_room_create' && 
+                                                             <div className="overview_massage">
+                                                             {chat?.message && chat?.message.length>20?`${chat.message.slice(0,20)}...`:chat.message}
+                                                         </div>
+                                                        }
+                                                       
                                                     </div>
                                                     <div className="lastMassage-time">
                                                        {fullTime}

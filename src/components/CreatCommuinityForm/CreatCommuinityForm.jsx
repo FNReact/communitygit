@@ -148,6 +148,7 @@ const CreatCommuinityForm = () => {
               {typeLocation?.state?.type ==='apartment' && <h5>Create Apartment Owner's Community</h5>}
               {typeLocation?.state?.type ==='business' && <h5>Create Business Community</h5>}
               {typeLocation?.state?.type ==='personal' && <h5>Create Personal Community</h5>}
+              {typeLocation?.state?.type ==='housing' && <h5>Create Housing Community</h5>}
             {/* <h5>Create your {typeLocation?.state?.type} community</h5> */}
                <div className="creatCommuinity_wrap CreateForm_lg">
                   <form>
@@ -161,6 +162,9 @@ const CreatCommuinityForm = () => {
                           </Grid>}
                           {typeLocation?.state?.type ==='business' && <Grid item xs={12} sm={12} md={12}>
                               <input type="text" className="form_control"  placeholder="Business Name" onChange={(e)=>setCommunityName(e.target.value)} />
+                          </Grid>}
+                          {typeLocation?.state?.type ==='housing' && <Grid item xs={12} sm={12} md={12}>
+                              <input type="text" className="form_control"  placeholder="House number" onChange={(e)=>setCommunityName(e.target.value)} />
                           </Grid>}
                           
                           <Grid item xs={12} sm={12} md={12}>

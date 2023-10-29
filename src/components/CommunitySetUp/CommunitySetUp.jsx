@@ -543,8 +543,6 @@ useEffect(()=>{
     setValue(`${field}`, event.target.checked);
   };
 
-  console.log('values', values)
-
 
  return(
     <Fragment>

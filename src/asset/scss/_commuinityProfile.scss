@@ -87,54 +87,55 @@
             border: 1px solid #c3c3c381;
             border-radius: 10px;
         }
-        .com_info_wrap{
-            padding: 30px 12px 20px 12px;
-            .info_item{
-                font-size: 15px; 
-                font-weight: 400;
-                color: #6c6969;
-                padding-top:6px;
-                span{
-                    font-size: 16px;
-                    font-weight: 500;
-                    color: #171717;
-                    padding-left: 5px;
-                }
-                
-            }
-
-            .info_item_2{
-                display: flex;
-                padding-top:6px;
-                .item_lebel{
-                font-size: 15px; 
-                font-weight: 400;
-                color: #6c6969;
-                width: 20%;
-                }
-                .info_item_bold{
-                    font-size: 16px;
-                    font-weight: 500;
-                    color: #171717;
-                    padding-left: 5px;
-                    width: 80%;
-                }
-                
-            }
-
-            .info_item_title{
-                font-size: 16px;
-                font-weight: 500;
-                color: $black;
-                padding: 25px 0 8px 0;
-                display: inline-block;
-                border-bottom: 1px dashed #c3c3c3d3;
-                margin-top: 25px;
-                margin-bottom: 5px;
-            }
-            
-        }
+       
     }
+}
+.com_info_wrap{
+    padding: 5px 12px 20px 24px;
+    .info_item{
+        font-size: 13px; 
+        font-weight: 400;
+        color: #6c6969;
+        // padding-top:4px;
+        span{
+            font-size: 14px;
+            font-weight: 500;
+            color: #171717;
+            padding-left: 5px;
+        }
+        
+    }
+
+    .info_item_2{
+        display: flex;
+        padding-top:3px;
+        .item_lebel{
+        font-size: 12px; 
+        font-weight: 400;
+        color: #6c6969;
+        width: 20%;
+        }
+        .info_item_bold{
+            font-size: 13px;
+            font-weight: 500;
+            color: #171717;
+            padding-left: 5px;
+            width: 80%;
+        }
+        
+    }
+
+    .info_item_title{
+        font-size: 13px;
+        font-weight: 500;
+        color: $black;
+        // padding: 25px 0 8px 0;
+        display: inline-block;
+        border-bottom: 1px dashed #c3c3c3d3;
+        margin-top: 25px;
+        margin-bottom: 5px;
+    }
+    
 }
 .communityInfo_wrapper_small{
     width: 70%;

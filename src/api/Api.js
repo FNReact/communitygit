@@ -77,7 +77,7 @@ const mediaDeleteUrl = `${baseUrl}/api/cms/pages`;
 
 // chat rooms
 const chatRoomUrl = `${baseUrl}/api/chat/rooms`;
-const chatDetailsUrl = `${baseUrl}/api/chat/messages`;
+const chatMessagesUrl = `${baseUrl}/api/chat/messages`;
 
 // recommendation 
 const resourceRecommendationUrl = `${baseUrl}/api/community/resourcerecommandations`
@@ -152,7 +152,7 @@ export {
   mediaDeleteUrl,
 
   chatRoomUrl,
-  chatDetailsUrl,
+  chatMessagesUrl,
 
 
   resourceRecommendationUrl,

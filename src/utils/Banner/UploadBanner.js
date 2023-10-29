@@ -2,6 +2,7 @@ import * as React from "react";
 import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import { Box } from "@mui/material";
+import FileUploadIcon from '@mui/icons-material/FileUpload';
 
 const Input = styled("input")({
   display: "none"
@@ -36,9 +37,11 @@ export default function UploadBanner({ getUploadedFile }) {
           type="file"
           onChange={onChange}
         />
-        <Button variant="contained" component="span" className="btn" >
+        {/* <Button variant="contained" component="span" className="btn" >
           Upload
-        </Button>
+        </Button> */}
+
+        <FileUploadIcon />
       </Box>
     </label>
   );

@@ -1,7 +1,8 @@
 import * as React from "react";
 import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
-
+import FileUploadIcon from '@mui/icons-material/FileUpload';
+import { Box } from "@mui/material";
 const Input = styled("input")({
   display: "none"
 });
@@ -34,7 +35,8 @@ export default function UploadAvater({ getUploadedFile,uploadName }) {
         type="file"
         onChange={onChange}
       />
-      <Button variant="contained" component="span">Upload</Button>
+      {/* <Button variant="contained" component="span">Upload</Button> */}
+      <FileUploadIcon />
     </label>
   );
 }

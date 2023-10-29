@@ -92,9 +92,6 @@ const handleEditorChange = (content,type) => {
   setValue('details', content)
 };
 
-
-console.log('details', details)
-
 // handle create new recommendation
 const handleRecommendation = () =>{
     setLoaderVisible(true)
@@ -167,14 +164,10 @@ const handleDeleteRecommendation = (uuid, param)=>{
 // handleEditRecommendation
 
 const handleEditRecommendation =(data)=>{
-  console.log('data', data)
   setValue('rating', data.rating);
   setValue('details', data.details)
   handleClickOpen();
 }
-
-console.log('details', details)
-
   return (
     <>
       {loaderVisible === true  && <MainLoader />}

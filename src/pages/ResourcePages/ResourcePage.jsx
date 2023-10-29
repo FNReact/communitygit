@@ -31,9 +31,6 @@ const ResourcePage = () => {
         setResouce(response.data.data);
       })
   }
-
-  console.log('resource', resource)
-
   useEffect(() => {
     getAllResouces();
   }, [])

@@ -15,7 +15,7 @@ import VideocamIcon from '@mui/icons-material/Videocam';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { Avatar, TextareaAutosize } from '@mui/material';
 import { styled } from '@mui/system';
-import { baseUrl, chatDetailsUrl, chatRoomUrl } from '../../api/Api';
+import { baseUrl, chatMessagesUrl, chatRoomUrl } from '../../api/Api';
 import { UserContext } from '../../utils/UserContext';
 import parser from 'html-react-parser';
 
@@ -23,6 +23,8 @@ import data from "@emoji-mart/data";
 import Picker from "@emoji-mart/react";
 import axios from 'axios';
 import MainLoader from '../PageLoadEffects/MainLoader';
+
+
 
 // Style text area Part
 const StyledTextarea = styled(TextareaAutosize)(
@@ -55,6 +57,7 @@ const ChatRoomDetailsBody = ({chatRoomDetails, singleRoom,setChatRoomDetails,han
     const [hearerTime, setHeaderTime] = useState(null)
 
 
+
     // hnadle submit post
     const handleSubmitPost = ()=>{
         if(media !==null){
@@ -65,7 +68,7 @@ const ChatRoomDetailsBody = ({chatRoomDetails, singleRoom,setChatRoomDetails,han
                 data.append('file', media);
             let config = {
                 method: 'post',
-                url: chatDetailsUrl,
+                url: chatMessagesUrl,
                 headers: { 
                     'Authorization': `Bearer ${token}`, 
                 },
@@ -74,8 +77,8 @@ const ChatRoomDetailsBody = ({chatRoomDetails, singleRoom,setChatRoomDetails,han
     
             axios.request(config)
             .then((response) => {
-                handleChatDetails(singleRoom.uuid)
                 getAllChatRooms()
+                handleChatDetails(singleRoom.uuid)
                 setContent('')
                 setMedia(null)
                 setLoaderVisible(false)
@@ -93,7 +96,7 @@ const ChatRoomDetailsBody = ({chatRoomDetails, singleRoom,setChatRoomDetails,han
 
             let config = {
                 method: 'post',
-                url: chatDetailsUrl,
+                url: chatMessagesUrl,
                 headers: { 
                     'Authorization': `Bearer ${token}`, 
                     'Content-Type': 'application/json'
@@ -103,26 +106,39 @@ const ChatRoomDetailsBody = ({chatRoomDetails, singleRoom,setChatRoomDetails,han
     
             axios.request(config)
             .then((response) => {
-                handleChatDetails(singleRoom.uuid)
                 getAllChatRooms()
+                handleChatDetails(singleRoom.uuid)
                 setContent('')
                 setMedia(null)
                 setLoaderVisible(false)
             })
             .catch((error) => {
-                console.log(error);
                 setLoaderVisible(false)
             });
         }
     }
 
-    console.log('chatRoomDetails', chatRoomDetails)
-
+    const [gmtOffset, setGMTOffset] = useState('');
 
     // set header time details
     useEffect(()=>{
+
+        const date = new Date();
+        const gmtOffsetHours = -date.getTimezoneOffset() / 60; // Convert minutes to hours
+        const gmtOffsetMinutes = -date.getTimezoneOffset() % 60;
+    
+        // Create a string representation of the GMT offset
+        const gmtOffsetString = (gmtOffsetHours >= 0 ? '+' : '-') +
+          ('0' + Math.abs(gmtOffsetHours)).slice(-2)
+
+          setGMTOffset(gmtOffsetString);
+
+
         if(chatRoomDetails?.meta?.chat_room){
-            let diffTime = Math.abs(new Date(chatRoomDetails?.meta?.chat_room?.updated_at).valueOf() - new Date().valueOf());
+            const newTime = new Date(chatRoomDetails?.meta?.chat_room?.updated_at);
+            const updateTime =  newTime.setHours((newTime.getHours()) + (parseInt(gmtOffsetString)));
+
+            let diffTime = Math.abs(updateTime.valueOf() - new Date().valueOf());
             let days = diffTime / (24*60*60*1000);
             let hours = (days % 1) * 24;
             let minutes = (hours % 1) * 60;
@@ -181,17 +197,43 @@ const ChatRoomDetailsBody = ({chatRoomDetails, singleRoom,setChatRoomDetails,han
                         </div>
                         <div className="chat_body">
                            {chatRoomDetails && chatRoomDetails?.data && chatRoomDetails.data.length>0 && chatRoomDetails.data.map((data, i)=>{
-                                console.log('der', data)
+
+                                    const newTime = new Date(data?.sent_at);
+
+                                    // Add the GMT offset to the time
+                                    const updateTime =  newTime.setHours((newTime.getHours()) + (parseInt(gmtOffset) ));
+                                    // let diffTime = Math.abs(new Date().valueOf() - new Date(chat.created_at).valueOf());
+                                    let diffTime = Math.abs(new Date(updateTime).valueOf()- new Date().valueOf());
+                                    let days = diffTime / (24*60*60*1000);
+                                    let hours = (days % 1) * 24;
+                                    let minutes = (hours % 1) * 60;
+                                    let secs = (minutes % 1) * 60;
+                                    [days, hours, minutes, secs] = [Math.floor(days), Math.floor(hours), Math.floor(minutes), Math.floor(secs)]
+                                    var fullTime;
+
+                                    if(secs !== 0 ){
+                                        fullTime = secs+'s';
+                                    }
+                                    if(minutes !== 0 &&  secs !== 0 ){
+                                        fullTime = minutes+'m'+" "+ secs+'s';
+                                    }
+                                    if(hours !==0 && minutes !== 0 &&  secs !== 0 ){
+                                        fullTime = hours+'h'+ " "+ minutes+'m'+ " "+ secs+'s';
+                                    }
+                                    if(days !==0 && hours !==0 && minutes !== 0 &&  secs !== 0 ){
+                                        fullTime = days+'d'+ " "+hours+'h'+ " "+ minutes+'m'+ " "+ secs+'s';
+                                    }
+
                                 return(
                                     <>
                                      {/* Owner text and media */}
-                                     {data?.user.uuid === userDetails.uuid && 
+                                     {data?.message !=='chat_room_create' && data?.user.uuid === userDetails.uuid && 
                                         <>  
                                             {data?.message && data.message !=='%%chat_attachment_%%' && <div className="own_massage_item">
                                                 <div className="own_chat">
                                                     <div className="senting_massage">
                                                         {parser(data?.message)}
-                                                        <div className="chat_timing"><i><FontAwesomeIcon icon={faCircleCheck} /></i> {new Date(data?.sent_at).toLocaleTimeString()}</div>
+                                                        <div className="chat_timing"><i><FontAwesomeIcon icon={faCircleCheck} /></i> {new Date(updateTime).toLocaleTimeString()}</div>
                                                     </div>
                                                 </div>
                                             </div>}
@@ -206,7 +248,7 @@ const ChatRoomDetailsBody = ({chatRoomDetails, singleRoom,setChatRoomDetails,han
                                                                     <div className="media_content">
                                                                         <img src={media.url} alt="" />
                                                                     </div>
-                                                                    <div className="chat_timing"><i><FontAwesomeIcon icon={faCircleCheck} /></i>  {new Date(data?.sent_at).toLocaleTimeString()}</div>
+                                                                    <div className="chat_timing"><i><FontAwesomeIcon icon={faCircleCheck} /></i> {new Date(updateTime).toLocaleTimeString()}</div>
                                                                 </>
                                                             )
                                                         }
@@ -218,7 +260,7 @@ const ChatRoomDetailsBody = ({chatRoomDetails, singleRoom,setChatRoomDetails,han
                                                                     <source src={media.url} type="video/mp4" autostart="false"/>
                                                                     </video>
                                                                 </div>
-                                                                <div className="chat_timing"><i><FontAwesomeIcon icon={faCircleCheck} /></i>  {new Date(data?.sent_at).toLocaleTimeString()}</div>
+                                                                <div className="chat_timing"><i><FontAwesomeIcon icon={faCircleCheck} /></i> {new Date(updateTime).toLocaleTimeString()}</div>
                                                                 </>
                                                             )
                                                         }
@@ -243,7 +285,7 @@ const ChatRoomDetailsBody = ({chatRoomDetails, singleRoom,setChatRoomDetails,han
                                                 <div className="chatter_chat">
                                                     <div className="senting_massage">
                                                         {parser(data?.message)}
-                                                        <div className="chat_timing"><i><FontAwesomeIcon icon={faCircleCheck} /></i>  {new Date(data?.sent_at).toLocaleTimeString()}</div>
+                                                        <div className="chat_timing"><i><FontAwesomeIcon icon={faCircleCheck} /></i> {new Date(updateTime).toLocaleTimeString()}</div>
                                                     </div>
                                                 </div>}
 
@@ -256,7 +298,7 @@ const ChatRoomDetailsBody = ({chatRoomDetails, singleRoom,setChatRoomDetails,han
                                                                     <div className="media_content">
                                                                         <img src={media.url} alt="" />
                                                                     </div>
-                                                                    <div className="chat_timing"><i><FontAwesomeIcon icon={faCircleCheck} /></i>  {new Date(data?.sent_at).toLocaleTimeString()}</div>
+                                                                    <div className="chat_timing"><i><FontAwesomeIcon icon={faCircleCheck} /></i> {new Date(updateTime).toLocaleTimeString()}</div>
                                                                 </>
                                                             )
                                                         }
@@ -268,7 +310,7 @@ const ChatRoomDetailsBody = ({chatRoomDetails, singleRoom,setChatRoomDetails,han
                                                                         <source src={media.url} type="video/mp4" autostart="false"/>
                                                                     </video>
                                                                 </div>
-                                                                <div className="chat_timing"><i><FontAwesomeIcon icon={faCircleCheck} /></i>  {new Date(data?.sent_at).toLocaleTimeString()}</div>
+                                                                <div className="chat_timing"><i><FontAwesomeIcon icon={faCircleCheck} /></i> {new Date(updateTime).toLocaleTimeString()}</div>
                                                                 </>
                                                             )
                                                         }

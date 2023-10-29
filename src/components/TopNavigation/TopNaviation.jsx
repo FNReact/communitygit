@@ -356,9 +356,9 @@ useEffect(()=>{
                                     <i><Groups3Icon /></i>
                                     <span>My Communities</span>
                                   </div>
-                                  {(loggedInUser?.user_type ==='admin' || userDetails.id === msDetails?.user_id) && <div className="menu_wrapper_list" onClick={(e) => {navigate('/community-setup');handleToggle()}}>
+                                  {(loggedInUser?.user_type ==='admin' || userDetails.id === msDetails?.user_id) && <div className="menu_wrapper_list" onClick={(e) => {navigate('/complete-profile');handleToggle()}}>
                                     <i><SettingsIcon /></i>
-                                    <span>Community Setup</span>
+                                    <span>Complete Profile</span>
                                   </div>
                                   }
                                   

@@ -53,8 +53,6 @@ const LocalBusinessItem = ({data,admin, getAllResouces,resource, handleDeleteRes
     }
   }, []);
 
-  console.log('data', data)
-
 
   return (
       <>

@@ -100,6 +100,8 @@ const CommunityInfo = () => {
                      </Grid>
                   </Grid>
 
+                  {msDetails?.meta?.community_type === 'apartment' &&
+                  <>
                   <Grid container spacing={1}>
                      <Grid item xs={12}>
                         <div className="info_item_title">
@@ -219,6 +221,8 @@ const CommunityInfo = () => {
                            </Grid>
                         </>}
                   </Grid>
+                  </>
+               }
                </div>
             </div>
          </div>
