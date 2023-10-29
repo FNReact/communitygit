@@ -1,12 +1,14 @@
 import React, { Fragment, useContext, useEffect, useState } from "react";
-import { Box, Button, Grid, Tooltip } from "@mui/material";
+import { Avatar, Box, Button, Grid, Tooltip } from "@mui/material";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import axios from "axios";
 import { hirBusinessUrl } from "../../api/Api";
 import { UserContext } from "../../utils/UserContext";
 import MainLoader from "../../components/PageLoadEffects/MainLoader";
-
+import notFoundImage from "../../../src/asset/image/404.png";
+import user from "../../../src/asset/image/user.png";
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const ServiceRequestPage = () => {
   const navigate = useNavigate();
@@ -66,11 +68,28 @@ const ServiceRequestPage = () => {
                       <Grid container spacing={2}>
                         {requests && requests !=='undefined' && requests.length>0 && requests.map((data,i)=>{
                             return(
-                                <Grid item xs={4} key={data.uuid}>
+                                <>
+                                </>
+                            )
+                        })}
+                        {/* key={data.uuid} */}
+                        <Grid item xs={4}>
                                         <Link to='/service-request-details'>
                                             <div className="request_item">
+                                               <div className="delet_btn">
+                                                <DeleteIcon/>
+                                               </div>
+                                               <div className="item_img">
+                                                  <img src={notFoundImage} alt="" />
+                                               </div>
                                                 <div className="item_details_rev">
                                                     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus esse iusto dicta accusantium rem. Esse ipsa expedita tempore quod libero.
+                                                </div>
+                                                <div className="user_info">
+                                                <Avatar alt="Travis Howard" src={user}/>
+                                                <div className="user_name">
+                                                   User Name
+                                                </div>
                                                 </div>
                                                 <div className="item_bottom">
                                                     <div className="budget">
@@ -83,8 +102,6 @@ const ServiceRequestPage = () => {
                                             </div>
                                     </Link>
                                 </Grid>
-                            )
-                        })}
                       </Grid>
 
                       {requests !=='undefined' &&requests && requests.length ===0 &&

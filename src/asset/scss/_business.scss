@@ -289,17 +289,55 @@
    margin-top: 20px;
 }
 .request_item{
-  height: 180px;
+  height: 380px;
   width: 100%;
   background-color: $white;
   border-radius: 10px;
   box-shadow: $shadow;
   padding: 15px;
   position: relative;
+  .delet_btn{
+    position: absolute;
+    right: 12px;
+    z-index: 3;
+    top: 12px;
+    height: 37px;
+    width: 37px;
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    cursor: pointer;
+    .MuiSvgIcon-root {
+      color: $white;
+    }
+  }
+  .item_img{
+    height: 180px;
+    width: 100%;
+    img{
+      height: 100%;
+      width: 100%;
+      object-fit: cover;   
+    }
+  }
   .item_details_rev{
     font-size: 14px;
     color: $text;
     @include text-ellips-3;
+    padding-top: 10px;
+  }
+  .user_info{
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+    .user_name{
+      margin-left: 6px;
+      color: $black;
+      font-size: 16px;
+    }
   }
   .item_bottom{
     display: flex;
@@ -329,10 +367,32 @@
   background-color: $white;
   border-radius: 10px;
   box-shadow: $shadow;
-  padding: 15px;
+  padding: 20px;
   position: relative;
+  .details_top_info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .user_info{
+      display: flex;
+      align-items: center;
+      .user_name{
+        margin-left: 6px;
+        color: $black;
+        font-size: 16px;
+      }
+    }
+    .info_date{
+      font-size: 14px;
+      color: $text;
+    }
+  
+  }
   .details_text{
     font-size: 14px;
     color: $text;
+    margin-top: 16px;
+    margin-bottom: 20px;
   }
 }

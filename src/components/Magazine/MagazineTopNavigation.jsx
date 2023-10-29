@@ -14,7 +14,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import PostAddIcon from '@mui/icons-material/PostAdd';
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 const MagazineTopNavigation = () => {
-  const { magazine,msDetails,userDetails,loggedInUser } = useContext(UserContext);
+  const { magazine, msDetails, userDetails, loggedInUser } = useContext(UserContext);
   const navigate = useNavigate();
   const [loaderVisible, setLoaderVisible] = useState(false)
 
@@ -24,31 +24,31 @@ const MagazineTopNavigation = () => {
       method: 'get',
       url: `${categoryUrl}/${data.uuid}`,
     };
-    
+
     axios.request(config)
-    .then((response) => {
-      if(response?.data?.type ==='menu'){
-        navigate('/magazine-category-posts', {state:{id:data.id,data:data}})
-      }else{
-        navigate('/magazine-category-details', {state:{data:data}})
-      }
-      setLoaderVisible(false)
-    })
-    .catch((error) => {
-      setLoaderVisible(false)
-      setLoaderVisible(false)
-      // console.log(error);
-    });
+      .then((response) => {
+        if (response?.data?.type === 'menu') {
+          navigate('/magazine-category-posts', { state: { id: data.id, data: data } })
+        } else {
+          navigate('/magazine-category-details', { state: { data: data } })
+        }
+        setLoaderVisible(false)
+      })
+      .catch((error) => {
+        setLoaderVisible(false)
+        setLoaderVisible(false)
+        // console.log(error);
+      });
   };
 
 
   const [searchQuery, setSearchQuery] = useState('');
-  
+
   // Function to handle the search
   const handleSearch = () => {
-      navigate('/magazine-category-posts', {state:{search:searchQuery}})
+    navigate('/magazine-category-posts', { state: { search: searchQuery } })
   };
-  
+
   // Function to handle the Enter key press in the search input
   const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
@@ -65,7 +65,7 @@ const MagazineTopNavigation = () => {
         var menu = "";
         if (data.children.length < 1) {
           return (
-            <li onClick={(e)=> handleNavigate(data)}>
+            <li onClick={(e) => handleNavigate(data)}>
               <Link> {data?.name} </Link>
             </li>
           );
@@ -74,17 +74,17 @@ const MagazineTopNavigation = () => {
             <>
               <li class="droppper" >
                 {/* <Link onClick={(e)=> handleNavigate(data)}> */}
-                <a onClick={(e)=> handleNavigate(data)}>
+                <a onClick={(e) => handleNavigate(data)}>
                   {data?.name}
                   <i>
                     <ArrowDropDownIcon />
                   </i>
                 </a>
                 <ul class="sub_down">
-                {data.children.map((data, key) => {
+                  {data.children.map((data, key) => {
                     return (
                       // <li onClick={(e)=> handleNavigate(data)}>
-                      <li onClick={(e)=> handleNavigate(data)}>
+                      <li onClick={(e) => handleNavigate(data)}>
                         <Link> {data.name} </Link>
                       </li>
                     );
@@ -100,78 +100,82 @@ const MagazineTopNavigation = () => {
 
   return (
     <>
-    {loaderVisible ===true && <MainLoader />} 
+      {loaderVisible === true && <MainLoader />}
 
-    <div className="magazine_top">
-                <div className="magazine_left">
-                   <div className="magzin_logo">
-                      { msDetails?.meta?.community_settings?.magazine_logo_enable==='1'  
-                        && msDetails?.meta?.community_settings?.magazine_logo
-                        && <img src={`${baseUrl}/${msDetails?.meta?.community_settings?.magazine_logo}`} alt="" />
-                      }
-                   </div>
-                   {msDetails?.meta?.community_settings?.magazine_name_enable==='1'
-                    && msDetails?.meta?.community_settings?.magazine_name 
-                    && <div className="magazine_t">
-                      <span>
-                      {msDetails?.meta?.community_settings?.magazine_name}
-                      </span>
-                    </div>
-                   }
-                </div>
-                {(loggedInUser?.user_type ==='admin' || userDetails.id === msDetails?.user_id) &&
-                <div className="top_left">
-                  {/* <Button
+      <div className="magazine_top" style={{ 
+      backgroundImage: `url("https://t4.ftcdn.net/jpg/04/94/96/91/360_F_494969146_dtNlHghkRCEkm7OGY42Y2m3YCGW6tCEP.jpg")` 
+    }}>
+        <div className="magazine_left">
+          <div className="magzin_logo">
+            {msDetails?.meta?.community_settings?.magazine_logo_enable === '1'
+              && msDetails?.meta?.community_settings?.magazine_logo
+              && <img src={`${baseUrl}/${msDetails?.meta?.community_settings?.magazine_logo}`} alt="" />
+            }
+          </div>
+          {msDetails?.meta?.community_settings?.magazine_name_enable === '1'
+            && msDetails?.meta?.community_settings?.magazine_name
+            && <div className="magazine_t">
+              <span>
+                {msDetails?.meta?.community_settings?.magazine_name}
+              </span>
+            </div>
+          }
+        </div>
+
+
+        {(loggedInUser?.user_type === 'admin' || userDetails.id === msDetails?.user_id) &&
+          <div className="top_left">
+            {/* <Button
                     variant="outlined"
                     sx={{ mr: 2 }}
                     onClick={(e) => navigate("/my-magazine-content")}
                   >
                     My Compositions
                   </Button> */}
-                  <Tooltip title="Preview Demo Magazine">
-                    <Button
-                      variant="outlined"
-                      sx={{ mr: 2 }}
-                      onClick={(e) => navigate("/magazine-demo")}
-                    >
-                      <i><PreviewIcon /></i>
-                    </Button>
-                  </Tooltip>
-                  <Tooltip title='Add Menu'>
-                    <Button
-                      variant="contained"
-                      sx={{ mr: 2 }}
-                      onClick={(e) => navigate("/magazine-menu")}
-                    >
-                      <i><PostAddIcon /></i>
-                    </Button>
-                  </Tooltip>
-                  
-                  <Tooltip title='Add Content'>
-                    <Button
-                      variant="contained"
-                      onClick={(e) => navigate("/magazine-content")}
-                    >
-                      <i><PlaylistAddIcon /></i>
-                    </Button>
-                  </Tooltip>
-                </div>}
-              </div> 
+            <Tooltip title="Preview Demo Magazine">
+              <Button
+                variant="outlined"
+                sx={{ mr: 2 }}
+                onClick={(e) => navigate("/magazine-demo")}
+              >
+                <i><PreviewIcon /></i>
+              </Button>
+            </Tooltip>
+            <Tooltip title='Add Menu'>
+              <Button
+                variant="contained"
+                sx={{ mr: 2 }}
+                onClick={(e) => navigate("/magazine-menu")}
+              >
+                <i><PostAddIcon /></i>
+              </Button>
+            </Tooltip>
+
+            <Tooltip title='Add Content'>
+              <Button
+                variant="contained"
+                onClick={(e) => navigate("/magazine-content")}
+              >
+                <i><PlaylistAddIcon /></i>
+              </Button>
+            </Tooltip>
+          </div>}
+      </div>
       <div className="magazine_nav">
         <ul class="nav_list">
           <li>
             <Link to={"/magazine"}>Home</Link>
           </li>
-            {dynamicMenues}
+          {dynamicMenues}
         </ul>
         <div className="mag_search">
-          <input 
-            type="text" 
-            placeholder="Search" 
-            className="form_control" 
+          <input
+            type="text"
+            placeholder="Search"
+            className="form_control"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            onKeyPress={handleKeyPress}/>
+            onKeyPress={handleKeyPress} />
           <i onClick={handleSearch}>
             <SearchIcon />
           </i>
