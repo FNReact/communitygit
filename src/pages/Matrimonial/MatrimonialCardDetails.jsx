@@ -63,7 +63,7 @@ const MatrimonialCardDetails = () => {
                             <h4>{details?.name}'s Details</h4>
                             <div className="person_information">
                                 <Grid container spacing={2}>
-                                    <Grid item lg={8}>
+                                    <Grid item lg={8} md={12} sm={12} xs={12}>
                                         <div className="information_table">
                                             <div className="info_item_list">
                                                 <div className="info_lebel">Name</div>
@@ -119,7 +119,7 @@ const MatrimonialCardDetails = () => {
                                             </div>
                                         </div>
                                     </Grid>
-                                    <Grid item lg={4}>
+                                    <Grid item lg={4} md={12} sm={12} xs={12}> 
                                         <div className="person_image">
                                             {details !==null && details?.featured_image !==null &&  <img src={`${baseUrl}/${details?.featured_image}`} alt={details?.name}/> }
                                         </div>

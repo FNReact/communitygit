@@ -1,4 +1,50 @@
 @media (min-width: 280px) and (max-width: 399.98px){
+    .matromonial_search_form {
+        width: 100%;
+    }
+    .matrimonial_card_details {
+        padding: 20px 10px;
+    }
+    .matrimonial_card_details .person_information .person_image {
+        height: 200px;
+        width: 200px;
+        margin: 12px auto;
+    }
+    .matrimonial_card_details .information_table .info_item_list .info_item {
+        padding-left: 10px;
+    }
+    .resource_item_2 {
+        width: auto;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    .magazine .magzine_slider_content {
+        height: 220px;
+        margin-top: 25px;
+    }
+    .magazine .magzine_slider_content .mag_content .content_info h2 {
+        font-size: 18px;
+        padding: 8px 80px;
+    }
+    .magazine .sticky_section .sticky_wrapper .sticky_wrapper_main {
+        display: list-item;
+        list-style: none;
+    }
+    .magazine_top {
+        display: list-item;
+        list-style: none;
+    }
+    .magazine_top .top_left {
+        display: flex;
+        justify-items: center;
+        justify-content: end;
+        margin-top: 12px;
+    }
+    .magazine_nav .mag_search {
+        display: none;
+    }
+
+
     .report_detail .report_text .title {
         font-size: 18px;
         line-height: 27px;
@@ -781,6 +827,48 @@
 
 
 @media (min-width: 400px) and (max-width: 899.98px) { 
+    .matromonial_search_form {
+        width: 100%;
+    }
+    .matrimonial_card_details {
+        padding: 20px 10px;
+    }
+    .matrimonial_card_details .person_information {
+        padding: 20px 12px 0 12px;
+    }
+    .matrimonial_card_details .person_information .person_image {
+        height: 200px;
+        width: 200px;
+        margin: 12px auto;
+    }
+    .matrimonial_card_details .information_table .info_item_list .info_item {
+        padding-left: 10px;
+    }
+    .magazine .magzine_slider_content {
+        height: 220px;
+        margin-top: 25px;
+    }
+    .magazine .magzine_slider_content .mag_content .content_info h2 {
+        font-size: 18px;
+        padding: 8px 80px;
+    }
+    .magazine .sticky_section .sticky_wrapper .sticky_wrapper_main {
+        display: list-item;
+        list-style: none;
+    }
+    .magazine_top {
+        display: list-item;
+        list-style: none;
+    }
+    .magazine_top .top_left { 
+        display: flex;
+        justify-items: center;
+        justify-content: end;
+        margin-top: 12px;
+    }
+    .magazine_nav .mag_search {
+        display: none;
+    }
     .comments-list .comment-avatar {
        display: none;
     }

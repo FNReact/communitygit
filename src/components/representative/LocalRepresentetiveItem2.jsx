@@ -123,7 +123,6 @@ const LocalRepresentetiveItem2 = ({representative,handleDeleteRepresentetive}) =
                     <div className="star_mark">
                         <Box
                         sx={{
-                            width: 200,
                             display: "flex",
                             alignItems: "center",
                         }}

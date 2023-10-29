@@ -117,11 +117,10 @@ const LocalBusinessItem = ({data,admin, getAllResouces,resource, handleDeleteRes
                   </>
                 );
               })}
-
+            </AvatarGroup>
               <div className="star_mark">
                 <Box
                   sx={{
-                    width: 200,
                     display: "flex",
                     alignItems: "center",
                   }}
@@ -129,13 +128,10 @@ const LocalBusinessItem = ({data,admin, getAllResouces,resource, handleDeleteRes
                   <Rating name="hover-feedback" value={rating} readOnly />
                 </Box>
               </div>
-            </AvatarGroup>
           </div>
         )}
            </div>
          </div>
-
-        
       </a>
       <ToastContainer />
       </>

@@ -163,8 +163,18 @@
       color: $text;
     }
   }
-  .recomment_overview{
-    padding: 10px 0 6px 0;
+
+}
+
+.recomment_overview{
+  padding: 10px 0 6px 0;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+
+  .star_mark{
+    display: flex;
+    align-items: center;
   }
 }
 
