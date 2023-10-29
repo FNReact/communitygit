@@ -175,6 +175,21 @@
   width: 100%;
   padding: 25px;
   position: relative;
+  .b_details_top{
+    // display: flex;
+    // justify-content: space-between;
+    .business_Title{
+      font-size: 26px;
+      font-weight: 500;
+      color: $black;
+      line-height: 35px;
+      padding-bottom: 10px;
+    }
+    .hire_btn{
+      display: flex;
+      justify-content: end;
+    }
+  }
   .admin_dropdown{
     position: absolute;
     right: 20px;
@@ -219,14 +234,6 @@
       }
     }
   }
-
-  h4{
-    font-size: 26px;
-    font-weight: 500;
-    color: $black;
-    line-height: 35px;
-    padding-bottom: 10px;
-  }
   p{
     font-size: 14px;
     color: $text;
@@ -265,5 +272,57 @@
         }
       }
     }
+  }
+}
+
+.service_requestBody{
+   margin-top: 20px;
+}
+.request_item{
+  height: 180px;
+  width: 100%;
+  background-color: $white;
+  border-radius: 10px;
+  box-shadow: $shadow;
+  padding: 15px;
+  position: relative;
+  .item_details_rev{
+    font-size: 14px;
+    color: $text;
+    @include text-ellips-3;
+  }
+  .item_bottom{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px;
+
+    .budget{
+      font-size: 22px;
+      font-weight: 600;
+      color: $black;
+    }
+    .req_date{
+      font-size: 14px;
+      color: $text;
+    }
+  }
+}
+
+
+.service_request_details{
+  width: 100%;
+  background-color: $white;
+  border-radius: 10px;
+  box-shadow: $shadow;
+  padding: 15px;
+  position: relative;
+  .details_text{
+    font-size: 14px;
+    color: $text;
   }
 }

@@ -92,6 +92,8 @@ import MatrimonyProfilePage from "../pages/Matrimonial/MatrimonyProfilePage";
 import MatrimonyProfileCreatePage from "../pages/Matrimonial/MatrimonyProfileCreatePage";
 import MatrimonialCardDetails from "../pages/Matrimonial/MatrimonialCardDetails";
 import MyMagazineContentPage from "../pages/Magazine/MyMagazineContentPage";
+import ServiceRequestPage from "../pages/LocalBusinessPages/ServiceRequestPage";
+import ServiceRequestDetailsPage from "../pages/LocalBusinessPages/ServiceRequestDetailsPage";
 
 const AppRouter = () => {
   const navigate=useNavigate();
@@ -410,6 +412,8 @@ const AppRouter = () => {
             <Route exact path="/localBusiness-create" element={<Protected Component={LocalBusinessCreatePage} />}/>
             <Route exact path="/myLocalBusiness" element={<Protected Component={MyLocalBusinessPage} />}/>
             <Route exact path="/localBusiness" element={<Protected Component={LocalBusinessPage} />}/>
+            <Route exact path="/service-request" element={<Protected Component={ServiceRequestPage} />}/>
+            <Route exact path="/service-request-details" element={<Protected Component={ServiceRequestDetailsPage} />}/>
 
             {/* Matrimonial Pages Routes */}
             <Route exact path="/matrimonial" element={<Protected Component={MatrimonialPage} />}/>

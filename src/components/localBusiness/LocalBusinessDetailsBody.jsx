@@ -225,13 +225,27 @@ const LocalBusinessDetailsBody = () => {
       <div className="business_details">
 
         <div className="b_details_top">
-           {details !== null && <h4> {details.title} </h4>}
-           <Button variant="contained" endIcon={<SendIcon />} onClick={handleClickOpenHire}>
-              Hire This Business
-         </Button>
+          <Grid container spacing={2}>
+            <Grid item xs={8}>
+              {details !== null && <div className="business_Title"> {details.title} </div>}
+            </Grid>
+            <Grid item xs={4}>
+              {/* <div className="hire_btn">
+                <Button variant="contained" endIcon={<SendIcon />} onClick={handleClickOpenHire}>
+                   Service Request
+                </Button>
+              </div> */}
+              <div className="hire_btn">
+                <Button variant="contained" endIcon={<SendIcon />} onClick={handleClickOpenHire}>
+                  Hire This Business
+                </Button>
+              </div>
+            </Grid>
+          </Grid>
+
         </div>
 
-       
+
         {details !== null && details?.subtitle !== "null" && <h6>{details.subtitle}</h6>}
         {details !== null && details?.meta?.phone !== "null" && <h6>{details.meta.phone}</h6>}
         {details !== null && details?.meta?.email !== "null" && <h6>{details.meta.email}</h6>}
@@ -395,16 +409,13 @@ const LocalBusinessDetailsBody = () => {
             <div className="recommended_body">
               <Grid container spacing={2}>
                 <Grid item xs={12}>
-                  <Box><TextField label="Your Estimated Budget" variant="filled" type="number" fullWidth focused onChange={(e)=> setValue('budget', e.target.value)} value={values.budget} /></Box>
+                  <Box><TextField label="Your estimated budget" variant="filled" type="number" fullWidth focused /></Box>
                 </Grid>
                 <Grid item xs={12}>
-                  <label>Description</label>
                   <SunEditor
                     name="details"
                     placeholder="Describe Here..."
-                    setContents={values.details}
                     showToolbar={true}
-                    onChange={(e)=>handleEditorChange(e,'details')}
                     setDefaultStyle="height: 140px"
                     setOptions={{
                       buttonList: [
@@ -428,12 +439,12 @@ const LocalBusinessDetailsBody = () => {
                 </Grid>
                 <Grid item xs={12}>
                   <Upload
-                    action='https://icircles.app/storage/logo/h9kMsnUQzKZ23PfgkLNhl1UxGWcjFXCSIntrNrD5.png'
+                    action="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188"
                     listType="picture-card"
                     fileList={fileList}
                     onChange={onChange}
                     onPreview={onPreview}
-                    >
+                  >
                     {fileList.length < 5 && '+ Upload'}
                   </Upload>
                 </Grid>
@@ -442,10 +453,10 @@ const LocalBusinessDetailsBody = () => {
           </DialogContent>
           <DialogActions>
             <Button autoFocus onClick={handleCloseHire}>
-              Cancel
+              Disagree
             </Button>
-            <Button onClick={(e)=>{handleHireBusiness();handleCloseHire()}} autoFocus>
-              Submit
+            <Button onClick={handleCloseHire} autoFocus>
+              Agree
             </Button>
           </DialogActions>
         </Dialog>

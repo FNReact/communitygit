@@ -181,7 +181,7 @@ const handleKeyPress = (event) => {
                   users.length > 0 &&
                   users.map((data, key) => {
                     return (
-                      <Grid item xs={4} key={data.uuid}>
+                      <Grid item lg={4} md={6} sm={12} xs={12} key={data.uuid}>
                         <div className="matrimonial_card">
                           <div className="card_top">
                             <div className="card_profil">

@@ -69,28 +69,28 @@ const CommunityInfo = () => {
                <div className="com_details">{details ? parse(details) : ''}</div>
                <div className="com_info_wrap">
                   <Grid container spacing={1}>
-                     <Grid item xs={6}>
+                     <Grid item lg={6} md={6} sm={12} xs={12} >
                         {msDetails?.entity_email && <div className="info_item"> E-mail : <span> {msDetails?.entity_email} </span></div>}
                      </Grid>
-                     <Grid item xs={6}>
+                     <Grid item lg={6} md={6} sm={12} xs={12}>
                         {msDetails?.entity_phone && <div className="info_item"> Phone : <span> {msDetails?.entity_phone}</span></div>}
                      </Grid>
-                     <Grid item xs={6}>
+                     <Grid item lg={6} md={6} sm={12} xs={12}>
                         {msDetails?.location && <div className="info_item"> Location : <span> {msDetails?.location}</span></div>}
                      </Grid>
-                     <Grid item xs={6}>
+                     <Grid item lg={6} md={6} sm={12} xs={12}>
                         {(msDetails?.website && msDetails?.website !== "null") && <div className="info_item"> Website : <span> {msDetails?.website}</span></div>}
                      </Grid>
 
                      {msDetails?.meta?.community_type === 'apartment' &&
                         <>
-                           <Grid item xs={6}>
+                           <Grid item lg={6} md={6} sm={12} xs={12}>
                               {appartmentDetails?.apartment_building_name && <div className="info_item"> Apartment Building Name : <span> {appartmentDetails?.apartment_building_name}</span></div>}
                            </Grid>
-                           <Grid item xs={6}>
+                           <Grid item lg={6} md={6} sm={12} xs={12}>
                               {appartmentDetails?.apartment_builder && <div className="info_item"> Apartment Builder Name : <span> {appartmentDetails?.apartment_builder}</span></div>}
                            </Grid>
-                           <Grid item xs={6}>
+                           <Grid item lg={6} md={6} sm={12} xs={12}>
                               {appartmentDetails?.apartment_contractors_name && <div className="info_item"> Apartment Contractors Name : <span> {appartmentDetails?.apartment_contractors_name}</span></div>}
                            </Grid>
                         </>
@@ -110,13 +110,13 @@ const CommunityInfo = () => {
                      </Grid>
                      {msDetails?.meta?.community_type === 'apartment' &&
                         <>
-                           <Grid item xs={6}>
+                           <Grid item lg={6} md={6} sm={12} xs={12}>
                               {appartmentDetails?.apartment_electrical_contractor_name && <div className="info_item_2">  <span className="item_lebel">Name </span> <span className="info_item_bold"> : {appartmentDetails?.apartment_electrical_contractor_name}</span></div>}
                            </Grid>
-                           <Grid item xs={6}>
+                           <Grid item lg={6} md={6} sm={12} xs={12}>
                               {appartmentDetails?.apartment_electrical_contractor_phone && <div className="info_item_2"> <span className="item_lebel"> Phone</span> <span className="info_item_bold"> : {appartmentDetails?.apartment_electrical_contractor_phone}</span></div>}
                            </Grid>
-                           <Grid item xs={6}>
+                           <Grid item lg={6} md={6} sm={12} xs={12}>
                               {appartmentDetails?.apartment_electrical_contractor_address && <div className="info_item_2"> <span className="item_lebel" >Address</span>  <span className="info_item_bold"> : {appartmentDetails?.apartment_electrical_contractor_address}</span></div>}
                            </Grid>
                         </>}
@@ -130,13 +130,13 @@ const CommunityInfo = () => {
                      </Grid>
                      {msDetails?.meta?.community_type === 'apartment' &&
                         <>
-                           <Grid item xs={6}>
+                           <Grid item lg={6} md={6} sm={12} xs={12}>
                               {appartmentDetails?.apartment_plumbing_contractor_name && <div className="info_item_2"> <span className="item_lebel" >Name</span>  <span className="info_item_bold"> : {appartmentDetails?.apartment_plumbing_contractor_name}</span></div>}
                            </Grid>
-                           <Grid item xs={6}>
+                           <Grid item lg={6} md={6} sm={12} xs={12}>
                               {appartmentDetails?.apartment_plumbing_contractor_phone && <div className="info_item_2"> <span className="item_lebel" > Phone</span>   <span className="info_item_bold"> : {appartmentDetails?.apartment_plumbing_contractor_phone}</span></div>}
                            </Grid>
-                           <Grid item xs={6}>
+                           <Grid item lg={6} md={6} sm={12} xs={12}>
                               {appartmentDetails?.apartment_plumbing_contractor_address && <div className="info_item_2">  <span className="item_lebel" >Address</span>   <span className="info_item_bold"> : {appartmentDetails?.apartment_plumbing_contractor_address}</span></div>}
                            </Grid>
                         </>}
@@ -150,13 +150,13 @@ const CommunityInfo = () => {
                      </Grid>
                      {msDetails?.meta?.community_type === 'apartment' &&
                         <>
-                           <Grid item xs={6}>
+                           <Grid item lg={6} md={6} sm={12} xs={12}>
                               {appartmentDetails?.apartment_windows_and_glass_contractor_name && <div className="info_item_2">  <span className="item_lebel" >Name </span>   <span className="info_item_bold"> : {appartmentDetails?.apartment_windows_and_glass_contractor_name}</span></div>}
                            </Grid>
-                           <Grid item xs={6}>
+                           <Grid item lg={6} md={6} sm={12} xs={12}>
                               {appartmentDetails?.apartment_windows_and_glass_contractor_phone && <div className="info_item_2"> <span className="item_lebel" >Phone</span>   <span className="info_item_bold"> : {appartmentDetails?.apartment_windows_and_glass_contractor_phone}</span></div>}
                            </Grid>
-                           <Grid item xs={6}>
+                           <Grid item lg={6} md={6} sm={12} xs={12}>
                               {appartmentDetails?.apartment_windows_and_glass_contractor_address && <div className="info_item_2"> <span className="item_lebel" >Address</span>   <span className="info_item_bold"> : {appartmentDetails?.apartment_windows_and_glass_contractor_address}</span></div>}
                            </Grid>
                         </>}
@@ -170,13 +170,13 @@ const CommunityInfo = () => {
                      </Grid>
                      {msDetails?.meta?.community_type === 'apartment' &&
                         <>
-                           <Grid item xs={6}>
+                           <Grid item lg={6} md={6} sm={12} xs={12}>
                               {appartmentDetails?.apartment_landscape_contractor_name && <div className="info_item_2"> <span className="item_lebel" >Name</span>  <span className="info_item_bold"> : {appartmentDetails?.apartment_landscape_contractor_name}</span></div>}
                            </Grid>
-                           <Grid item xs={6}>
+                           <Grid item lg={6} md={6} sm={12} xs={12}>
                               {appartmentDetails?.apartment_landscape_contractor_phone && <div className="info_item_2"> <span className="item_lebel" >Phone </span> <span className="info_item_bold"> : {appartmentDetails?.apartment_landscape_contractor_phone}</span></div>}
                            </Grid>
-                           <Grid item xs={6}>
+                           <Grid item lg={6} md={6} sm={12} xs={12}>
                               {appartmentDetails?.apartment_landscape_contractor_address && <div className="info_item_2"> <span className="item_lebel" >Address</span> <span className="info_item_bold"> : {appartmentDetails?.apartment_landscape_contractor_address}</span></div>}
                            </Grid>
                         </>}
@@ -190,13 +190,13 @@ const CommunityInfo = () => {
                      </Grid>
                      {msDetails?.meta?.community_type === 'apartment' &&
                         <>
-                           <Grid item xs={6}>
+                           <Grid item lg={6} md={6} sm={12} xs={12}>
                               {appartmentDetails?.apartment_retention_wall_contractor_name && <div className="info_item_2"> <span className="item_lebel" >Name </span> <span className="info_item_bold"> : {appartmentDetails?.apartment_retention_wall_contractor_name}</span></div>}
                            </Grid>
-                           <Grid item xs={6}>
+                           <Grid item lg={6} md={6} sm={12} xs={12}>
                               {appartmentDetails?.apartment_retention_wall_contractor_phone && <div className="info_item_2"> <span className="item_lebel" >Phone </span>  <span className="info_item_bold"> : {appartmentDetails?.apartment_retention_wall_contractor_phone}</span></div>}
                            </Grid>
-                           <Grid item xs={6}>
+                           <Grid item lg={6} md={6} sm={12} xs={12}>
                               {appartmentDetails?.apartment_retention_wall_contractor_address && <div className="info_item_2"> <span className="item_lebel" >Address </span> <span className="info_item_bold"> : {appartmentDetails?.apartment_retention_wall_contractor_address}</span></div>}
                            </Grid>
                         </>}
@@ -210,13 +210,13 @@ const CommunityInfo = () => {
                      </Grid>
                      {msDetails?.meta?.community_type === 'apartment' &&
                         <>
-                           <Grid item xs={6}>
+                           <Grid item lg={6} md={6} sm={12} xs={12}>
                               {appartmentDetails?.apartment_air_condition_contractor_name && <div className="info_item_2"> <span className="item_lebel"> Name </span> <span className="info_item_bold"> : {appartmentDetails?.apartment_air_condition_contractor_name}</span></div>}
                            </Grid>
-                           <Grid item xs={6}>
+                           <Grid item lg={6} md={6} sm={12} xs={12}>
                               {appartmentDetails?.apartment_air_condition_contractor_phone && <div className="info_item_2"> <span className="item_lebel">Phone</span>   <span className="info_item_bold"> : {appartmentDetails?.apartment_air_condition_contractor_phone}</span></div>}
                            </Grid>
-                           <Grid item xs={6}>
+                           <Grid item lg={6} md={6} sm={12} xs={12}>
                               {appartmentDetails?.apartment_air_condition_contractor_address && <div className="info_item_2">  <span className="item_lebel">Address </span>  <span className="info_item_bold"> : {appartmentDetails?.apartment_air_condition_contractor_address}</span></div>}
                            </Grid>
                         </>}
