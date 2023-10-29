@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Box, Button, Grid, TextField, Tooltip } from "@mui/material";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { baseUrl, businessRecommendationUrl, localBusinessUrl, resourceUrl } from "../../api/Api";
+import { baseUrl, businessRecommendationUrl, hirBusinessUrl, localBusinessUrl, resourceUrl } from "../../api/Api";
 import { Image, Upload } from 'antd';
 import { UserContext } from "../../utils/UserContext";
 import parser from 'html-react-parser'
@@ -81,21 +81,46 @@ const LocalBusinessDetailsBody = () => {
     }
   }, [])
 
+
+
   // create new recommendation
   const defaultValues = {
     rating: '',
     details: '',
 
-    budget:'',
-    details:''
+    hiring_budget:'',
+    hiring_details:'',
+    hiring_currency: msDetails?.currency?msDetails?.currency:'',
+    hiring_phone:'',
+    hiring_email:'',
+    hiring_location:''
   };
   const methods = useForm({ defaultValues });
   const { watch, setValue } = methods;
   const values = watch();
 
   const handleEditorChange = (content, type) => {
-    setValue('details', content)
+    setValue(`${type}`, content)
   };
+
+
+  const [parseUser, setParseUser] = useState(null)
+
+useEffect(()=>{
+  const getData = sessionStorage.getItem('loggedInUserInfo')
+  if(getData){
+    const parseData = JSON.parse(getData)
+    const userDetails = parseData?.user_details
+    if(userDetails){
+      const parseUser = JSON.parse(userDetails)
+      if(parseUser){
+        setValue('hiring_phone', parseUser?.phone)
+        setValue('hiring_email', parseUser?.email)
+      }
+    }
+    // setName(userDetails?.profile?.name);
+  }
+},[parseUser])
 
   // handle create new recommendation
   const handleRecommendation = () => {
@@ -215,13 +240,61 @@ const LocalBusinessDetailsBody = () => {
     imgWindow?.document.write(image.outerHTML);
   };
 
-  const handleHireBusiness = ()=>{
+  const handleHiringBusiness = ()=>{
+    setLoaderVisible(true)
+    let data = new FormData();
+    data.append('microsite_id', msDetails.id);
+    data.append('entity_id', details.id);
+    data.append('budget', values.hiring_budget);
+    data.append('details', values.hiring_details);
+    data.append('email', values.hiring_email);
+    data.append('phone', values.hiring_phone);
+    data.append('location', values.hiring_location);
+    data.append('status', 0);
+
+    if(fileList && fileList.length>0){
+      fileList.forEach(file=>{
+        data.append("files[]", file.originFileObj);
+      });
+    }
+
+    let config = {
+      method: 'post',
+      url: hirBusinessUrl,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      data: data
+    };
+
+    axios.request(config)
+      .then((response) => {
+        handleClose()
+        handleCloseHire()
+         setValue('hiring_budget', '');
+         setValue('hiring_details', '');
+         setValue('hiring_email', '');
+         setValue('hiring_phone', '');
+         setValue('hiring_location','');
+         setFileList([]);
+
+        setLoaderVisible(false)
+        notifySuccess('Success!.Business owner will contact you very soon.',5000)
+      })
+      .catch((error) => {
+        setLoaderVisible(false)
+        notifyError('Something went wrong !')
+      });
 
   }
 
 
+
+
   return (
     <>
+    {loaderVisible ===true &&  <MainLoader/>}
+
       <div className="business_details">
 
         <div className="b_details_top">
@@ -236,9 +309,16 @@ const LocalBusinessDetailsBody = () => {
                 </Button>
               </div> */}
               <div className="hire_btn">
+                {details?.meta?.create_by  === userDetails?.id 
+                ? <Button variant="contained" endIcon={<SendIcon />} onClick={(e)=> navigate('/service-request',{state:{details:details}})}>
+                    Business Requests
+                  </Button>
+                :
                 <Button variant="contained" endIcon={<SendIcon />} onClick={handleClickOpenHire}>
                   Hire This Business
                 </Button>
+              }
+               
               </div>
             </Grid>
           </Grid>
@@ -409,12 +489,26 @@ const LocalBusinessDetailsBody = () => {
             <div className="recommended_body">
               <Grid container spacing={2}>
                 <Grid item xs={12}>
-                  <Box><TextField label="Your estimated budget" variant="filled" type="number" fullWidth focused /></Box>
+                  <Box><TextField label="Your Estimated Budget" variant="filled" type="number" fullWidth focused onChange={(e)=>setValue('hiring_budget', e.target.value)} value={values.hiring_budget} /></Box>
+                </Grid>
+                <Grid item xs={12}>
+                  <Box><TextField label="Currency" variant="filled" fullWidth focused onChange={(e)=> setValue('hiring_currency', e.target.value)} value={values.hiring_currency} /></Box>
+                </Grid>
+                <Grid item xs={12}>
+                  <Box><TextField label="Email" variant="filled" type="email" fullWidth focused onChange={(e)=> setValue('hiring_email', e.target.value)} value={values.hiring_email} /></Box>
+                </Grid>
+                <Grid item xs={12}>
+                  <Box><TextField label="Phone" variant="filled" type="number" fullWidth focused onChange={(e)=> setValue('hiring_phone', e.target.value)} value={values.hiring_phone} /></Box>
+                </Grid>
+                <Grid item xs={12}>
+                  <Box><TextField label="Location" variant="filled" fullWidth focused onChange={(e)=> setValue('hiring_location', e.target.value)} value={values.hiring_location} /></Box>
                 </Grid>
                 <Grid item xs={12}>
                   <SunEditor
                     name="details"
                     placeholder="Describe Here..."
+                    setContents={values.hiring_details}
+                    onChange={(e)=>handleEditorChange(e,'hiring_details')}
                     showToolbar={true}
                     setDefaultStyle="height: 140px"
                     setOptions={{
@@ -453,11 +547,19 @@ const LocalBusinessDetailsBody = () => {
           </DialogContent>
           <DialogActions>
             <Button autoFocus onClick={handleCloseHire}>
-              Disagree
+              Cancel
             </Button>
-            <Button onClick={handleCloseHire} autoFocus>
-              Agree
-            </Button>
+            {values?.hiring_budget && values.hiring_email && values?.hiring_phone 
+              ?
+                <Button onClick={(e)=> handleHiringBusiness(details)} autoFocus>
+                  Submit
+                </Button>
+              :
+              <Button onClick={(e)=> handleHiringBusiness(details)} autoFocus disabled>
+                Submit
+              </Button>
+            }
+           
           </DialogActions>
         </Dialog>
       <ToastContainer />

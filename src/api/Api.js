@@ -43,6 +43,8 @@ const localBusinessUrl = `${baseUrl}/api/community/localentity`;
 const businessTypeUrl = `${baseUrl}/api/community/typesuggestion`;
 const localBusinessMediaUrl = `${baseUrl}/api/community/localentity/media`;
 
+const hirBusinessUrl = `${baseUrl}/api/community/hirebusiness`;
+
 // events
 const eventsUrl = `${baseUrl}/api/common/events`;
 const eventMediaUrl = `${baseUrl}/api/common/events/media`;
@@ -156,5 +158,6 @@ export {
 
 
   resourceRecommendationUrl,
-  businessRecommendationUrl
+  businessRecommendationUrl,
+  hirBusinessUrl
 };
