@@ -327,17 +327,34 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 160px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  z-index: 1;
+  &::after{
+    position: absolute;
+    content: '';
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.2);
+    z-index: -1;
+  }
+
   .magazine_left{
     display: flex;
     align-items: center;
-    width: 50%;
+    width: 100%;
     .magzin_logo{
       width: auto;
       display: flex;
       justify-content: center;
       align-items: center;
       img{
-        max-height: 40px;
+        max-height: 45px;
         width: auto;
         object-fit: contain;
       }
@@ -348,8 +365,8 @@
     text-align: center;
     span{
       font-size: 30px;
-      font-weight: 500;
-      color: #797979;
+      font-weight: 600;
+      color: #ffffff;
       line-height: 32px;
     }
   }
