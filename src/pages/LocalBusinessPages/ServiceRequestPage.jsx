@@ -3,12 +3,16 @@ import { Avatar, Box, Button, Grid, Tooltip } from "@mui/material";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import axios from "axios";
-import { hirBusinessUrl } from "../../api/Api";
+import { baseUrl, hirBusinessUrl } from "../../api/Api";
 import { UserContext } from "../../utils/UserContext";
 import MainLoader from "../../components/PageLoadEffects/MainLoader";
 import notFoundImage from "../../../src/asset/image/404.png";
 import user from "../../../src/asset/image/user.png";
 import DeleteIcon from '@mui/icons-material/Delete';
+import Swal from "sweetalert2";
+import { notifyError, notifySuccess } from "../../utils/Toast";
+
+import parser from 'html-react-parser'
 
 const ServiceRequestPage = () => {
   const navigate = useNavigate();
@@ -48,8 +52,41 @@ const ServiceRequestPage = () => {
  },[])
 
 
- console.log('requests', requests)
+//    handle delete recommendation
+   const handleDeleteResource = (data) => {
+    Swal.fire({
+      heightAuto: false,
+      backdrop: false,
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        let config = {
+          method: "delete",
+          url: `${hirBusinessUrl}/${data.uuid}`,
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        };
+        axios
+          .request(config)
+          .then((response) => {
+            notifySuccess();
+            getAllRequests();
+          })
+          .catch((error) => {
+            notifyError('Something went wrong')
+          });
+      }
+    });
+  }
 
+//   /service-request-details
 
   return (
     <Fragment>
@@ -67,41 +104,45 @@ const ServiceRequestPage = () => {
                   <div className="service_requestBody">
                       <Grid container spacing={2}>
                         {requests && requests !=='undefined' && requests.length>0 && requests.map((data,i)=>{
+                            console.log('data', data)
                             return(
-                                <>
-                                </>
+                            <Grid item xs={4} key={data.uuid}>
+                                    <a>
+                                        <div className="request_item">
+                                                    <div className="delet_btn" onClick={(e)=> handleDeleteResource(data)}>
+                                                        <DeleteIcon/>
+                                                    </div>
+                                                <Box className='cursorPointer' onClick={(e)=> navigate('/service-request-details',{state:{data:data}})}>
+                                                    {data && data?.media && data?.media.length>0 && 
+                                                            <div className="item_img">
+                                                                <img src={`${baseUrl}/storage/media/${data?.media[0].id}/${data?.media[0].file_name}`} alt="" />
+                                                            </div>
+                                                        }
+                                                        {data && data?.details &&  <div className="item_details_rev">
+                                                            {parser(data?.details)}
+                                                        </div> }
+                                                    {data && data?.user &&  <div className="user_info">
+                                                            <Avatar alt={data?.user?.name} src={data?.user?.avatar?`${baseUrl}/${data?.user?.avatar}`:''} />
+                                                            <div className="user_name"> {data?.user?.name}</div>
+                                                        </div>}
+                                                   
+                                                        <div className="item_bottom">
+                                                            {data?.budget && <div className="budget">
+                                                              {msDetails?.currency}  {data?.budget}
+                                                            </div> }
+                                                            
+                                                            <div className="req_date">
+                                                                {new Date(data?.created_at).toLocaleDateString()}
+                                                            </div>
+                                                        </div>
+                                                </Box>
+                                                   
+                                        </div>
+                                    </a>
+                                </Grid>
                             )
                         })}
-                        {/* key={data.uuid} */}
-                        <Grid item xs={4}>
-                                        <Link to='/service-request-details'>
-                                            <div className="request_item">
-                                               <div className="delet_btn">
-                                                <DeleteIcon/>
-                                               </div>
-                                               <div className="item_img">
-                                                  <img src={notFoundImage} alt="" />
-                                               </div>
-                                                <div className="item_details_rev">
-                                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus esse iusto dicta accusantium rem. Esse ipsa expedita tempore quod libero.
-                                                </div>
-                                                <div className="user_info">
-                                                <Avatar alt="Travis Howard" src={user}/>
-                                                <div className="user_name">
-                                                   User Name
-                                                </div>
-                                                </div>
-                                                <div className="item_bottom">
-                                                    <div className="budget">
-                                                        1200.00
-                                                    </div>
-                                                    <div className="req_date">
-                                                        12 October 2023
-                                                    </div>
-                                                </div>
-                                            </div>
-                                    </Link>
-                                </Grid>
+                  
                       </Grid>
 
                       {requests !=='undefined' &&requests && requests.length ===0 &&

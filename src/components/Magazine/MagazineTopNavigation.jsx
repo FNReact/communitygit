@@ -103,8 +103,8 @@ const MagazineTopNavigation = () => {
       {loaderVisible === true && <MainLoader />}
 
       <div className="magazine_top" style={{ 
-      backgroundImage: `url("https://t4.ftcdn.net/jpg/04/94/96/91/360_F_494969146_dtNlHghkRCEkm7OGY42Y2m3YCGW6tCEP.jpg")` 
-    }}>
+        backgroundImage: `url("${baseUrl}/${msDetails?.meta?.community_settings?.magazine_banner}")` 
+      }}>
         <div className="magazine_left">
           <div className="magzin_logo">
             {msDetails?.meta?.community_settings?.magazine_logo_enable === '1'

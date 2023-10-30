@@ -274,8 +274,8 @@ useEffect(()=>{
         handleCloseHire()
          setValue('hiring_budget', '');
          setValue('hiring_details', '');
-         setValue('hiring_email', '');
-         setValue('hiring_phone', '');
+        //  setValue('hiring_email', '');
+        //  setValue('hiring_phone', '');
          setValue('hiring_location','');
          setFileList([]);
 

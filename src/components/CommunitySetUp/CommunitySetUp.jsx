@@ -366,9 +366,10 @@ const CommunitySetUp = ()=>{
 
        var magazineBannerUrl =null;
        if(res?.data?.meta?.community_settings?.magazine_banner){
-        magazineUrl=`${baseUrl}/${res?.data?.meta?.community_settings?.magazine_banner}`
+        magazineBannerUrl=`${baseUrl}/${res?.data?.meta?.community_settings?.magazine_banner}`
        }
         setStoreMagazineBanner(magazineBannerUrl)
+
       }).catch((e)=>  { setLoaderVisible(false)})
 }
 useEffect(()=>{
@@ -376,6 +377,8 @@ useEffect(()=>{
     getMicrositeDetails()
   }
 },[])
+
+console.log('magazineBannerUrl', storeMagazineBanner)
 
   const handleEditorChange = (content,type) => {
     if(type ==='tagline'){

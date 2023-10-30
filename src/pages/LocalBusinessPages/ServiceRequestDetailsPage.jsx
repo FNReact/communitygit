@@ -1,13 +1,19 @@
 import React, { Fragment, useEffect } from "react";
-import { Avatar, Grid, Tooltip } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { Avatar, Box, Grid, Tooltip } from "@mui/material";
+import { useLocation, useNavigate } from "react-router-dom";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import notFoundImage from "../../../src/asset/image/404.png";
 import user from "../../../src/asset/image/user.png";
 import { Image } from "antd";
+import { baseUrl } from "../../api/Api";
+import parser from 'html-react-parser'
+
 
 const ServiceRequestDetailsPage = () => {
    const navigate = useNavigate();
+
+   const location = useLocation();
+
 
    return (
       <Fragment>
@@ -23,25 +29,29 @@ const ServiceRequestDetailsPage = () => {
                   <div className="service_request_details">
                      <div className="details_top_info">
                         <div className="user_info">
-                           <Avatar alt="Travis Howard" src={user} />
+                           <Avatar alt={location?.state?.data?.user?.name} src={location?.state?.data?.user?.avatar?`${baseUrl}/${location?.state?.data?.user?.avatar}`:''} />
                            <div className="user_name">
-                              User Name
+                             {location?.state?.data?.user?.name}
                            </div>
                         </div>
                         <div className="info_date">
-                           12 October 2023
+                          {new Date(location?.state?.data?.created_at).toLocaleDateString()}
                         </div>
                      </div>
                      <div className="details_text">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime fugit id, nulla iusto earum soluta. Sunt impedit, natus in ullam a maiores quibusdam laboriosam similique ipsa architecto quisquam expedita mollitia, quod nobis sint sit veritatis? Quibusdam, deleniti porro? Perspiciatis temporibus veniam exercitationem reiciendis doloribus laborum maiores quisquam laboriosam odio nam sed numquam quo quaerat libero asperiores nihil possimus corrupti quia, perferendis dolore corporis praesentium vel molestias saepe. Impedit necessitatibus nemo excepturi quia ullam. Inventore veniam officiis nisi molestias deserunt sunt vel dolores non, nobis consequatur tenetur aliquam dolorum magni illo, commodi laboriosam fuga veritatis sapiente ad ipsa necessitatibus. Rerum, dolores?
+                        {parser(location?.state?.data?.details)}
+
                      </div>
                      <div className="details_file_container">
-                        <div className="file_tab" sx={{ ml: 2 }}>
-                           <Image
-                              src={user}
-                           />
-                        </div>
-
+                     <div className="file_tab" sx={{ ml: 2 }}>
+                        {location?.state !==null && location?.state?.data && location?.state?.data?.media && location?.state?.data?.media.length>0 && location?.state?.data?.media.map((data,i)=>{
+                           return(
+                              <Image src={`${baseUrl}/storage/media/${data.id}/${data.file_name}`} width={'15%'} />
+                             
+                              )
+                           })}
+                       
+                       </div>
                      </div>
                   </div>
                </div>
