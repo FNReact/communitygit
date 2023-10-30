@@ -4,6 +4,8 @@ import { Grid } from '@mui/material';
 import axios from 'axios';
 import { chatRoomUrl } from '../api/Api';
 import io from 'socket.io-client';
+import Pusher from 'pusher-js';
+
 
 const socket = io('https://signal.icircles.app:9001');
 // const socket = io('https://icircles.app');
@@ -48,6 +50,7 @@ const ChatPage = () => {
     // Listen for online/offline status updates
     socket.on((data) => {
       setOnlineUsers(data.onlineUsers);
+      console.log('socket data', data)
     });
 
     // client-side
@@ -60,7 +63,6 @@ const ChatPage = () => {
     socket.on('notification', (data) => {
       setNotifications((prevNotifications) => [...prevNotifications, data]);
       console.log('notification', data)
-
     });
 
     // Clean up the socket connection on unmount
@@ -72,7 +74,19 @@ const ChatPage = () => {
   // console.log('onlineUsers', onlineUsers)
   // console.log('notifications', notifications)
 
-  console.log('socket', socket)
+  console.log('socket info', socket)
+
+
+  useEffect(() => {
+    var pusher = new Pusher("69ef518953032858d64d", {
+      cluster: "ap1",
+      encrypted: true,
+    });   
+    var channel = pusher.subscribe("notifyChannel");
+     channel.bind("notifyChannel", async function (response) {
+         alert('some notification');
+     })
+});
 
 
 

@@ -22,7 +22,6 @@ import { UserContext } from "../../utils/UserContext";
 
 import Pusher from 'pusher-js';
 
-
 const ChatBody = ({chatRooms,setChatRooms, getAllChatRooms}) => {
     const navigate = useNavigate();
     const location = useLocation();
@@ -49,9 +48,6 @@ const [chatDetailsOpner, setChatDetailsOpner] = useState(true)
 // console.log('allMembers', allMembers)
 
 // set default chat
-
-console.log('location', location)
-
 useEffect(()=>{
     if(location?.state ===null && chatRooms && chatRooms?.data?.length>0 && chatDetailsOpner ===true && allMembers && allMembers.length>1){
         handleChatDetails(chatRooms?.data[0].uuid);

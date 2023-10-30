@@ -25,6 +25,10 @@ import axios from 'axios';
 import MainLoader from '../PageLoadEffects/MainLoader';
 
 
+import Pusher from 'pusher-js';
+
+
+
 
 // Style text area Part
 const StyledTextarea = styled(TextareaAutosize)(
@@ -55,6 +59,38 @@ const ChatRoomDetailsBody = ({chatRoomDetails, singleRoom,setChatRoomDetails,han
     const [loaderVisible, setLoaderVisible] = useState(false)
 
     const [hearerTime, setHeaderTime] = useState(null)
+
+    console.log('chatRoomDetails', chatRoomDetails)
+
+
+    useEffect(() => {
+        var pusher = new Pusher("69ef518953032858d64d", {
+          cluster: "ap1",
+          encrypted: true,
+          secret: 'b0f4e94b427b3b7529ce',
+        }); 
+        var channel = pusher.subscribe('presence.Users');
+         channel.bind('presence.Users', async function (response) {
+             alert('some notification');
+             console.log('response', response)
+         })
+    },[]);
+    
+
+
+    useEffect(() => {
+        // Get the GMT offset
+        const date = new Date();
+        const gmtOffsetHours = -date.getTimezoneOffset() / 60; // Convert minutes to hours
+        const gmtOffsetMinutes = -date.getTimezoneOffset() % 60;
+    
+        // Create a string representation of the GMT offset
+        const gmtOffsetString = (gmtOffsetHours >= 0 ? '+' : '-') +
+          ('0' + Math.abs(gmtOffsetHours)).slice(-2)
+    
+        setGMTOffset(gmtOffsetString);
+        
+      }, []);
 
 
 
