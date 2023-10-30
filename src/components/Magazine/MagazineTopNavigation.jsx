@@ -8,7 +8,7 @@ import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { baseUrl, categoryUrl } from "../../api/Api";
 import MainLoader from "../PageLoadEffects/MainLoader";
-import { Button, Tooltip } from "@mui/material";
+import { Button, Grid, Tooltip } from "@mui/material";
 import PreviewIcon from '@mui/icons-material/Preview';
 import MenuIcon from '@mui/icons-material/Menu';
 import PostAddIcon from '@mui/icons-material/PostAdd';
@@ -105,14 +105,17 @@ const MagazineTopNavigation = () => {
       <div className="magazine_top" style={{ 
         backgroundImage: `url("${baseUrl}/${msDetails?.meta?.community_settings?.magazine_banner}")` 
       }}>
-        <div className="magazine_left">
-          <div className="magzin_logo">
+        <Grid container spacing={2}>
+           <Grid item lg={4} md={4} sm={4} xs={4}>
+           <div className="magzin_logo">
             {msDetails?.meta?.community_settings?.magazine_logo_enable === '1'
               && msDetails?.meta?.community_settings?.magazine_logo
               && <img src={`${baseUrl}/${msDetails?.meta?.community_settings?.magazine_logo}`} alt="" />
             }
           </div>
-          {msDetails?.meta?.community_settings?.magazine_name_enable === '1'
+           </Grid>
+           <Grid item lg={4} md={8} sm={8} xs={8}>
+           {msDetails?.meta?.community_settings?.magazine_name_enable === '1'
             && msDetails?.meta?.community_settings?.magazine_name
             && <div className="magazine_t">
               <span>
@@ -120,10 +123,9 @@ const MagazineTopNavigation = () => {
               </span>
             </div>
           }
-        </div>
-
-
-        {(loggedInUser?.user_type === 'admin' || userDetails.id === msDetails?.user_id) &&
+           </Grid>
+           <Grid item lg={4} md={12} sm={12} xs={12}>
+           {(loggedInUser?.user_type === 'admin' || userDetails.id === msDetails?.user_id) &&
           <div className="top_left">
             {/* <Button
                     variant="outlined"
@@ -134,7 +136,7 @@ const MagazineTopNavigation = () => {
                   </Button> */}
             <Tooltip title="Preview Demo Magazine">
               <Button
-                variant="outlined"
+                variant="contained"
                 sx={{ mr: 2 }}
                 onClick={(e) => navigate("/magazine-demo")}
               >
@@ -160,6 +162,8 @@ const MagazineTopNavigation = () => {
               </Button>
             </Tooltip>
           </div>}
+           </Grid>
+        </Grid>
       </div>
       <div className="magazine_nav">
         <ul class="nav_list">

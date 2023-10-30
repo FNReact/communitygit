@@ -425,35 +425,35 @@ useEffect(()=>{
                     <Grid item lg={12} md={12} sm={12} xs={12}>
                       <Box ><TextField label="Name" variant="filled" fullWidth  focused onChange={(e)=> setValue('name',e.target.value)} value={values.name} /></Box>
                     </Grid>
-                    <Grid item lg={4} md={4} sm={4} xs={4}>
+                    <Grid item lg={4} md={6} sm={12} xs={12}>
                       <Box ><TextField label="Email" type="email" variant="filled" fullWidth  focused onChange={(e)=>setValue("email",e.target.value)} value={values.email} /></Box>
                     </Grid>
-                    <Grid item lg={4} md={4} sm={4} xs={4}>
+                    <Grid item lg={4} md={6} sm={12} xs={12}>
                       <Box ><TextField label="Phone" type="phone" variant="filled" fullWidth  focused onChange={(e)=>setValue("phone",e.target.value)} value={values.phone} /></Box>
                     </Grid>
-                    <Grid item lg={4} md={4} sm={4} xs={4}>
+                    <Grid item lg={4} md={6} sm={12} xs={12}>
                       <Box ><TextField label="Location" type="text" variant="filled" fullWidth  focused onChange={(e)=>setValue("location",e.target.value)} value={values.location} /></Box>
                     </Grid>
-                    <Grid item lg={4} md={4} sm={4} xs={4}>
+                    <Grid item lg={4} md={6} sm={12} xs={12}>
                       <Box ><TextField label="DOB" type="date" variant="filled" fullWidth  focused onChange={(e)=>setValue("dob",e.target.value)} value={values.dob} /></Box>
                     </Grid>
-                    <Grid item lg={4} md={4} sm={4} xs={4}>
+                    <Grid item lg={4} md={6} sm={12} xs={12}>
                       <Box ><TextField label="Validity" type="date" variant="filled" fullWidth  focused onChange={(e)=>setValue("validity",e.target.value)} value={values.validity} /></Box>
                     </Grid>
-                    <Grid item lg={4} md={4} sm={4} xs={4}>
+                    <Grid item lg={4} md={6} sm={12} xs={12}>
                       <Box ><TextField label="Religion" type="text" variant="filled" fullWidth  focused onChange={(e)=>setValue("religion",e.target.value)} value={values.religion} /></Box>
                     </Grid>
-                    <Grid item lg={3} md={3} sm={3} xs={3}>
+                    <Grid item lg={3} md={6} sm={12} xs={12}>
                       <Box ><TextField label="Height" type="text" variant="filled" fullWidth  focused onChange={(e)=>setValue("height",e.target.value)} value={values.height} /></Box>
                     </Grid>
-                    <Grid item lg={3} md={3} sm={3} xs={3}>
+                    <Grid item lg={3} md={6} sm={12} xs={12}>
                       <Box ><TextField label="Weight" type="text" variant="filled" fullWidth  focused onChange={(e)=>setValue("weight",e.target.value)} value={values.weight} /></Box>
                     </Grid>
-                    <Grid item lg={3} md={3} sm={3} xs={3}>
+                    <Grid item lg={3} md={6} sm={12} xs={12}>
                       <Box ><TextField label="Complexion" type="text" variant="filled" fullWidth  focused onChange={(e)=>setValue("complexion",e.target.value)} value={values.complexion} /></Box>
                     </Grid>
                     
-                    <Grid item lg={3} md={3} sm={3} xs={3}>
+                    <Grid item lg={3} md={6} sm={12} xs={12}>
                       <Box sx={{ minWidth: 120 }}>
                         <FormControl fullWidth focused>
                           <InputLabel id="demo-simple-select-label">Blood Group</InputLabel>
@@ -480,7 +480,7 @@ useEffect(()=>{
                     <Grid item lg={12} md={12} sm={12} xs={12}>
                       <Box ><TextField label="Address" type="text" variant="filled" fullWidth  focused onChange={(e)=>setValue("address",e.target.value)} value={values.address} /></Box>
                     </Grid>
-                    <Grid item lg={4} md={4} sm={4} xs={4}>
+                    <Grid item lg={4} md={6} sm={12} xs={12}>
                       <Box sx={{ minWidth: 120 }}>
                         <FormControl fullWidth focused>
                           <InputLabel id="demo-simple-select-label">Gender</InputLabel>
@@ -500,7 +500,7 @@ useEffect(()=>{
                         </FormControl>
                       </Box>
                     </Grid>
-                    <Grid item lg={4} md={4} sm={4} xs={4}>
+                    <Grid item lg={4} md={6} sm={12} xs={12}>
                       <Box sx={{ minWidth: 120 }}>
                         <FormControl fullWidth focused>
                           <InputLabel id="demo-simple-select-label">Marital status</InputLabel>
@@ -521,7 +521,7 @@ useEffect(()=>{
                       </Box>
                     </Grid>
 
-                    <Grid item lg={4} md={4} sm={4} xs={4}>
+                    <Grid item lg={4} md={6} sm={12} xs={12}>
                       <Box ><TextField label="Don't Knock If" type="text" variant="filled" fullWidth  focused onChange={(e)=>setValue("dont_knock_if",e.target.value)} value={values.dont_knock_if} /></Box>
                     </Grid>
 

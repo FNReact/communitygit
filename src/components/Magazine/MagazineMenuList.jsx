@@ -242,7 +242,7 @@ export default function MagazineMenuList() {
           <Backdrop open={loadershow} className="backdrop_contorller">
             <MainLoader />
         </Backdrop>
-        <Card>
+        <Card className="overflow_card">
           <TableToolbar
             filterName={filterName}
             onFilterName={handleFilterName}
@@ -251,7 +251,7 @@ export default function MagazineMenuList() {
             path={'/magazine-menu-create'}
             // path={'/magazine-menu'}
              />
-            <TableContainer sx={{ minWidth: 800 }}>
+            <TableContainer sx={{ minWidth: 800 }} >
               {selected.length > 0 && (
                 <TableSelectedActions
                   dense={dense}

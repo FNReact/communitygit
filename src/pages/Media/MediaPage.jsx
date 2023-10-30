@@ -321,7 +321,7 @@ const handleUpdateFolder = async(folderName)=>{
                   </div>
               </div>
              
-            <div className="Media_area">
+            <div className="Media_area folder_area">
                 <Grid container spacing={1.5} columns={20}>
                     {collectionName.length > 0 &&
                     collectionName
