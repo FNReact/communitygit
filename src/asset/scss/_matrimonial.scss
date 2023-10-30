@@ -180,6 +180,17 @@
                 }
             }
         }
+        .gallery_wrap{
+          margin-bottom: 12px;
+          .ant-image{
+            img{
+              height: 160px; 
+              width: 100%;
+              object-fit: cover;
+              border-radius: 8px;
+            }
+          }
+        }
     }
 }
 

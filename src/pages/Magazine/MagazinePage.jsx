@@ -210,7 +210,7 @@ const MagazinePage = () => {
                 <Grid container spacing={2}>
                   {magazine && magazine?.main && magazine?.main?.length>0 && magazine?.main.slice(0,4).map((data,key)=>{
                     return(
-                      <Grid item xs={3} key={data.uuid} onClick={(e)=> handleDetails(data)}>
+                      <Grid item lg={3} md={4} sm={12} xs={12} key={data.uuid} onClick={(e)=> handleDetails(data)}>
                           <div className="main_content_item">
                             <div className="item_img">
                               <img src={`${baseUrl}/${data?.featured_image}`} alt={data?.title} />
@@ -235,7 +235,7 @@ const MagazinePage = () => {
                   </Box>
                    <Grid container spacing={2}>
                     {frontPageData && frontPageData.length>0 && 
-                    <Grid item xs={3}>
+                    <Grid item lg={3} md={6} sm={12} xs={12}>
                         <div className="front_main" onClick={(e)=> handleDetails(frontPageData[0])}>
                           <div className="front_main_img">
                             <img src={`${baseUrl}/${frontPageData[0].featured_image}`} alt={frontPageData[0].title} />
@@ -247,7 +247,7 @@ const MagazinePage = () => {
                        </Grid> }
                        
                        {frontPageData && frontPageData.length>1 &&
-                       <Grid item xs={5}>
+                       <Grid item lg={5} md={6} sm={12} xs={12}>
                           <div className="front_sub" onClick={(e)=> handleDetails(frontPageData[1])}>
                            <div className="front_sub_img">
                             <img src={`${baseUrl}/${frontPageData[1].featured_image}`} alt={frontPageData[1].title} />
@@ -268,7 +268,7 @@ const MagazinePage = () => {
                           
                        </Grid>}
                        {frontPageData && frontPageData.length>3 &&
-                       <Grid item xs={4}>
+                       <Grid item lg={4} md={6} sm={12} xs={12}>
                        <div className="front_list">
                         <ul>
                           <li onClick={(e)=> handleDetails(frontPageData[3])}>

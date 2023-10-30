@@ -134,13 +134,17 @@ const MatrimonialCardDetails = () => {
                                         Gallery
                                     </div>
                                     <Image.PreviewGroup>
-                                        <Box>
+                                        <div className="gallery_wrap">
+                                            <Grid container spacing={2}>
                                             {details?.files.map((data, key)=>{
                                                 return(
-                                                    <Image key={data.uuid} width={250} src={`${data.url}`}/>
+                                                    <Grid item lg={3} md={3} sm={4} xs={4}>
+                                                       <Image key={data.uuid} src={`${data.url}`}/>
+                                                    </Grid>
                                                 )
                                             })}
-                                        </Box>
+                                            </Grid> 
+                                        </div>
                                     </Image.PreviewGroup>
                                 
                                 </div>

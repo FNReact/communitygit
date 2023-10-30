@@ -290,14 +290,14 @@ useEffect(() => {
           <div className="my_files_navigate">
             <div className="navigate_part_one">
               <div className="navigate_Back" onClick={(e) => navigate(-1)}>
-                <ChevronLeftIcon /> Back
+                <ChevronLeftIcon/> Back
               </div>
               <div className="navigate_bar_icon" onClick={(e)=> navigate('/media')}>
-                <DashboardIcon  />
+                <DashboardIcon/>
               </div>
             
               <div className="navigate_bar_icon">
-                <KeyboardArrowRightIcon />
+                <KeyboardArrowRightIcon/>
               </div>
               <div className="navigate_title">{location.state.folderName}</div>
             </div>
@@ -329,7 +329,7 @@ useEffect(() => {
                         if (secondFolder !== undefined && folders.indexOf(secondFolder) === -1) {
                           folders.push(secondFolder);
                           return (
-                            <Grid item xs={4}>
+                            <Grid item lg={4} md={4} sm={6} xs={6}>
                               <FolderItem
                                 name="Lemmesay Images"
                                 icon="folder"
@@ -360,11 +360,11 @@ useEffect(() => {
                     const getCollectionNameLength= data?.collection_name?.split('/');
                     if (getCollectionName === location.state.folderName && getCollectionNameLength.length===position ) {
                       return (
-                        <Grid item xs={4}>
+                        <Grid item lg={4} md={4} sm={6} xs={6}>
                           <FileItem name="iCircles Images" getData={data} handleDeleteItem={handleDeleteItem} handleFileUpdateDetails={handleFileUpdateDetails} adminId={adminId} />
                         </Grid>
                       );
-                    }
+                    }     
                   })}
               </Grid>
             </div>

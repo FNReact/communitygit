@@ -333,6 +333,7 @@
   background-size: cover;
   position: relative;
   z-index: 1;
+  padding: 0 12px;
   &::after{
     position: absolute;
     content: '';
@@ -340,25 +341,25 @@
     width: 100%;
     top: 0;
     left: 0;
-    background-color: rgba(0,0,0,0.2);
+    background-color: rgba(0,0,0,0.3);
     z-index: -1;
   }
-
+  .magzin_logo{
+    width: auto;
+    display: flex;
+    // justify-content: center;
+    align-items: center;
+    img{
+      max-height: 45px;
+      width: auto;
+      object-fit: contain;
+    }
+  }
   .magazine_left{
     display: flex;
     align-items: center;
     width: 100%;
-    .magzin_logo{
-      width: auto;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      img{
-        max-height: 45px;
-        width: auto;
-        object-fit: contain;
-      }
-    }
+    
   }
   .magazine_t {
     width: 100%;
@@ -369,6 +370,11 @@
       color: #ffffff;
       line-height: 32px;
     }
+  }
+  .top_left{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
   }
 }
 
@@ -444,7 +450,7 @@
   .mag_search {
     position: relative;
     .form_control {
-      height: 45px;
+      height: 40px;
       width: 220px;
       background-color: #f3f3f3;
       border-radius: 35px;
