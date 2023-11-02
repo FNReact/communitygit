@@ -126,6 +126,7 @@ const ProfileBody = () => {
 
      //get single job details
    const getMicrositeDetails = ()=>{
+      console.log('hit from profile body')
     setLoaderVisible(true)
     let config = {
         method: 'get',
@@ -186,7 +187,7 @@ const ProfileBody = () => {
        })
 }
 useEffect(()=>{
-  if(msDetails?.id && segName !=='newCommuinity'){
+  if(msDetails?.id && segName !=='newCommuinity' && segName !=='community' && segName !=='community-packeges'){
     getMicrositeDetails()
   }
 },[])

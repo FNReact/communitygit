@@ -172,7 +172,8 @@ const AppRouter = () => {
 
 
     useEffect(()=>{
-      if(msDetails && userDetails && segNamae==='' ){
+      if(msDetails && userDetails && segNamae===''){
+        console.log('hit from app router')
       let config = {
         method: 'get',
         url: `${commonUserUrl}/${userDetails?.id}/${msDetails?.id}`,

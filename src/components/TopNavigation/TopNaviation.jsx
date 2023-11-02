@@ -423,7 +423,7 @@ useEffect(()=>{
                                 <span>Search Communities</span>
                               </div>
                             </Link>   
-                            <Link to='commuinityList' onClick={(e) => handleMenuDrawer(anchor)}>
+                            <Link to='/commuinityList' onClick={(e) => handleMenuDrawer(anchor)}>
                               <div className="my_commuinity">
                                 <i><Groups3Icon /></i>
                                 <span>My Communities</span>

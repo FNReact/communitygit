@@ -16,6 +16,7 @@ const NotAuthorisedPage = () => {
   useEffect(()=>{
     
     if(storeUserDetailsParse?.status ===2){
+      console.log('hit from not authorised page')
      notifyError('Your membership confirmation is waiting for pending aproval!.Please accept invitation!')
      setTimeout(()=>{
        navigate('/community-info-public', {state:{uuid:msDetails.uuid, memberStatus:2,reload:true}})

@@ -23,9 +23,9 @@ import data from "@emoji-mart/data";
 import Picker from "@emoji-mart/react";
 import axios from 'axios';
 import MainLoader from '../PageLoadEffects/MainLoader';
-
-
 import Pusher from 'pusher-js';
+
+import GroupAddIcon from '@mui/icons-material/GroupAdd';
 
 
 
@@ -217,6 +217,9 @@ const ChatRoomDetailsBody = ({chatRoomDetails, singleRoom,setChatRoomDetails,han
                             </div>
                             <div className="ct_right">
                                 <div className="chat_title_dashed">
+                                    <div className="dashed_btn">
+                                        <GroupAddIcon />
+                                    </div>
                                     <div className="dashed_btn">
                                         <CallIcon />
                                     </div>

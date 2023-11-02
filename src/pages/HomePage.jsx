@@ -17,13 +17,15 @@ const HomePage = () => {
 
   useEffect(()=>{
     
-    if(storeUserDetailsParse?.status ===2 && segNamae !=='newCommuinity'){
+    if(storeUserDetailsParse?.status ===2 && segNamae !=='newCommuinity' && segNamae !=='community-packeges'){
+      console.log('hit from home page')
+
      notifyError('Your membership confirmation is waiting for pending aproval!.Please accept invitation!')
      setTimeout(()=>{
        navigate('/community-info-public', {state:{uuid:msDetails.uuid, memberStatus:2,reload:true}})
      },100)
     }
-    if(storeUserDetailsParse?.status ===3 && segNamae !=='newCommuinity'){
+    if(storeUserDetailsParse?.status ===3 && segNamae !=='newCommuinity' && segNamae !=='community-packeges'){
      notifyError('You are blocked from this community!')
      setTimeout(()=>{
         navigate('/commuinityList')

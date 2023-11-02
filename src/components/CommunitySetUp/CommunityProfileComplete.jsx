@@ -797,7 +797,7 @@ useEffect(()=>{
                           <Box>
                             <TextField
                               label="Owner's Email"
-                              disabled={JSON.parse(values.owners_mobile_status)=== true ? false : true}
+                              disabled={JSON.parse(values.owners_email_status)=== true ? false : true}
                               variant="filled"
                               fullWidth
                               focused

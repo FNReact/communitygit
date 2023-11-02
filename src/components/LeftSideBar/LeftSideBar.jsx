@@ -45,6 +45,7 @@ const LeftSideBar = () => {
 
     //get details
     const getMicrositeDetails = ()=>{
+      console.log('hit from left sidebar')
       let config = {
           method: 'get',
           url: `${commonUserUrl}/${userDetails?.id}/${msDetails?.id}`,
@@ -107,7 +108,7 @@ const LeftSideBar = () => {
   }
 
   useEffect(()=>{
-    if(segNamae !=='newCommuinity'){
+    if(segNamae !=='newCommuinity' && segNamae !=='community-packeges' && segNamae !=='create'){
       getMicrositeDetails()
     }
     if(userDetails){
