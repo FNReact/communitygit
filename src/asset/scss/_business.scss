@@ -1,18 +1,18 @@
-.business_wrapper{
+.business_wrapper {
   padding-top: 0px;
 }
 
-.business_item{
+.business_item {
   height: auto;
   width: 100%;
   border-radius: 10px;
   background-color: $white;
-  box-shadow: $shadow; 
+  box-shadow: $shadow;
   padding: 15px;
   position: relative;
   display: flex;
 
-  .business_item_img{
+  .business_item_img {
     height: 160px;
     width: 180px;
     display: flex;
@@ -20,20 +20,24 @@
     align-items: center;
     background-color: #f3f3f3;
     border-radius: 6px;
-    img{
-     height: 100%;
-     width: 100%;
-     object-fit: contain;
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
     }
   }
-  .bisiness_item_content{
+
+  .bisiness_item_content {
     width: 100%;
     padding-left: 10px;
   }
-  &:hover{
-     box-shadow: 0px 20px 20px rgba(1, 6, 20, 0.1);
+
+  &:hover {
+    box-shadow: 0px 20px 20px rgba(1, 6, 20, 0.1);
   }
-  .admin_dropdown{
+
+  .admin_dropdown {
     position: absolute;
     right: 15px;
     top: 15px;
@@ -45,12 +49,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    .MuiSvgIcon-root{
+
+    .MuiSvgIcon-root {
       font-size: 20px;
       color: $text;
     }
   }
-  .resource_title{
+
+  .resource_title {
     font-size: 20px;
     color: $black;
     font-weight: 500;
@@ -58,7 +64,8 @@
     padding-top: 4px;
     cursor: pointer;
   }
-  .business_item_details{
+
+  .business_item_details {
     font-size: 13px;
     font-weight: 400;
     color: $text;
@@ -67,7 +74,8 @@
     text-align: start;
     cursor: pointer;
   }
-  .business_item_footer{
+
+  .business_item_footer {
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -75,38 +83,44 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 15px 15px 15px ;
-    .business_item_left{
+    padding: 0 15px 15px 15px;
+
+    .business_item_left {
       display: flex;
       align-items: center;
-      .admin_profile{
-        img{
+
+      .admin_profile {
+        img {
           height: 25px;
           width: 25px;
           object-fit: cover;
           border-radius: 50%;
         }
       }
-      .admin_name{
+
+      .admin_name {
         font-size: 14px;
         font-weight: 500;
         color: $black;
         padding-left: 3px;
       }
     }
-    .business_item_right{
+
+    .business_item_right {
       font-size: 13px;
       color: $text;
       font-weight: 400;
       display: flex;
       align-items: center;
-      .MuiSvgIcon-root{
+
+      .MuiSvgIcon-root {
         font-size: 16px;
         margin-right: 2px;
       }
     }
   }
-  .business_type{
+
+  .business_type {
     padding: 1px 25px;
     border-radius: 35px;
     background-color: $primaryBackground;
@@ -114,8 +128,22 @@
     color: $primaryColor;
     display: inline-block;
   }
+
+  .b_type_list {
+    .business_d_type {
+      padding: 1px 15px;
+      border-radius: 35px;
+      background-color: $primaryBackground;
+      font-size: 13px;
+      color: $primaryColor;
+      display: inline-block;
+      margin-right: 12px;
+      margin-top: 8px;
+    }
+  }
 }
-.business_item_2{
+
+.business_item_2 {
   height: 380px;
   width: 100%;
   border-radius: 10px;
@@ -128,36 +156,42 @@
   align-items: center;
   flex-direction: column;
   margin-bottom: 20px;
-  &:hover{
-     box-shadow: 0px 20px 20px rgba(1, 6, 20, 0.1);
+
+  &:hover {
+    box-shadow: 0px 20px 20px rgba(1, 6, 20, 0.1);
   }
-  h4{
+
+  h4 {
     font-size: 20px;
     font-weight: 500;
     color: $black;
     line-height: 20px;
-    margin-top:10px ;
+    margin-top: 10px;
   }
-  h5{
+
+  h5 {
     font-size: 16px;
     font-weight: 400;
     color: $black;
     line-height: 20px;
   }
-  .create_owner{
+
+  .create_owner {
     font-size: 15px;
     font-weight: 400;
     color: $text;
     line-height: 22px;
   }
-  .create_date{
+
+  .create_date {
     position: absolute;
     bottom: 10px;
     right: 10px;
     font-size: 15px;
     font-weight: 500;
     color: $black;
-    span{
+
+    span {
       font-weight: 400;
       font-size: 14px;
       color: $text;
@@ -166,41 +200,45 @@
 
 }
 
-.recomment_overview{
+.recomment_overview {
   padding: 10px 0 6px 0;
   display: flex;
   align-items: center;
   justify-content: end;
 
-  .star_mark{
+  .star_mark {
     display: flex;
     align-items: center;
   }
 }
 
-.business_details{
+.business_details {
   background-color: $white;
   box-shadow: $shadow;
   border-radius: 12px;
   width: 100%;
   padding: 25px;
   position: relative;
-  .b_details_top{
+
+  .b_details_top {
+
     // display: flex;
     // justify-content: space-between;
-    .business_Title{
+    .business_Title {
       font-size: 26px;
       font-weight: 500;
       color: $black;
       line-height: 35px;
       padding-bottom: 10px;
     }
-    .hire_btn{
+
+    .hire_btn {
       display: flex;
       justify-content: end;
     }
   }
-  .admin_dropdown{
+
+  .admin_dropdown {
     position: absolute;
     right: 20px;
     top: 20px;
@@ -212,31 +250,37 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    .MuiSvgIcon-root{
+
+    .MuiSvgIcon-root {
       color: $black;
       font-size: 20px;
     }
   }
-  .resource_admin_info{
+
+  .resource_admin_info {
     display: flex;
     align-items: center;
-    .admin_profile{
-      img{
+
+    .admin_profile {
+      img {
         height: 38px;
         width: 38px;
         object-fit: cover;
         border-radius: 50%;
       }
     }
-    .admin_post_info{
+
+    .admin_post_info {
       padding-left: 3px;
-      .adminName{
+
+      .adminName {
         font-size: 15px;
         font-weight: 500;
         color: $black;
         line-height: 20px;
       }
-      .postDate{
+
+      .postDate {
         font-size: 12px;
         color: $text;
         font-weight: 400;
@@ -244,7 +288,8 @@
       }
     }
   }
-  p{
+
+  p {
     font-size: 14px;
     color: $text;
     line-height: 22px;
@@ -252,18 +297,20 @@
     text-align: start;
   }
 
-  h6{
+  h6 {
     font-size: 18px;
     color: $black;
     font-weight: 500;
     padding-top: 40px;
   }
-  .details_file_container{
+
+  .details_file_container {
     padding-top: 10px;
     display: flex;
     flex-wrap: wrap;
-    .file_tab{
-      .ant-image{
+
+    .file_tab {
+      .ant-image {
         height: 200px;
         width: 180px;
         display: flex;
@@ -274,7 +321,8 @@
         border-radius: 8px;
         cursor: pointer;
         overflow: hidden;
-        .ant-image-img{
+
+        .ant-image-img {
           height: 100%;
           width: 100%;
           object-fit: cover;
@@ -285,10 +333,11 @@
   }
 }
 
-.service_requestBody{
-   margin-top: 20px;
+.service_requestBody {
+  margin-top: 20px;
 }
-.request_item{
+
+.request_item {
   height: 380px;
   width: 100%;
   background-color: $white;
@@ -296,50 +345,58 @@
   box-shadow: $shadow;
   padding: 15px;
   position: relative;
-  .delet_btn{
+
+  .delet_btn {
     position: absolute;
     right: 12px;
     z-index: 3;
     top: 12px;
     height: 37px;
     width: 37px;
-    background-color: rgba(0,0,0,0.3);
+    background-color: rgba(0, 0, 0, 0.3);
     border-radius: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 10;
     cursor: pointer;
+
     .MuiSvgIcon-root {
       color: $white;
     }
   }
-  .item_img{
+
+  .item_img {
     height: 180px;
     width: 100%;
-    img{
+
+    img {
       height: 100%;
       width: 100%;
-      object-fit: cover;   
+      object-fit: cover;
     }
   }
-  .item_details_rev{
+
+  .item_details_rev {
     font-size: 14px;
     color: $text;
     @include text-ellips-3;
     padding-top: 10px;
   }
-  .user_info{
+
+  .user_info {
     display: flex;
     align-items: center;
     margin-top: 8px;
-    .user_name{
+
+    .user_name {
       margin-left: 6px;
       color: $black;
       font-size: 16px;
     }
   }
-  .item_bottom{
+
+  .item_bottom {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
@@ -349,12 +406,13 @@
     width: 100%;
     padding: 15px;
 
-    .budget{
+    .budget {
       font-size: 22px;
       font-weight: 600;
       color: $black;
     }
-    .req_date{
+
+    .req_date {
       font-size: 14px;
       color: $text;
     }
@@ -362,34 +420,38 @@
 }
 
 
-.service_request_details{
+.service_request_details {
   width: 100%;
   background-color: $white;
   border-radius: 10px;
   box-shadow: $shadow;
   padding: 20px;
   position: relative;
-  .details_top_info{
+
+  .details_top_info {
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    .user_info{
+    .user_info {
       display: flex;
       align-items: center;
-      .user_name{
+
+      .user_name {
         margin-left: 6px;
         color: $black;
         font-size: 16px;
       }
     }
-    .info_date{
+
+    .info_date {
       font-size: 14px;
       color: $text;
     }
-  
+
   }
-  .details_text{
+
+  .details_text {
     font-size: 14px;
     color: $text;
     margin-top: 16px;

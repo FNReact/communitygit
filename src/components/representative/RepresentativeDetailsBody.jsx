@@ -249,7 +249,7 @@ const handleEditRecommendation =(data)=>{
               All Recommendations
             </div>
             {recommended ===false &&  <div className="rating_add" onClick={handleClickOpen}>
-              <AddIcon /> Recommend this resource
+              <AddIcon /> <span>Recommend this resource</span>
             </div>}
            
           </div>

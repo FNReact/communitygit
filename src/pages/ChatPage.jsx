@@ -93,8 +93,8 @@ const ChatPage = () => {
   return (
     <Fragment>
         <Grid container spacing={2}>
-        <Grid item xs={3}></Grid>
-        <Grid item xs={9}>
+        <Grid item lg={3} md={12} sm={12} xs={12}></Grid>
+        <Grid item lg={9} md={12} sm={12} xs={12}>
           <div className="content_body chat_contentBody">
             <ChatBody chatRooms={chatRooms} setChatRooms={setChatRooms} getAllChatRooms={getAllChatRooms} />
           </div>

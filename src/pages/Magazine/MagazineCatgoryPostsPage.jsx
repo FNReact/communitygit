@@ -102,7 +102,7 @@ const MagazineCatgoryPostsPage = () => {
                 {location?.state !==null && <h4>Posts of {location?.state?.data?.name}</h4>}
               </Box>
               <Grid container spacing={2} sx={{ mt: 1 }}>
-                <Grid item xs={8}>
+                <Grid item lg={8} md={12} sm={12} xs={12}>
                   {posts &&
                     posts.length > 0 &&
                     posts.map((data, key) => {
@@ -137,7 +137,7 @@ const MagazineCatgoryPostsPage = () => {
                   }
                 </Grid>
 
-                <Grid item xs={4}>
+                <Grid item lg={4} md={12} sm={12} xs={12}>
                   <MagazineRightSide />
                 </Grid>
               </Grid>

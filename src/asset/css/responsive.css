@@ -1,13 +1,230 @@
 @media (min-width: 280px) and (max-width: 399.98px) {
+
+    .chat {
+        width: 100%;
+        border-radius: 13px;
+        display: list-item;
+        list-style: none;
+        overflow: visible;
+        padding-bottom: 10px;
+    }
+    .chat .chatter_box_container .chat_body::after {
+       display: none;
+    }
+
+    .chat .chatter_box_container {
+        overflow: hidden;
+        height: 68vh;
+        width: 95%;
+        border: 1px solid #c3c3c354;
+        border-radius: 13px;
+        margin: 0 auto;
+        background-color: #f3f3f379;
+    }
+    .chat .chat_left .chat_top_content .chat_left_top {
+        padding: 0 10px 0 0;
+    }
+
+    .business_item .business_item_img {
+        height: 125px;
+        width: 140px;
+    }
+
+    .rating_container .section_top .rating_add span {
+        display: none;
+    }
+
+    .rating_container .section_top .sec_title {
+        font-size: 18px;
+    }
+
+    /* another CSS */
+    .chat .chatter_box_container .fixed_profilr_header {
+        background-color: rgba(3,40,141,.1098039216);
+        height: 50px;
+        border-top-left-radius: 13px;
+        padding: 12px 15px 10px 15px;
+    }
+    .chat .chatter_box_container .fixed_profilr_header .ct_left .name_T .active_status {
+        font-size: 10px;
+    }
+    .chat .chatter_box_container .fixed_profilr_header .ct_left .name_T .name {
+        font-size: 14px;
+    }
+    .chat .chat_left .chat_top_content .chat_left_top .chat_h {
+        font-size: 16px;
+    }
+
+    .chat .chat_left .chat_top_content .chat_search .search_box {
+        display: none;
+    }
+
+    .chat .chat_left .chat_top_content .active_list {
+        display: none;
+    }
+    .chat .chatter_box_container .chat_body {
+        padding: 12px 12px 130px 12px;
+    }
+
+    .chat .chat_left .chat_top_content {
+        height: auto;
+    }
+
+    .chat .chat_left .chat_list .chat_list_item .chat_overview .overview_massage {
+        display: none;
+    }
+
+    .chat .chat_left .chat_list .chat_list_item {
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 70px;
+        height: 80px;
+        margin-right: 6px;
+        padding: 2px;
+    }
+
+    .chat .chat_left .chat_list .chat_list_item .chat_overview .profile-name {
+        margin-top: 3px;
+        font-size: 10px;
+        font-weight: 400;
+        word-wrap: break-word;
+        line-height: 12px;
+        text-align: center;
+        display: block;
+        display: -webkit-box;
+        height: 2;
+        overflow: hidden;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        text-overflow: ellipsis;
+    }
+
+    .chat .chat_left .chat_list .chat_list_item .profile_active {
+        width: auto;
+    }
+
+    .chat .chat_left .chat_list .chat_list_item .lastMassage-time {
+        display: none;
+    }
+
+    .chat .chat_left .chat_list .chat_list_item .senting {
+        display: none;
+    }
+
+    .chat .chat_left {
+        width: 100%;
+        height: auto;
+        padding: 15px 3px 15px 10px;
+        border-top-right-radius: 13px;
+        border-top-left-radius: 13px;
+
+    }
+
+    .chat .chat_left .chat_list {
+        padding-bottom: 0;
+        padding-top: 12px;
+        display: flex;
+        overflow-x: auto;
+        scrollbar-width:none;
+    }
+    .chat .chat_left .chat_list::-webkit-scrollbar {
+        display: none;
+      }
+
+    .chat .chatter_box_container .fixed_profilr_header .ct_right .chat_title_dashed .vid_icon {
+        display: none;
+    }
+
+    .chat .chatter_box_container .fixed_profilr_header .ct_left .profile img {
+        height: 38px;
+        width: 38px;
+    }
+
+    .chat .chatter_box_container .chat_body .chat_massage_item .profile_part .chatter_profile img {
+        height: 30px;
+        width: 30px;
+    }
+
+    .chat .chatter_box_container .chat_body .chat_massage_item .chatter_chat .senting_massage {
+        font-size: 14px;
+        word-wrap: break-word;
+    }
+
+    .chat .chatter_box_container .chat_body .own_massage_item .own_chat .senting_massage {
+        word-wrap: break-word;
+    }
+
+    .chat .chat_left .chat_list .chat_list_item .lastMassage-time {
+        display: none;
+    }
+
+    .chat .chatter_box_container .chat_body .chat_massage_item .massage_D {
+        display: none;
+    }
+
+    .chat .chatter_box_container .chat_body .own_massage_item .own_chat {
+        max-width: 85%;
+    }
+
+    /* .chat .chatter_box_container {
+       overflow: visible;
+    } */
+    .chat_emojy_picker {
+        bottom: 60px !important;
+        left: 5px !important;
+    }
+
+    .magazine_nav .nav_list li {
+        padding-right: 15px;
+    }
+
+    .swiper-button-prev,
+    .swiper-rtl .swiper-button-next {
+        height: 40px;
+        width: 40px;
+    }
+
+    .swiper-button-prev::after,
+    .swiper-rtl .swiper-button-next::after {
+        font-size: 16px;
+    }
+
+    .swiper-button-next,
+    .swiper-rtl .swiper-button-prev {
+        height: 40px;
+        width: 40px;
+    }
+
+    .swiper-button-next::after,
+    .swiper-rtl .swiper-button-prev::after {
+        font-size: 16px;
+    }
+
+    .mag_category_Item .mag_category_Item_text h4 {
+        font-size: 18px;
+    }
+
+    .chat_contentBody {
+        height: 94vh;
+    }
+
+
+
+
+
+
     .overflow_card {
         overflow: visible !important;
         overflow-y: scroll !important;
     }
+
     .uploader_contianer .folder_name_input .css-1x5jdmq {
-        min-width: 260px!important;
+        min-width: 260px !important;
     }
-    .file_selecter .css-5t8t4o{
-       width: 280px;
+
+    .file_selecter .css-5t8t4o {
+        width: 280px;
     }
 
     .matrimonial_card_details .information_table .gallery_wrap .ant-image img {
@@ -1133,12 +1350,228 @@
 
 
 @media (min-width: 400px) and (max-width: 899.98px) {
-    .file_selecter .css-5t8t4o{
-        width: 300px;
+    .chat .chatter_box_container .chat_body::after {
+        display: none;
      }
-     .uploader_contianer .folder_name_input .css-1x5jdmq {
-        min-width: 290px!important;
+    .chat {
+        width: 100%;
+        border-radius: 13px;
+        display: list-item;
+        list-style: none;
+        overflow: visible;
+        padding-bottom: 10px;
     }
+
+    .chat .chatter_box_container {
+        overflow: hidden;
+        height: 68vh;
+        width: 95%;
+        border: 1px solid #c3c3c354;
+        border-radius: 13px;
+        margin: 0 auto;
+        background-color: #f3f3f379;
+    }
+    .chat .chat_left .chat_top_content .chat_left_top {
+        padding: 0 10px 0 0;
+    }
+
+    .business_item .business_item_img {
+        height: 125px;
+        width: 140px;
+    }
+
+    .rating_container .section_top .rating_add span {
+        display: none;
+    }
+
+    .rating_container .section_top .sec_title {
+        font-size: 18px;
+    }
+
+    /* another CSS */
+    .chat .chatter_box_container .fixed_profilr_header {
+        background-color: rgba(3,40,141,.1098039216);
+        height: 50px;
+        border-top-left-radius: 13px;
+        padding: 12px 15px 10px 15px;
+    }
+    .chat .chatter_box_container .fixed_profilr_header .ct_left .name_T .active_status {
+        font-size: 10px;
+    }
+    .chat .chatter_box_container .fixed_profilr_header .ct_left .name_T .name {
+        font-size: 14px;
+    }
+    .chat .chat_left .chat_top_content .chat_left_top .chat_h {
+        font-size: 16px;
+    }
+
+    .chat .chat_left .chat_top_content .chat_search .search_box {
+        display: none;
+    }
+
+    .chat .chat_left .chat_top_content .active_list {
+        display: none;
+    }
+    .chat .chatter_box_container .chat_body {
+        padding: 12px 12px 130px 12px;
+    }
+
+    .chat .chat_left .chat_top_content {
+        height: auto;
+    }
+
+    .chat .chat_left .chat_list .chat_list_item .chat_overview .overview_massage {
+        display: none;
+    }
+
+    .chat .chat_left .chat_list .chat_list_item {
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 70px;
+        height: 80px;
+        margin-right: 6px;
+        padding: 2px;
+    }
+
+    .chat .chat_left .chat_list .chat_list_item .chat_overview .profile-name {
+        margin-top: 3px;
+        font-size: 10px;
+        font-weight: 400;
+        word-wrap: break-word;
+        line-height: 12px;
+        text-align: center;
+        display: block;
+        display: -webkit-box;
+        height: 2;
+        overflow: hidden;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        text-overflow: ellipsis;
+    }
+
+    .chat .chat_left .chat_list .chat_list_item .profile_active {
+        width: auto;
+    }
+
+    .chat .chat_left .chat_list .chat_list_item .lastMassage-time {
+        display: none;
+    }
+
+    .chat .chat_left .chat_list .chat_list_item .senting {
+        display: none;
+    }
+
+    .chat .chat_left {
+        width: 100%;
+        height: auto;
+        padding: 15px 3px 15px 10px;
+        border-top-right-radius: 13px;
+        border-top-left-radius: 13px;
+
+    }
+
+    .chat .chat_left .chat_list {
+        padding-bottom: 0;
+        padding-top: 12px;
+        display: flex;
+        overflow-x: auto;
+        scrollbar-width:none;
+    }
+    .chat .chat_left .chat_list::-webkit-scrollbar {
+        display: none;
+      }
+
+    .chat .chatter_box_container .fixed_profilr_header .ct_right .chat_title_dashed .vid_icon {
+        display: none;
+    }
+
+    .chat .chatter_box_container .fixed_profilr_header .ct_left .profile img {
+        height: 38px;
+        width: 38px;
+    }
+
+    .chat .chatter_box_container .chat_body .chat_massage_item .profile_part .chatter_profile img {
+        height: 30px;
+        width: 30px;
+    }
+
+    .chat .chatter_box_container .chat_body .chat_massage_item .chatter_chat .senting_massage {
+        font-size: 14px;
+        word-wrap: break-word;
+    }
+
+    .chat .chatter_box_container .chat_body .own_massage_item .own_chat .senting_massage {
+        word-wrap: break-word;
+    }
+
+    .chat .chat_left .chat_list .chat_list_item .lastMassage-time {
+        display: none;
+    }
+
+    .chat .chatter_box_container .chat_body .chat_massage_item .massage_D {
+        display: none;
+    }
+
+    .chat .chatter_box_container .chat_body .own_massage_item .own_chat {
+        max-width: 85%;
+    }
+
+    /* .chat .chatter_box_container {
+       overflow: visible;
+    } */
+    .chat_emojy_picker {
+        bottom: 60px !important;
+        left: 5px !important;
+    }
+
+    .magazine_nav .nav_list li {
+        padding-right: 15px;
+    }
+
+    .swiper-button-prev,
+    .swiper-rtl .swiper-button-next {
+        height: 40px;
+        width: 40px;
+    }
+
+    .swiper-button-prev::after,
+    .swiper-rtl .swiper-button-next::after {
+        font-size: 16px;
+    }
+
+    .swiper-button-next,
+    .swiper-rtl .swiper-button-prev {
+        height: 40px;
+        width: 40px;
+    }
+
+    .swiper-button-next::after,
+    .swiper-rtl .swiper-button-prev::after {
+        font-size: 16px;
+    }
+
+    .mag_category_Item .mag_category_Item_text h4 {
+        font-size: 18px;
+    }
+
+    .chat_contentBody {
+        height: 94vh;
+    }
+
+
+    /* Chat new Coad */
+
+
+
+    .file_selecter .css-5t8t4o {
+        width: 300px;
+    }
+
+    .uploader_contianer .folder_name_input .css-1x5jdmq {
+        min-width: 290px !important;
+    }
+
     .overflow_card {
         overflow: visible !important;
         overflow-y: scroll !important;
