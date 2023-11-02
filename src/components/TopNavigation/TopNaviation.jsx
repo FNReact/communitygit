@@ -352,7 +352,7 @@ useEffect(()=>{
                                       </div>
                                     </div>
                                   </Link>
-                                  <div className="menu_wrapper_list" onClick={(e) => window.location.href = 'commuinityList'}>
+                                  <div className="menu_wrapper_list" onClick={(e) => window.location.href = '/commuinityList'}>
                                     <i><Groups3Icon /></i>
                                     <span>My Communities</span>
                                   </div>

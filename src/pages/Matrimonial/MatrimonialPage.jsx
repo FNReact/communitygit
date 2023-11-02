@@ -123,9 +123,6 @@ const handleKeyPress = (event) => {
   const handleMyProfile = ()=>{
       navigate('/my-matrimony-profile',{state:{data:storeProfile}})
   }
-
-  console.log('users', users)
-
   return (
     <Fragment>
       {loaderVisible === true && <MainLoader />}

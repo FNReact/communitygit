@@ -18,7 +18,6 @@ const HomePage = () => {
   useEffect(()=>{
     
     if(storeUserDetailsParse?.status ===2 && segNamae !=='newCommuinity' && segNamae !=='community-packeges'){
-      console.log('hit from home page')
 
      notifyError('Your membership confirmation is waiting for pending aproval!.Please accept invitation!')
      setTimeout(()=>{

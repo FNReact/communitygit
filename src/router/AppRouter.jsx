@@ -276,15 +276,17 @@ const AppRouter = () => {
     const storeUserDetailsParse = JSON?.parse(getUserInfo)
     const [visit, setVisit] = useState(0)
     useEffect(()=>{
-      if(visit === 0 && storeUserDetailsParse?.status ===1 && storeUserDetailsParse?.user_details){
-        const parseData = JSON.parse(storeUserDetailsParse?.user_details)
-        if(!parseData?.name){
-          // window.location.href='/complete-profile'
-          navigate('/complete-profile')
-          setVisit(1)
+      if(visit === 0 ){
+        if(storeUserDetailsParse?.status ===1 && storeUserDetailsParse?.user_details){
+          const parseData = JSON.parse(storeUserDetailsParse?.user_details)
+          if(!parseData?.name){
+            // window.location.href='/complete-profile'
+            navigate('/complete-profile')
+            setVisit(1)
+          }
         }
       }
-    },[])
+    },[visit,navigate,storeUserDetailsParse?.status,storeUserDetailsParse?.user_details])
 
     
 

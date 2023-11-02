@@ -62,7 +62,6 @@ const ChatPage = () => {
     // Listen for incoming notifications
     socket.on('notification', (data) => {
       setNotifications((prevNotifications) => [...prevNotifications, data]);
-      console.log('notification', data)
     });
 
     // Clean up the socket connection on unmount

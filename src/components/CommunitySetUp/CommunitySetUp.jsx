@@ -378,8 +378,6 @@ useEffect(()=>{
   }
 },[])
 
-console.log('magazineBannerUrl', storeMagazineBanner)
-
   const handleEditorChange = (content,type) => {
     if(type ==='tagline'){
       setValue('tagline',content);

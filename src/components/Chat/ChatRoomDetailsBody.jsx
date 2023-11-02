@@ -60,9 +60,6 @@ const ChatRoomDetailsBody = ({ chatRoomDetails, singleRoom, setChatRoomDetails, 
 
     const [hearerTime, setHeaderTime] = useState(null)
 
-    console.log('chatRoomDetails', chatRoomDetails)
-
-
     useEffect(() => {
         var pusher = new Pusher("69ef518953032858d64d", {
             cluster: "ap1",
@@ -72,7 +69,6 @@ const ChatRoomDetailsBody = ({ chatRoomDetails, singleRoom, setChatRoomDetails, 
         var channel = pusher.subscribe('presence.Users');
         channel.bind('presence.Users', async function (response) {
             alert('some notification');
-            console.log('response', response)
         })
     }, []);
 
@@ -217,6 +213,9 @@ const ChatRoomDetailsBody = ({ chatRoomDetails, singleRoom, setChatRoomDetails, 
                             </div>
                             <div className="ct_right">
                                 <div className="chat_title_dashed">
+                                    <div className="dashed_btn">
+                                        <GroupAddIcon />
+                                    </div>
                                     <div className="dashed_btn">
                                         <CallIcon />
                                     </div>

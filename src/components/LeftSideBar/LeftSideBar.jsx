@@ -45,7 +45,6 @@ const LeftSideBar = () => {
 
     //get details
     const getMicrositeDetails = ()=>{
-      console.log('hit from left sidebar')
       let config = {
           method: 'get',
           url: `${commonUserUrl}/${userDetails?.id}/${msDetails?.id}`,

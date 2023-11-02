@@ -241,7 +241,6 @@ useEffect(()=>{
   };
 
   const handleHiringBusiness = ()=>{
-  console.log('details', details)
     setLoaderVisible(true)
     let data = new FormData();
     data.append('microsite_id', msDetails.id);

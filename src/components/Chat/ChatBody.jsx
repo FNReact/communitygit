@@ -22,6 +22,7 @@ import { UserContext } from "../../utils/UserContext";
 
 import Pusher from 'pusher-js';
 
+
 const ChatBody = ({ chatRooms, setChatRooms, getAllChatRooms }) => {
     const navigate = useNavigate();
     const location = useLocation();
@@ -45,14 +46,24 @@ const ChatBody = ({ chatRooms, setChatRooms, getAllChatRooms }) => {
 
     const [chatDetailsOpner, setChatDetailsOpner] = useState(true)
 
-// console.log('allMembers', allMembers)
-
 // set default chat
 useEffect(()=>{
     if(location?.state ===null && chatRooms && chatRooms?.data?.length>0 && chatDetailsOpner ===true && allMembers && allMembers.length>1){
-        handleChatDetails(chatRooms?.data[0].uuid);
-        setSingleRoom(chatRooms?.data[0])
-        setChatDetailsOpner(false)
+
+        const findsMemberChats = [];
+        chatRooms?.data.forEach(chat => {
+            allMembers.forEach(member => {
+                if(member?.user?.uuid === chat?.member?.uuid){
+                    findsMemberChats.push(chat)
+                }
+            });
+        });
+
+        if(findsMemberChats && findsMemberChats.length>0){
+            handleChatDetails(findsMemberChats[0].uuid);
+            setSingleRoom(findsMemberChats[0])
+            setChatDetailsOpner(false)
+        }
     }
     if(location?.state !==null && chatDetailsOpner ===true){
         setLoaderVisible(true)
@@ -67,62 +78,70 @@ useEffect(()=>{
           axios.request(config)
           .then((response) => {
 
-                    // handleChatDetails(chat.uuid);
-                    // setSingleRoom(chat)
-                    if (response?.data?.meta?.chat_room !== null) {
-                        handleChatDetails(response?.data?.meta?.chat_room.uuid);
-                        setSingleRoom(response?.data?.meta?.chat_room)
-                    } else {
-                        var data = JSON.stringify({
-                            "message": `I want to know more about ${location?.state.title} as you recommended this.Would you have sometimes to chat?.`,
-                            "chat_room": null,
-                            "user": location?.state?.user
-                        });
-                        let config = {
-                            method: 'post',
-                            url: chatMessagesUrl,
-                            headers: {
-                                'Authorization': `Bearer ${token}`,
-                                'Content-Type': 'application/json'
-                            },
-                            data: data
-                        };
-
-                        axios.request(config)
-                            .then((response) => {
-                                handleChatDetails(response?.data?.data?.chat_room.uuid);
-                                setSingleRoom(response?.data?.data?.chat_room)
-                                setLoaderVisible(false)
-                            })
-                            .catch((error) => {
-                                setLoaderVisible(false)
-                            });
-                    }
-
-                })
-                .catch((error) => {
-                    console.log(error);
-                    setLoaderVisible(false)
+            // handleChatDetails(chat.uuid);
+            // setSingleRoom(chat)
+            if(response?.data?.meta?.chat_room !==null){
+                handleChatDetails(response?.data?.meta?.chat_room.uuid);
+                setSingleRoom(response?.data?.meta?.chat_room)
+            }else{
+                var data = JSON.stringify({
+                    "message": `I want to know more about ${location?.state.title} as you recommended this.Would you have sometimes to chat?.`,
+                    "chat_room": null,
+                    "user": location?.state?.user
                 });
-            setChatDetailsOpner(false)
+                let config = {
+                    method: 'post',
+                    url: chatMessagesUrl,
+                    headers: { 
+                        'Authorization': `Bearer ${token}`, 
+                        'Content-Type': 'application/json'
+                    },
+                    data : data
+                };
+    
+            axios.request(config)
+            .then((response) => {
+                handleChatDetails(response?.data?.data?.chat_room.uuid);
+                setSingleRoom(response?.data?.data?.chat_room)
+                setLoaderVisible(false)
+            })
+            .catch((error) => {
+                setLoaderVisible(false)
+            });
+            }
 
-        }
-    }, [chatRooms])
+          })
+          .catch((error) => {
+            console.log(error);
+            setLoaderVisible(false)
+          });
+          setChatDetailsOpner(false)
+
+    }
+},[chatRooms])
 
 
 
-    //get all members
-    const membersUrl = `${allMembersUrl}/${msDetails.id}`;
-    const getAllMembers = () => {
-        let config = {
-            method: "get",
-            url: membersUrl,
-        };
+//get all members
+  const membersUrl = `${allMembersUrl}/${msDetails.id}`;
+  const getAllMembers = ()=>{
+    let config = {
+      method: "get",
+      url: membersUrl,
+    };
 
     axios
       .request(config)
       .then((response) => {
-        setAllMembers(response.data.data);
+        const members = []
+        if(response.data.data && response.data.data.length>0){
+            response.data.data.forEach(element => {
+                if(element?.status ===1){
+                    members.push(element)
+                }
+            });
+        }
+        setAllMembers(members)
       })
       .catch((error) => {});
   }
@@ -280,9 +299,9 @@ useEffect(()=>{
                                             'aria-labelledby': 'basic-button',
                                         }}>
                                         <MenuItem onClick={chatMenuClose}> Creat a Group </MenuItem>
-                                        <MenuItem onClick={chatMenuClose}> Unread Chats </MenuItem>
+                                        {/* <MenuItem onClick={chatMenuClose}> Unread Chats </MenuItem>
                                         <MenuItem onClick={chatMenuClose}> Archived Chats </MenuItem>
-                                        <MenuItem onClick={chatMenuClose}> Help </MenuItem>
+                                        <MenuItem onClick={chatMenuClose}> Help </MenuItem> */}
                                     </Menu>
                                 </div>
                             </div>

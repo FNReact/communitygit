@@ -126,7 +126,6 @@ const ProfileBody = () => {
 
      //get single job details
    const getMicrositeDetails = ()=>{
-      console.log('hit from profile body')
     setLoaderVisible(true)
     let config = {
         method: 'get',
@@ -227,10 +226,7 @@ useEffect(()=>{
    if(msDetails.meta.community_type ==='housing'){
      setNameLabel('House Number/Name')
    }
- },[])
-
- console.log('parseUser', parseUser)
-   
+ },[])   
 
   return (
      <Fragment>

@@ -71,8 +71,6 @@ const LocalBusinessPage = () => {
       });  
 }
 
-console.log('business', business)
-
   return (
     <Fragment>
       <Grid container spacing={2}>

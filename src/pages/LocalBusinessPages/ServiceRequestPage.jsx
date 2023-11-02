@@ -104,7 +104,6 @@ const ServiceRequestPage = () => {
                   <div className="service_requestBody">
                       <Grid container spacing={2}>
                         {requests && requests !=='undefined' && requests.length>0 && requests.map((data,i)=>{
-                            console.log('data', data)
                             return(
                             <Grid item xs={4} key={data.uuid}>
                                     <a>
