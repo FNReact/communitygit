@@ -79,7 +79,7 @@ const MagazineSeeAllPostsPage = () => {
             <div className="magazine_category_wrapper magazine_details">
               <MagazineTopNavigation />
               <Grid container spacing={2} sx={{ mt: 2 }}>
-                <Grid item xs={8}>
+                <Grid item lg={8} md={12} sm={12} xs={12}>
                   {posts &&
                     posts.length > 0 &&
                     posts.map((data, key) => {
@@ -114,7 +114,7 @@ const MagazineSeeAllPostsPage = () => {
                   }
                 </Grid>
 
-                <Grid item xs={4}>
+                <Grid item lg={4} md={12} sm={12} xs={12}>
                   <MagazineRightSide />
                 </Grid>
               </Grid>

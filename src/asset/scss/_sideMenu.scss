@@ -33,8 +33,11 @@
     position: fixed;
     width: 270px;
     max-height: 100vh;
-    overflow-y: scroll;
+    // overflow-y: scroll;
     padding: 0 10px;
+    &:hover {
+        overflow-y: scroll;
+      }
     // &::-webkit-scrollbar {
     //     display: none;
     // }

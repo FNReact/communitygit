@@ -18,7 +18,7 @@ import { Avatar, AvatarGroup, Box, Rating } from "@mui/material";
 import noImage from '../../asset/image/noImage.jpg'
 
 
-const LocalBusinessItem = ({data,admin, getAllResouces,resource, handleDeleteResource}) => { 
+const LocalBusinessItem = ({ data, admin, getAllResouces, resource, handleDeleteResource }) => {
   const navigate = useNavigate();
   const token = sessionStorage.getItem('token');
   const [anchorEl, setAnchorEl] = useState(null);
@@ -26,7 +26,7 @@ const LocalBusinessItem = ({data,admin, getAllResouces,resource, handleDeleteRes
 
   const [rating, setRating] = useState(0);
 
-  const { msDetails, userDetails,loggedInUser } = useContext(UserContext);
+  const { msDetails, userDetails, loggedInUser } = useContext(UserContext);
 
 
   const dropdown = Boolean(anchorEl);
@@ -55,86 +55,84 @@ const LocalBusinessItem = ({data,admin, getAllResouces,resource, handleDeleteRes
 
 
   return (
-      <>
-        
+    <>
+
       <a>
-     
-      <Menu
-            id="basic-menu"
-            anchorEl={anchorEl}
-            open={dropdown}
-            onClose={handleClose}
-            MenuListProps={{
-              'aria-labelledby': 'basic-button',
-            }} >
-            <div className="dropdown_menuTab">
-                <ul>
-                    <li onClick={(e)=>navigate('/localBusiness-create', {state:{uuid:data.uuid}})}> Edit</li>
-                    <li onClick={(e)=>{handleDeleteResource(data.uuid);handleClose()} }> Delete Community Business </li>
-                </ul>
-            </div>
-          </Menu>
-          
+
+        <Menu
+          id="basic-menu"
+          anchorEl={anchorEl}
+          open={dropdown}
+          onClose={handleClose}
+          MenuListProps={{
+            'aria-labelledby': 'basic-button',
+          }} >
+          <div className="dropdown_menuTab">
+            <ul>
+              <li onClick={(e) => navigate('/localBusiness-create', { state: { uuid: data.uuid } })}> Edit</li>
+              <li onClick={(e) => { handleDeleteResource(data.uuid); handleClose() }}> Delete Community Business </li>
+            </ul>
+          </div>
+        </Menu>
+
         <div className="business_item">
           <div className="business_item_img">
-             <img  src={data?.media[0]?.id?`${baseUrl}/storage/media/${data?.media[0]?.id}/${data?.media[0]?.file_name}`:noImage} alt="" />
-            </div>          
-           <div className="bisiness_item_content">
-           {data && data.type &&  <div className="business_type">{data.type}</div>}
-          {data && data.title &&  <div className="resource_title" onClick={(e)=>navigate('/localBusiness-details', {state:{uuid:data.uuid,userRecommended:userRecommended}})}>{data.title}</div>}
-          {data && data.details && <div className="business_item_details" onClick={(e)=>navigate('/localBusiness-details', {state:{uuid:data.uuid,userRecommended:userRecommended}})}>{parser(data.details.slice(0,300))}</div>}
+            <img src={data?.media[0]?.id ? `${baseUrl}/storage/media/${data?.media[0]?.id}/${data?.media[0]?.file_name}` : noImage} alt="" />
+          </div>
+          <div className="bisiness_item_content">
+            {data && data.type && <div className="business_type">{data.type}</div>}
+            {data && data.title && <div className="resource_title" onClick={(e) => navigate('/localBusiness-details', { state: { uuid: data.uuid, userRecommended: userRecommended } })}>{data.title}</div>}
+            {data && data.details && <div className="business_item_details" onClick={(e) => navigate('/localBusiness-details', { state: { uuid: data.uuid, userRecommended: userRecommended } })}>{parser(data.details.slice(0, 300))}</div>}
 
-          {data && data?.meta?.phone &&  <Box className="business_type">Phone: {data?.meta?.phone}</Box>}
-          {data && data?.meta?.email &&  <Box sx={{ml:1}} className="business_type">Email : {data?.meta?.email}</Box>}
-          <Box sx={{mt:1}}>
-            {data && data?.meta?.address &&  <Box className="business_type">Address : {data?.meta?.address}</Box>}
-            {data && data?.meta?.location &&  <Box sx={{ml:1}} className="business_type">Location : {data?.meta?.location}</Box>}
-          </Box>
-         
+            <div className="b_type_list">
+                 {data && data?.meta?.phone && <span className="business_d_type">Phone: {data?.meta?.phone}</span>}
+                 {data && data?.meta?.email && <span className="business_d_type">Email : {data?.meta?.email}</span>}
+                 {data && data?.meta?.address && <span className="business_d_type">Address : {data?.meta?.address}</span>}
+                 {data && data?.meta?.location && <span className="business_d_type">Location : {data?.meta?.location}</span>}
+            </div>
 
-
-          {((userDetails.id === msDetails.user_id || loggedInUser.user_type==="admin") || (userDetails.id === data?.user?.id)) && 
+            {((userDetails.id === msDetails.user_id || loggedInUser.user_type === "admin") || (userDetails.id === data?.user?.id)) &&
               <div className="admin_dropdown"
                 id="demo-positioned-button"
                 aria-controls={dropdown ? 'demo-positioned-menu' : undefined}
                 aria-haspopup="true"
                 aria-expanded={dropdown ? 'true' : undefined}
                 onClick={handleClick}>
-              <MoreVertIcon/>
-            </div>
-            }
-             {data?.recommendations && data.recommendations.length > 0 && (
-          <div className="recomment_overview">
-            <AvatarGroup max={3}>
-              {data.recommendations.map((data, key) => {
-                return (
-                  <>
-                    <Avatar
-                      key={data.uuid}
-                      alt={data?.user?.name}
-                      src={`${baseUrl}/${data?.user?.avatar}`}
-                    />
-                  </>
-                );
-              })}
-            </AvatarGroup>
-              <div className="star_mark">
-                <Box
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                  }}
-                >
-                  <Rating name="hover-feedback" value={rating} readOnly />
-                </Box>
+                <MoreVertIcon />
               </div>
+            }
+            {data?.recommendations && data.recommendations.length > 0 && (
+              <div className="recomment_overview">
+                <AvatarGroup max={3}>
+                  {data.recommendations.map((data, key) => {
+                    return (
+                      <>
+                        <Avatar
+                          key={data.uuid}
+                          alt={data?.user?.name}
+                          src={`${baseUrl}/${data?.user?.avatar}`}
+                        />
+                      </>
+                    );
+                  })}
+                </AvatarGroup>
+                <div className="star_mark">
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                    }}
+                  >
+                    <Rating name="hover-feedback" value={rating} readOnly />
+                  </Box>
+                </div>
+              </div>
+            )}
           </div>
-        )}
-           </div>
-         </div>
+        </div>
       </a>
       <ToastContainer />
-      </>
+    </>
   );
 };
 
