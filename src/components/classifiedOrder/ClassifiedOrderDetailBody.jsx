@@ -101,7 +101,7 @@ const ClassifiedOrderDetailBody = React.forwardRef((props, ref)=>{
                            </div>
                         </div>
                       </Grid>
-                      <Grid item lg={12} xs={6}> 
+                      <Grid item lg={12} xs={12}> 
                         <div className="info_item">
                            <div className="info_left">
                               Phone 
@@ -111,7 +111,7 @@ const ClassifiedOrderDetailBody = React.forwardRef((props, ref)=>{
                            </div>
                         </div>
                       </Grid>
-                      <Grid item lg={12} xs={6}> 
+                      <Grid item lg={12} xs={12}> 
                         <div className="info_item">
                            <div className="info_left">
                               E-mail 
@@ -121,7 +121,7 @@ const ClassifiedOrderDetailBody = React.forwardRef((props, ref)=>{
                            </div>
                         </div>
                       </Grid>
-                      <Grid item lg={12} xs={6}> 
+                      <Grid item lg={12} xs={12}> 
                         <div className="info_item">
                            <div className="info_left">
                               Quantity 

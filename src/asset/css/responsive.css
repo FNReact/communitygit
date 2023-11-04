@@ -1687,7 +1687,6 @@
 
     .magazine .magzine_slider_content .mag_content .content_info h2 {
         font-size: 18px;
-        padding: 8px 80px;
     }
 
     .magazine .sticky_section .sticky_wrapper .sticky_wrapper_main {
@@ -1699,13 +1698,14 @@
         display: list-item;
         list-style: none;
         height: 100px;
+        margin-top: 15px;
     }
 
     .magazine_top .top_left {
         display: flex;
         justify-items: center;
         justify-content: end;
-        margin-top: 12px;
+        margin-top: 15px;
     }
 
     .magazine_nav .mag_search {

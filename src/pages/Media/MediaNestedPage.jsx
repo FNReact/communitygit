@@ -1,4 +1,4 @@
-import { Box, Button, Grid } from "@mui/material";
+import { Box, Button, Grid, Tooltip } from "@mui/material";
 import React, { Fragment, useEffect, useState } from "react";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
@@ -16,6 +16,8 @@ import { notifyError, notifySuccess } from "../../utils/Toast";
 import DynamicUploader from "../../components/media/DynamicUploader";
 import { ToastContainer } from "react-toastify";
 import MainLoader from "../../components/PageLoadEffects/MainLoader";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+
 
 const MediaNestedPage = (props) => {
   const location = useLocation();
@@ -283,10 +285,16 @@ useEffect(() => {
 
     return (
       <Fragment>
-        <Grid container spacing={2} sx={{mt:0.5}}>
-         <Grid item xs={3}></Grid>
-         <Grid item xs={9} sx={{mt:5}}>
+        <Grid container spacing={2}>
+         <Grid item lg={3} md={12} sm={12} xs={12}></Grid>
+         <Grid item lg={9} md={12} sm={12} xs={12}>
          <div className="media_content_body">
+         <Tooltip title="Back" >
+                 <div className="backArrow" onClick={(e)=>{navigate(-1)}}>
+                    <ArrowBackIcon/>
+                 </div> 
+               </Tooltip>
+
           <div className="my_files_navigate">
             <div className="navigate_part_one">
               <div className="navigate_Back" onClick={(e) => navigate(-1)}>
@@ -329,7 +337,7 @@ useEffect(() => {
                         if (secondFolder !== undefined && folders.indexOf(secondFolder) === -1) {
                           folders.push(secondFolder);
                           return (
-                            <Grid item lg={4} md={4} sm={6} xs={6}>
+                            <Grid item lg={4} md={4} sm={10} xs={10}>
                               <FolderItem
                                 name="Lemmesay Images"
                                 icon="folder"

@@ -46,108 +46,108 @@ const ChatBody = ({ chatRooms, setChatRooms, getAllChatRooms }) => {
 
     const [chatDetailsOpner, setChatDetailsOpner] = useState(true)
 
-// set default chat
-useEffect(()=>{
-    if(location?.state ===null && chatRooms && chatRooms?.data?.length>0 && chatDetailsOpner ===true && allMembers && allMembers.length>1){
+    // set default chat
+    useEffect(() => {
+        if (location?.state === null && chatRooms && chatRooms?.data?.length > 0 && chatDetailsOpner === true && allMembers && allMembers.length > 1) {
 
-        const findsMemberChats = [];
-        chatRooms?.data.forEach(chat => {
-            allMembers.forEach(member => {
-                if(member?.user?.uuid === chat?.member?.uuid){
-                    findsMemberChats.push(chat)
-                }
-            });
-        });
-
-        if(findsMemberChats && findsMemberChats.length>0){
-            handleChatDetails(findsMemberChats[0].uuid);
-            setSingleRoom(findsMemberChats[0])
-            setChatDetailsOpner(false)
-        }
-    }
-    if(location?.state !==null && chatDetailsOpner ===true){
-        setLoaderVisible(true)
-        let config = {
-            method: 'get',
-            url: `${chatMessagesUrl}?user=${location?.state?.user?.uuid}`,
-            headers: { 
-              'Authorization': `Bearer ${token}`, 
-            }
-          };
-          
-          axios.request(config)
-          .then((response) => {
-
-            // handleChatDetails(chat.uuid);
-            // setSingleRoom(chat)
-            if(response?.data?.meta?.chat_room !==null){
-                handleChatDetails(response?.data?.meta?.chat_room.uuid);
-                setSingleRoom(response?.data?.meta?.chat_room)
-            }else{
-                var data = JSON.stringify({
-                    "message": `I want to know more about ${location?.state.title} as you recommended this.Would you have sometimes to chat?.`,
-                    "chat_room": null,
-                    "user": location?.state?.user
+            const findsMemberChats = [];
+            chatRooms?.data.forEach(chat => {
+                allMembers.forEach(member => {
+                    if (member?.user?.uuid === chat?.member?.uuid) {
+                        findsMemberChats.push(chat)
+                    }
                 });
-                let config = {
-                    method: 'post',
-                    url: chatMessagesUrl,
-                    headers: { 
-                        'Authorization': `Bearer ${token}`, 
-                        'Content-Type': 'application/json'
-                    },
-                    data : data
-                };
-    
-            axios.request(config)
-            .then((response) => {
-                handleChatDetails(response?.data?.data?.chat_room.uuid);
-                setSingleRoom(response?.data?.data?.chat_room)
-                setLoaderVisible(false)
-            })
-            .catch((error) => {
-                setLoaderVisible(false)
             });
+
+            if (findsMemberChats && findsMemberChats.length > 0) {
+                handleChatDetails(findsMemberChats[0].uuid);
+                setSingleRoom(findsMemberChats[0])
+                setChatDetailsOpner(false)
             }
-
-          })
-          .catch((error) => {
-            console.log(error);
-            setLoaderVisible(false)
-          });
-          setChatDetailsOpner(false)
-
-    }
-},[chatRooms])
-
-
-
-//get all members
-  const membersUrl = `${allMembersUrl}/${msDetails.id}`;
-  const getAllMembers = ()=>{
-    let config = {
-      method: "get",
-      url: membersUrl,
-    };
-
-    axios
-      .request(config)
-      .then((response) => {
-        const members = []
-        if(response.data.data && response.data.data.length>0){
-            response.data.data.forEach(element => {
-                if(element?.status ===1){
-                    members.push(element)
-                }
-            });
         }
-        setAllMembers(members)
-      })
-      .catch((error) => {});
-  }
-  useEffect(() => {
-    getAllMembers()
-  }, []);
+        if (location?.state !== null && chatDetailsOpner === true) {
+            setLoaderVisible(true)
+            let config = {
+                method: 'get',
+                url: `${chatMessagesUrl}?user=${location?.state?.user?.uuid}`,
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                }
+            };
+
+            axios.request(config)
+                .then((response) => {
+
+                    // handleChatDetails(chat.uuid);
+                    // setSingleRoom(chat)
+                    if (response?.data?.meta?.chat_room !== null) {
+                        handleChatDetails(response?.data?.meta?.chat_room.uuid);
+                        setSingleRoom(response?.data?.meta?.chat_room)
+                    } else {
+                        var data = JSON.stringify({
+                            "message": `I want to know more about ${location?.state.title} as you recommended this.Would you have sometimes to chat?.`,
+                            "chat_room": null,
+                            "user": location?.state?.user
+                        });
+                        let config = {
+                            method: 'post',
+                            url: chatMessagesUrl,
+                            headers: {
+                                'Authorization': `Bearer ${token}`,
+                                'Content-Type': 'application/json'
+                            },
+                            data: data
+                        };
+
+                        axios.request(config)
+                            .then((response) => {
+                                handleChatDetails(response?.data?.data?.chat_room.uuid);
+                                setSingleRoom(response?.data?.data?.chat_room)
+                                setLoaderVisible(false)
+                            })
+                            .catch((error) => {
+                                setLoaderVisible(false)
+                            });
+                    }
+
+                })
+                .catch((error) => {
+                    console.log(error);
+                    setLoaderVisible(false)
+                });
+            setChatDetailsOpner(false)
+
+        }
+    }, [chatRooms])
+
+
+
+    //get all members
+    const membersUrl = `${allMembersUrl}/${msDetails.id}`;
+    const getAllMembers = () => {
+        let config = {
+            method: "get",
+            url: membersUrl,
+        };
+
+        axios
+            .request(config)
+            .then((response) => {
+                const members = []
+                if (response.data.data && response.data.data.length > 0) {
+                    response.data.data.forEach(element => {
+                        if (element?.status === 1) {
+                            members.push(element)
+                        }
+                    });
+                }
+                setAllMembers(members)
+            })
+            .catch((error) => { });
+    }
+    useEffect(() => {
+        getAllMembers()
+    }, []);
 
     // handle handleChatDetails
     const handleChatDetails = (roomUuid) => {
@@ -332,7 +332,7 @@ useEffect(()=>{
                                                         {/* <img src={`${baseUrl}/${member?.user?.avatar}`} alt={member?.user?.name} /> */}
                                                         <Avatar alt={member?.user?.name} src={`${baseUrl}/${member?.user?.avatar}`} />
 
-                                                        <div className="active_btn"></div>
+                                                        {/* <div className="active_btn"></div> */}
                                                     </div>
                                                 </SwiperSlide>
                                             )
@@ -342,44 +342,44 @@ useEffect(()=>{
                             </div>
                         </div>
                         <div className="chat_list">
-                                {storeMembers
-                                    && storeMembers.length > 0
-                                    && storeMembers.map((chat, i) => {
-                                        const newTime = new Date(chat?.updated_at);
+                            {storeMembers
+                                && storeMembers.length > 0
+                                && storeMembers.map((chat, i) => {
+                                    const newTime = new Date(chat?.updated_at);
 
-                                        // Add the GMT offset to the time
-                                        const updateTime = newTime.setHours((newTime.getHours()) + (parseInt(gmtOffset)));
-                                        // let diffTime = Math.abs(new Date().valueOf() - new Date(chat.created_at).valueOf());
-                                        let diffTime = Math.abs(new Date(updateTime).valueOf() - new Date().valueOf());
-                                        let days = diffTime / (24 * 60 * 60 * 1000);
-                                        let hours = (days % 1) * 24;
-                                        let minutes = (hours % 1) * 60;
-                                        let secs = (minutes % 1) * 60;
-                                        [days, hours, minutes, secs] = [Math.floor(days), Math.floor(hours), Math.floor(minutes), Math.floor(secs)]
-                                        var fullTime;
+                                    // Add the GMT offset to the time
+                                    const updateTime = newTime.setHours((newTime.getHours()) + (parseInt(gmtOffset)));
+                                    // let diffTime = Math.abs(new Date().valueOf() - new Date(chat.created_at).valueOf());
+                                    let diffTime = Math.abs(new Date(updateTime).valueOf() - new Date().valueOf());
+                                    let days = diffTime / (24 * 60 * 60 * 1000);
+                                    let hours = (days % 1) * 24;
+                                    let minutes = (hours % 1) * 60;
+                                    let secs = (minutes % 1) * 60;
+                                    [days, hours, minutes, secs] = [Math.floor(days), Math.floor(hours), Math.floor(minutes), Math.floor(secs)]
+                                    var fullTime;
 
-                                        if (secs !== 0) {
-                                            fullTime = secs + 's';
-                                        }
-                                        if (minutes !== 0 && secs !== 0) {
-                                            fullTime = minutes + 'm' + " " + secs + 's';
-                                        }
-                                        if (hours !== 0 && minutes !== 0 && secs !== 0) {
-                                            fullTime = hours + 'h' + " " + minutes + 'm' + " " + secs + 's';
-                                        }
-                                        if (days !== 0 && hours !== 0 && minutes !== 0 && secs !== 0) {
-                                            fullTime = days + 'd' + " " + hours + 'h' + " " + minutes + 'm' + " " + secs + 's';
-                                        }
+                                    if (secs !== 0) {
+                                        fullTime = secs + 's';
+                                    }
+                                    if (minutes !== 0 && secs !== 0) {
+                                        fullTime = minutes + 'm' + " " + secs + 's';
+                                    }
+                                    if (hours !== 0 && minutes !== 0 && secs !== 0) {
+                                        fullTime = hours + 'h' + " " + minutes + 'm' + " " + secs + 's';
+                                    }
+                                    if (days !== 0 && hours !== 0 && minutes !== 0 && secs !== 0) {
+                                        fullTime = days + 'd' + " " + hours + 'h' + " " + minutes + 'm' + " " + secs + 's';
+                                    }
 
-                                        return (
-                                            <div>
-                                            <div className="chat_list_item active" key={chat.uuid} onClick={(e) => { handleChatDetails(chat.uuid); setSingleRoom(chat) }}>
-                                                 <div className="profile">
-                                                        <Avatar className="profile_avatar" alt={chat?.name} src={chat?.member?.profile?.avatar !== 'null' ? `${baseUrl}/${chat?.member?.profile?.avatar}` : "/static/images/avatar/1.jpg"} />
-                                                        {/* <div className="massage_count">
+                                    return (
+                                        <div>
+                                            <div className="chat_list_item" key={chat.uuid} onClick={(e) => { handleChatDetails(chat.uuid); setSingleRoom(chat) }}>
+                                                <div className="profile">
+                                                    <Avatar className="profile_avatar" alt={chat?.name} src={chat?.member?.profile?.avatar !== 'null' ? `${baseUrl}/${chat?.member?.profile?.avatar}` : "/static/images/avatar/1.jpg"} />
+                                                    {/* <div className="massage_count">
                                                                 10+
                                                             </div> */}
-                                                    </div>
+                                                </div>
                                                 <div className="chat_overview">
                                                     <div className="profile-name">{chat?.name && chat?.name.length > 20 ? `${chat.name.slice(0, 20)}...` : chat.name}</div>
                                                     {chat?.message !== 'chat_room_create' &&
@@ -396,10 +396,10 @@ useEffect(()=>{
                                                     <i><FontAwesomeIcon icon={faCircleCheck} /></i>
                                                 </div>
                                             </div>
-                                            </div>
+                                        </div>
 
-                                        )
-                                    })}
+                                    )
+                                })}
                         </div>
                     </div>
                     {chatRoomDetails === null && <Box display='flex' justifyContent='center' justifyItems='center'>

@@ -148,7 +148,7 @@
                 position: relative;
                 border-radius: 8px;
                 margin-bottom: 5px;
-                background-color: rgb(214 214 217 / 27%);
+                background-color: rgba(214, 214, 217, 0.339);
 
                 &:hover {
                     background-color: #03288d1c;
@@ -320,22 +320,11 @@
             position: relative;
             z-index: 1;
             // background-color: #C6C6C6;
-            &::after{
-                position: absolute;
-                content: '';
-                height: 100%;
-                width: 100%;
-                top: 0;
-                left: 0;
-                background-image: url(../image/pageBg.webp);
-                background-repeat: repeat;
-                background-position: center;
-                opacity: .5;
-                z-index: -1;
-            }
-            
-
-
+            background-image: url(../image/sddd.png);
+            background-repeat: repeat;
+            background-position: center;
+            // background-size: cover;
+            // background-color: #e9e6e6;
             .chat_massage_item {
                 width: 100%;
                 display: flex;
@@ -654,7 +643,7 @@
             bottom: 0;
             left: 0;
             padding: 5px 0 10px 0;
-            z-index: 3;
+            z-index: 1;
 
             .attachment_content {
                 padding: 0 10px 8px 20px;
@@ -930,4 +919,18 @@
     position: absolute;
     bottom: 60px !important;
     left: 20px !important; 
+}
+
+.chat_group_body{
+    width: 480px;
+    min-height: 60vh;
+    position: relative;
+    z-index: 1300 !important; 
+    .search_user{
+        position: relative;
+    }
+}
+
+.chat_group_modal{
+    z-index: 2 !important;
 }

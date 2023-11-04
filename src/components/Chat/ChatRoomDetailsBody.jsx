@@ -1,8 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react'
-import L1 from '../../asset/image/profile2.png';
-import test1 from '../../asset/image/com.jpg';
-import test2 from '../../asset/image/Add.mp4';
-import test3 from '../../asset/image/test1.png';
 import { faArrowRight, faBoxArchive, faCircleCheck, faCircleUp, faMessage, faPlusSquare, faReply, faTrash, faUser, faUserGroup, faVolumeXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
@@ -13,7 +9,7 @@ import SendIcon from '@mui/icons-material/Send';
 import CallIcon from '@mui/icons-material/Call';
 import VideocamIcon from '@mui/icons-material/Videocam';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import { Avatar, TextareaAutosize } from '@mui/material';
+import { Avatar, Grid, TextField, TextareaAutosize } from '@mui/material';
 import { styled } from '@mui/system';
 import { baseUrl, chatMessagesUrl, chatRoomUrl } from '../../api/Api';
 import { UserContext } from '../../utils/UserContext';
@@ -26,7 +22,23 @@ import MainLoader from '../PageLoadEffects/MainLoader';
 import Pusher from 'pusher-js';
 
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 
+
+import Checkbox from '@mui/material/Checkbox';
+import Autocomplete from '@mui/material/Autocomplete';
+import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
+import CheckBoxIcon from '@mui/icons-material/CheckBox';
+
+const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
+const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
 
 
@@ -194,44 +206,59 @@ const ChatRoomDetailsBody = ({ chatRoomDetails, singleRoom, setChatRoomDetails, 
         }
     }, [])
 
+    // Chat Group
+    const [chatGroup, setchatGroup] = useState(false);
+    const theme = useTheme();
+    const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
 
-  return (
-    <>
-        {loaderVisible ===true && <MainLoader/>}
-          <div className="chatter_box_container">
-                        <div className="fixed_profilr_header">
-                            <div className="ct_left">
-                                <div className="profile">
-                                {chatRoomDetails?.meta?.chat_room?.member?.profile?.avatar? 
-                                    <img src={`${baseUrl}/${chatRoomDetails?.meta?.chat_room?.member?.profile?.avatar}`} alt={chatRoomDetails?.meta?.name} />
-                                    :<Avatar alt={chatRoomDetails?.meta?.chat_room?.name} src="/static/images/avatar/1.jpg"/>}
-                                </div>
-                                <div className="name_T">
-                                    <div className="name"> {chatRoomDetails?.meta?.chat_room?.name}</div>
-                                    <div className="active_status">{hearerTime !==null && hearerTime}</div>
-                                </div>
+    const handleClickOpenChatGroup = () => {
+        setchatGroup(true);
+    };
+
+    const handleCloseChatGroup = () => {
+        setchatGroup(false);
+    };
+
+    const top100Films = [];
+
+
+    return (
+        <>
+            {loaderVisible === true && <MainLoader />}
+            <div className="chatter_box_container">
+                <div className="fixed_profilr_header">
+                    <div className="ct_left">
+                        <div className="profile">
+                            {chatRoomDetails?.meta?.chat_room?.member?.profile?.avatar ?
+                                <img src={`${baseUrl}/${chatRoomDetails?.meta?.chat_room?.member?.profile?.avatar}`} alt={chatRoomDetails?.meta?.name} />
+                                : <Avatar alt={chatRoomDetails?.meta?.chat_room?.name} src="/static/images/avatar/1.jpg" />}
+                        </div>
+                        <div className="name_T">
+                            <div className="name"> {chatRoomDetails?.meta?.chat_room?.name}</div>
+                            <div className="active_status">{hearerTime !== null && hearerTime}</div>
+                        </div>
+                    </div>
+                    <div className="ct_right">
+                        <div className="chat_title_dashed">
+                            <div className="dashed_btn" onClick={handleClickOpenChatGroup}>
+                                <GroupAddIcon />
                             </div>
-                            <div className="ct_right">
-                                <div className="chat_title_dashed">
-                                    <div className="dashed_btn">
-                                        <GroupAddIcon />
-                                    </div>
-                                    <div className="dashed_btn">
-                                        <CallIcon />
-                                    </div>
-                                    <div className="dashed_btn">
-                                        <VideocamIcon />
-                                    </div>
-                                    <div className="chat_D">
-                                        <div className="info_btn">
-                                            <MoreVertIcon />
-                                        </div>
-                                    </div>
+                            <div className="dashed_btn">
+                                <CallIcon />
+                            </div>
+                            <div className="dashed_btn">
+                                <VideocamIcon />
+                            </div>
+                            <div className="chat_D">
+                                <div className="info_btn">
+                                    <MoreVertIcon />
                                 </div>
                             </div>
                         </div>
-                        <div className="chat_body">
-                           {chatRoomDetails && chatRoomDetails?.data && chatRoomDetails.data.length>0 && chatRoomDetails.data.map((data, i)=>{
+                    </div>
+                </div>
+                <div className="chat_body">
+                    {chatRoomDetails && chatRoomDetails?.data && chatRoomDetails.data.length > 0 && chatRoomDetails.data.map((data, i) => {
 
                         const newTime = new Date(data?.sent_at);
 
@@ -370,8 +397,6 @@ const ChatRoomDetailsBody = ({ chatRoomDetails, singleRoom, setChatRoomDetails, 
                             </>
                         )
                     })}
-
-
                 </div>
                 <div className="chatting_Input_container">
                     <div className="attachment_content">
@@ -447,8 +472,74 @@ const ChatRoomDetailsBody = ({ chatRoomDetails, singleRoom, setChatRoomDetails, 
                     </div>
                 </div>
             </div>
+
+            
+
+
+            {/* Chat Group Create Modal */}
+            <Dialog
+                fullScreen={fullScreen}
+                open={chatGroup}
+                onClose={handleCloseChatGroup}
+                aria-labelledby="responsive-dialog-title"
+                className='chat_group_modal'
+            >
+                <DialogTitle id="responsive-dialog-title">
+                    {"Create Your Chat Group"}
+                </DialogTitle>
+                <DialogContent>
+                    <div className="chat_group_body">
+                        <Grid container spacing={2}>
+                            <Grid item lg={12} md={12} sm={12} xs={12}>
+                                <TextField label="Group Name" variant="filled" fullWidth focused />
+                            </Grid>
+                            <Grid item lg={12} md={12} sm={12} xs={12}>
+                                <div className="search_user">
+                                <Autocomplete
+                                    multiple
+                                    id="checkboxes-tags-demo"
+                                    options={top100Films}
+                                    disableCloseOnSelect
+                                    getOptionLabel={(option) => option.title}
+                                    renderOption={(props, option, { selected }) => (
+                                        <li {...props}>
+                                            <Checkbox
+                                                icon={icon}
+                                                checkedIcon={checkedIcon}
+                                                style={{ marginRight: 8 }}
+                                                checked={selected}
+                                            />
+                                            {option.title}
+                                        </li>
+                                    )}
+                                    renderInput={(params) => (
+                                        <TextField {...params} label="Add Friends" placeholder="Search " />
+                                    )}
+                                />
+                                </div>
+                            </Grid>
+                        </Grid>
+                    </div>
+                </DialogContent>
+                <DialogActions>
+                    <Button autoFocus onClick={handleCloseChatGroup}>
+                        Cancel
+                    </Button>
+                    <Button  variant="contained" onClick={handleCloseChatGroup}>
+                        Submit
+                    </Button>
+                </DialogActions>
+            </Dialog>
+
         </>
     )
 }
 
+
+
+
+
+
+
 export default ChatRoomDetailsBody
+

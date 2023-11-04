@@ -102,8 +102,8 @@ const MagazineTopNavigation = () => {
     <>
       {loaderVisible === true && <MainLoader />}
 
-      <div className="magazine_top" style={{ 
-        backgroundImage: `url("${baseUrl}/${msDetails?.meta?.community_settings?.magazine_banner}")` 
+      <div className="magazine_top" style={{
+        backgroundImage: msDetails?.meta?.community_settings?.magazine_banner_enable ==='1'?`url("${baseUrl}/${msDetails?.meta?.community_settings?.magazine_banner}")`:'' 
       }}>
         <Grid container spacing={2}>
            <Grid item lg={4} md={4} sm={4} xs={4}>

@@ -391,6 +391,7 @@
       display: inline-block;
       &:hover a {
         width: 100%;
+
       }
       &:hover .sub_down {
         top: 38px;
@@ -403,6 +404,9 @@
         font-size: 15px;
         color: #333;
         font-weight: 400;
+        &:hover{
+          color: $primaryColor;
+        }
         span {
           padding-right: 10px;
           font-size: 18px;

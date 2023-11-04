@@ -220,13 +220,13 @@ useEffect(()=>{
                         </div>
                       </Link>
                     </Tooltip>
-                    <Link >
+                    {/* <Link >
                         <div className="header_item_list">
                           <Badge badgeContent={4} color="primary">
                             <NotificationsIcon color="action" />
                           </Badge>
                         </div>
-                      </Link>
+                      </Link> */}
                     <Tooltip title="Jobs">
                       <Link to="/job">
                         <div className="header_item_list">
