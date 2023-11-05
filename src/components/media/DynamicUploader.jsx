@@ -205,6 +205,7 @@ const DynamicUploader = ({path,totalSize, getAllMedia, collectionName,position})
         open={openModal}
         onClose={handleCloseModal}
         aria-labelledby="responsive-dialog-title"
+        className='Media_dilouge'
       >  
         <DialogTitle id="responsive-dialog-title">
           <IconButton
@@ -220,7 +221,7 @@ const DynamicUploader = ({path,totalSize, getAllMedia, collectionName,position})
               <CloseIcon />
             </IconButton>
         </DialogTitle>
-        <DialogContent>
+        <DialogContent  className='mob_media_dialouge'>
           <div className="uploader_contianer">
           <TextField sx={{mb:3, display: `${displayInput}`}} label="Folder Name" variant="outlined" onChange={((e)=>setFolderName(e.target.value))} />
           <div className="file_selecter">

@@ -192,6 +192,7 @@ const Uploader = ({totalSize, getAllMedia}) => {
       <Dialog
         fullScreen={fullScreen}
         open={openModal}
+        className='Media_dilouge'
         onClose={ handleCloseModal}
         aria-labelledby="responsive-dialog-title" >
          <DialogTitle sx={{ m: 0, p: 2 }} >
@@ -208,7 +209,7 @@ const Uploader = ({totalSize, getAllMedia}) => {
               <CloseIcon />
             </IconButton>
         </DialogTitle>
-        <DialogContent>
+        <DialogContent className='mob_media_dialouge'>
          <div className="uploader_contianer">
           <TextField className='folder_name_input' sx={{mb:3, display: `${displayInput}`}} label="Folder Name" variant="outlined" onChange={((e)=>setFolderName(e.target.value))} />
            <div className="file_selecter">

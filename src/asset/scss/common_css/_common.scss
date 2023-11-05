@@ -20,25 +20,26 @@ body{
 }
 html{ 
   background-color: #f0f0f0 !important; 
+  overflow-y: overlay;
 }
-::-webkit-scrollbar {
-  width: 7px !important;
-}
-::-webkit-scrollbar:horizontal{
-  height: 4px;
-  background: rgba(199, 196, 196, 0.62); 
-}
+// ::-webkit-scrollbar {
+//   width: 7px !important;
+// }
+// ::-webkit-scrollbar:horizontal{
+//   height: 4px;
+//   background: rgba(199, 196, 196, 0.62); 
+// }
 /* Handle */
-::-webkit-scrollbar-thumb {
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
-  background: rgba(199, 196, 196, 0.62); 
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
-}
-::-webkit-scrollbar-thumb:window-inactive {
-  background: rgba(139, 138, 138, 0.771); 
+// ::-webkit-scrollbar-thumb {
+//   -webkit-border-radius: 10px;
+//   border-radius: 10px;
+//   background: rgba(199, 196, 196, 0.62); 
+//   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+// }
+// ::-webkit-scrollbar-thumb:window-inactive {
+//   background: rgba(139, 138, 138, 0.771); 
 
-}
+// }
 a {
   text-decoration: none !important;
 }
@@ -270,9 +271,9 @@ p{
   max-width: 1280px !important;
 }
 .sun-editor .se-toolbar{
-  z-index: auto !important;
+  z-index: auto !important; 
 }
 
-::-webkit-scrollbar {
-  width: 10px;
-}
+// ::-webkit-scrollbar {
+//   width: 10px;
+// }

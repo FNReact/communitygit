@@ -270,7 +270,7 @@ const CommunityInfoPublic = ({ msPublicDetails, memberStatus }) => {
         <div className="com_info_body">
           <div className="com_details">{details ? parse(details) : ""}</div>
           <Grid container spacing={2}>
-            <Grid item xs={8}>
+            <Grid item lg={8} xs={12}>
               <div className="com_info_wrap">
                 {msPublicDetails?.entity_email && (
                   <div className="info_item">

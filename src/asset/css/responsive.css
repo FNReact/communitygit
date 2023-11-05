@@ -1,5 +1,22 @@
-@media (min-width: 280px) and (max-width: 399.98px) {
-
+@media (min-width: 200px) and (max-width: 399.98px) {
+    .creatCommuinity_form_body .creatCommuinity_wrapper .creatCommuinity_wrap form .form_control {
+        height: 45px;
+    }
+    .my_files_navigate .navigate_part_one .navigate_title {
+        display: none;
+    }
+    .event_details_body .event_details_top .event_info .event_title {
+        font-size: 20px;
+        line-height: 28px;
+        padding-top: 15px;
+    }
+    .event_details_body .event_details_top .event_info .eventTime {
+        display: list-item;
+        list-style: none;
+    }
+    .com_info_wrap {
+        padding: 19px 10px 20px 10px;
+    }
     .chat {
         width: 100%;
         border-radius: 13px;
@@ -220,11 +237,11 @@
     }
 
     .uploader_contianer .folder_name_input .css-1x5jdmq {
-        min-width: 260px !important;
+        min-width: 220px !important;
     }
 
     .file_selecter .css-5t8t4o {
-        width: 280px;
+        width: 240px;
     }
 
     .matrimonial_card_details .information_table .gallery_wrap .ant-image img {
@@ -531,7 +548,8 @@
     }
 
     .uploader_dial {
-        bottom: 140px !important;
+        bottom: 100px !important;
+        right: 20px  !important;
     }
 
     .chat_box_icon .chat_button span {
@@ -722,8 +740,8 @@
     }
 
     .communityInfo_wrapper .community_top_info .com_logo img {
-        height: 85px;
-        width: 85px;
+        height: 80px;
+        width: 80px;
     }
 
     .header .header_content .header_item_wrapper .header_item_list .MuiSvgIcon-root {
@@ -973,7 +991,7 @@
 
     .creatCommuinity_wrapper {
         margin: 110px 0 40px 0;
-        padding: 60px 30px;
+        padding: 30px 15px;
     }
 
     /* Inside Commuinity */
@@ -1033,11 +1051,18 @@
         height: 38px;
     }
 
-    .MuiDialog-paper {
+    /* .MuiDialog-paper {
         border-radius: 0px !important;
         overflow: visible !important;
-    }
 
+    } */
+    .mob_media_dialouge{
+        padding: 5px !important;
+    }
+    .Media_dilouge .MuiPaper-root{
+      margin: 10px !important;
+      max-width: 280px !important;
+    }
     .upload_input_area .Upload_textarea {
         width: 100%;
         border: none !important;
@@ -1193,7 +1218,7 @@
 
     .mamber .mamber_wrapper .memberItem {
         padding: 14px 8px;
-        height: 235px;
+        height: auto;
     }
 
     .mamber_hedingSIde .headingSection {
@@ -1338,8 +1363,8 @@
     }
 
     .mamber .mamber_wrapper .memberItem .user_info .user_name {
-        font-size: 15px;
-        padding: 2px 0 0 0;
+        font-size: 16px;
+        padding: 2px 0 4px 0;
     }
 
     .section_headear h4 {
@@ -1348,6 +1373,13 @@
 
 }
 
+
+/* Small None */
+@media (min-width: 200px) and (max-width: 309.98px) {
+    .mamber .mamber_wrapper .memberItem .user_info .join_date {
+        display: none;
+    }
+}
 
 @media (min-width: 400px) and (max-width: 899.98px) {
     .chat .chatter_box_container .chat_body::after {
