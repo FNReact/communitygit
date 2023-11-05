@@ -50,13 +50,13 @@ const ChatPage = () => {
     // Listen for online/offline status updates
     socket.on((data) => {
       setOnlineUsers(data.onlineUsers);
-      console.log('socket data', data)
+      // console.log('socket data', data)
     });
 
     // client-side
   socket.on("connect", (data) => {
     console.log(socket.id); // x8WIv7-mJelg7on_ALbx
-    console.log('user-status', data)
+    // console.log('user-status', data)
   });
 
     // Listen for incoming notifications
@@ -73,7 +73,7 @@ const ChatPage = () => {
   // console.log('onlineUsers', onlineUsers)
   // console.log('notifications', notifications)
 
-  console.log('socket info', socket)
+  // console.log('socket info', socket)
 
 
   useEffect(() => {
@@ -101,7 +101,6 @@ const ChatPage = () => {
         </Grid>
     </Fragment>
   )
-
 }
 
 export default ChatPage;

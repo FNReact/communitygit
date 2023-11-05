@@ -36,7 +36,9 @@ import Checkbox from '@mui/material/Checkbox';
 import Autocomplete from '@mui/material/Autocomplete';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
-
+import DeleteIcon from '@mui/icons-material/Delete';
+import Swal from 'sweetalert2';
+import { notifyError } from '../../utils/Toast';
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
@@ -61,16 +63,82 @@ const StyledTextarea = styled(TextareaAutosize)(
   `,
 );
 
-const ChatRoomDetailsBody = ({ chatRoomDetails, singleRoom, setChatRoomDetails, handleChatDetails, getAllChatRooms }) => {
+const ChatRoomDetailsBody = ({ chatRoomDetails, singleRoom, setChatRoomDetails, handleChatDetails, getAllChatRooms,allMembers }) => {
     const token = sessionStorage.getItem('token');
-    const { userDetails } = useContext(UserContext);
+    const { userDetails,msDetails } = useContext(UserContext);
     const [emojiShow, setEmojiShow] = useState(0)
     const [selectedEmoji, setSelectedEmoji] = useState("");
     const [content, setContent] = useState("");
     const [media, setMedia] = useState(null)
     const [loaderVisible, setLoaderVisible] = useState(false)
 
-    const [hearerTime, setHeaderTime] = useState(null)
+    const [headerTime, setHeaderTime] = useState(null)
+
+    const [groupName, setGroupName] = useState('')
+    const [storeGroupMembers, setStoreGroupMembers] = useState([])
+
+    const [storeExistedMembers, setStoreExistedMembers] = useState([])
+    const [memberTobeAdd, setStoreMemberToBeAdd] = useState([])
+    const [ownerFind, setOwnerFind] = useState(false)
+
+    const getAllExistedMembers = (chatRoomUuid)=>{
+        console.log('hit')
+        let config = {
+            method: "get",
+            url: `${chatRoomUrl}/${chatRoomUuid}/members?uuid=${chatRoomUuid}`,
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        };
+
+        axios
+            .request(config)
+            .then((response) => {
+                setStoreExistedMembers(response?.data)
+
+                if(response?.data && response?.data.length>0){
+                    response?.data.forEach(member => {
+                        if(member?.is_owner ===true && userDetails.uuid === member?.user.uuid){
+                            setOwnerFind(true)
+                        }
+                    });
+                }
+
+
+                var members =[];
+                if(allMembers && allMembers.length>0){
+                    allMembers.forEach(element => {
+                        members.push(element.user)
+                    });
+                }
+                // var difference = members.filter((x) => !response?.data.includes(x));
+
+                var difference = members.filter(item1 => !response.data.some(item2 => (item2.name === item1.name)))
+
+                console.log('difference', difference)
+
+                var membertoAdd = [];
+                if(difference && difference.length>0){
+                    difference.forEach(element => {
+                        if(element?.user?.uuid !==userDetails.uuid){
+                            membertoAdd.push(element)
+                        }
+                    });
+                }
+                setStoreMemberToBeAdd(membertoAdd)
+
+            })
+            .catch((error) => { });
+    }
+
+    console.log('chatRoomDetails', chatRoomDetails)
+
+    useEffect(()=>{
+        if(chatRoomDetails?.meta?.chat_room){
+            getAllExistedMembers(chatRoomDetails?.meta?.chat_room.uuid)
+        }
+    },[chatRoomDetails])
+
 
     useEffect(() => {
         var pusher = new Pusher("69ef518953032858d64d", {
@@ -89,8 +157,8 @@ const ChatRoomDetailsBody = ({ chatRoomDetails, singleRoom, setChatRoomDetails, 
     useEffect(() => {
         // Get the GMT offset
         const date = new Date();
-        const gmtOffsetHours = -date.getTimezoneOffset() / 60; // Convert minutes to hours
-        const gmtOffsetMinutes = -date.getTimezoneOffset() % 60;
+        const gmtOffsetHours = date.getTimezoneOffset() / 60; // Convert minutes to hours
+        const gmtOffsetMinutes = date.getTimezoneOffset() % 60;
 
         // Create a string representation of the GMT offset
         const gmtOffsetString = (gmtOffsetHours >= 0 ? '+' : '-') +
@@ -166,7 +234,6 @@ const ChatRoomDetailsBody = ({ chatRoomDetails, singleRoom, setChatRoomDetails, 
 
     // set header time details
     useEffect(() => {
-
         const date = new Date();
         const gmtOffsetHours = -date.getTimezoneOffset() / 60; // Convert minutes to hours
         const gmtOffsetMinutes = -date.getTimezoneOffset() % 60;
@@ -176,8 +243,6 @@ const ChatRoomDetailsBody = ({ chatRoomDetails, singleRoom, setChatRoomDetails, 
             ('0' + Math.abs(gmtOffsetHours)).slice(-2)
 
         setGMTOffset(gmtOffsetString);
-
-
         if (chatRoomDetails?.meta?.chat_room) {
             const newTime = new Date(chatRoomDetails?.meta?.chat_room?.updated_at);
             const updateTime = newTime.setHours((newTime.getHours()) + (parseInt(gmtOffsetString)));
@@ -219,7 +284,93 @@ const ChatRoomDetailsBody = ({ chatRoomDetails, singleRoom, setChatRoomDetails, 
         setchatGroup(false);
     };
 
-    const top100Films = [];
+    // handle create chat group
+    const  handleCreateGroup = () =>{
+        setLoaderVisible(true)
+       
+        var data = JSON.stringify({
+            // "is_public_group": 'false',
+            "members": storeGroupMembers,
+            // "name": `${groupName} -Group In ${msDetails.name}`
+        });
+        let config = {
+            method: 'post',
+            url: `${chatRoomUrl}/${chatRoomDetails?.meta?.chat_room.uuid}/members`,
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            },
+            data: data
+        };
+
+        axios.request(config)
+            .then((response) => {
+                handleChatDetails(response?.data?.uuid);
+                getAllChatRooms()
+                handleCloseChatGroup()
+                getAllExistedMembers(chatRoomDetails?.meta?.chat_room.uuid)
+                setGroupName('')
+                setStoreGroupMembers([])
+                setLoaderVisible(false)
+            })
+            .catch((error) => {
+                setLoaderVisible(false)
+            });
+    }
+
+
+    console.log('chatRoomDetails', chatRoomDetails)
+
+
+    // remove member from group
+  const handleDeleteItem=(member)=>{
+    Swal.fire({
+        heightAuto: false,
+        backdrop: false,
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, Delete it!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+            setLoaderVisible(true)
+            var data = JSON.stringify({
+                // "is_public_group": 'false',
+                "members": member,
+                "uuid":member?.user.uuid
+                // "name": `${groupName} -Group In ${msDetails.name}`
+            });
+          let config = {
+            method: "delete",
+            url: `${chatRoomUrl}/${chatRoomDetails?.meta?.chat_room.uuid}/members`,
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+            data:data
+          };
+          axios 
+            .request(config)
+            .then((response) => {
+                // handleChatDetails(response?.data?.uuid);
+                getAllChatRooms()
+                handleCloseChatGroup()
+                getAllExistedMembers(chatRoomDetails?.meta?.chat_room.uuid)
+                setGroupName('')
+                setStoreGroupMembers([])
+                setLoaderVisible(false)
+            })
+            .catch((error) => {
+                notifyError('Something went wrong')
+                setLoaderVisible(false)
+            });
+        }
+      });  
+}
+
+    console.log('ownerFind', ownerFind)
 
 
     return (
@@ -235,7 +386,7 @@ const ChatRoomDetailsBody = ({ chatRoomDetails, singleRoom, setChatRoomDetails, 
                         </div>
                         <div className="name_T">
                             <div className="name"> {chatRoomDetails?.meta?.chat_room?.name}</div>
-                            <div className="active_status">{hearerTime !== null && hearerTime}</div>
+                            <div className="active_status">{chatRoomDetails?.meta?.chat_room?.member_count?`${chatRoomDetails?.meta?.chat_room?.member_count} Members`:headerTime !== null && headerTime}</div>
                         </div>
                     </div>
                     <div className="ct_right">
@@ -388,10 +539,10 @@ const ChatRoomDetailsBody = ({ chatRoomDetails, singleRoom, setChatRoomDetails, 
                                         </div>}
 
 
-                                        <div className="massage_D">
+                                        {/* <div className="massage_D">
                                             <i><FontAwesomeIcon icon={faReply} /></i>
                                             <i><FontAwesomeIcon icon={faTrash} /></i>
-                                        </div>
+                                        </div> */}
                                     </div>
                                 }
                             </>
@@ -485,22 +636,27 @@ const ChatRoomDetailsBody = ({ chatRoomDetails, singleRoom, setChatRoomDetails, 
                 className='chat_group_modal'
             >
                 <DialogTitle id="responsive-dialog-title">
-                    {"Create Your Chat Group"}
+                    {`Member ${chatRoomDetails?.meta?.chat_room?.name}`}
                 </DialogTitle>
                 <DialogContent>
                     <div className="chat_group_body">
                         <Grid container spacing={2}>
-                            <Grid item lg={12} md={12} sm={12} xs={12}>
-                                <TextField label="Group Name" variant="filled" fullWidth focused />
-                            </Grid>
+                            {/* <Grid item lg={12} md={12} sm={12} xs={12}>
+                                <TextField label="Group Name" variant="filled" fullWidth focused onChange={(e)=> setGroupName(e.target.value)} value={groupName} />
+                            </Grid> */}
                             <Grid item lg={12} md={12} sm={12} xs={12}>
                                 <div className="search_user">
                                 <Autocomplete
+                                    sx={{mt:2}}
                                     multiple
                                     id="checkboxes-tags-demo"
-                                    options={top100Films}
+                                    // value={memberTobeAdd}
+                                    onChange={(event, newValue) => {
+                                        setStoreGroupMembers(newValue);
+                                    }}
+                                    options={memberTobeAdd}
                                     disableCloseOnSelect
-                                    getOptionLabel={(option) => option.title}
+                                    getOptionLabel={(option) => option?.name}
                                     renderOption={(props, option, { selected }) => (
                                         <li {...props}>
                                             <Checkbox
@@ -509,14 +665,35 @@ const ChatRoomDetailsBody = ({ chatRoomDetails, singleRoom, setChatRoomDetails, 
                                                 style={{ marginRight: 8 }}
                                                 checked={selected}
                                             />
-                                            {option.title}
+                                            {option.name}
                                         </li>
                                     )}
                                     renderInput={(params) => (
-                                        <TextField {...params} label="Add Friends" placeholder="Search " />
+                                        <TextField {...params} label="Add Member" placeholder="Search " />
                                     )}
                                 />
                                 </div>
+                            </Grid>
+                            <Grid item lg={12} md={12} sm={12} sx={12}>
+                                <div className='list_title'>Member List </div>
+                                {storeExistedMembers && storeExistedMembers.length>0 && storeExistedMembers.map((member,i)=>{
+                                    return(
+                                        <div className="Aded_list" key={i}>
+                                            <div className="list_item">
+                                                <div className="item_left">
+                                                <Avatar alt={member?.name} src={member?.user?.profile?.avatar?`${baseUrl}/${member?.user?.profile?.avatar}`:''} />
+                                                <div className="u_name">
+                                                    {member?.name}
+                                                </div>
+                                                </div>
+                                                {ownerFind ===true && userDetails.uuid !== member?.user.uuid &&  <div className="item_right">
+                                                    <i onClick={(e)=> handleDeleteItem(member)} ><DeleteIcon/></i>
+                                                </div>}
+                                               
+                                            </div>
+                                        </div>
+                                    )
+                                })}
                             </Grid>
                         </Grid>
                     </div>
@@ -525,8 +702,8 @@ const ChatRoomDetailsBody = ({ chatRoomDetails, singleRoom, setChatRoomDetails, 
                     <Button autoFocus onClick={handleCloseChatGroup}>
                         Cancel
                     </Button>
-                    <Button  variant="contained" onClick={handleCloseChatGroup}>
-                        Submit
+                    <Button  variant="contained" onClick={(e)=> handleCreateGroup()}>
+                        Add Now
                     </Button>
                 </DialogActions>
             </Dialog>

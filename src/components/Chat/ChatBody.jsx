@@ -7,20 +7,29 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css/free-mode";
 import "swiper/css";
 import { FreeMode } from "swiper";
-import { Avatar, Box, Button, Grid } from "@mui/material";
+import { Autocomplete, Avatar, Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitle, Grid, TextField } from "@mui/material";
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useLocation, useNavigate } from "react-router-dom";
-import { allMembersUrl, baseUrl, chatMessagesUrl } from "../../api/Api";
+import { allMembersUrl, baseUrl, chatMessagesUrl, chatRoomUrl } from "../../api/Api";
 import ChatRoomDetailsBody from "./ChatRoomDetailsBody";
 import axios from "axios";
 import MainLoader from "../PageLoadEffects/MainLoader";
 import { UserContext } from "../../utils/UserContext";
 
 import Pusher from 'pusher-js';
+
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
+
+import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
+import CheckBoxIcon from '@mui/icons-material/CheckBox';
+
+const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
+const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
 
 const ChatBody = ({ chatRooms, setChatRooms, getAllChatRooms }) => {
@@ -34,6 +43,9 @@ const ChatBody = ({ chatRooms, setChatRooms, getAllChatRooms }) => {
     const [allMembers, setAllMembers] = useState([])
 
     const [storeMembers, setStoreMembers] = useState([])
+
+    const [groupName, setGroupName] = useState('')
+    const [storeGroupMembers, setStoreGroupMembers] = useState([])
 
     const [anchorEl, setAnchorEl] = useState(null);
     const openChatMenu = Boolean(anchorEl);
@@ -52,11 +64,17 @@ const ChatBody = ({ chatRooms, setChatRooms, getAllChatRooms }) => {
 
             const findsMemberChats = [];
             chatRooms?.data.forEach(chat => {
-                allMembers.forEach(member => {
-                    if (member?.user?.uuid === chat?.member?.uuid) {
-                        findsMemberChats.push(chat)
-                    }
-                });
+                var groupName = chat?.name
+                var hasGroupName = groupName?.includes("-Group");
+                if(hasGroupName ===true){
+                    findsMemberChats.push(chat)
+                }else{
+                    allMembers.forEach(member => {
+                        if (member?.user?.uuid === chat?.member?.uuid) {
+                            findsMemberChats.push(chat)
+                        }
+                    });
+                }
             });
 
             if (findsMemberChats && findsMemberChats.length > 0) {
@@ -136,7 +154,7 @@ const ChatBody = ({ chatRooms, setChatRooms, getAllChatRooms }) => {
                 const members = []
                 if (response.data.data && response.data.data.length > 0) {
                     response.data.data.forEach(element => {
-                        if (element?.status === 1) {
+                        if (element?.status === 1 && userDetails.id  !== element?.user_id) {
                             members.push(element)
                         }
                     });
@@ -172,17 +190,22 @@ const ChatBody = ({ chatRooms, setChatRooms, getAllChatRooms }) => {
             });
     }
 
-
     // store members
     useEffect(() => {
         const findsMember = [];
         if (chatRooms && chatRooms?.data && chatRooms?.data.length > 0 && allMembers && allMembers.length > 0) {
             chatRooms?.data.forEach(chat => {
-                allMembers.forEach(member => {
-                    if (member?.user?.uuid === chat?.member?.uuid) {
-                        findsMember.push(chat)
-                    }
-                });
+               var groupName = chat?.name
+                var hasGroupName = groupName?.includes("-Group");
+                if(hasGroupName ===true){
+                    findsMember.push(chat)
+                }else{
+                    allMembers.forEach(member => {
+                        if (member?.user?.uuid === chat?.member?.uuid) {
+                            findsMember.push(chat)
+                        }
+                    });
+                }
             });
         }
         setStoreMembers(findsMember)
@@ -203,7 +226,6 @@ const ChatBody = ({ chatRooms, setChatRooms, getAllChatRooms }) => {
 
         axios.request(config)
             .then((response) => {
-
                 // handleChatDetails(chat.uuid);
                 // setSingleRoom(chat)
                 if (response?.data?.meta?.chat_room !== null) {
@@ -272,6 +294,60 @@ const ChatBody = ({ chatRooms, setChatRooms, getAllChatRooms }) => {
     }, []);
 
 
+    // Chat Group
+    const [chatGroup, setchatGroup] = useState(false);
+    const theme = useTheme();
+    const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
+
+    const handleClickOpenChatGroup = () => {
+        setchatGroup(true);
+    };
+
+    const handleCloseChatGroup = () => {
+        setchatGroup(false);
+    };
+
+
+        // handle create chat group
+        const  handleCreateGroup = () =>{
+            setLoaderVisible(true)
+            const users = [];
+            if(storeGroupMembers.length>0){
+                storeGroupMembers.forEach(element => {
+                    users.push(element?.user)
+                });
+            }
+            var data = JSON.stringify({
+                "is_public_group": 'false',
+                "members": users,
+                "name": `${groupName} -Group In ${msDetails.name}`
+            });
+            let config = {
+                method: 'post',
+                url: chatRoomUrl,
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                },
+                data: data
+            };
+    
+            axios.request(config)
+                .then((response) => {
+                    handleChatDetails(response?.data?.uuid);
+                    getAllChatRooms()
+                    handleCloseChatGroup()
+                    setGroupName('')
+                    setStoreGroupMembers([])
+                    setLoaderVisible(false)
+                })
+                .catch((error) => {
+                    setLoaderVisible(false)
+                });
+        }
+    
+
+
     return (
         <Fragment>
             {loaderVisible === true && <MainLoader />}
@@ -298,7 +374,7 @@ const ChatBody = ({ chatRooms, setChatRooms, getAllChatRooms }) => {
                                         MenuListProps={{
                                             'aria-labelledby': 'basic-button',
                                         }}>
-                                        <MenuItem onClick={chatMenuClose}> Creat a Group </MenuItem>
+                                        <MenuItem onClick={(e)=> {handleClickOpenChatGroup();chatMenuClose()}}> Creat a Group </MenuItem>
                                         {/* <MenuItem onClick={chatMenuClose}> Unread Chats </MenuItem>
                                         <MenuItem onClick={chatMenuClose}> Archived Chats </MenuItem>
                                         <MenuItem onClick={chatMenuClose}> Help </MenuItem> */}
@@ -405,8 +481,74 @@ const ChatBody = ({ chatRooms, setChatRooms, getAllChatRooms }) => {
                     {chatRoomDetails === null && <Box display='flex' justifyContent='center' justifyItems='center'>
                         <Button sx={{ ml: 25 }} disabled>No chats to show </Button>
                     </Box>}
-                    {chatRoomDetails !== null && <ChatRoomDetailsBody chatRoomDetails={chatRoomDetails} singleRoom={singleRoom} setChatRoomDetails={setChatRoomDetails} handleChatDetails={handleChatDetails} getAllChatRooms={getAllChatRooms} />}
+                    {chatRoomDetails !== null && <ChatRoomDetailsBody chatRoomDetails={chatRoomDetails} singleRoom={singleRoom} setChatRoomDetails={setChatRoomDetails} handleChatDetails={handleChatDetails} getAllChatRooms={getAllChatRooms} allMembers={allMembers} />}
                 </div>
+
+
+
+    {/* Chat Group Create Modal */}
+            <Dialog
+                fullScreen={fullScreen}
+                open={chatGroup}
+                onClose={handleCloseChatGroup}
+                aria-labelledby="responsive-dialog-title"
+                className='chat_group_modal'
+            >
+                <DialogTitle id="responsive-dialog-title">
+                    {"Create Your Chat Group"}
+                </DialogTitle>
+                <DialogContent>
+                    <div className="chat_group_body">
+                        <Grid container spacing={2}>
+                            <Grid item lg={12} md={12} sm={12} xs={12}>
+                                <TextField label="Group Name" variant="filled" fullWidth focused onChange={(e)=> setGroupName(e.target.value)} value={groupName} />
+                            </Grid>
+                            <Grid item lg={12} md={12} sm={12} xs={12}>
+                                <div className="search_user">
+                                <Autocomplete
+                                    multiple
+                                    id="checkboxes-tags-demo"
+                                    value={storeGroupMembers}
+                                    onChange={(event, newValue) => {
+                                        setStoreGroupMembers(newValue);
+                                    }}
+                                    options={allMembers}
+                                    disableCloseOnSelect
+                                    getOptionLabel={(option) => option?.user?.name}
+                                    renderOption={(props, option, { selected }) => (
+                                        <li {...props}>
+                                            <Checkbox
+                                                icon={icon}
+                                                checkedIcon={checkedIcon}
+                                                style={{ marginRight: 8 }}
+                                                checked={selected}
+                                            />
+                                            {option?.user?.name}
+                                        </li>
+                                    )}
+                                    renderInput={(params) => (
+                                        <TextField {...params} label="Add Member" placeholder="Search " />
+                                    )}
+                                />
+                                </div>
+                            </Grid>
+                        </Grid>
+                    </div>
+                </DialogContent>
+                <DialogActions>
+                    <Button autoFocus onClick={handleCloseChatGroup}>
+                        Cancel
+                    </Button>
+                    <Button  variant="contained" onClick={(e)=> handleCreateGroup()}>
+                        Submit
+                    </Button>
+                </DialogActions>
+            </Dialog>
+
+
+
+
+
             </div>
         </Fragment>
     );
