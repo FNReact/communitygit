@@ -402,9 +402,9 @@ const ChatBody = ({ chatRooms, setChatRooms, getAllChatRooms }) => {
                                 })}
                         </div>
                     </div>
-                    {chatRoomDetails === null && <Box display='flex' justifyContent='center' justifyItems='center'>
-                        <Button sx={{ ml: 25 }} disabled>No chats to show </Button>
-                    </Box>}
+                    {chatRoomDetails === null && <div className="room_null">
+                        <span>No chats to show </span>
+                    </div>}
                     {chatRoomDetails !== null && <ChatRoomDetailsBody chatRoomDetails={chatRoomDetails} singleRoom={singleRoom} setChatRoomDetails={setChatRoomDetails} handleChatDetails={handleChatDetails} getAllChatRooms={getAllChatRooms} />}
                 </div>
             </div>

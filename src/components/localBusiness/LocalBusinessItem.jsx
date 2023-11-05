@@ -70,7 +70,7 @@ const LocalBusinessItem = ({ data, admin, getAllResouces, resource, handleDelete
           <div className="dropdown_menuTab">
             <ul>
               <li onClick={(e) => navigate('/localBusiness-create', { state: { uuid: data.uuid } })}> Edit</li>
-              <li onClick={(e) => { handleDeleteResource(data.uuid); handleClose() }}> Delete Community Business </li>
+              <li onClick={(e) => { handleDeleteResource(data.uuid); handleClose() }}> Delete </li>
             </ul>
           </div>
         </Menu>

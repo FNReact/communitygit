@@ -337,7 +337,7 @@ useEffect(() => {
                         if (secondFolder !== undefined && folders.indexOf(secondFolder) === -1) {
                           folders.push(secondFolder);
                           return (
-                            <Grid item lg={4} md={4} sm={10} xs={10}>
+                            <Grid item lg={4} md={5} sm={10} xs={10}>
                               <FolderItem
                                 name="Lemmesay Images"
                                 icon="folder"
@@ -368,7 +368,7 @@ useEffect(() => {
                     const getCollectionNameLength= data?.collection_name?.split('/');
                     if (getCollectionName === location.state.folderName && getCollectionNameLength.length===position ) {
                       return (
-                        <Grid item lg={4} md={4} sm={6} xs={6}>
+                        <Grid item lg={4} md={5} sm={10} xs={10}>
                           <FileItem name="iCircles Images" getData={data} handleDeleteItem={handleDeleteItem} handleFileUpdateDetails={handleFileUpdateDetails} adminId={adminId} />
                         </Grid>
                       );
