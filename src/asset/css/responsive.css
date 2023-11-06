@@ -1,50 +1,15 @@
-@media (min-width: 200px) and (max-width: 399.98px) {
-    .chat .chatter_box_container .fixed_profilr_header .ct_right .chat_title_dashed .dashed_btn {
-        display: none;
-    }
+@media (min-width: 200px) and (max-width: 991.98px) {
+    
     .creatCommuinity_form_body .creatCommuinity_wrapper .creatCommuinity_wrap form .form_control {
         height: 45px;
     }
     .my_files_navigate .navigate_part_one .navigate_title {
         display: none;
     }
-    .event_details_body .event_details_top .event_info .event_title {
-        font-size: 20px;
-        line-height: 28px;
-        padding-top: 15px;
-    }
-    .event_details_body .event_details_top .event_info .eventTime {
-        display: list-item;
-        list-style: none;
-    }
+   
     .com_info_wrap {
         padding: 19px 10px 20px 10px;
     }
-    .chat {
-        width: 100%;
-        border-radius: 13px;
-        display: list-item;
-        list-style: none;
-        overflow: visible;
-        padding-bottom: 10px;
-    }
-    .chat .chatter_box_container .chat_body::after {
-       display: none;
-    }
-
-    .chat .chatter_box_container {
-        overflow: hidden;
-        height: 68vh;
-        width: 95%;
-        border: 1px solid #c3c3c354;
-        border-radius: 13px;
-        margin: 0 auto;
-        background-color: #f3f3f379;
-    }
-    .chat .chat_left .chat_top_content .chat_left_top {
-        padding: 0 10px 0 0;
-    }
-
     .business_item .business_item_img {
         height: 125px;
         width: 140px;
@@ -57,148 +22,6 @@
     .rating_container .section_top .sec_title {
         font-size: 18px;
     }
-
-    /* another CSS */
-    .chat .chatter_box_container .fixed_profilr_header {
-        background-color: rgba(3,40,141,.1098039216);
-        height: 50px;
-        border-top-left-radius: 13px;
-        padding: 12px 15px 10px 15px;
-    }
-    .chat .chatter_box_container .fixed_profilr_header .ct_left .name_T .active_status {
-        font-size: 10px;
-    }
-    .chat .chatter_box_container .fixed_profilr_header .ct_left .name_T .name {
-        font-size: 14px;
-    }
-    .chat .chat_left .chat_top_content .chat_left_top .chat_h {
-        font-size: 16px;
-    }
-
-    .chat .chat_left .chat_top_content .chat_search .search_box {
-        display: none;
-    }
-
-    .chat .chat_left .chat_top_content .active_list {
-        display: none;
-    }
-    .chat .chatter_box_container .chat_body {
-        padding: 12px 12px 130px 12px;
-    }
-
-    .chat .chat_left .chat_top_content {
-        height: auto;
-    }
-
-    .chat .chat_left .chat_list .chat_list_item .chat_overview .overview_massage {
-        display: none;
-    }
-
-    .chat .chat_left .chat_list .chat_list_item {
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        width: 70px;
-        height: 80px;
-        margin-right: 6px;
-        padding: 2px;
-    }
-
-    .chat .chat_left .chat_list .chat_list_item .chat_overview .profile-name {
-        margin-top: 3px;
-        font-size: 10px;
-        font-weight: 400;
-        word-wrap: break-word;
-        line-height: 12px;
-        text-align: center;
-        display: block;
-        display: -webkit-box;
-        height: 2;
-        overflow: hidden;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        text-overflow: ellipsis;
-    }
-
-    .chat .chat_left .chat_list .chat_list_item .profile_active {
-        width: auto;
-    }
-
-    .chat .chat_left .chat_list .chat_list_item .lastMassage-time {
-        display: none;
-    }
-
-    .chat .chat_left .chat_list .chat_list_item .senting {
-        display: none;
-    }
-
-    .chat .chat_left {
-        width: 100%;
-        height: auto;
-        padding: 15px 3px 15px 10px;
-        border-top-right-radius: 13px;
-        border-top-left-radius: 13px;
-
-    }
-
-    .chat .chat_left .chat_list {
-        padding-bottom: 0;
-        padding-top: 12px;
-        display: flex;
-        overflow-x: auto;
-        scrollbar-width:none;
-    }
-    .chat .chat_left .chat_list::-webkit-scrollbar {
-        display: none;
-      }
-
-    .chat .chatter_box_container .fixed_profilr_header .ct_right .chat_title_dashed .vid_icon {
-        display: none;
-    }
-
-    .chat .chatter_box_container .fixed_profilr_header .ct_left .profile img {
-        height: 38px;
-        width: 38px;
-    }
-
-    .chat .chatter_box_container .chat_body .chat_massage_item .profile_part .chatter_profile img {
-        height: 30px;
-        width: 30px;
-    }
-
-    .chat .chatter_box_container .chat_body .chat_massage_item .chatter_chat .senting_massage {
-        font-size: 14px;
-        word-wrap: break-word;
-    }
-
-    .chat .chatter_box_container .chat_body .own_massage_item .own_chat .senting_massage {
-        word-wrap: break-word;
-    }
-
-    .chat .chat_left .chat_list .chat_list_item .lastMassage-time {
-        display: none;
-    }
-
-    .chat .chatter_box_container .chat_body .chat_massage_item .massage_D {
-        display: none;
-    }
-
-    .chat .chatter_box_container .chat_body .own_massage_item .own_chat {
-        max-width: 85%;
-    }
-
-    /* .chat .chatter_box_container {
-       overflow: visible;
-    } */
-    .chat_emojy_picker {
-        bottom: 60px !important;
-        left: 5px !important;
-    }
-
-    .magazine_nav .nav_list li {
-        padding-right: 15px;
-    }
-
     .swiper-button-prev,
     .swiper-rtl .swiper-button-next {
         height: 40px;
@@ -225,15 +48,6 @@
         font-size: 18px;
     }
 
-    .chat_contentBody {
-        height: 94vh;
-    }
-
-
-
-
-
-
     .overflow_card {
         overflow: visible !important;
         overflow-y: scroll !important;
@@ -247,148 +61,11 @@
         width: 240px;
     }
 
-    .matrimonial_card_details .information_table .gallery_wrap .ant-image img {
-        height: 90px;
-        width: 100%;
-    }
-
-    .matrimonial_card_details .person_information {
-        padding: 10px 10px 0 10px;
-        margin-bottom: 25px;
-    }
-
-    .magazine .sticky_section .sticky_wrapper .sticky_wrapper_main .main_text {
-        padding-left: 0px;
-        padding-top: 10px;
-    }
-
-    .magazine_top .magazine_t span {
-        font-size: 24px;
-        font-weight: 500;
-        line-height: 29px;
-    }
-
-    .magazine .sticky_section .sticky_wrapper .sticky_wrapper_main .main_img img {
-        height: 220px;
-        width: 220px;
-    }
-
-    .magazine_details .magazine_details_wrapper .content_title {
-        font-size: 26px;
-        line-height: 35px;
-        padding-top: 20px;
-    }
-
     .sticky_wrapper_main .main_img {
         display: flex;
         justify-content: center;
         align-items: center;
     }
-
-    .magazine .main_content_item .item_img {
-        height: 200px;
-    }
-
-    .magazine .main_content_item {
-        height: auto;
-    }
-
-    .magazine .front_section .front_main .front_main_img img {
-        height: 220px;
-    }
-
-    .magazine .front_section .front_main {
-        height: auto;
-    }
-
-
-    .magazine .magzine_slider_content .mag_content .content_info h2 {
-        font-size: 20px;
-        font-weight: 500;
-        padding: 8px 8px;
-        line-height: 26px;
-    }
-
-    .magazine_top .magazine_t {
-        text-align: start;
-    }
-
-    .magazine_top .top_left {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        position: absolute;
-        top: -76px;
-        right: 0;
-    }
-
-    .magazine_top .magzin_logo img {
-        max-height: 45px;
-        width: 100%;
-        object-fit: contain;
-    }
-
-    .matromonial_search_form {
-        width: 100%;
-    }
-
-    .matrimonial_card_details {
-        padding: 20px 10px;
-    }
-
-    .matrimonial_card_details .person_information .person_image {
-        height: 160px;
-        width: 200px;
-        margin: 12px auto;
-    }
-
-    .matrimonial_card_details .information_table .info_item_list .info_item {
-        padding-left: 10px;
-    }
-
-    .resource_item_2 {
-        width: auto;
-        max-width: 300px;
-        margin: 0 auto;
-    }
-
-    .magazine .magzine_slider_content {
-        height: 220px;
-        margin-top: 25px;
-    }
-
-    .magazine .magzine_slider_content .mag_content .content_info h2 {
-        font-size: 18px;
-        padding: 8px 8px;
-    }
-
-    .magazine_top {
-        margin-top: 12px;
-    }
-
-    .magazine .sticky_section .sticky_wrapper .sticky_wrapper_main {
-        display: list-item;
-        list-style: none;
-    }
-
-    .magazine_top {
-        display: list-item;
-        list-style: none;
-        height: 100px;
-    }
-
-    .magazine_top .top_left {
-        display: flex;
-        justify-items: center;
-        justify-content: end;
-        margin-top: 12px;
-    }
-
-    .magazine_nav .mag_search {
-        display: none;
-    }
-
-
     .report_detail .report_text .title {
         font-size: 18px;
         line-height: 27px;
@@ -406,42 +83,10 @@
     .comments-list .comment-avatar {
         display: none;
     }
-
-    .header .header_content .header_item .commuinity_name {
-        display: none;
-    }
-
-    .entry_header .entry_header_wrap .entryHeader_logo img {
-        height: 40px;
-    }
-
-    .entry_header .entry_header_wrap .entryHeader_right .profile_dashed .profile_img {
-        height: 40px;
-        width: 40px;
-    }
-
-    .entry_header .entry_header_wrap .entryHeader_right .profile_dashed .menu_wrapper .menu_wrapper_list i .MuiSvgIcon-root {
-        font-size: 18px;
-    }
-
-    .entry_header .entry_header_wrap .entryHeader_right .profile_dashed .menu_wrapper .menu_wrapper_list span {
-        font-size: 14px;
-    }
-
-    .entry_header .entry_header_wrap .entryHeader_right .profile_dashed .menu_wrapper .menu_wrapper_list i {
-        height: 32px;
-        width: 32px;
-    }
-
     .Home_copy_right {
         height: 50px;
         font-size: 13px;
     }
-
-    .entry_header .entry_header_wrap .entryHeader_right .profile_dashed .menu_wrapper {
-        width: 220px;
-    }
-
     .Card_container {
         padding-top: 90px;
     }
@@ -455,15 +100,11 @@
 
     .Card_container .card_wrap span {
         font-size: 17px;
+        font-weight: 500;
+        color: #585858;
     }
 
-    .homeMainContent .login_D_form .login_d_right .registerBody form .get_emailBtn {
-        font-size: 15px;
-    }
-
-    .homeMainContent .login_D_form .login_d_right h6 {
-        font-size: 20px;
-    }
+   
 
     .login_qr_img img {
         height: 120px;
@@ -504,96 +145,33 @@
     .mob_padding_75 {
         margin-top: 75px;
     }
-
-    .mamber_hedingSide_right button {
-        font-size: 12px;
-    }
-
-    .mamber .mamber_wrapper .memberItem .user_info .join_date {
-        font-size: 11px;
-        padding-bottom: 0px;
-    }
-
-    .mamber .mamber_wrapper .memberItem .owner_member {
-        width: 95%;
-    }
-
     .community_list_item {
         padding-top: 140px;
     }
-
-    .mamber .mamber_wrapper .memberItem .icon_list .icon {
-        height: 32px;
-        width: 32px;
-    }
-
-    .mamber .mamber_wrapper .memberItem .icon_list .icon .MuiSvgIcon-root {
-        font-size: 18px;
-    }
-
-    .mamber .mamber_wrapper .memberItem .icon_list .icon img {
-        height: 20px;
-        width: 20px;
-    }
-
-    .mamber .mamber_wrapper .memberItem .memberCard_footer {
-        margin-top: 10px;
-    }
-
-    .mamber_hedingSIde .mamber_hedingSide_right .addMamber_btn {
-        padding: 4px 16px;
-        font-size: 13px;
-        margin-bottom: 10px;
-    }
-
-    .mamber_hedingSIde .mamber_hedingSide_right .addMamber_btn span {
-        display: none;
-    }
-
     .uploader_dial {
         bottom: 100px !important;
         right: 20px  !important;
     }
-
-    .chat_box_icon .chat_button span {
-        display: none;
-    }
-
     .postView_container .postView_container_Top .postViewModal_container_Image img {
         max-height: 450px;
         max-width: 100%;
     }
-
     .profile_bio .profile_info .userName a {
         font-size: 15px;
     }
-
     .profile_bio .profile_info {
         padding-left: 5px;
         width: 100%;
     }
-
     .video-react {
         height: 320px !important;
     }
-
-    .resource_item .resource_footer {
-        position: relative;
-        padding: 15px 0 0 0;
-    }
-
     .video-react .video-react-video {
         max-height: 320px !important;
     }
-
     .longue_item .uploaded_img_container .single_img img {
         max-height: 420px;
     }
-
-    .classified_order_form {
-        width: 100%;
-    }
-
     .backArrow_head {
         position: relative;
         left: 15px;
@@ -601,60 +179,17 @@
         margin-bottom: 20px;
     }
 
-    .communityInfo_wrapper .community_top_info {
-        display: list-item;
-        list-style: none;
-    }
-
-    .mamber_hedingSIde {
-        display: list-item;
-        list-style: none;
-    }
+   
+   
 
     .lounge .upload_box_container .upload_box_bottom {
         padding-top: 10px;
-    }
-
-    .event_item {
-        margin-top: 8px;
-        height: auto;
     }
 
     .business_item {
         height: auto;
         margin-top: 8px;
     }
-
-    .section_headear .btns_row .Btn_one {
-        margin-left: 0px;
-    }
-
-    .section_headear .btns_row {
-        justify-content: space-between;
-        flex-wrap: wrap;
-        margin-top: 15px;
-    }
-
-    .mamber_hedingSIde .mamber_hedingSide_right {
-        flex-wrap: wrap;
-        margin-top: 12px;
-        justify-content: center;
-    }
-
-    .mamber .mamber_wrapper .memberItem .user_info .user_img img {
-        height: 70px;
-        width: 70px;
-
-    }
-
-    .user_profile .user_profile_content .user_join_date {
-        margin-top: 15px;
-    }
-
-    .mamber_hedingSIde .mamber_hedingSide_right .MuiButtonBase-root {
-        margin-bottom: 10px;
-    }
-
     .com_top_left .tagline {
         padding-top: 5px;
     }
@@ -663,65 +198,6 @@
         font-size: 14px;
         line-height: 18px;
     }
-
-    .section_headear .btns_row .Btn_one {
-        height: 38px;
-        padding: 0 12px;
-        font-size: 14px;
-
-    }
-
-    .classified_item .post_bottom .classified_option {
-        height: 30px;
-        width: 30px;
-    }
-
-    .classified_item .post_bottom .classified_option .MuiSvgIcon-root {
-        font-size: 17px;
-    }
-
-    .section_headear .btns_row .Btn_two {
-        height: 38px;
-        padding: 0 12px;
-        font-size: 14px;
-        margin-left: 15px;
-    }
-
-    .communityInfo_wrapper .community_top_info .com_botttom {
-        display: flex;
-        justify-content: flex-end;
-    }
-
-    .chat_box_icon .chat_button img {
-        height: 30px;
-        width: 30px;
-    }
-
-    .chat_box_icon {
-        bottom: 30px;
-        height: 50px;
-        width: 50px;
-    }
-
-    .communityInfo_wrapper .community_top_info .edit_B {
-        display: flex;
-        justify-content: flex-end;
-    }
-
-    .communityInfo_wrapper .community_top_info .edit_button {
-        position: relative;
-        top: 0;
-        right: 0;
-        font-size: 13px;
-        border-radius: 35px;
-        display: inline-block;
-        padding: 1px 20px;
-    }
-
-    .communityInfo_wrapper .community_top_info .edit_button .MuiSvgIcon-root {
-        font-size: 14px;
-    }
-
     .mob_none {
         display: none !important;
     }
@@ -736,115 +212,15 @@
         width: 280px;
         margin: 0 auto;
     }
-
-    .communityInfo_wrapper .commuinity_banner {
-        height: 140px;
-        width: 100%;
-    }
-
-    .communityInfo_wrapper .community_top_info .com_logo img {
-        height: 80px;
-        width: 80px;
-    }
-
-    .header .header_content .header_item_wrapper .header_item_list .MuiSvgIcon-root {
-        font-size: 20px;
-    }
-
     .drawer_Wrapper .logout_btn {
         margin: 30px 0;
         width: 100%;
         height: 45px;
         font-size: 15px;
     }
-
     .drawer_Wrapper .profile_dashed_mob .user_name {
         font-size: 15px;
     }
-
-    .job_searchBar h4 {
-        font-size: 18px;
-    }
-
-    .job_searchBar .job_plate .job_btn {
-        width: 30%;
-        height: 39px;
-    }
-
-    .job_item_info .job_item_info_top {
-        display: list-item;
-        list-style: none;
-    }
-
-    .job_item_info .job_fotter {
-        display: list-item;
-        list-style: none;
-    }
-
-    .JobItemDetails .history_item .job_info .info_1 p {
-        font-size: 14px;
-    }
-
-    .JobItemDetails .history_item .job_text h6 {
-        font-size: 16px;
-    }
-
-    .JobItemDetails .history_item .job_text p {
-        font-size: 14px;
-        line-height: 22px;
-    }
-
-    .JobItemDetails .history_item .job_info .info_1 {
-        width: 100%;
-    }
-
-    .JobItemDetails .history_item .other_option h5 {
-        font-size: 16px;
-    }
-
-    .JobItemDetails .history_item .other_option h6 {
-        font-size: 15px;
-    }
-
-    .job_item_info .job_fotter .dead-line {
-        font-size: 14px;
-        font-style: normal !important;
-    }
-
-    .job_item_info .job_info_btn .MuiAvatar-root {
-        height: 24px;
-        width: 24px;
-    }
-
-    .job_item_info .job_info_btn .MuiSvgIcon-root {
-        font-size: 15px;
-    }
-
-    .job_item_info .job_item_info_top .job_item_infoTop_right {
-        margin-left: 0px;
-        width: 100%;
-        padding-right: 0px;
-        padding-top: 5px;
-    }
-
-    .job_item_info .job_item_info_top .company_logo {
-        height: 50px;
-        width: 100px;
-    }
-
-    .job_searchBar .job_plate .job_btn span {
-        line-height: 39px;
-    }
-
-    .job_searchBar .job_plate .job_srach_item-1 .form_control {
-        height: 40px;
-    }
-
-    .job_searchBar p {
-        font-size: 14px;
-        text-align: start;
-    }
-
     .drawer_Wrapper .profile_dashed_mob .profile_img img {
         height: 40px;
         width: 40px;
@@ -853,33 +229,16 @@
     .drawer_Wrapper {
         width: 245px;
     }
-
-    .communityInfo_wrapper .community_top_info .com_top_left .com_name {
-        font-size: 18px;
-        line-height: 21px;
-    }
-
-    .communityInfo_wrapper .community_top_info .com_top_left .tagline {
-        font-size: 15px;
-    }
-
     .entryWrapper .entry_wrap .home_title {
         font-size: 24px;
         line-height: 34px;
         text-align: center;
         padding-bottom: 35px;
     }
-
     .order_list_wrapper .order_list_wrap .list_top {
         display: list-item;
         list-style: none;
     }
-
-    .event_item .event_title {
-        font-size: 17px;
-        line-height: 24px;
-    }
-
     .order_list_wrapper .order_list_wrap .list_top .list_top_left .oredr_id {
         font-size: 15px;
     }
@@ -933,6 +292,237 @@
         padding-left: 0px;
     }
 
+  
+
+    .copy_right {
+        position: relative;
+        width: 100%;
+        height: 50px;
+        font-size: 13px;
+    }
+    .creatCommuinity_form_body .backArrow {
+        left: 0;
+        top: 20px;
+    }
+    .creatCommuinity_form_body .creatCommuinity_wrapper .creatCommuinity_wrap {
+        width: 100%;
+        padding-top: 12px;
+    }
+
+    .creatCommuinity_wrapper {
+        margin: 110px 0 40px 0;
+        padding: 30px 15px !important;
+    }
+
+    /* Inside Commuinity */
+    .side-menu {
+        display: none;
+    }
+
+    
+
+    .lounge_right_fixed {
+        display: none;
+    }
+
+   
+
+    .css-1oqqzyl-MuiContainer-root {
+        padding-left: 5px !important;
+        padding-right: 5px !important;
+    }
+
+    .longue_item {
+        margin-bottom: 7px;
+    }
+
+    .content_body {
+        padding-top: 55px;
+        margin-bottom: 40px;
+    }
+
+
+
+    .profile_bio {
+        padding: 8px 8px;
+    }
+
+
+    /* .MuiDialog-paper {
+        border-radius: 0px !important;
+        overflow: visible !important;
+
+    } */
+    .mob_media_dialouge{
+        padding: 5px !important;
+    }
+    .Media_dilouge .MuiPaper-root{
+      margin: 10px !important;
+      max-width: 280px !important;
+    }
+    .upload_input_area .Upload_textarea {
+        width: 100%;
+        border: none !important;
+    }
+    .dialogContent-2 .mediaAdd_Body .mediaAdder {
+        width: 100%;
+    }
+
+    .dialogContent-2 .TagBody {
+        width: 100%;
+    }
+
+    .userName {
+        line-height: 15px !important;
+        font-size: 16px !important;
+    }
+    .comment_input_main {
+        padding-right: 9px;
+        padding-top: 20px;
+    }
+    .comment_input_main .comment_input_container .comment_attachment ul li .comment_emoji_picker {
+        bottom: -275px;
+        right: -270px;
+        height: 260px;
+    }
+    .emojis_container .emojiTab {
+        padding: 5px 5px;
+        border-radius: 12px;
+        top: 5px;
+        left: 10px;
+        width: 240px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .emojis_container .emojiTab .singleEmoji {
+        font-size: 30px;
+        padding: 18px 10px;
+    }
+
+    .postView_container .postView_container_Top .postViewModal_container_Image {
+        min-height: 400px;
+        height: auto;
+        width: 100%;
+    }
+
+    .bidding_container .bidding_item {
+        width: 100%;
+    }
+
+    .lounge .upload_box_container {
+        margin-bottom: 10px;
+    }
+    .MemberSearch_body {
+        width: 100%;
+    }
+
+    .MemberSearch_body .memberSearch_wrapper {
+        width: 100%;
+    }
+
+    .addMember_card {
+        width: 100%;
+    }
+    #simple-tabpanel-0 .MuiBox-root {
+        padding: 20px 0px;
+    }
+
+    .backArrow {
+        margin-bottom: 10px;
+    }
+    .media_content_body {
+        padding-top: 45px;
+    }
+
+    .Media_area {
+        padding-top: 10px;
+    }
+    .entryWrapper .entry_wrap .commuinity_search_form {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .home_banner {
+        height: 180px;
+        border-radius: 8px;
+        background: #fff;
+    }
+
+    .home_banner img {
+        object-fit: contain;
+    }
+
+    .entryWrapper {
+        padding: 30px 0;
+    }
+
+    .entryWrapper .entry_wrap .community_list_item .commuinity_item {
+        height: 350px;
+        width: 300px;
+        margin: 0 auto;
+    }   
+    /* ------------------------------------------------------------------------
+                        Community Info Chat Start 
+    ---------------------------------------------------------------------------*/
+    .communityInfo_wrapper .community_top_info .com_botttom {
+        display: flex;
+        justify-content: flex-end;
+    }
+    .communityInfo_wrapper .community_top_info {
+        display: list-item;
+        list-style: none;
+    }
+    .communityInfo_wrapper .community_top_info .com_top_left .com_name {
+        font-size: 18px;
+        line-height: 21px;
+    }
+
+    .communityInfo_wrapper .community_top_info .com_top_left .tagline {
+        font-size: 15px;
+    }
+   
+    .communityInfo_wrapper .community_top_info .edit_B {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .communityInfo_wrapper .community_top_info .edit_button {
+        position: relative;
+        top: 0;
+        right: 0;
+        font-size: 13px;
+        border-radius: 35px;
+        display: inline-block;
+        padding: 1px 20px;
+    }
+
+    .communityInfo_wrapper .community_top_info .edit_button .MuiSvgIcon-root {
+        font-size: 14px;
+    }
+    .communityInfo_wrapper .commuinity_banner {
+        height: 140px;
+        width: 100%;
+    }
+
+    .communityInfo_wrapper .community_top_info .com_logo img {
+        height: 80px;
+        width: 80px;
+    }
+     /* ------------------------------------------------------------------------
+                       Home Content Chat Start 
+    ---------------------------------------------------------------------------*/
+    .homeMainContent .login_D_form .login_d_right .registerBody form .get_emailBtn {
+        font-size: 15px;
+    }
+
+    .homeMainContent .login_D_form .login_d_right h6 {
+        font-size: 20px;
+    }
+    .homeMainContent .backArrow {
+        left: 0;
+        top: 20px;
+    }
     .homeMainContent .login_D_form .login_d_right {
         height: auto;
         min-height: auto;
@@ -970,107 +560,216 @@
         height: auto;
     }
 
-    .copy_right {
-        position: relative;
+
+     /* ------------------------------------------------------------------------
+                        matrimonial Start 
+    ---------------------------------------------------------------------------*/
+
+    .matrimonial_card_details {
+        padding: 20px 10px;
+    }
+
+    .matrimonial_card_details .person_information .person_image {
+        height: 160px;
+        width: 200px;
+        margin: 12px auto;
+    }
+
+    .matrimonial_card_details .information_table .info_item_list .info_item {
+        padding-left: 10px;
+    }
+    .matrimonial_card_details .information_table .gallery_wrap .ant-image img {
+        height: 90px;
         width: 100%;
-        height: 50px;
-        font-size: 13px;
     }
 
-    .homeMainContent .backArrow {
-        left: 0;
-        top: 20px;
+    .matrimonial_card_details .person_information {
+        padding: 10px 10px 0 10px;
+        margin-bottom: 25px;
     }
 
-    .creatCommuinity_form_body .backArrow {
-        left: 0;
-        top: 20px;
-    }
-
-    .creatCommuinity_form_body .creatCommuinity_wrapper .creatCommuinity_wrap {
+    .matromonial_search_form {
         width: 100%;
-        padding-top: 12px;
     }
+     /* ------------------------------------------------------------------------
+                       Job Item Details Chat Start 
+    ---------------------------------------------------------------------------*/
 
-    .creatCommuinity_wrapper {
-        margin: 110px 0 40px 0;
-        padding: 30px 15px;
-    }
-
-    /* Inside Commuinity */
-    .side-menu {
-        display: none;
-    }
-
-    .header .header_content .header_item .commuinity_name {
-        margin-left: 5px;
-        font-weight: 400;
+    .JobItemDetails .history_item .job_info .info_1 p {
         font-size: 14px;
     }
 
-    .lounge_right_fixed {
+    .JobItemDetails .history_item .job_text h6 {
+        font-size: 16px;
+    }
+
+    .JobItemDetails .history_item .job_text p {
+        font-size: 14px;
+        line-height: 22px;
+    }
+
+    .JobItemDetails .history_item .job_info .info_1 {
+        width: 100%;
+    }
+
+    .JobItemDetails .history_item .other_option h5 {
+        font-size: 16px;
+    }
+
+    .JobItemDetails .history_item .other_option h6 {
+        font-size: 15px;
+    }
+    .JobItemDetails .history_item .job_info .info_2 {
         display: none;
     }
 
-    .header .header_content .header_item_wrapper .header_item_list {
-        margin: 0 5px;
+    .JobItemDetails .history_item .job_info .info_1 {
+        width: 100%;
+    }
+    .job_filter {
+        display: none;
+    }
+
+    .job_searchBar h4 {
+        font-size: 18px;
+    }
+
+    .job_searchBar .job_plate .job_btn {
+        width: 30%;
+        height: 39px;
+    }
+    .job_searchBar .job_plate .job_btn span {
+        line-height: 39px;
+    }
+
+    .job_searchBar .job_plate .job_srach_item-1 .form_control {
+        height: 40px;
+    }
+
+    .job_searchBar p {
+        font-size: 14px;
+        text-align: start;
+    }
+    .job_item_info .job_item_info_top {
+        display: list-item;
+        list-style: none;
+    }
+
+    .job_item_info .job_fotter {
+        display: list-item;
+        list-style: none;
+    }
+
+   
+
+    .job_item_info .job_fotter .dead-line {
+        font-size: 14px;
+        font-style: normal !important;
+    }
+
+    .job_item_info .job_info_btn .MuiAvatar-root {
+        height: 24px;
+        width: 24px;
+    }
+
+    .job_item_info .job_info_btn .MuiSvgIcon-root {
+        font-size: 15px;
+    }
+
+    .job_item_info .job_item_info_top .job_item_infoTop_right {
+        margin-left: 0px;
+        width: 100%;
+        padding-right: 0px;
+        padding-top: 5px;
+    }
+
+    .job_item_info .job_item_info_top .company_logo {
+        height: 50px;
+        width: 100px;
+    }
+
+
+     /* ------------------------------------------------------------------------
+                      Mamber  Chat Start 
+    ---------------------------------------------------------------------------*/
+
+
+    .mamber .mamber_wrapper .memberItem .user_info .user_name {
+        font-size: 15px;
+        padding: 2px 0 4px 0;
+    }
+    .mamber .mamber_wrapper .memberItem .icon_list {
+        justify-content: center;
+    }
+    .mamber .mamber_wrapper .memberItem {
+        padding: 14px 8px;
+        height: auto;
+    }
+
+    .mamber_hedingSIde .headingSection {
+        font-size: 18px;
+    }
+    .mamber_hedingSIde .mamber_hedingSide_right {
+        flex-wrap: wrap;
+        margin-top: 12px;
+        justify-content: center;
+    }
+
+    .mamber .mamber_wrapper .memberItem .user_info .user_img img {
+        height: 70px;
+        width: 70px;
+
+    }
+    .mamber_hedingSIde {
+        display: list-item;
+        list-style: none;
+    }
+    .mamber_hedingSide_right button {
+        font-size: 12px;
+    }
+    .mamber .mamber_wrapper .memberItem .user_info .join_date {
+        font-size: 11px;
+        padding-bottom: 0px;
+    }
+    .mamber .mamber_wrapper .memberItem .owner_member {
+        width: 95%;
+    }
+    .mamber .mamber_wrapper .memberItem .icon_list .icon {
         height: 32px;
         width: 32px;
     }
-
-    .css-1oqqzyl-MuiContainer-root {
-        padding-left: 5px !important;
-        padding-right: 5px !important;
+    .mamber .mamber_wrapper .memberItem .icon_list .icon .MuiSvgIcon-root {
+        font-size: 18px;
     }
-
-    .longue_item {
-        margin-bottom: 7px;
+    .mamber .mamber_wrapper .memberItem .icon_list .icon img {
+        height: 20px;
+        width: 20px;
     }
-
-    .content_body {
-        padding-top: 55px;
-        margin-bottom: 40px;
+    .mamber .mamber_wrapper .memberItem .memberCard_footer {
+        margin-top: 10px;
     }
-
-    .header .header_content .header_item_wrapper2 .profile_dashed {
+    .mamber_hedingSIde .mamber_hedingSide_right .addMamber_btn {
+        padding: 4px 16px;
+        font-size: 13px;
+        margin-bottom: 10px;
+    }
+    .mamber_hedingSIde .mamber_hedingSide_right .addMamber_btn span {
         display: none;
     }
-
-    .header .header_content .header_item_wrapper2 .mobile_hamburger_icon {
-        display: flex;
-        height: 40px;
-        width: 40px;
+    .mamber_hedingSIde .mamber_hedingSide_right .MuiButtonBase-root {
+        margin-bottom: 10px;
     }
 
-    .profile_bio {
-        padding: 8px 8px;
-    }
 
-    .header .header_content .header_item {
-        padding-top: 6px;
-    }
+    /* ------------------------------------------------------------------------
+                      Dialogue Chat Start 
+    ---------------------------------------------------------------------------*/
 
-    .header .header_content .header_item .logo {
-        height: 38px;
+    .dialog_footer .emoji_picker {
+        top: 60px;
+        z-index: 99;
+        right: 20px;
     }
-
-    /* .MuiDialog-paper {
-        border-radius: 0px !important;
-        overflow: visible !important;
-
-    } */
-    .mob_media_dialouge{
-        padding: 5px !important;
-    }
-    .Media_dilouge .MuiPaper-root{
-      margin: 10px !important;
-      max-width: 280px !important;
-    }
-    .upload_input_area .Upload_textarea {
-        width: 100%;
-        border: none !important;
-    }
-
     .dialog_footer .upload_attached ul li .small-text {
         display: none;
     }
@@ -1093,35 +792,130 @@
         margin-right: 0px;
     }
 
-    .dialogContent-2 .mediaAdd_Body .mediaAdder {
+    /* ------------------------------------------------------------------------
+                       Resource Chat Start 
+    ---------------------------------------------------------------------------*/
+    .resource_item_2 {
+        width: auto;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    .resource_item .resource_footer {
+        position: relative;
+        padding: 15px 0 0 0;
+    }
+
+    .resource_item .resource_footer .res_footer_left {
+        display: none;
+    }
+
+    .resource_details .details_file_container .file_tab .ant-image {
+        height: 130px;
+        width: 120px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
+
+    .resource_details h4 {
+        font-size: 20px;
+        line-height: 30px;
+        padding-bottom: 10px;
+    }
+
+    .resource_details {
+        padding: 25px 15px;
+    }
+
+
+    /* ------------------------------------------------------------------------
+                      Event  Chat Start 
+    ---------------------------------------------------------------------------*/
+
+    .event_details_body .invite_section .invite_top {
+        display: list-item;
+        list-style: none;
+    }
+
+    .event_details_body .invite_section .invite_top .invite_top_right .invite_btn {
+        margin-top: 15px;
+    }
+    .event_item .event_title {
+        font-size: 17px;
+        line-height: 24px;
+    }
+    .event_item {
+        margin-top: 8px;
+        height: auto;
+    }
+    .event_details_body .event_details_top .event_info .event_title {
+        font-size: 20px;
+        line-height: 28px;
+        padding-top: 15px;
+    }
+    .event_details_body .event_details_top .event_info .eventTime {
+        display: list-item;
+        list-style: none;
+    }
+
+
+    /* ------------------------------------------------------------------------
+                     Section header Chat Start 
+    ---------------------------------------------------------------------------*/
+    .section_headear h4 {
+        font-size: 20px;
+    }
+    .section_headear .btns_row .Btn_one {
+        margin-left: 0px;
+    }
+
+    .section_headear .btns_row {
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-top: 15px;
+    }
+    .section_headear .btns_row .Btn_one {
+        height: 38px;
+        padding: 0 12px;
+        font-size: 14px;
+
+    }
+    .section_headear .btns_row .Btn_two {
+        height: 38px;
+        padding: 0 12px;
+        font-size: 14px;
+        margin-left: 15px;
+    }
+    .section_headear {
+        display: list-item;
+        list-style: none;
+        padding-bottom: 20px;
+    }
+    .section_headear .btns_row .Btn_one span {
+        display: none;
+    }
+
+    .section_headear .btns_row .Btn_two span {
+        display: none;
+    }
+
+    /* ------------------------------------------------------------------------
+                      Classified  Chat Start 
+    ---------------------------------------------------------------------------*/
+    .classified_order_form {
         width: 100%;
     }
-
-    .dialogContent-2 .TagBody {
-        width: 100%;
+    .classified_item .post_bottom .classified_option {
+        height: 30px;
+        width: 30px;
     }
 
-    .dialog_footer .emoji_picker {
-        top: 60px;
-        z-index: 99;
-        right: 20px;
+    .classified_item .post_bottom .classified_option .MuiSvgIcon-root {
+        font-size: 17px;
     }
-
-    .userName {
-        line-height: 15px !important;
-        font-size: 16px !important;
-    }
-
     .classified_top_section .classified_top_img .classified_top_imgOverly .overly_conetnt .classified_search form .searchBar .form_control {
         height: 45px;
         padding: 0 20px;
     }
-
-    .comment_input_main {
-        padding-right: 9px;
-        padding-top: 20px;
-    }
-
     .classified_heading .section_name {
         font-size: 16px;
     }
@@ -1129,46 +923,6 @@
     .classified_top_section .classified_top_img {
         height: 200px;
     }
-
-    .comment_input_main .comment_input_container .comment_attachment ul li .comment_emoji_picker {
-        bottom: -275px;
-        right: -270px;
-        height: 260px;
-    }
-
-    .emojis_container .emojiTab {
-        padding: 5px 5px;
-        border-radius: 12px;
-        top: 5px;
-        left: 10px;
-        width: 240px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .emojis_container .emojiTab .singleEmoji {
-        font-size: 30px;
-        padding: 18px 10px;
-    }
-
-    .postView_container .postView_container_Top .postViewModal_container_Image {
-        min-height: 400px;
-        height: auto;
-        width: 100%;
-    }
-
-    .job_filter {
-        display: none;
-    }
-
-    .JobItemDetails .history_item .job_info .info_2 {
-        display: none;
-    }
-
-    .JobItemDetails .history_item .job_info .info_1 {
-        width: 100%;
-    }
-
     .classified_top_section .classified_top_img .classified_top_imgOverly .overly_conetnt .classified_search {
         width: 300px;
     }
@@ -1212,35 +966,13 @@
         object-fit: cover;
     }
 
-    .bidding_container .bidding_item {
-        width: 100%;
-    }
+    /* ------------------------------------------------------------------------
+                        User Profile  Start 
+    ---------------------------------------------------------------------------*/
 
-    .lounge .upload_box_container {
-        margin-bottom: 10px;
+    .user_profile .user_profile_content .user_join_date {
+        margin-top: 15px;
     }
-
-    .mamber .mamber_wrapper .memberItem {
-        padding: 14px 8px;
-        height: auto;
-    }
-
-    .mamber_hedingSIde .headingSection {
-        font-size: 18px;
-    }
-
-    .MemberSearch_body {
-        width: 100%;
-    }
-
-    .MemberSearch_body .memberSearch_wrapper {
-        width: 100%;
-    }
-
-    .addMember_card {
-        width: 100%;
-    }
-
     .user_profile .cover-photo {
         height: 200px;
     }
@@ -1260,86 +992,21 @@
     .user_profile .user_profile_content {
         padding: 10px 10px;
     }
-
-    #simple-tabpanel-0 .MuiBox-root {
-        padding: 20px 0px;
+    .user_profile .user_profile_content .user_icons_list {
+        flex-wrap: wrap;
+        margin-top: 10px;
     }
 
-    .event_details_body .invite_section .invite_top {
-        display: list-item;
-        list-style: none;
+    .user_profile .user_profile_content .user_icons_list a {
+        margin-top: 10px;
     }
 
-    .event_details_body .invite_section .invite_top .invite_top_right .invite_btn {
-        margin-top: 15px;
-    }
-
-    .backArrow {
-        margin-bottom: 10px;
-    }
-
-    .section_headear {
-        display: list-item;
-        list-style: none;
-        padding-bottom: 20px;
-    }
-
-    .resource_item .resource_footer .res_footer_left {
+    /* ------------------------------------------------------------------------
+                        Header Start 
+    ---------------------------------------------------------------------------*/
+    .header .header_content .header_item .commuinity_name {
         display: none;
     }
-
-    .resource_details .details_file_container .file_tab .ant-image {
-        height: 130px;
-        width: 120px;
-        margin-right: 10px;
-        margin-bottom: 10px;
-    }
-
-    .resource_details h4 {
-        font-size: 20px;
-        line-height: 30px;
-        padding-bottom: 10px;
-    }
-
-    .resource_details {
-        padding: 25px 15px;
-    }
-
-    .media_content_body {
-        padding-top: 45px;
-    }
-
-    .Media_area {
-        padding-top: 10px;
-    }
-
-    .section_headear .btns_row .Btn_one span {
-        display: none;
-    }
-
-    .section_headear .btns_row .Btn_two span {
-        display: none;
-    }
-
-    .entryWrapper .entry_wrap .commuinity_search_form {
-        width: 90%;
-        margin: 0 auto;
-    }
-
-    .home_banner {
-        height: 180px;
-        border-radius: 8px;
-        background: #fff;
-    }
-
-    .home_banner img {
-        object-fit: contain;
-    }
-
-    .entryWrapper {
-        padding: 30px 0;
-    }
-
     .entry_header .entry_header_wrap .entryHeader_right .createBtn {
         height: 36px;
         padding: 0 10px;
@@ -1351,47 +1018,186 @@
         height: 45px;
     }
 
-    .entryWrapper .entry_wrap .community_list_item .commuinity_item {
-        height: 350px;
-        width: 300px;
-        margin: 0 auto;
+    .entry_header .entry_header_wrap .entryHeader_logo img {
+        height: 40px;
     }
 
-    .user_profile .user_profile_content .user_icons_list {
-        flex-wrap: wrap;
-        margin-top: 10px;
+    .entry_header .entry_header_wrap .entryHeader_right .profile_dashed .profile_img {
+        height: 40px;
+        width: 40px;
     }
 
-    .user_profile .user_profile_content .user_icons_list a {
-        margin-top: 10px;
+    .entry_header .entry_header_wrap .entryHeader_right .profile_dashed .menu_wrapper .menu_wrapper_list i .MuiSvgIcon-root {
+        font-size: 18px;
     }
 
-    .mamber .mamber_wrapper .memberItem .user_info .user_name {
-        font-size: 15px;
-        padding: 2px 0 4px 0;
-    }
-    .mamber .mamber_wrapper .memberItem .icon_list {
-        justify-content: center;
+    .entry_header .entry_header_wrap .entryHeader_right .profile_dashed .menu_wrapper .menu_wrapper_list span {
+        font-size: 14px;
     }
 
-    .section_headear h4 {
+    .entry_header .entry_header_wrap .entryHeader_right .profile_dashed .menu_wrapper .menu_wrapper_list i {
+        height: 32px;
+        width: 32px;
+    }
+    .entry_header .entry_header_wrap .entryHeader_right .profile_dashed .menu_wrapper {
+        width: 220px;
+    }
+    .header .header_content .header_item_wrapper .header_item_list .MuiSvgIcon-root {
         font-size: 20px;
     }
-
-}
-
-
-/* Small None */
-@media (min-width: 200px) and (max-width: 309.98px) {
-    .mamber .mamber_wrapper .memberItem .user_info .join_date {
+    .header .header_content .header_item .commuinity_name {
+        margin-left: 5px;
+        font-weight: 400;
+        font-size: 14px;
+    }
+    .header .header_content .header_item_wrapper .header_item_list {
+        margin: 0 5px;
+        height: 32px;
+        width: 32px;
+    }
+    .header .header_content .header_item_wrapper2 .profile_dashed {
         display: none;
     }
-}
 
-@media (min-width: 400px) and (max-width: 899.98px) {
-    .chat .chatter_box_container .chat_body::after {
+    .header .header_content .header_item_wrapper2 .mobile_hamburger_icon {
+        display: flex;
+        height: 40px;
+        width: 40px;
+    }
+    .header .header_content .header_item {
+        padding-top: 6px;
+    }
+
+    .header .header_content .header_item .logo {
+        height: 38px;
+    }
+
+    /* ------------------------------------------------------------------------
+                        Magazine Start 
+    ---------------------------------------------------------------------------*/
+    .magazine_nav .nav_list li {
+        padding-right: 15px;
+    }
+    .magazine .sticky_section .sticky_wrapper .sticky_wrapper_main .main_text {
+        padding-left: 0px;
+        padding-top: 10px;
+    }
+
+    .magazine_top .magazine_t span {
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 29px;
+    }
+
+    .magazine .sticky_section .sticky_wrapper .sticky_wrapper_main .main_img img {
+        height: 220px;
+        width: 220px;
+    }
+
+    .magazine_details .magazine_details_wrapper .content_title {
+        font-size: 26px;
+        line-height: 35px;
+        padding-top: 20px;
+    }
+    .magazine .main_content_item .item_img {
+        height: 200px;
+    }
+
+    .magazine .main_content_item {
+        height: auto;
+    }
+
+    .magazine .front_section .front_main .front_main_img img {
+        height: 220px;
+    }
+
+    .magazine .front_section .front_main {
+        height: auto;
+    }
+
+
+    .magazine .magzine_slider_content .mag_content .content_info h2 {
+        font-size: 20px;
+        font-weight: 500;
+        padding: 8px 8px;
+        line-height: 26px;
+    }
+
+    .magazine_top .magazine_t {
+        text-align: start;
+    }
+
+    .magazine_top .top_left {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        position: absolute;
+        top: -76px;
+        right: 0;
+    }
+
+    .magazine_top .magzin_logo img {
+        max-height: 45px;
+        width: 100%;
+        object-fit: contain;
+    }
+    .magazine .magzine_slider_content {
+        height: 220px;
+        margin-top: 25px;
+    }
+
+    .magazine .magzine_slider_content .mag_content .content_info h2 {
+        font-size: 18px;
+        padding: 8px 8px;
+    }
+
+    .magazine_top {
+        margin-top: 12px;
+    }
+
+    .magazine .sticky_section .sticky_wrapper .sticky_wrapper_main {
+        display: list-item;
+        list-style: none;
+    }
+
+    .magazine_top {
+        display: list-item;
+        list-style: none;
+        height: 100px;
+    }
+
+    .magazine_top .top_left {
+        display: flex;
+        justify-items: center;
+        justify-content: end;
+        margin-top: 12px;
+    }
+
+    .magazine_nav .mag_search {
         display: none;
-     }
+    }
+    /* ------------------------------------------------------------------------
+                        Chat Start 
+    ---------------------------------------------------------------------------*/
+    .chat_box_icon .chat_button img {
+        height: 30px;
+        width: 30px;
+    }
+
+    .chat_box_icon {
+        bottom: 30px;
+        height: 50px;
+        width: 50px;
+    }
+    .chat_box_icon .chat_button span {
+        display: none;
+    }
+    .chat_contentBody {
+        height: 94vh;
+    }
+    .chat .chatter_box_container .fixed_profilr_header .ct_right .chat_title_dashed .dashed_btn {
+        display: none;
+    }
     .chat {
         width: 100%;
         border-radius: 13px;
@@ -1399,6 +1205,9 @@
         list-style: none;
         overflow: visible;
         padding-bottom: 10px;
+    }
+    .chat .chatter_box_container .chat_body::after {
+       display: none;
     }
 
     .chat .chatter_box_container {
@@ -1413,21 +1222,6 @@
     .chat .chat_left .chat_top_content .chat_left_top {
         padding: 0 10px 0 0;
     }
-
-    .business_item .business_item_img {
-        height: 125px;
-        width: 140px;
-    }
-
-    .rating_container .section_top .rating_add span {
-        display: none;
-    }
-
-    .rating_container .section_top .sec_title {
-        font-size: 18px;
-    }
-
-    /* another CSS */
     .chat .chatter_box_container .fixed_profilr_header {
         background-color: rgba(3,40,141,.1098039216);
         height: 50px;
@@ -1440,6 +1234,15 @@
     .chat .chatter_box_container .fixed_profilr_header .ct_left .name_T .name {
         font-size: 14px;
     }
+    .chat .chatter_box_container .fixed_profilr_header .ct_right .chat_title_dashed .vid_icon {
+        display: none;
+    }
+
+    .chat .chatter_box_container .fixed_profilr_header .ct_left .profile img {
+        height: 38px;
+        width: 38px;
+    }
+    
     .chat .chat_left .chat_top_content .chat_left_top .chat_h {
         font-size: 16px;
     }
@@ -1521,14 +1324,7 @@
         display: none;
       }
 
-    .chat .chatter_box_container .fixed_profilr_header .ct_right .chat_title_dashed .vid_icon {
-        display: none;
-    }
-
-    .chat .chatter_box_container .fixed_profilr_header .ct_left .profile img {
-        height: 38px;
-        width: 38px;
-    }
+   
 
     .chat .chatter_box_container .chat_body .chat_massage_item .profile_part .chatter_profile img {
         height: 30px;
@@ -1564,920 +1360,24 @@
         left: 5px !important;
     }
 
-    .magazine_nav .nav_list li {
-        padding-right: 15px;
-    }
-
-    .swiper-button-prev,
-    .swiper-rtl .swiper-button-next {
-        height: 40px;
-        width: 40px;
-    }
-
-    .swiper-button-prev::after,
-    .swiper-rtl .swiper-button-next::after {
-        font-size: 16px;
-    }
-
-    .swiper-button-next,
-    .swiper-rtl .swiper-button-prev {
-        height: 40px;
-        width: 40px;
-    }
-
-    .swiper-button-next::after,
-    .swiper-rtl .swiper-button-prev::after {
-        font-size: 16px;
-    }
-
-    .mag_category_Item .mag_category_Item_text h4 {
-        font-size: 18px;
-    }
-
-    .chat_contentBody {
-        height: 94vh;
-    }
-
-
-    /* Chat new Coad */
-
-
-
-    .file_selecter .css-5t8t4o {
-        width: 300px;
-    }
-
-    .uploader_contianer .folder_name_input .css-1x5jdmq {
-        min-width: 290px !important;
-    }
-
-    .overflow_card {
-        overflow: visible !important;
-        overflow-y: scroll !important;
-    }
-
-    .matrimonial_card_details .information_table .gallery_wrap .ant-image img {
-        height: 90px;
-        width: 100%;
-    }
-
-    .matrimonial_card_details .person_information {
-        padding: 10px 10px 0 10px;
-        margin-bottom: 25px;
-    }
-
-    .magazine .sticky_section .sticky_wrapper .sticky_wrapper_main .main_text {
-        padding-left: 0px;
-        padding-top: 10px;
-    }
-
-    .magazine_top .magazine_t span {
-        font-size: 24px;
-        font-weight: 500;
-        line-height: 29px;
-    }
-
-    .magazine .sticky_section .sticky_wrapper .sticky_wrapper_main .main_img img {
-        height: 220px;
-        width: 220px;
-    }
-
-    .magazine_details .magazine_details_wrapper .content_title {
-        font-size: 26px;
-        line-height: 35px;
-        padding-top: 20px;
-    }
-
-    .sticky_wrapper_main .main_img {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .magazine .main_content_item .item_img {
-        height: 200px;
-    }
-
-    .magazine .main_content_item {
-        height: auto;
-    }
-
-    .magazine .front_section .front_main .front_main_img img {
-        height: 220px;
-    }
-
-    .magazine .front_section .front_main {
-        height: auto;
-    }
-
-
-    .magazine_top .magzin_logo img {
-        max-height: 45px;
-        width: 100%;
-        object-fit: contain;
-    }
-
-    .magazine_top .magazine_t {
-        text-align: start;
-    }
-
-    .magazine_top .top_left {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        position: absolute;
-        top: -76px;
-        right: 0;
-    }
-
-    .magazine .magzine_slider_content .mag_content .content_info h2 {
-        font-size: 20px;
-        font-weight: 500;
-        padding: 8px 8px;
-        line-height: 26px;
-    }
-
-    .matromonial_search_form {
-        width: 100%;
-    }
-
-    .matrimonial_card_details {
-        padding: 20px 10px;
-    }
-
-    .matrimonial_card_details .person_information {
-        padding: 20px 12px 0 12px;
-    }
-
-    .matrimonial_card_details .person_information .person_image {
-        height: 200px;
-        width: 200px;
-        margin: 12px auto;
-    }
-
-    .matrimonial_card_details .information_table .info_item_list .info_item {
-        padding-left: 10px;
-    }
-
-    .magazine .magzine_slider_content {
-        height: 220px;
-        margin-top: 25px;
-    }
-
-    .magazine .magzine_slider_content .mag_content .content_info h2 {
-        font-size: 18px;
-    }
-
-    .magazine .sticky_section .sticky_wrapper .sticky_wrapper_main {
-        display: list-item;
-        list-style: none;
-    }
-
-    .magazine_top {
-        display: list-item;
-        list-style: none;
-        height: 100px;
-        margin-top: 15px;
-    }
-
-    .magazine_top .top_left {
-        display: flex;
-        justify-items: center;
-        justify-content: end;
-        margin-top: 15px;
-    }
-
-    .magazine_nav .mag_search {
-        display: none;
-    }
-
-    .comments-list .comment-avatar {
-        display: none;
-    }
-
-    .order_list_wrapper .order_list_wrap .list_top .list_top_left .oredr_id {
-        font-size: 16px;
-    }
-
-    .order_list_wrapper .order_list_wrap .list_top .list_top_left .oredr_id .MuiSvgIcon-root {
-        font-size: 22px;
-    }
-
-    .comments-list .comment-box {
-        width: 100%;
-    }
-
-    .comments-list:before {
-        display: none;
-    }
-
-    .mob_padding_75 {
-        margin-top: 75px;
-    }
-
-    .mamber_hedingSide_right button {
-        font-size: 12px;
-    }
-
-    .mamber .mamber_wrapper .memberItem .user_info .join_date {
-        font-size: 11px;
-        padding-bottom: 0px;
-    }
-
-    .mamber .mamber_wrapper .memberItem .owner_member {
-        width: 95%;
-    }
-
-    .community_list_item {
-        padding-top: 140px;
-    }
-
-    .mamber .mamber_wrapper .memberItem .icon_list .icon {
-        height: 32px;
-        width: 32px;
-    }
-
-    .mamber .mamber_wrapper .memberItem .icon_list .icon .MuiSvgIcon-root {
-        font-size: 18px;
-    }
-
-    .mamber .mamber_wrapper .memberItem .icon_list .icon img {
-        height: 20px;
-        width: 20px;
-    }
-
-    .mamber .mamber_wrapper .memberItem .memberCard_footer {
-        margin-top: 10px;
-    }
-
-    .mamber_hedingSIde .mamber_hedingSide_right .addMamber_btn {
-        padding: 4px 16px;
-        font-size: 13px;
-        margin-bottom: 10px;
-    }
-
-    .mamber_hedingSIde .mamber_hedingSide_right .addMamber_btn span {
-        display: none;
-    }
-
-    .uploader_dial {
-        bottom: 140px !important;
-    }
-
-    .chat_box_icon .chat_button span {
-        display: none;
-    }
-
-    .postView_container .postView_container_Top .postViewModal_container_Image img {
-        max-height: 450px;
-        max-width: 100%;
-    }
-
-    .profile_bio .profile_info .userName a {
-        font-size: 15px;
-    }
-
-    .profile_bio .profile_info {
-        padding-left: 5px;
-        width: 100%;
-    }
-
-    .video-react {
-        height: 370px !important;
-    }
-
-    .resource_item .resource_footer {
-        position: relative;
-        padding: 15px 0 0 0;
-    }
-
-    .video-react .video-react-video {
-        max-height: 370px !important;
-    }
-
-    .longue_item .uploaded_img_container .single_img img {
-        max-height: 420px;
-    }
-
-    .classified_order_form {
-        width: 100%;
-    }
-
-    .backArrow_head {
-        position: relative;
-        left: 15px;
-        top: 20px;
-        margin-bottom: 20px;
-    }
-
-    .communityInfo_wrapper .community_top_info {
-        display: list-item;
-        list-style: none;
-    }
-
-    .mamber_hedingSIde {
-        display: list-item;
-        list-style: none;
-    }
-
-    .lounge .upload_box_container .upload_box_bottom {
-        padding-top: 10px;
-    }
-
-    .event_item {
-        margin-top: 8px;
-        height: auto;
-    }
-
-    .business_item {
-        height: auto;
-        margin-top: 8px;
-    }
-
-    .section_headear .btns_row .Btn_one {
-        margin-left: 0px;
-    }
-
-    .section_headear .btns_row {
-        justify-content: space-between;
-        flex-wrap: wrap;
-        margin-top: 15px;
-    }
-
-    .mamber_hedingSIde .mamber_hedingSide_right {
-        flex-wrap: wrap;
-        margin-top: 12px;
-        justify-content: center;
-    }
-
-    .mamber .mamber_wrapper .memberItem .user_info .user_img img {
-        height: 75px;
-        width: 75px;
-
-    }
-
-    .user_profile .user_profile_content .user_join_date {
-        margin-top: 15px;
-    }
-
-    .mamber_hedingSIde .mamber_hedingSide_right .MuiButtonBase-root {
-        margin-bottom: 10px;
-    }
-
-    .com_top_left .tagline {
-        padding-top: 5px;
-    }
-
-    .com_top_left .tagline p {
-        font-size: 14px;
-        line-height: 18px;
-    }
-
-    .communityInfo_wrapper .community_top_info .com_botttom {
-        display: flex;
-        justify-content: flex-end;
-    }
-
-    .chat_box_icon .chat_button img {
-        height: 30px;
-        width: 30px;
-    }
-
-    .chat_box_icon {
-        bottom: 30px;
-        height: 50px;
-        width: 50px;
-    }
-
-    .communityInfo_wrapper .community_top_info .edit_button {
-        position: relative;
-        top: 0;
-        right: 0;
-        font-size: 13px;
-        border-radius: 35px;
-        display: inline-block;
-        padding: 1px 20px;
-        margin: 0 0 0 auto;
-    }
-
-    .communityInfo_wrapper .community_top_info .edit_button .MuiSvgIcon-root {
-        font-size: 14px;
-    }
-
-    .mob_none {
-        display: none !important;
-    }
-
-    .community_list_item .commuinity_item {
-        height: 320px;
-        width: 280px;
-        margin: 0 auto;
-    }
-
-    .community_list_item .commuinity_item {
-        width: 280px;
-        margin: 0 auto;
-    }
-
-    .communityInfo_wrapper .commuinity_banner {
-        height: 140px;
-        width: 100%;
-    }
-
-    .communityInfo_wrapper .community_top_info .com_logo img {
-        height: 92px;
-        width: 92px;
-    }
-
-    .header .header_content .header_item_wrapper .header_item_list .MuiSvgIcon-root {
-        font-size: 22px;
-    }
-
-    .communityInfo_wrapper .community_top_info .com_top_left .com_name {
-        font-size: 18px;
-        line-height: 21px;
-    }
-
-    .communityInfo_wrapper .community_top_info .com_top_left .tagline {
-        font-size: 15px;
-    }
-
-    .entryWrapper .entry_wrap .home_title {
-        font-size: 26px;
-        font-weight: 600;
-        line-height: 37px;
-        text-align: center;
-        padding-bottom: 35px;
-    }
-
-    .order_list_wrapper .order_list_wrap .list_top {
-        display: list-item;
-        list-style: none;
-    }
-
-    .order_list_wrapper .order_list_wrap .list_top .list_top_left .oredr_id {
-        font-size: 18px;
-    }
-
-    .order_list_wrapper .order_list_wrap .list_top .list_top_right {
-        font-size: 24px;
-        padding-top: 5px;
-    }
-
-    .order_list_wrapper .order_list_wrap .update_item_info .item_update_right {
-        justify-content: end;
-        display: flex;
-        padding-top: 7px;
-    }
-
-    .order_list_wrapper .order_list_wrap .order_content {
-        display: flex;
-        align-items: center;
-        padding-left: 0px;
-        padding-top: 10px;
-    }
-
-    .order_list_wrapper .order_list_wrap .update_item_info {
-        display: list-item;
-        list-style: none;
-        justify-content: space-between;
-        align-items: center;
-        padding-top: 8px;
-        padding-left: 0px;
-    }
-
-    .homeMainContent .login_D_form .login_d_right {
-        height: auto;
-        min-height: auto;
-        max-width: 100%;
-        width: 100%;
-        padding: 30px 20px 15px 20px;
-    }
-
-    .homeMainContent .login_D_form .login_d_right .login_bday form h3 {
-        padding-top: 60px;
-    }
-
-    .homeMainContent .login_D_form .login_d_left {
-        height: 100%;
-        width: 100%;
-        padding: 20px 20px 15px 20px;
-        position: relative;
-    }
-
-    .homeMainContent .login_D_form .login_d_left {
-        padding: 10px;
-    }
-
-    .homeMainContent .login_D_form {
-        height: auto;
-        display: list-item;
-        list-style: none;
-        margin-top: 135px;
-        margin-bottom: 50px;
-        padding: 15px;
-    }
-
-    .homeMainContent {
-        width: 100%;
-        height: auto;
-    }
-
-    .copy_right {
-        position: relative;
-        width: 100%;
-        height: 50px;
-        font-size: 15px;
-    }
-
-    .homeMainContent .backArrow {
-        left: 0;
-        top: 20px;
-    }
-
-    .creatCommuinity_form_body .backArrow {
-        left: 0;
-        top: 20px;
-    }
-
-    .creatCommuinity_form_body .creatCommuinity_wrapper .creatCommuinity_wrap {
-        width: 100%;
-        padding-top: 12px;
-    }
-
-    .creatCommuinity_wrapper {
-        margin: 110px 0 40px 0;
-        padding: 60px 30px;
-    }
-
-    /* Inside Commuinity */
-    .side-menu {
-        display: none;
-    }
-
-    .header .header_content .header_item .commuinity_name {
-        margin-left: 5px;
-        font-weight: 400;
-        font-size: 14px;
-    }
-
-    .lounge_right_fixed {
-        display: none;
-    }
-
-    .header .header_content .header_item_wrapper .header_item_list {
-        margin: 0 5px;
-        height: 37px;
-        width: 37px;
-    }
-
-    .css-1oqqzyl-MuiContainer-root {
-        padding-left: 5px !important;
-        padding-right: 5px !important;
-    }
-
-    .longue_item {
-        margin-bottom: 7px;
-    }
-
-    .content_body {
-        padding-top: 55px;
-        margin-bottom: 40px;
-    }
-
-    .header .header_content .header_item_wrapper2 .profile_dashed {
-        display: none;
-    }
-
-    .header .header_content .header_item_wrapper2 .mobile_hamburger_icon {
-        display: flex;
-        height: 40px;
-        width: 40px;
-    }
-
-    .profile_bio {
-        padding: 8px 8px;
-    }
-
-    .header .header_content .header_item {
-        padding-top: 6px;
-    }
-
-    .header .header_content .header_item .logo {
-        height: 38px;
-    }
-
-    .MuiDialog-paper {
-        border-radius: 0px !important;
-        overflow: visible !important;
-    }
-
-    .upload_input_area .Upload_textarea {
-        width: 100%;
-        border: none !important;
-    }
-
-    .dialog_footer .upload_attached ul li .small-text {
-        display: none;
-    }
-
-    .dialog_footer .upload_attached ul li {
-        cursor: pointer;
-        font-size: 20px;
-        padding: 0px 0px;
-        border-radius: 10px;
-        margin-right: 12px;
-        display: flex;
-        align-items: center;
-        height: 45px;
-        width: 45px;
-        justify-content: center;
-    }
-
-    .dialog_footer .upload_attached ul li .MuiSvgIcon-root {
-        font-size: 22px;
-        margin-right: 0px;
-    }
-
-    .dialogContent-2 .mediaAdd_Body .mediaAdder {
-        width: 100%;
-    }
-
-    .dialogContent-2 .TagBody {
-        width: 100%;
-    }
-
-    .dialog_footer .emoji_picker {
-        top: 60px;
-        z-index: 99;
-        right: 20px;
-    }
-
-    .userName {
-        line-height: 18px !important;
-    }
-
-    .comment_input_main {
-        padding-right: 9px;
-        padding-top: 20px;
-    }
-
-    .comment_input_main .comment_input_container .comment_attachment ul li .comment_emoji_picker {
-        bottom: -275px;
-        right: -270px;
-        height: 260px;
-    }
-
-    .emojis_container .emojiTab {
-        padding: 5px 5px;
-        border-radius: 12px;
-        top: 5px;
-        left: 10px;
-        width: 240px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .emojis_container .emojiTab .singleEmoji {
-        font-size: 30px;
-        padding: 18px 10px;
-    }
-
-    .postView_container .postView_container_Top .postViewModal_container_Image {
-        min-height: 400px;
-        height: auto;
-        width: 100%;
-    }
-
-    .job_filter {
-        display: none;
-    }
-
-    .JobItemDetails .history_item .job_info .info_2 {
-        display: none;
-    }
-
-    .JobItemDetails .history_item .job_info .info_1 {
-        width: 100%;
-    }
-
-    .classified_top_section .classified_top_img .classified_top_imgOverly .overly_conetnt .classified_search {
-        width: 300px;
-    }
-
-    .classified_cetegory_list .list_category_item {
-        display: none;
-    }
-
-    .classified_item .classified_item_img {
-        height: 140px;
-        width: 100%;
-    }
-
-    .classified_item {
-        height: 250px;
-    }
-
-    .classified_item_detail .classified_item_Img_container .swiper .swiper-wrapper .swiper-slide {
-        height: 300px;
-    }
-
-    .classified_item_detail .classified_item_Img_container .swiper .swiper-wrapper .navigate_img {
-        height: 60px;
-        height: 60px;
-        width: 100%;
-        object-fit: cover;
-    }
-
-    .bidding_container .bidding_item {
-        width: 100%;
-    }
-
-    .lounge .upload_box_container {
-        margin-bottom: 10px;
-    }
-
-    .mamber .mamber_wrapper .memberItem {
-        padding: 14px 8px;
-        height: 235px;
-    }
-
-    .mamber_hedingSIde .headingSection {
-        font-size: 18px;
-    }
-
-    .MemberSearch_body {
-        width: 100%;
-    }
-
-    .MemberSearch_body .memberSearch_wrapper {
-        width: 100%;
-    }
-
-    .addMember_card {
-        width: 100%;
-    }
-
-    .user_profile .cover-photo {
-        height: 200px;
-    }
-
-    .user_profile .user_profile_content .content_top .user_profileImg {
-        height: 100px;
-        width: 100px;
-        margin-top: -60px;
-        margin-left: 0px;
-    }
-
-    .user_profile .user_profile_content .content_top .profile-name {
-        padding-left: 10px;
-        font-size: 20px;
-    }
-
-    .user_profile .user_profile_content {
-        padding: 10px 10px;
-    }
-
-    #simple-tabpanel-0 .MuiBox-root {
-        padding: 20px 0px;
-    }
-
-    .event_details_body .invite_section .invite_top {
-        display: list-item;
-        list-style: none;
-    }
-
-    .event_details_body .invite_section .invite_top .invite_top_right .invite_btn {
-        margin-top: 15px;
-    }
-
-    .backArrow {
-        margin-bottom: 10px;
-    }
-
-    .section_headear {
-        display: list-item;
-        list-style: none;
-        padding-bottom: 20px;
-    }
-
-    .resource_item .resource_footer .res_footer_left {
-        display: none;
-    }
-
-    .resource_details .details_file_container .file_tab .ant-image {
-        height: 130px;
-        width: 120px;
-        margin-right: 10px;
-        margin-bottom: 10px;
-    }
-
-    .resource_details h4 {
-        font-size: 20px;
-        line-height: 30px;
-        padding-bottom: 10px;
-    }
-
-    .resource_details {
-        padding: 25px 15px;
-    }
-
-    .media_content_body {
-        padding-top: 45px;
-    }
-
-    .Media_area {
-        padding-top: 10px;
-    }
-
-    .section_headear .btns_row .Btn_one span {
-        display: none;
-    }
-
-    .section_headear .btns_row .Btn_two span {
-        display: none;
-    }
-
-    .entryWrapper .entry_wrap .commuinity_search_form {
-        width: 90%;
-        margin: 0 auto;
-    }
-
-    .home_banner {
-        height: 180px;
-        border-radius: 8px;
-        background: #fff;
-    }
-
-    .home_banner img {
-        object-fit: contain;
-    }
-
-    .entryWrapper {
-        padding: 30px 0;
-    }
-
-    .entry_header .entry_header_wrap .entryHeader_right .createBtn {
-        height: 40px;
-        padding: 0 20px;
-        font-size: 14px;
-    }
-
-    .entry_header .entry_header_wrap .entryHeader_logo img {
-        height: 45px;
-    }
-
-    .entryWrapper .entry_wrap .community_list_item .commuinity_item {
-        height: 350px;
-        width: 300px;
-        margin: 0 auto;
-    }
-
-    .user_profile .user_profile_content .user_icons_list {
-        flex-wrap: wrap;
-        margin-top: 10px;
-    }
-
-    .user_profile .user_profile_content .user_icons_list a {
-        margin-top: 10px;
-    }
-
-    .mamber .mamber_wrapper .memberItem .user_info .user_name {
-        font-size: 15px;
-        padding: 2px 0 0 0;
-    }
-
-    .section_headear h4 {
-        font-size: 20px;
-    }
 
 }
+
+
+/* Small None */
+
+@media (min-width: 200px) and (max-width: 309.98px) {
+    .mamber .mamber_wrapper .memberItem .user_info .join_date {
+        display: none;
+    }
+}
+
+
 
 @media (min-width: 480px) and (max-width: 576.98px) {
     .css-1oqqzyl-MuiContainer-root {
         padding-left: 15px !important;
         padding-right: 15px !important;
-    }
-}
-
-@media (min-width: 576px) and (max-width: 899.98px) {
-    .content_body {
-        width: 570px;
-        margin: 0 auto;
-    }
-
-    .media_content_body {
-        padding-top: 45px;
-        width: 576px;
-        margin: 0 auto;
-    }
-
-    .entryWrapper .entry_wrap .commuinity_search_form {
-        width: 500px;
-    }
-
-    .entryWrapper .entry_wrap .community_list_item .commuinity_item {
-        width: 90%;
     }
 }
 
