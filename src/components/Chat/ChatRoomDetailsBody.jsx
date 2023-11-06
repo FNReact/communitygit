@@ -635,7 +635,7 @@ const ChatRoomDetailsBody = ({ chatRoomDetails, singleRoom, setChatRoomDetails, 
                 aria-labelledby="responsive-dialog-title"
                 className='chat_group_modal'
             >
-                <DialogTitle id="responsive-dialog-title">
+                <DialogTitle sx={{mt:4}} id="responsive-dialog-title">
                     {`Member ${chatRoomDetails?.meta?.chat_room?.name}`}
                 </DialogTitle>
                 <DialogContent>
