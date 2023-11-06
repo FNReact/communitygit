@@ -39,6 +39,7 @@ import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Swal from 'sweetalert2';
 import { notifyError } from '../../utils/Toast';
+
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
@@ -82,7 +83,7 @@ const ChatRoomDetailsBody = ({ chatRoomDetails, singleRoom, setChatRoomDetails, 
     const [ownerFind, setOwnerFind] = useState(false)
 
     const getAllExistedMembers = (chatRoomUuid)=>{
-        console.log('hit')
+        setOwnerFind(false)
         let config = {
             method: "get",
             url: `${chatRoomUrl}/${chatRoomUuid}/members?uuid=${chatRoomUuid}`,
@@ -95,7 +96,6 @@ const ChatRoomDetailsBody = ({ chatRoomDetails, singleRoom, setChatRoomDetails, 
             .request(config)
             .then((response) => {
                 setStoreExistedMembers(response?.data)
-
                 if(response?.data && response?.data.length>0){
                     response?.data.forEach(member => {
                         if(member?.is_owner ===true && userDetails.uuid === member?.user.uuid){
@@ -115,8 +115,6 @@ const ChatRoomDetailsBody = ({ chatRoomDetails, singleRoom, setChatRoomDetails, 
 
                 var difference = members.filter(item1 => !response.data.some(item2 => (item2.name === item1.name)))
 
-                console.log('difference', difference)
-
                 var membertoAdd = [];
                 if(difference && difference.length>0){
                     difference.forEach(element => {
@@ -126,12 +124,11 @@ const ChatRoomDetailsBody = ({ chatRoomDetails, singleRoom, setChatRoomDetails, 
                     });
                 }
                 setStoreMemberToBeAdd(membertoAdd)
-
             })
-            .catch((error) => { });
+            .catch((error) => { 
+                setLoaderVisible(false)
+            });
     }
-
-    console.log('chatRoomDetails', chatRoomDetails)
 
     useEffect(()=>{
         if(chatRoomDetails?.meta?.chat_room){
@@ -318,60 +315,90 @@ const ChatRoomDetailsBody = ({ chatRoomDetails, singleRoom, setChatRoomDetails, 
             });
     }
 
-
-    console.log('chatRoomDetails', chatRoomDetails)
-
-
     // remove member from group
-  const handleDeleteItem=(member)=>{
-    Swal.fire({
-        heightAuto: false,
-        backdrop: false,
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, Delete it!",
-      }).then((result) => {
-        if (result.isConfirmed) {
-            setLoaderVisible(true)
-            var data = JSON.stringify({
-                // "is_public_group": 'false',
-                "members": member,
-                "uuid":member?.user.uuid
-                // "name": `${groupName} -Group In ${msDetails.name}`
-            });
-          let config = {
-            method: "delete",
-            url: `${chatRoomUrl}/${chatRoomDetails?.meta?.chat_room.uuid}/members`,
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-            data:data
-          };
-          axios 
-            .request(config)
-            .then((response) => {
-                // handleChatDetails(response?.data?.uuid);
-                getAllChatRooms()
-                handleCloseChatGroup()
-                getAllExistedMembers(chatRoomDetails?.meta?.chat_room.uuid)
-                setGroupName('')
-                setStoreGroupMembers([])
-                setLoaderVisible(false)
-            })
-            .catch((error) => {
-                notifyError('Something went wrong')
-                setLoaderVisible(false)
-            });
-        }
-      });  
-}
+    const handleDeleteItem=(member)=>{
+        Swal.fire({
+            heightAuto: false,
+            backdrop: false,
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, Delete it!",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                setLoaderVisible(true)
+                var data = JSON.stringify({
+                    // "is_public_group": 'false',
+                    "members": member,
+                    "uuid":member?.user.uuid
+                    // "name": `${groupName} -Group In ${msDetails.name}`
+                });
+            let config = {
+                method: "delete",
+                url: `${chatRoomUrl}/${chatRoomDetails?.meta?.chat_room.uuid}/members`,
+                headers: {
+                Authorization: `Bearer ${token}`,
+                },
+                data:data
+            };
+            axios 
+                .request(config)
+                .then((response) => {
+                    // handleChatDetails(response?.data?.uuid);
+                    getAllChatRooms()
+                    handleCloseChatGroup()
+                    getAllExistedMembers(chatRoomDetails?.meta?.chat_room.uuid)
+                    setGroupName('')
+                    setStoreGroupMembers([])
+                    setLoaderVisible(false)
+                })
+                .catch((error) => {
+                    notifyError('Something went wrong')
+                    setLoaderVisible(false)
+                });
+            }
+        });  
+    }
 
-    console.log('ownerFind', ownerFind)
-
+    // delete chat room
+    const handleDeleteRoom=(room)=>{
+        Swal.fire({
+            heightAuto: false,
+            backdrop: false,
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, Delete it!",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                setLoaderVisible(true)
+            let config = {
+                method: "delete",
+                url: `${chatRoomUrl}/${room.uuid}`,
+                headers: {
+                Authorization: `Bearer ${token}`,
+                },
+                data:data
+            };
+            axios 
+                .request(config)
+                .then((response) => {
+                    // handleChatDetails(response?.data?.uuid);
+                    window.location.reload();
+                })
+                .catch((error) => {
+                    notifyError('Something went wrong')
+                    setLoaderVisible(false)
+                });
+            }
+        });  
+    }
 
     return (
         <>
@@ -391,6 +418,12 @@ const ChatRoomDetailsBody = ({ chatRoomDetails, singleRoom, setChatRoomDetails, 
                     </div>
                     <div className="ct_right">
                         <div className="chat_title_dashed">
+                            {ownerFind ===true && 
+                                <div className="dashed_btn" onClick={(e)=> handleDeleteRoom(chatRoomDetails?.meta?.chat_room)}>
+                                    <DeleteIcon />
+                                </div>
+                            }
+                            
                             <div className="dashed_btn" onClick={handleClickOpenChatGroup}>
                                 <GroupAddIcon />
                             </div>
@@ -400,11 +433,11 @@ const ChatRoomDetailsBody = ({ chatRoomDetails, singleRoom, setChatRoomDetails, 
                             <div className="dashed_btn">
                                 <VideocamIcon />
                             </div>
-                            <div className="chat_D">
+                            {/* <div className="chat_D">
                                 <div className="info_btn">
                                     <MoreVertIcon />
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>

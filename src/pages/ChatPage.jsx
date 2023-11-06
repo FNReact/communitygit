@@ -36,7 +36,6 @@ const ChatPage = () => {
     .catch((error) => {
     });
   }
-
   useEffect(()=>{
     getAllChatRooms()
   },[])

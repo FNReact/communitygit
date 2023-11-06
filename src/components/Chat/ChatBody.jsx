@@ -41,11 +41,13 @@ const ChatBody = ({ chatRooms, setChatRooms, getAllChatRooms }) => {
     const [singleRoom, setSingleRoom] = useState(null)
     const [loaderVisible, setLoaderVisible] = useState(false)
     const [allMembers, setAllMembers] = useState([])
-
     const [storeMembers, setStoreMembers] = useState([])
 
     const [groupName, setGroupName] = useState('')
     const [storeGroupMembers, setStoreGroupMembers] = useState([])
+
+    const [searchQuery, setSearchQuery] = useState('')
+
 
     const [anchorEl, setAnchorEl] = useState(null);
     const openChatMenu = Boolean(anchorEl);
@@ -61,7 +63,6 @@ const ChatBody = ({ chatRooms, setChatRooms, getAllChatRooms }) => {
     // set default chat
     useEffect(() => {
         if (location?.state === null && chatRooms && chatRooms?.data?.length > 0 && chatDetailsOpner === true && allMembers && allMembers.length > 1) {
-
             const findsMemberChats = [];
             chatRooms?.data.forEach(chat => {
                 var groupName = chat?.name
@@ -345,7 +346,72 @@ const ChatBody = ({ chatRooms, setChatRooms, getAllChatRooms }) => {
                     setLoaderVisible(false)
                 });
         }
-    
+
+    const [trigger, setTrigger] = useState(false)    
+    useEffect(()=>{
+        if(searchQuery === 'triger' && trigger===true ){
+            getAllChatRooms()
+            setTrigger(false)
+        }
+    },[searchQuery])    
+
+
+    //handle input
+    const handleInput = (e) =>{
+        setSearchQuery(e.target.value);
+        if(e.target.value ===''){
+            setSearchQuery('triger');
+            setTrigger(true)
+        }
+    }
+ 
+  const handleSearchChat = (e)=>{
+    e.preventDefault();
+
+    let config = {
+        method: 'get',
+        url: `${chatRoomUrl}/search?q=${searchQuery}`,
+        headers: { 
+          'Authorization': `Bearer ${token}`
+        }
+      };
+      
+      axios.request(config)
+      .then((response) => {
+        // setChatRooms(response.data)
+        // console.log('response.daat', response.data)
+        // console.log('existed chat romm', chatRooms)
+        // setStoreMembers(response.data?.rooms)
+
+
+        const findsMember = [];
+        if ( response.data?.rooms && response.data?.rooms.length > 0 && allMembers && allMembers.length > 0) {
+            response.data?.rooms.forEach(chat => {
+               var groupName = chat?.name
+                var hasGroupName = groupName?.includes("-Group");
+                if(hasGroupName ===true){
+                    findsMember.push(chat)
+                }else{
+                    allMembers.forEach(member => {
+                        if (member?.user?.uuid === chat?.member?.uuid) {
+                            findsMember.push(chat)
+                        }
+                    });
+                }
+            });
+        }
+        setStoreMembers(findsMember)
+
+
+
+
+      })
+      .catch((error) => {
+      });
+  }     
+
+  
+  console.log('storeMembers', storeMembers)
 
 
     return (
@@ -383,9 +449,9 @@ const ChatBody = ({ chatRooms, setChatRooms, getAllChatRooms }) => {
                             </div>
                             <div className="chat_search">
                                 <div className="search_box">
-                                    <form action="#">
-                                        <input type="text" placeholder="Search" className="form_control" />
-                                        <i><FontAwesomeIcon icon={faArrowRight} /></i>
+                                    <form onSubmit={(e)=>handleSearchChat(e)}>
+                                        <input type="text" placeholder="Search" className="form_control" onChange={(e)=>handleInput(e)} />
+                                        <i onClick={(e)=> handleSearchChat(e)}><FontAwesomeIcon icon={faArrowRight} /></i>
                                     </form>
                                 </div>
                             </div>
@@ -417,6 +483,9 @@ const ChatBody = ({ chatRooms, setChatRooms, getAllChatRooms }) => {
                                 </Swiper>
                             </div>
                         </div>
+                        {storeMembers && storeMembers.length === 0 && 
+                            <Box><Button disabled>No data found...</Button></Box>
+                        }
                         <div className="chat_list">
                             {storeMembers
                                 && storeMembers.length > 0
@@ -477,6 +546,7 @@ const ChatBody = ({ chatRooms, setChatRooms, getAllChatRooms }) => {
                                     )
                                 })}
                         </div>
+                        
                     </div>
                     {chatRoomDetails === null && <div className="room_null">
                         <span>No chats to show </span>
