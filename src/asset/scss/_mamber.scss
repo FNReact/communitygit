@@ -77,6 +77,9 @@
                 .user_img{
                       height: 82px;
                       width: 82px;
+                      display: flex; 
+                      justify-content: center;
+                      align-items: center;
                       margin: 0 auto;
                     img{
                       height: 80px;
