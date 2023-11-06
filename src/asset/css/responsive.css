@@ -1,4 +1,7 @@
 @media (min-width: 200px) and (max-width: 399.98px) {
+    .chat .chatter_box_container .fixed_profilr_header .ct_right .chat_title_dashed .dashed_btn {
+        display: none;
+    }
     .creatCommuinity_form_body .creatCommuinity_wrapper .creatCommuinity_wrap form .form_control {
         height: 45px;
     }
@@ -639,8 +642,8 @@
     }
 
     .mamber .mamber_wrapper .memberItem .user_info .user_img img {
-        height: 75px;
-        width: 75px;
+        height: 70px;
+        width: 70px;
 
     }
 
@@ -1106,6 +1109,7 @@
 
     .userName {
         line-height: 15px !important;
+        font-size: 16px !important;
     }
 
     .classified_top_section .classified_top_img .classified_top_imgOverly .overly_conetnt .classified_search form .searchBar .form_control {
@@ -1363,8 +1367,11 @@
     }
 
     .mamber .mamber_wrapper .memberItem .user_info .user_name {
-        font-size: 16px;
+        font-size: 15px;
         padding: 2px 0 4px 0;
+    }
+    .mamber .mamber_wrapper .memberItem .icon_list {
+        justify-content: center;
     }
 
     .section_headear h4 {
