@@ -8,7 +8,7 @@ import newsfeed from "../../asset/image/newsfeed.png";
 import { UserContext } from "../../utils/UserContext";
 import Avatar from "../../asset/image/avatar.jpg";
 import { baseUrl, commonUserUrl } from "../../api/Api";
-import { Container, Grid, IconButton, Tooltip } from "@mui/material";
+import { Box, Button, Container, Grid, IconButton, Tooltip } from "@mui/material";
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import Grow from '@mui/material/Grow';
 import Paper from '@mui/material/Paper';
@@ -237,7 +237,7 @@ useEffect(()=>{
 
                     <Tooltip title="Classified">
                       <Link to="/classified">
-                        <div className="header_item_list mob_none">
+                        <div className="header_item_list">
                           <StoreIcon color="action" />
                         </div>
                       </Link>
@@ -436,125 +436,167 @@ useEffect(()=>{
                                 <span>Report to admin</span>
                               </div>
                             </Link>
-                            <Link to='/classified' onClick={(e) => handleMenuDrawer(anchor)} >
+                            {/* <Link to='/classified' onClick={(e) => handleMenuDrawer(anchor)} >
                               <div className="my_commuinity" >
                                 <i><StoreIcon /></i>
                                 <span>Classified</span>
                               </div>
-                            </Link>   
+                            </Link>    */}
 
-                            <div className="sidebar_list">
-                              <Link to='/member' onClick={(e) => handleMenuDrawer(anchor)}>
-                                <div className="sidebar_list_item">
-                                  <div className="list_icon">
-                                    <img src={mamberImg} alt="" />
-                                  </div>
-                                  <div className="list_name">
-                                    Member
-                                  </div>
+                            {msDetails?.meta?.community_settings ===undefined && (loggedInUser?.user_type ==='admin' || userDetails.id === msDetails?.user_id) &&
+                                <div className="sidebar_list">
+                                  <Box display='flex' justifyContent='center' justifyItems='center'>
+                                    <Button variant="contained" onClick={(e) => navigate('/community-setup')}>Setup Menu</Button>
+                                  </Box>
                                 </div>
-                              </Link>
-                              <Link to='/community-profile' onClick={(e) => handleMenuDrawer(anchor)}>
-                                <div className="sidebar_list_item">
-                                  <div className="list_icon">
-                                    <img src={newsfeed} alt="" />
+                              }
+
+                            {msDetails?.meta?.community_settings && <div className="sidebar_list">
+                              {msDetails?.meta?.community_settings && msDetails?.meta?.community_settings?.member_enable==='1'  
+                                && msDetails?.meta?.community_settings?.member_menu_name &&
+                                  <Link to='/member' onClick={(e) => handleMenuDrawer(anchor)}>
+                                    <div className="sidebar_list_item">
+                                      <div className="list_icon">
+                                        <img src={mamberImg} alt="" />
+                                      </div>
+                                      <div className="list_name">
+                                        {msDetails?.meta?.community_settings?.member_menu_name}
+                                      </div>
+                                    </div>
+                                  </Link>
+                               }
+                              {msDetails?.meta?.community_settings && msDetails?.meta?.community_settings?.my_lounge_post_enable==='1'  
+                                  && msDetails?.meta?.community_settings?.my_lounge_menu_name &&
+                                    <Link to='/community-profile' onClick={(e) => handleMenuDrawer(anchor)}>
+                                      <div className="sidebar_list_item">
+                                        <div className="list_icon">
+                                          <img src={newsfeed} alt="" />
+                                        </div>
+                                        <div className="list_name">
+                                          {msDetails?.meta?.community_settings?.my_lounge_menu_name}
+                                        </div>
+                                      </div>
+                                    </Link>
+                                }
+                                {msDetails?.meta?.community_settings && msDetails?.meta?.community_settings?.my_job_enable==='1'  
+                                  && msDetails?.meta?.community_settings?.my_job_menu_name &&
+                                  <Link to='/my-job-list' onClick={(e) => handleMenuDrawer(anchor)}>
+                                    <div className="sidebar_list_item">
+                                      <div className="list_icon">
+                                        <img src={jobImage} alt="" />
+                                      </div>
+                                      <div className="list_name">
+                                        {msDetails?.meta?.community_settings?.my_job_menu_name}
+                                      </div>
+                                    </div>
+                                  </Link>
+                              }
+                              {msDetails?.meta?.community_settings && msDetails?.meta?.community_settings?.event_enable==='1'  
+                                && msDetails?.meta?.community_settings?.event_menu_name && 
+                                <Link to='/event' onClick={(e) => handleMenuDrawer(anchor)}>
+                                  <div className="sidebar_list_item">
+                                    <div className="list_icon">
+                                      <img src={eventImg} alt="" />
+                                    </div>
+                                    <div className="list_name">
+                                      {msDetails?.meta?.community_settings?.event_menu_name}
+                                    </div>
                                   </div>
-                                  <div className="list_name">
-                                    My Post
+                                </Link>
+                               }
+                                {msDetails?.meta?.community_settings && msDetails?.meta?.community_settings?.resource_enable==='1'  
+                                  && msDetails?.meta?.community_settings?.resource_menu_name &&  
+                                  <Link to='/resource' onClick={(e) => handleMenuDrawer(anchor)}>
+                                    <div className="sidebar_list_item">
+                                      <div className="list_icon">
+                                        <img src={resources} alt="" />
+                                      </div>
+                                      <div className="list_name">
+                                        {msDetails?.meta?.community_settings?.resource_menu_name}
+                                      </div>
+                                    </div>
+                                  </Link>
+                              }
+                               {msDetails?.meta?.community_settings && msDetails?.meta?.community_settings?.media_enable==='1'  
+                                  && msDetails?.meta?.community_settings?.media_menu_name &&
+                                  <Link to='/media' onClick={(e) => handleMenuDrawer(anchor)}>
+                                    <div className="sidebar_list_item">
+                                      <div className="list_icon">
+                                        <img src={folder} alt="" />
+                                      </div>
+                                      <div className="list_name">
+                                        {msDetails?.meta?.community_settings?.media_menu_name}
+                                      </div>
+                                    </div>
+                                  </Link>
+                              }
+                              {msDetails?.meta?.community_settings && msDetails?.meta?.community_settings?.my_classified_enable==='1'  
+                                && msDetails?.meta?.community_settings?.my_classified_menu_name &&
+                                <Link to='/myClassified' onClick={(e) => handleMenuDrawer(anchor)}>
+                                  <div className="sidebar_list_item">
+                                    <div className="list_icon">
+                                      <img src={resourceImg} alt="" />
+                                    </div>
+                                    <div className="list_name">
+                                        {msDetails?.meta?.community_settings?.my_classified_menu_name}
+                                    </div>
                                   </div>
-                                </div>
-                              </Link>
-                              <Link to='/job' onClick={(e) => handleMenuDrawer(anchor)}>
-                                <div className="sidebar_list_item">
-                                  <div className="list_icon">
-                                    <img src={jobImage} alt="" />
+                                </Link>
+                              }
+                              {msDetails?.meta?.community_settings && msDetails?.meta?.community_settings?.business_enable==='1'  
+                              && msDetails?.meta?.community_settings?.business_menu_name &&
+                                <Link to='/localBusiness' onClick={(e) => handleMenuDrawer(anchor)}>
+                                  <div className="sidebar_list_item">
+                                    <div className="list_icon">
+                                      <img src={representiveS} alt="" />
+                                    </div>
+                                    <div className="list_name">
+                                      {msDetails?.meta?.community_settings?.business_menu_name}
+                                    </div>
                                   </div>
-                                  <div className="list_name">
-                                    Jobs
-                                  </div>
-                                </div>
-                              </Link>
-                              <Link to='/event' onClick={(e) => handleMenuDrawer(anchor)}>
-                                <div className="sidebar_list_item">
-                                  <div className="list_icon">
-                                    <img src={eventImg} alt="" />
-                                  </div>
-                                  <div className="list_name">
-                                    Event
-                                  </div>
-                                </div>
-                              </Link>
-                              <Link to='/resource' onClick={(e) => handleMenuDrawer(anchor)}>
-                                <div className="sidebar_list_item">
-                                  <div className="list_icon">
-                                    <img src={resources} alt="" />
-                                  </div>
-                                  <div className="list_name">
-                                    Resources
-                                  </div>
-                                </div>
-                              </Link>
-                              <Link to='/media' onClick={(e) => handleMenuDrawer(anchor)}>
-                                <div className="sidebar_list_item">
-                                  <div className="list_icon">
-                                    <img src={folder} alt="" />
-                                  </div>
-                                  <div className="list_name">
-                                    Media
-                                  </div>
-                                </div>
-                              </Link>
-                              <Link to='/myClassified' onClick={(e) => handleMenuDrawer(anchor)}>
-                                <div className="sidebar_list_item">
-                                  <div className="list_icon">
-                                    <img src={resourceImg} alt="" />
-                                  </div>
-                                  <div className="list_name">
-                                    Classifieds
-                                  </div>
-                                </div>
-                              </Link>
-                              <Link to='/localBusiness' onClick={(e) => handleMenuDrawer(anchor)}>
-                                <div className="sidebar_list_item">
-                                  <div className="list_icon">
-                                    <img src={representiveS} alt="" />
-                                  </div>
-                                  <div className="list_name">
-                                    Community Business
-                                  </div>
-                                </div>
-                              </Link>
-                              <Link to='/local-representatives' onClick={(e) => handleMenuDrawer(anchor)}>
-                                <div className="sidebar_list_item">
-                                  <div className="list_icon">
-                                    <img src={localRepresentetiveImg} alt="" />
-                                  </div>
-                                  <div className="list_name">
-                                    Local Representative
-                                  </div>
-                                </div>
-                              </Link>
-                              <Link to='/matrimonial' onClick={(e) => handleMenuDrawer(anchor)}>
-                                <div className="sidebar_list_item">
-                                  <div className="list_icon">
-                                    <img src={coupleImg} alt="" />
-                                  </div>
-                                  <div className="list_name">
-                                    Matrimonial Center
-                                  </div>
-                                </div>
-                              </Link>
-                              <Link to='/magazine' onClick={(e) => handleMenuDrawer(anchor)}>
-                                <div className="sidebar_list_item">
-                                  <div className="list_icon">
-                                    <img src={magazineImg} alt="" />
-                                  </div>
-                                  <div className="list_name">
-                                    Community Magazine
-                                  </div>
-                                </div>
-                              </Link>
-                            </div>
+                                </Link>
+                              }
+                               {msDetails?.meta?.community_settings && msDetails?.meta?.community_settings?.representative_enable==='1'  
+                                && msDetails?.meta?.community_settings?.representative_menu_name &&
+                                  <Link to='/local-representatives' onClick={(e) => handleMenuDrawer(anchor)}>
+                                    <div className="sidebar_list_item">
+                                      <div className="list_icon">
+                                        <img src={localRepresentetiveImg} alt="" />
+                                      </div>
+                                      <div className="list_name">
+                                        {msDetails?.meta?.community_settings?.representative_menu_name}
+                                      </div>
+                                    </div>
+                                  </Link>
+                               }
+                                {msDetails?.meta?.community_settings && msDetails?.meta?.community_settings?.matrimony_enable==='1'  
+                                  && msDetails?.meta?.community_settings?.matrimony_menu_name &&
+                                  <Link to='/matrimonial' onClick={(e) => handleMenuDrawer(anchor)}>
+                                    <div className="sidebar_list_item">
+                                      <div className="list_icon">
+                                        <img src={coupleImg} alt="" />
+                                      </div>
+                                      <div className="list_name">
+                                        {msDetails?.meta?.community_settings?.matrimony_menu_name}
+                                      </div>
+                                    </div>
+                                  </Link>
+                                }
+                               {msDetails?.meta?.community_settings && msDetails?.meta?.community_settings?.magazine_menu_enable==='1'  
+                                && msDetails?.meta?.community_settings?.magazine_menu_name && 
+                                  <Link to='/magazine' onClick={(e) => handleMenuDrawer(anchor)}>
+                                    <div className="sidebar_list_item">
+                                      <div className="list_icon">
+                                        <img src={magazineImg} alt="" />
+                                      </div>
+                                      <div className="list_name">
+                                        {msDetails?.meta?.community_settings?.magazine_menu_name}
+                                      </div>
+                                    </div>
+                                  </Link>
+                              }
+                            </div>}
+
                             <div className="logout_btn"  onClick={logout}>
                               Logout
                             </div>
