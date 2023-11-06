@@ -436,6 +436,15 @@ useEffect(()=>{
                                 <span>Report to admin</span>
                               </div>
                             </Link>
+                            {(loggedInUser?.user_type ==='admin' || userDetails.id === msDetails?.user_id) &&
+                              <Link to='/community-setup' onClick={(e) => handleMenuDrawer(anchor)}>
+                                <div className="my_commuinity">
+                                  <i><SettingsIcon /></i>
+                                  <span>Community Setup</span>
+                                </div>
+                              </Link>
+                            }
+                            
                             {/* <Link to='/classified' onClick={(e) => handleMenuDrawer(anchor)} >
                               <div className="my_commuinity" >
                                 <i><StoreIcon /></i>

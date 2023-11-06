@@ -516,6 +516,9 @@ const ChatBody = ({ chatRooms, setChatRooms, getAllChatRooms }) => {
                                         fullTime = days + 'd' + " " + hours + 'h' + " " + minutes + 'm' + " " + secs + 's';
                                     }
 
+                                    const splitedTime = fullTime?.split(' ')
+                                    // console.log('full time', splitedTime[0])
+
                                     return (
                                         <div>
                                             <div className="chat_list_item" key={chat.uuid} onClick={(e) => { handleChatDetails(chat.uuid); setSingleRoom(chat) }}>
@@ -535,7 +538,9 @@ const ChatBody = ({ chatRooms, setChatRooms, getAllChatRooms }) => {
 
                                                 </div>
                                                 <div className="lastMassage-time">
-                                                    {fullTime}
+                                                    {/* {fullTime} */}
+                                                    {/* {splitedTime?.splitedTime[0]} */}
+                                                    {(fullTime && splitedTime ) && splitedTime[0]}
                                                 </div>
                                                 <div className="senting">
                                                     <i><FontAwesomeIcon icon={faCircleCheck} /></i>

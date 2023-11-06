@@ -837,7 +837,7 @@ useEffect(()=>{
                         </Grid>
 
                       {/* blood */}
-                        <Grid item lg={2} md={2} sm={2} xs={12} sx={{mt:3}} >
+                        {/* <Grid item lg={2} md={2} sm={2} xs={12} sx={{mt:3}} >
                           <Box sx={{ml:2}} >
                             <FormControl component="fieldset" variant="standard">
                               <FormGroup>
@@ -870,7 +870,7 @@ useEffect(()=>{
                               value={values.blood}
                             />
                           </Box>
-                        </Grid>
+                        </Grid> */}
 
                         {/* school */}
                         <Grid item lg={2} md={2} sm={2} xs={12} sx={{mt:3}} >
@@ -1013,7 +1013,7 @@ useEffect(()=>{
                           </Box>
                         </Grid>
                         {/* home district */}
-                        <Grid item lg={2} md={2} sm={2} xs={12} sx={{mt:3}} >
+                        {/* <Grid item lg={2} md={2} sm={2} xs={12} sx={{mt:3}} >
                           <Box sx={{ml:2}} >
                             <FormControl component="fieldset" variant="standard">
                               <FormGroup>
@@ -1046,7 +1046,7 @@ useEffect(()=>{
                               value={values.homedistrict_name}
                             />
                           </Box>
-                        </Grid>
+                        </Grid> */}
 
 
                       </>

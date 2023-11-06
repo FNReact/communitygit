@@ -41,22 +41,22 @@ const CommunityPackegs = () => {
                 <Grid container spacing={2} sx={{ mt: 5 }}>
                     <Grid item lg={3} sm={6} xs={6} md={6} >
                        <div className='card_wrap' onClick={(e) => handlePackege('personal')}>
-                             <span>Personal</span>
+                             <span>Personal/Corporate/Institutions</span>
                         </div>
                     </Grid>
                     <Grid item lg={3} sm={6} xs={6} md={6}>
                         <div className='card_wrap' onClick={(e) => handlePackege('business')}>
-                           <span>Business / Commercial</span>
+                           <span>Business/Association/Complex </span>
                         </div>
                     </Grid>
                     <Grid item lg={3} sm={6} xs={6} md={6}>
                         <div className='card_wrap' onClick={(e) => handlePackege('apartment')}>
-                             <span>Appartment / House</span>
+                             <span>Appartment</span>
                        </div>
                     </Grid>
                     <Grid item lg={3} sm={6} xs={6} md={6}>
                         <div className='card_wrap' onClick={(e) => handlePackege('housing')}>
-                             <span>Housing Society</span>
+                             <span>Housing/Homeowners Association</span>
                        </div>
                     </Grid>
                 </Grid>
