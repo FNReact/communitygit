@@ -38,28 +38,27 @@ const CommunityPackegs = () => {
 
             <GeneralTopNavigation back={true} />
             <div className='Card_container'>
-                <Grid container spacing={3} sx={{ mt: 5 }}>
-                    <Grid item xs={3} md={3}>
+                <Grid container spacing={2} sx={{ mt: 5 }}>
+                    <Grid item lg={3} sm={6} xs={6} md={6} >
                        <div className='card_wrap' onClick={(e) => handlePackege('personal')}>
                              <span>Personal</span>
                         </div>
                     </Grid>
-                    <Grid item xs={3} md={3}>
+                    <Grid item lg={3} sm={6} xs={6} md={6}>
                         <div className='card_wrap' onClick={(e) => handlePackege('business')}>
                            <span>Business / Commercial</span>
                         </div>
                     </Grid>
-                    <Grid item xs={3} md={3}>
+                    <Grid item lg={3} sm={6} xs={6} md={6}>
                         <div className='card_wrap' onClick={(e) => handlePackege('apartment')}>
                              <span>Appartment / House</span>
                        </div>
                     </Grid>
-                    <Grid item xs={3} md={3}>
+                    <Grid item lg={3} sm={6} xs={6} md={6}>
                         <div className='card_wrap' onClick={(e) => handlePackege('housing')}>
                              <span>Housing Society</span>
                        </div>
                     </Grid>
-                    
                 </Grid>
             </div>
         </>
