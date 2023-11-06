@@ -375,7 +375,7 @@ const AppRouter = () => {
             <Route exact path="/my-job-list" element={<Protected Component={MyJobListPage} />}/>
             <Route exact path="/my-job" element={<Protected Component={MyJobCreatePage} />}/>
             <Route exact path="/job-details" element={<Protected Component={JobItemDetailsPage} />}/>
-
+ 
             {/* Classified Pages Routes */}
             <Route exact path="/classified-create" element={<Protected Component={ClassifiedCreatePage} />}/>
             <Route exact path="/classified-detail" element={<Protected Component={ClassifiedItemDetailPage} />}/>

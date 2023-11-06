@@ -77,7 +77,7 @@ const LocalBusinessPage = () => {
         <Grid item lg={3} md={4} sm={12} xs={12}></Grid>
         <Grid item lg={9} md={8} sm={12} xs={12}>
           <div className="content_body">
-            <div className="section_headear">
+            <div className="section_headear section_header_2">
               <h4>Community Business</h4>
               <div className="btns_row">
                 <Link to='/myLocalBusiness'>

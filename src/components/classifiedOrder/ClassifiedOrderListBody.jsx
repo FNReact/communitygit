@@ -71,8 +71,8 @@ const singleOrderDetails=(uuid)=>{
                     <div className="order_list_wrap">
                     <div className="list_top">
                          <div className="list_top_left">
-                          {userDetails !==null && singleOrder.payment_status ===0 && <div className="oredr_id"> <CheckBoxIcon/> Order By {userDetails.profile.name}  <span>UnPaid</span> </div>}
-                          {userDetails !==null && singleOrder.payment_status ===1 && <div className="oredr_id"> <CheckBoxIcon/> Order By {userDetails.profile.name} <span>Paid</span> </div>}
+                          {userDetails !==null && singleOrder.payment_status ===0 && <div className="oredr_id"> <CheckBoxIcon/> <span className="sm_none">Order</span> By <span className="o_name"> {userDetails.profile.name} </span>   <span className="status_update">UnPaid</span> </div>}
+                          {userDetails !==null && singleOrder.payment_status ===1 && <div className="oredr_id"> <CheckBoxIcon/> <span className="sm_none">Order</span> By  <span className="o_name"> {userDetails.profile.name}</span>  <span className="status_update">Paid</span> </div>}
                          </div>
                          {singleOrder !==null && <div className="list_top_right">{msDetails?.currency} {singleOrder.bill_amount}</div>}
                          

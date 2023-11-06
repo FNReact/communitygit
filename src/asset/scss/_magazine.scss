@@ -4,6 +4,7 @@
   min-height: 400px;
   box-shadow: $shadow;
   padding: 20px;
+  position: relative;
 
   .magzine_slider_content {
     height: 300px;
@@ -583,4 +584,9 @@
       line-height: 22px;
     }
   }
+}
+
+
+.m_menu{
+  display: none ;
 }

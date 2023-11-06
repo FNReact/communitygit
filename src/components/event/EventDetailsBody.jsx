@@ -448,6 +448,8 @@ const handleUpdateStatus =(status)=>{
             <div className="invite_section">
                     <div className="invite_top">
                         <div className="invite_top_left">
+                       <div className="member_div">
+                       <span onClick={(e)=>navigate('/event/invite',{state:{participents:participents,eventDetail:eventDetail,going:false}})}>People invited</span>
                            <div className="guestList_ShortView">
                            <AvatarGroup max={4}>
                               {participents !==null && participents.map((participant,key)=>{
@@ -459,9 +461,12 @@ const handleUpdateStatus =(status)=>{
                               })}
                            </AvatarGroup>
                            </div>
-                            <span onClick={(e)=>navigate('/event/invite',{state:{participents:participents,eventDetail:eventDetail,going:false}})}>People invited</span>
+                       </div>
+                           
 
                             <Divider orientation="vertical" variant="middle" flexItem >|</Divider>
+                           <div className="member_div">
+                           <span onClick={(e)=>navigate('/event/invite',{state:{participents:participents,eventDetail:eventDetail,going:true}})}>People Going</span>
                             <div className="guestList_ShortView" sx={{ml:3}}>
                               <AvatarGroup max={4}>
                                  {participents !==null && participents.map((participant,key)=>{
@@ -475,8 +480,8 @@ const handleUpdateStatus =(status)=>{
                                  })}
                               </AvatarGroup>
                            </div>
+                           </div>
                            
-                            <span onClick={(e)=>navigate('/event/invite',{state:{participents:participents,eventDetail:eventDetail,going:true}})}>People Going</span>
 
                         </div>
                         {participentStatus===0 && userDetails.id !== evevntCreateBy && <Chip label="Invited" color='primary' />}

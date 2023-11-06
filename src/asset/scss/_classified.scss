@@ -226,6 +226,7 @@
       font-weight: 500;
       color: $text-2;
       line-height: 24px;
+      @include text-ellips-2;
     }
   }
   .post_bottom{
@@ -306,6 +307,8 @@
       font-weight: 500;
       color: $text-2;
       line-height: 24px;
+      @include text-ellips-2;
+
     }
     .post_bottom{
       display: flex;
@@ -633,7 +636,10 @@
               margin-right: 5px;
               color: $black;
              }
-             span{
+             .o_name{
+              margin-left: 5px;
+             }
+             .status_update{
               padding: 1px 10px;
               background-color: #109817;
               color: $white;
@@ -776,6 +782,7 @@
           font-weight: 600;
           color: $black;
           width: 80%;
+          word-wrap: break-word;
           span{
             margin-right: 12px;
           }

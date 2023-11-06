@@ -23,6 +23,7 @@
         color: $black;
         font-weight: 500;
         line-height: 28px;
+        @include text-ellips;
     }
     .dropDown{
         height: 30px;
@@ -60,11 +61,13 @@
         }
     }
     .event_details{
-        font-size: 13px;
+        p{
+            font-size: 13px;
         color: $text;
         font-weight: 400;
         line-height: 20px;
         padding-top: 15px;
+        }
     }
 }
 
@@ -237,6 +240,10 @@
             .invite_top_left{
               display: flex;
               align-items: center;
+              .member_div{
+                display: flex;
+                align-items: center;
+              }
               span{
                  font-size: 16px;
                  color: $black;

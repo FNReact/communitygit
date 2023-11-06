@@ -102,6 +102,28 @@ const MagazineTopNavigation = () => {
     <>
       {loaderVisible === true && <MainLoader />}
 
+      {(loggedInUser?.user_type === 'admin' || userDetails.id === msDetails?.user_id) &&
+          <div className="m_menu">
+            <Tooltip title='Add Menu'>
+              <Button
+                variant="contained"
+                sx={{ mr: 2 }}
+                onClick={(e) => navigate("/magazine-menu")}
+              >
+                <i><PostAddIcon /></i>
+              </Button>
+            </Tooltip>
+
+            <Tooltip title='Add Content'>
+              <Button
+                variant="contained"
+                onClick={(e) => navigate("/magazine-content")}
+              >
+                <i><PlaylistAddIcon /></i>
+              </Button>
+            </Tooltip>
+          </div>}
+
       <div className="magazine_top" style={{
         backgroundImage: msDetails?.meta?.community_settings?.magazine_banner_enable ==='1'?`url("${baseUrl}/${msDetails?.meta?.community_settings?.magazine_banner}")`:'' 
       }}>
@@ -134,7 +156,7 @@ const MagazineTopNavigation = () => {
                   >
                     My Compositions
                   </Button> */}
-            <Tooltip title="Preview Demo Magazine">
+            {/* <Tooltip title="Preview Demo Magazine">
               <Button
                 variant="contained"
                 sx={{ mr: 2 }}
@@ -142,7 +164,7 @@ const MagazineTopNavigation = () => {
               >
                 <i><PreviewIcon /></i>
               </Button>
-            </Tooltip>
+            </Tooltip> */}
             <Tooltip title='Add Menu'>
               <Button
                 variant="contained"

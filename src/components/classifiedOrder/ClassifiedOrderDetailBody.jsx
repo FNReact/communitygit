@@ -63,8 +63,8 @@ const ClassifiedOrderDetailBody = React.forwardRef((props, ref)=>{
                <div className="order_list_wrap">
                      <div className="list_top">
                          <div className="list_top_left">
-                          {singleOrder !==null && singleOrder.payment_status ===0 && <div className="oredr_id"> <CheckBoxIcon/> Order By {singleOrder.user.name}  <span>Unpaid</span> </div>}
-                          {singleOrder !==null && singleOrder.payment_status ===1 && <div className="oredr_id"> <CheckBoxIcon/> Order By {singleOrder.user.name} <span>Paid</span> </div>}
+                          {singleOrder !==null && singleOrder.payment_status ===0 && <div className="oredr_id"> <CheckBoxIcon/><span className="sm_none"> Order</span> By {singleOrder.user.name}  <span className="status_update">Unpaid</span> </div>}
+                          {singleOrder !==null && singleOrder.payment_status ===1 && <div className="oredr_id"> <CheckBoxIcon/> <span className="sm_none">Order</span> By {singleOrder.user.name} <span className="status_update">Paid</span> </div>}
                          </div>
                          {singleOrder !==null && <div className="list_top_right">{msDetails?.currency} {singleOrder.bill_amount}</div>}
                          

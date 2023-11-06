@@ -235,13 +235,13 @@ const handleResouce = ()=>{
                     <Grid item xs={12}>
                       <Box><TextField label="Representative Email"  variant="filled" fullWidth  focused onChange={(e)=>setValue('email', e.target.value)} value={values.email}/></Box>
                     </Grid>
-                    <Grid item xs={4}>
+                    <Grid item lg={4} md={12} sm={12} xs={12}>
                       <Box><TextField label="Representative District"  variant="filled" fullWidth  focused onChange={(e)=>setValue('district', e.target.value)} value={values.district}/></Box>
                     </Grid>
-                    <Grid item xs={4}>
+                    <Grid item lg={4} md={12} sm={12} xs={12}>
                       <Box><TextField label="Tennure" type="date"  variant="filled" fullWidth  focused onChange={(e)=>setValue('fromDate', e.target.value)} value={values.fromDate}/></Box>
                     </Grid>
-                    <Grid item xs={4}>
+                    <Grid item lg={4} md={12} sm={12} xs={12}>
                       <Box><TextField label="Until Date" type="date"  variant="filled" fullWidth  focused onChange={(e)=>setValue('toDate', e.target.value)} value={values.toDate}/></Box>
                     </Grid>
                     <Grid item xs={12}>

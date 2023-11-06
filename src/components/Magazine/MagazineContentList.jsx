@@ -255,7 +255,7 @@ export default function MagazineContentList() {
             path={'/magazine-content-create'}
             // path={'/magazine-menu'}
              />
-            <TableContainer sx={{ minWidth: 800 }}>
+            <TableContainer className="mui_table" sx={{ minWidth: 800 }}>
               {selected.length > 0 && (
                 <TableSelectedActions
                   dense={dense}

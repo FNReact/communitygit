@@ -433,11 +433,11 @@ const ChatRoomDetailsBody = ({ chatRoomDetails, singleRoom, setChatRoomDetails, 
                             <div className="dashed_btn">
                                 <VideocamIcon />
                             </div>
-                            {/* <div className="chat_D">
+                            <div className="chat_D">
                                 <div className="info_btn">
                                     <MoreVertIcon />
                                 </div>
-                            </div> */}
+                            </div>
                         </div>
                     </div>
                 </div>

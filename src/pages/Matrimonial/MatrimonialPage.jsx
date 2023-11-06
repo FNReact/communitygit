@@ -141,7 +141,7 @@ const handleKeyPress = (event) => {
               </div>
             </Tooltip>
 
-            <div className="section_headear">
+            <div className="section_headear section_header_2">
               <h4>Matrimonial Center</h4>
               <div className="btns_row">
                 <a >

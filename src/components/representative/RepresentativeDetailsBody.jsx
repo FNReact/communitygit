@@ -68,7 +68,7 @@ const RepresentativeDetailsBody = () => {
 
   const [open, setOpen] = React.useState(false);
   const theme = useTheme();
-  const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
+  const fullScreen = useMediaQuery(theme.breakpoints.down('xs'));
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -289,7 +289,7 @@ const handleEditRecommendation =(data)=>{
                 All Recommendations
               </div>
               <div className="rating_add" onClick={handleClickOpen}>
-                <AddIcon /> Recommend this resource
+                <AddIcon /> <span>Recommend this resource</span>
               </div>
             </div>
             <Box display='flex'  justifyContent='center' justifyItems='center'>

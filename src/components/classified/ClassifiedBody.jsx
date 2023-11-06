@@ -153,7 +153,7 @@ useEffect(()=>{
        </div>}
        
        {visitor ===false &&
-          <div className="section_headear">
+          <div className="section_headear section_header_2">
           <h4>My Classified</h4>
           <div className="btns_row">
             <Link to='/orderList'>

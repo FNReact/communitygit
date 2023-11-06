@@ -348,7 +348,10 @@ const handleCreateClassified = ()=>{
                          </RadioGroup>
                        </FormControl>
                         </div>
-                        <div className="form_rowing">
+                       
+                    </Grid>
+                    <Grid item lg={6}  md={12} sm={12} xs={12}>
+                    <div className="form_rowing">
                           <FormLabel>Bidding : </FormLabel>
                           <FormControl>
                           <RadioGroup
@@ -364,7 +367,7 @@ const handleCreateClassified = ()=>{
                        </FormControl>
                         </div>
                     </Grid>
-                    <Grid item lg={4}  md={10} sm={8} xs={8}>
+                    <Grid item lg={4}  md={10} sm={8} xs={12}>
                       <FormControl variant="filled" fullWidth focused> 
                          <InputLabel id="demo-simple-select-filled-label">Select Category(*)</InputLabel>
                           <Select
@@ -378,7 +381,7 @@ const handleCreateClassified = ()=>{
                          </Select>
                        </FormControl>
                     </Grid>
-                    <Grid item lg={2}  md={2} sm={4} xs={4}>
+                    <Grid item lg={2}  md={2} sm={4} xs={12}>
                         <Button variant="contained" onClick={(e)=>handleCreateCategory()}>Add Category</Button>
                     </Grid>
                     <Grid item lg={6}  md={12} sm={12} xs={12}>

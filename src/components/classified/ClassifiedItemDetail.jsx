@@ -66,7 +66,7 @@ const ClassifiedItemDetail = ()=>{
     const [orderNote, setOrderNote] = useState(null)
  
     const theme = useTheme();
-    const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
+    const fullScreen = useMediaQuery(theme.breakpoints.down('sx'));
     const orderFormOpen = () => {
       setOrder(true);
     };

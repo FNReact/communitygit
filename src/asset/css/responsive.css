@@ -6,21 +6,49 @@
     .my_files_navigate .navigate_part_one .navigate_title {
         display: none;
     }
-   
+    .order_info_wrapper .order_info_wrap .info_item .info_left {
+        font-size: 15px;
+        width: 25%;
+    }
+    .business_details {
+        padding: 20px 15px;
+    }
+    .business_item .business_item_img {
+        height: 80px;
+    }
+    .recomment_overview .MuiAvatar-root{
+       height: 30px;
+       width: 30px;
+    }
     .com_info_wrap {
         padding: 19px 10px 20px 10px;
     }
-    .business_item .business_item_img {
-        height: 125px;
-        width: 140px;
+    .business_item .business_item_img  img{
+       width: 70px;
+       height: 80px;
     }
 
     .rating_container .section_top .rating_add span {
         display: none;
     }
-
+    .rating_container .rating_item {
+        display: list-item;
+        list-style: none;
+    }
+    /* .MuiPaper-root{
+        margin: 25px 10px !important;
+    } */
+    .MuiDialog-paper {
+        margin: 32px 10px !important;
+    }
+    .rating_container .rating_item .user_avatar{
+        display: none;
+    }
+    .rating_container .rating_item .rating_content {
+        padding-left: 0px;
+    }
     .rating_container .section_top .sec_title {
-        font-size: 18px;
+        font-size: 17px;
     }
     .swiper-button-prev,
     .swiper-rtl .swiper-button-next {
@@ -255,6 +283,9 @@
         font-size: 17px;
         line-height: 22px;
     }
+    .b_type_list{
+        display: none;
+    }
 
     .my_item .item_icon {
         height: 80px;
@@ -371,10 +402,13 @@
     .dialogContent-2 .TagBody {
         width: 100%;
     }
-
+    .classified_item_detail .bidding_container .bidding_btn {
+        width: 100%;
+        font-size: 15px;
+    }
     .userName {
         line-height: 15px !important;
-        font-size: 16px !important;
+        font-size: 15px !important;
     }
     .comment_input_main {
         padding-right: 9px;
@@ -454,12 +488,13 @@
     }
 
     .entryWrapper {
-        padding: 30px 0;
+        padding: 70px 0;
     }
 
     .entryWrapper .entry_wrap .community_list_item .commuinity_item {
         height: 350px;
-        width: 300px;
+        width: auto;
+        max-width: 300px;
         margin: 0 auto;
     }   
     /* ------------------------------------------------------------------------
@@ -574,7 +609,9 @@
         width: 200px;
         margin: 12px auto;
     }
-
+    .matrimonial_card_details .information_table {
+        padding: 12px 0px 0 0px;
+    }
     .matrimonial_card_details .information_table .info_item_list .info_item {
         padding-left: 10px;
     }
@@ -594,7 +631,9 @@
      /* ------------------------------------------------------------------------
                        Job Item Details Chat Start 
     ---------------------------------------------------------------------------*/
-
+    .job_item_info .job_item_info_middle {
+        display: none;
+    }
     .JobItemDetails .history_item .job_info .info_1 p {
         font-size: 14px;
     }
@@ -707,7 +746,7 @@
     }
 
     .mamber_hedingSIde .headingSection {
-        font-size: 18px;
+        font-size: 16px;
     }
     .mamber_hedingSIde .mamber_hedingSide_right {
         flex-wrap: wrap;
@@ -737,6 +776,9 @@
     .mamber .mamber_wrapper .memberItem .icon_list .icon {
         height: 32px;
         width: 32px;
+    }
+    .mamber .mamber_wrapper .memberItem .memberCard_footer .memberCard_footer_right .member_dropdown_Plate {
+        width: 120px;
     }
     .mamber .mamber_wrapper .memberItem .icon_list .icon .MuiSvgIcon-root {
         font-size: 18px;
@@ -835,7 +877,24 @@
         display: list-item;
         list-style: none;
     }
-
+    .event_details_body .invite_section .invite_top .invite_top_left span {
+        font-size: 14px;
+        color: #494949;
+    }
+    .guestList_ShortView .MuiAvatar-root{
+      height: 32px;
+      width: 32px;
+    }
+    .event_details_body .invite_section {
+        padding: 10px 8px;
+    }
+    .event_details_body .invite_section .invite_top .invite_top_left {
+        display: list-item;
+        list-style: none;
+    }
+    .event_details_body .invite_section .invite_top .invite_top_left .MuiDivider-root{
+        display: none;
+    }
     .event_details_body .invite_section .invite_top .invite_top_right .invite_btn {
         margin-top: 15px;
     }
@@ -862,7 +921,7 @@
                      Section header Chat Start 
     ---------------------------------------------------------------------------*/
     .section_headear h4 {
-        font-size: 20px;
+        font-size: 17px;
     }
     .section_headear .btns_row .Btn_one {
         margin-left: 0px;
@@ -880,14 +939,13 @@
 
     }
     .section_headear .btns_row .Btn_two {
-        height: 38px;
-        padding: 0 12px;
-        font-size: 14px;
+        height: 35px;
+        padding: 0 6px;
+        font-size: 12px;
         margin-left: 15px;
     }
     .section_headear {
-        display: list-item;
-        list-style: none;
+        
         padding-bottom: 20px;
     }
     .section_headear .btns_row .Btn_one span {
@@ -924,7 +982,9 @@
         height: 200px;
     }
     .classified_top_section .classified_top_img .classified_top_imgOverly .overly_conetnt .classified_search {
-        width: 300px;
+        width: auto;
+        min-width: 280px;
+        max-width: 320px;
     }
 
     .classified_cetegory_list .list_category_item {
@@ -935,13 +995,51 @@
         height: 120px;
         width: 100%;
     }
-
+    .classified_create .classified_create_form .form_rowing .MuiFormLabel-root {
+        margin-right: 10px;
+    }
     .classified_item .post_bottom .cart_icon {
         height: 30px;
         width: 30px;
         background-color: transparent;
     }
+    .bidding_container .bidding_item .item_top {
+        display: list-item;
+        list-style: none;
+        padding: 12px 10px;
+        position: relative;
+    }
+    .bidding_container .bidding_item .item_top .top_left .use_info .time {
+        font-size: 11px;
+        line-height: 23px;
+    }
+    .bidding_container .bidding_item .item_top .top_right{
+        position: absolute;
+        top: 5px;
+        right: 0;
 
+    }
+    .bidding_container .bidding_item .item_top .top_left .user_img img {
+        height: 40px;
+        width: 40px;
+    }
+    .bidding_container .bidding_item .item_top .bidamount {
+        font-size: 18px;
+        text-align: end;
+    }
+    .classified_item_detail {
+        padding: 15px 12px;
+    }
+    .top_classified_navigate {
+        display: none;
+    }
+    .classified_orderList_container {
+        padding: 22px 13px 20px 13px;
+    }
+    .classified_item_detail .swipper_item_content .product_price {
+        font-size: 26px;
+        padding-top: 4px;
+    }
     .classified_item .item_content .post_title {
         font-size: 15px;
         line-height: 22px;
@@ -952,7 +1050,7 @@
     }
 
     .classified_item {
-        height: 250px;
+        height: 225px;
     }
 
     .classified_item_detail .classified_item_Img_container .swiper .swiper-wrapper .swiper-slide {
@@ -1075,6 +1173,31 @@
     /* ------------------------------------------------------------------------
                         Magazine Start 
     ---------------------------------------------------------------------------*/
+    .mui_table{
+        width: auto;
+        min-width: auto !important;
+    }
+    /* .top_left{
+        display: none !important;
+    } */
+    .bidding_container .bidding_item .item_top .top_left {
+        display: flex;
+    }
+    .m_menu{
+        display: flex !important;
+        position: absolute;
+        top: -50px;
+        right: 0;
+        z-index: 2;
+    }
+    .mag_category_Item .mag_category_Item_img img {
+        height: 80px;
+        width: 70px;
+        border-radius: 8px;
+    }
+    .magazine_category_wrapper {
+        padding: 20px 10px;
+    }
     .magazine_nav .nav_list li {
         padding-right: 15px;
     }
@@ -1126,15 +1249,17 @@
     .magazine_top .magazine_t {
         text-align: start;
     }
-
-    .magazine_top .top_left {
+    .magazine {
+        padding: 20px 10px;
+    }
+    /* .magazine_top .top_left {
         display: flex;
         align-items: center;
         justify-content: flex-end;
         position: absolute;
         top: -76px;
         right: 0;
-    }
+    } */
 
     .magazine_top .magzin_logo img {
         max-height: 45px;
@@ -1172,9 +1297,17 @@
         justify-content: end;
         margin-top: 12px;
     }
-
+    .magazine_nav{
+        display: list-item;
+        list-style: none;
+    }
     .magazine_nav .mag_search {
-        display: none;
+        width: 200px;
+        margin: 20px 0 0 auto;
+    }
+    .magazine_nav .mag_search .form_control {
+        height: 38px;
+        width: 200px;
     }
     /* ------------------------------------------------------------------------
                         Chat Start 
@@ -1359,8 +1492,20 @@
         bottom: 60px !important;
         left: 5px !important;
     }
-
-
+    .section_header_2{
+         display: list-item;
+         list-style: none;
+    }
+    .xs-none{
+        display: none !important;
+    }
+    .lg-none{
+      display: block !important;
+    }
+    .sm_none{
+        display: none !important;
+    }
+    
 }
 
 
@@ -1499,6 +1644,7 @@
         justify-content: end;
         padding-bottom: 10px;
     }
+    
 }
 
 

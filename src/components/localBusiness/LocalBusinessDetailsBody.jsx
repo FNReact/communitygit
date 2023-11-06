@@ -45,9 +45,9 @@ const LocalBusinessDetailsBody = () => {
 
   const [loaderVisible, setLoaderVisible] = useState(false)
 
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const theme = useTheme();
-  const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
+  const fullScreen = useMediaQuery(theme.breakpoints.down('xs'));
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -299,10 +299,10 @@ useEffect(()=>{
 
         <div className="b_details_top">
           <Grid container spacing={2}>
-            <Grid item xs={8}>
+            <Grid item lg={8} md={12} sm={12} xs={12} className="xs-none">
               {details !== null && <div className="business_Title"> {details.title} </div>}
             </Grid>
-            <Grid item xs={4}>
+            <Grid item  lg={4} md={12} sm={12} xs={12}>
               {/* <div className="hire_btn">
                 <Button variant="contained" endIcon={<SendIcon />} onClick={handleClickOpenHire}>
                    Service Request
@@ -320,6 +320,9 @@ useEffect(()=>{
               }
                
               </div>
+            </Grid>
+            <Grid item lg={8} md={12} sm={12} xs={12} className="lg-none">
+              {details !== null && <div className="business_Title"> {details.title} </div>}
             </Grid>
           </Grid>
 
@@ -355,7 +358,7 @@ useEffect(()=>{
               All Recommendations
             </div>
             {recommended === false && <div className="rating_add" onClick={handleClickOpen}>
-              <AddIcon /> Recommend this business
+              <AddIcon /> <span>Recommend this business</span>
             </div>}
 
           </div>
@@ -396,7 +399,7 @@ useEffect(()=>{
               All Recommendations
             </div>
             <div className="rating_add" onClick={handleClickOpen}>
-              <AddIcon /> Recommend this business
+              <AddIcon /> <span>Recommend this business</span>
             </div>
           </div>
           <Box display='flex' justifyContent='center' justifyItems='center'>
@@ -481,6 +484,7 @@ useEffect(()=>{
           open={openHire}
           onClose={handleCloseHire}
           aria-labelledby="responsive-dialog-title"
+          className="Dialouge Fahim"
         >
           <DialogTitle id="responsive-dialog-title">
             {"Hire This Business"}

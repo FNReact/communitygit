@@ -295,7 +295,7 @@ const handleLocalBusiness = ()=>{
                       <Box><TextField type="text" label="Business Location"  variant="filled" fullWidth  focused onChange={(e)=>setValue('location', e.target.value)} value={values.location}/></Box>
                     </Grid>
                    
-                      <Grid item xs={10}>
+                      <Grid item xs={8}>
                      <Box>
                                <Autocomplete
                                  
@@ -324,7 +324,7 @@ const handleLocalBusiness = ()=>{
                                  />
                          </Box>
                      </Grid>
-                     <Grid item xs={2}>
+                     <Grid item xs={4}>
                         <Box sx={{ mt:1}}>
                           <Button variant="contained" onClick={(e)=>handleCreateType()}>  +</Button>
                         </Box>

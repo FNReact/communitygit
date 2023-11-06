@@ -576,6 +576,7 @@
         font-size: 16px;
         font-weight: 500;
         color: $black;
+        @include text-ellips;
       }
       .review_text{
         font-size: 15px;
