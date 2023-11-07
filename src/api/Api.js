@@ -2,6 +2,10 @@ const baseUrl = "https://icircles.app";
 
 const loginUrl = `${baseUrl}/api/auth/login`;
 const registerUrl = `${baseUrl}/api/auth/register`;
+const passwordResetUrl = `${baseUrl}/api/auth/password`;
+const validategResetPasswordUrl = `${baseUrl}/api/auth/validate-reset-password`;
+const resetPasswordUrl = `${baseUrl}/api/auth/reset`;
+
 const userDetailsUrl = `${baseUrl}/api/publicprofile`;
 const userInfoUrl = `${baseUrl}/api/auth/user`;
 const commonUserUrl = `${baseUrl}/api/common/user`;
@@ -101,6 +105,10 @@ const multipartHeader = {
 export {
   baseUrl,
   loginUrl,
+  passwordResetUrl,
+  validategResetPasswordUrl,
+  resetPasswordUrl,
+
   userInfoUrl,
   userDetailsUrl,
   registerUrl,

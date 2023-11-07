@@ -3,7 +3,7 @@ import axios from "axios";
 import { ToastContainer } from "react-toastify";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useLocation, useNavigate } from "react-router-dom";
-import { Box, Button, Grid } from "@mui/material";
+import { Box, Button, Grid, Typography } from "@mui/material";
 import { loginUrl, userMicrositesUrl } from "../../api/Api";
 import { notifyError } from "../../utils/Toast";
 import { ThreeDotLoaderEffect } from "../../components/PageLoadEffects";
@@ -108,7 +108,7 @@ const IcirclesLoginPage = () => {
                     <form onSubmit={loginUser}>
                         <Grid container spacing={1} sx={{mt:2}}>
                             <Grid item xs={12}>
-                              <input type="text" className="form_control" onChange={(e)=> setEmail(e.target.value)} value={email}  placeholder="iCircles email" />
+                              <input type="text" className="form_control" onChange={(e)=> setEmail(e.target.value)} value={email}  placeholder="iCircles Email" />
                             </Grid>
                             <Grid item xs={12}>
                               <input type="password" className="form_control"  placeholder="iCircles Password" onChange={(e)=> setPassword(e.target.value)} />
@@ -116,6 +116,11 @@ const IcirclesLoginPage = () => {
                             <Grid item xs={12}>
                               <Box sx={{mt:1 }}><Button variant="contained" fullWidth  type="submit">Log in</Button></Box>
                             </Grid>
+
+                            <Box sx={{mt:3 ,ml:1}} className="cursorPointer" onClick={(e)=> navigate('/password-reset')}>
+                              <Typography variant="body1">Forgot Password ?</Typography>
+                            </Box>
+
                             <div className="btn_loader">
                                 {ThreeDotLoaderEffect(loaderShow)}
                             </div>

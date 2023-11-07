@@ -352,7 +352,7 @@ const navigate = useNavigate();
       getAllFeeds();
       setTotalMedia(null);
       setFileList([]);
-      notifySuccess();
+      // notifySuccess();
       setPostBtnVisible("btn btn-primary");
       setOpen(false);
       setVisible(false);

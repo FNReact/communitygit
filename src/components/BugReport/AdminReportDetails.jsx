@@ -144,8 +144,6 @@ const handleReplayMessage =()=>{
 
 
 
-
-
     return (
         <>
         <Backdrop open={loadershow} className="backdrop_contorller">
@@ -201,9 +199,14 @@ const handleReplayMessage =()=>{
                                     <PhotoCamera />
                                 </IconButton>
                             </div>
-                            <Button variant="contained" endIcon={<SendIcon />} onClick={(e)=> handleReplayMessage()}>
-                                Send
-                            </Button>
+                            {(message ==='' && (fileList && fileList.length ===0)) ?
+                            <Button disabled variant="contained" endIcon={<SendIcon />}>Send</Button>
+                            :
+                                <Button variant="contained" endIcon={<SendIcon />} onClick={(e)=> handleReplayMessage()}>
+                                    Send
+                                </Button>
+                             }
+                           
                         </div>
                     </div>
 

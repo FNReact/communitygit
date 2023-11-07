@@ -94,6 +94,7 @@ import MatrimonialCardDetails from "../pages/Matrimonial/MatrimonialCardDetails"
 import MyMagazineContentPage from "../pages/Magazine/MyMagazineContentPage";
 import ServiceRequestPage from "../pages/LocalBusinessPages/ServiceRequestPage";
 import ServiceRequestDetailsPage from "../pages/LocalBusinessPages/ServiceRequestDetailsPage";
+import IcirclesResetPassowrdPage from "../pages/AuthenticationPages/IcirclesResetPassowrdPage";
 
 const AppRouter = () => {
   const navigate=useNavigate();
@@ -342,6 +343,10 @@ const AppRouter = () => {
             <Route exact path="/"  element={<Protected Component={HomePage} />}/>
             <Route exact path="/login" element={<LoginPage />} />
             <Route exact path="/login-icircles" element={<IcirclesLoginPage />} />
+
+            <Route exact path="/password-reset" element={<IcirclesResetPassowrdPage />} />
+
+
             <Route exact path="/activate-account" element={<ActivateAccountPage />} />
             <Route exact path="/create" element={<CreatCommuinityEmailCheckPage/>}/>
             <Route exact path="/register" element={<RegisterPage />} />
