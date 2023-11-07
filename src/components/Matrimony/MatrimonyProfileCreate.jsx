@@ -1062,7 +1062,7 @@ useEffect(()=>{
                   <Grid container spacing={2}>
                   {storeFiles && storeFiles !==null && storeFiles.length>0 && storeFiles.map((data, i)=>{
                       return (
-                           <Grid item lg={2} key={data.uuid}>
+                           <Grid item lg={2} xs={6} md={4} sm={4} key={data.uuid}>
                               <div className="image_Item">
                               <img src={data?.url} width={'20%'} alt={data?.name}/>
                                <i onClick={(e)=> handleDeleteItem(data.uuid)} ><DeleteIcon/></i>

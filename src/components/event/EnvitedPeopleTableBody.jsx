@@ -94,18 +94,18 @@ const EnvitedPeopleTableBody = ({participent, adminId, getAllMembers}) => {
       <div className='table_content_item'>
           {participent !==null 
           ?  <Grid container spacing={2} alignItems="center">
-                <Grid item  xs={4} md={4}> 
+                <Grid item  lg={4} xs={4} md={4}> 
                     <div className="table_Item_name">
-                      <Avatar alt={participent?.user?.name} src={`${baseUrl}/${participent?.user?.avatar}`} />
+                      <Avatar alt={participent?.user?.name} src={`${baseUrl}/${participent?.user?.avatar}`} className='xs-none' />
                       <div className="item_name">{participent?.user?.name}</div>
                   </div> 
                 </Grid>
-                <Grid item xs={4} md={4}>
+                <Grid item lg={4} xs={4} md={4} className='xs-none'>
                   <div className="table_Item_email">
                     {participent?.user?.email}
                   </div> 
                 </Grid>
-                <Grid item xs={2} md={2} >
+                <Grid item lg={2} xs={4} md={4} >
                   <div className="item_status">
                   {participentStatus===0 && <Chip label="Invited" color='primary' />}
                   {participentStatus ===1 && <Chip label="Participated" color='success' />}
@@ -115,7 +115,7 @@ const EnvitedPeopleTableBody = ({participent, adminId, getAllMembers}) => {
                   {participentStatus ===5 && <Chip label="Not Participated" color='primary' />}
                   </div>
                 </Grid>
-                <Grid item xs={2} md={2}>
+                <Grid item  lg={2} xs={4} md={4}>
                   {location.state !==null && userDetails.id === location.state?.eventDetail?.meta?.create_by && participentStatus !==0 &&
                 <div className="item_action">
                 <IconButton

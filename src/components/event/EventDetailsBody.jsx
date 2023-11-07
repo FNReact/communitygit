@@ -383,7 +383,7 @@ const handleUpdateStatus =(status)=>{
   // Dialogue Part
   const [invite, setInvite] = useState(false);
   const theme = useTheme();
-  const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
+  const fullScreen = useMediaQuery(theme.breakpoints.down('xs'));
 
   const handleClickOpen = () => {
     setInvite(true);

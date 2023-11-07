@@ -298,7 +298,7 @@ const ChatBody = ({ chatRooms, setChatRooms, getAllChatRooms }) => {
     // Chat Group
     const [chatGroup, setchatGroup] = useState(false);
     const theme = useTheme();
-    const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
+    const fullScreen = useMediaQuery(theme.breakpoints.down('xs'));
 
     const handleClickOpenChatGroup = () => {
         setchatGroup(true);
@@ -336,6 +336,8 @@ const ChatBody = ({ chatRooms, setChatRooms, getAllChatRooms }) => {
             axios.request(config)
                 .then((response) => {
                     handleChatDetails(response?.data?.uuid);
+                    
+                    setSingleRoom(response?.data)
                     getAllChatRooms()
                     handleCloseChatGroup()
                     setGroupName('')
@@ -411,8 +413,6 @@ const ChatBody = ({ chatRooms, setChatRooms, getAllChatRooms }) => {
   }     
 
   
-  console.log('storeMembers', storeMembers)
-
 
     return (
         <Fragment>
@@ -469,7 +469,7 @@ const ChatBody = ({ chatRooms, setChatRooms, getAllChatRooms }) => {
                                     {allMembers && allMembers.length > 0 && allMembers.map((member, i) => {
                                         if (userDetails?.id !== member?.user?.id && member.status === 1) {
                                             return (
-                                                <SwiperSlide>
+                                                <SwiperSlide key={member.uuid}>
                                                     <div className="activeMamber" key={member.uuid} onClick={(e) => handleMemberChat(member)}>
                                                         {/* <img src={`${baseUrl}/${member?.user?.avatar}`} alt={member?.user?.name} /> */}
                                                         <Avatar alt={member?.user?.name} src={`${baseUrl}/${member?.user?.avatar}`} />
@@ -520,7 +520,7 @@ const ChatBody = ({ chatRooms, setChatRooms, getAllChatRooms }) => {
                                     // console.log('full time', splitedTime[0])
 
                                     return (
-                                        <div>
+                                        <div key={chat.uuid}>
                                             <div className="chat_list_item" key={chat.uuid} onClick={(e) => { handleChatDetails(chat.uuid); setSingleRoom(chat) }}>
                                                 <div className="profile">
                                                     <Avatar className="profile_avatar" alt={chat?.name} src={chat?.member?.profile?.avatar !== 'null' ? `${baseUrl}/${chat?.member?.profile?.avatar}` : "/static/images/avatar/1.jpg"} />

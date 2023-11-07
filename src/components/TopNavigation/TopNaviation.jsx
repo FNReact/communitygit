@@ -201,7 +201,7 @@ useEffect(()=>{
                         <div className="commuinity_name">{msDetails.name.slice(0,24)}..</div></>} */}
               </div>
               <Grid container alignItems="center" className="mob_header_grid">
-                <Grid item lg={4} xs={4}>
+                <Grid item lg={4} md={4} sm={4} xs={4}>
                   <div className="header_item">
                     <Link className="logo" to="/community-info">
                       <img src={lms} alt="" />
@@ -211,7 +211,7 @@ useEffect(()=>{
                       <div onClick={(e)=> navigate('/community-info')} className="commuinity_name cursorPointer">{msDetails?.name?.slice(0, 14)}..</div></>}
                   </div>
                 </Grid>
-                <Grid item lg={4} xs={6}>
+                <Grid item lg={4} md={4} sm={6} xs={6}>
                   <div className="header_item_wrapper">
                     <Tooltip title="Home">
                       <Link to="/" onClick={(e)=> window.scroll(0,0)}>
@@ -253,7 +253,7 @@ useEffect(()=>{
                   
                 </Grid>
                 
-                <Grid item lg={4} xs={2}>
+                <Grid item lg={4} md={4} sm={2} xs={2}>
                   <div className="header_item_wrapper2">
                   {(loggedInUser?.user_type ==='admin' || userDetails.id === msDetails?.user_id) &&
                       <Tooltip title="Community Setup" className="mob_none">

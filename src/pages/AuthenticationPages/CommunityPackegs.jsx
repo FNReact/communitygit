@@ -41,12 +41,21 @@ const CommunityPackegs = () => {
                 <Grid container spacing={2} sx={{ mt: 5 }}>
                     <Grid item lg={3} sm={6} xs={6} md={6} >
                        <div className='card_wrap' onClick={(e) => handlePackege('personal')}>
-                             <span>Personal/Corporate/Institutions</span>
+                             <ul>
+                                <li>Personal /</li>
+                                <li>Corporate /</li>
+                                <li>Institutions</li>
+                             </ul>
                         </div>
                     </Grid>
                     <Grid item lg={3} sm={6} xs={6} md={6}>
                         <div className='card_wrap' onClick={(e) => handlePackege('business')}>
-                           <span>Business/Association/Complex </span>
+                           
+                           <ul>
+                                <li>Business /</li>
+                                <li>Association / </li>
+                                <li>Complex</li>
+                             </ul>
                         </div>
                     </Grid>
                     <Grid item lg={3} sm={6} xs={6} md={6}>
@@ -56,7 +65,10 @@ const CommunityPackegs = () => {
                     </Grid>
                     <Grid item lg={3} sm={6} xs={6} md={6}>
                         <div className='card_wrap' onClick={(e) => handlePackege('housing')}>
-                             <span>Housing/Homeowners Association</span>
+                             <ul>
+                                <li>Housing /</li>
+                                <li>Homeowners Association</li>
+                             </ul>
                        </div>
                     </Grid>
                 </Grid>

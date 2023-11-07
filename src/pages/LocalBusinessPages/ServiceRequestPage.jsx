@@ -105,7 +105,7 @@ const ServiceRequestPage = () => {
                       <Grid container spacing={2}>
                         {requests && requests !=='undefined' && requests.length>0 && requests.map((data,i)=>{
                             return(
-                            <Grid item xs={4} key={data.uuid}>
+                            <Grid item lg={4}  md={6} sm={12} xs={12} key={data.uuid}>
                                     <a>
                                         <div className="request_item">
                                                     <div className="delet_btn" onClick={(e)=> handleDeleteResource(data)}>

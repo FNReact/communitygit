@@ -44,7 +44,7 @@ const MyLocalBusinessbody = () => {
 
   return (
       <>
-         <div className="section_headear">
+         <div className="section_headear section_header_2">
                     <h4>Community Business</h4>
                     <div className="btns_row">
                       <Link to='/localBusiness-create'>
@@ -52,7 +52,7 @@ const MyLocalBusinessbody = () => {
                            Add Community Business
                         </div>
                       </Link>
-                    </div>
+                    </div> 
                  </div> 
         <Grid container spacing={2}>
         {(business !==null && business.length>0 )&& business.map((data,key)=>{

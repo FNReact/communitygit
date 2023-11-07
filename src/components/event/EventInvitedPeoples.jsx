@@ -104,22 +104,22 @@ const handleGetParticipant = (eventId) =>{
       <div className="invited_list_container">
           <div className="invited_list_header">
                <Grid container spacing={2} >
-                   <Grid item xs={4} md={4}> 
+                   <Grid item lg={4} xs={4} md={4}> 
                        <div className="table_heading">
                           Name
                        </div> 
                     </Grid>
-                   <Grid item xs={4} md={4}>
+                   {/* <Grid item lg={4} xs={4} md={4} className='xs-none'>
                       <div className="table_heading">
                           Email
                       </div> 
-                   </Grid>
-                   <Grid item xs={2} md={2}>
+                   </Grid> */}
+                   <Grid item lg={2} xs={4} md={2}>
                       <div className="table_heading text_center">
                          Status
                       </div> 
                    </Grid>
-                   <Grid item xs={2} md={2}>
+                   <Grid item lg={2} xs={4} md={2}>
                         {location.state !==null && userDetails.id === location.state?.eventDetail?.meta?.create_by && <div className="table_heading text_end"> Actions </div> } 
                    </Grid>
               </Grid>

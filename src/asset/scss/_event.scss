@@ -678,6 +678,7 @@
                 font-weight: 500;
                 color: $black;
                 padding-left: 5px;
+                @include text-ellips;
                }
             }
             .table_Item_email{
